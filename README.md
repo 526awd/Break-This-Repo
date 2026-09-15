@@ -25,6 +25,25 @@
 > 本仓库所有文件均为"原样(AS-IS)"提供，在法律允许的最大范围内不提供所有明示或默示保证，包括但不限于适销性、令人满意的质量、不侵犯第三方权利以及适合特定目的或用途的默示保证，均予免除。不做保证任何源或产品不会或将来不会侵犯任何专利、版权、商业秘密或其他专有权利。如存在侵权情况，请尝试删除。
 
 ---
+
+<h1 align="center">
+    Break-This-Repo
+	<p align="center">
+	    <img src="https://img.shields.io/badge/License-Unknown-red?logo=inquirer&logoColor=white" alt="License">
+	    <img src="https://img.shields.io/badge/Language-various-blue?logo=inquirer&logoColor=white" alt="Language">
+	    <img src="https://img.shields.io/badge/Pull_Requests-infinity-white?logo=infinityfree&logoColor=white" alt="Pull_Requests">
+	    <img src="https://img.shields.io/badge/Forks-infinity-brown?logo=infinityfree&logoColor=white" alt="Forks">
+	<br>
+	    <img src="https://img.shields.io/badge/Stars-infinity-yellow?logo=infinityfree&logoColor=white" alt="Stars">
+	    <img src="https://img.shields.io/badge/Platform-Unknown-0078D6?logo=inquirer&logoColor=white" alt="Platform">
+	    <img src="https://img.shields.io/badge/Website-Unknown-green?logo=inquirer&logoColor=white" alt="Website">
+	    <img src="https://img.shields.io/badge/Documents-Unknown-red?logo=inquirer&logoColor=white" alt="Documents">
+	    </a>
+	</p>
+</h1>
+
+---
+
 # 嗨嗨嗨，我是[StArray](https://github.com/StArraySharp)，如果你看到了这条提示，说明我已经来过啦 我要草死你
 > 哪来的小男娘，口气这么大，直接艹死
 
