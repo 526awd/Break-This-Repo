@@ -235,7 +235,12 @@ jobs:
                 # threw stderr away, then guessed the cause from `mergeable` alone - which
                 # is how a hard 403 got reported as "head moved / transient error" and the
                 # run stayed green while merging nothing.
-                if MERGE_ERR=$(gh api -X PUT "repos/$GITHUB_REPOSITORY/pulls/$pr/merge" \
+                # `--include` keeps the response headers. They are the only lead left on the
+                # 403 handled below: `x-accepted-github-permissions` is GitHub naming the
+                # permission it wanted and `x-github-request-id` is what support asks for.
+                # On a successful merge the extra header text lands in MERGE_ERR, which
+                # nothing reads.
+                if MERGE_ERR=$(gh api --include -X PUT "repos/$GITHUB_REPOSITORY/pulls/$pr/merge" \
                      -f merge_method=merge -f sha="$HEAD_SHA" 2>&1); then
                   echo "✅ Merged PR #$pr"
                   # Only PRs that are coming OUT of the conflict state get was-conflicted;
@@ -272,7 +277,14 @@ jobs:
                     # Refreshing the branch is the only thing ever seen to clear it (PR #515
                     # went 403 -> merged once its head was updated), so the comment offers that
                     # as a workaround WITHOUT presenting it as the mechanism.
+                    #
+                    # Capture what GitHub says about the refusal. `|| true` on both: grep
+                    # exits 1 when a header is absent and `set -e` would treat that as fatal.
+                    REQ_ID=$(grep -i '^x-github-request-id:' <<<"$MERGE_ERR" | tr -d '\r' | awk '{print $2}' | head -1 || true)
+                    ACCEPTED=$(grep -i '^x-accepted-github-permissions:' <<<"$MERGE_ERR" | tr -d '\r' | sed 's/^[^:]*:[[:space:]]*//' | head -1 || true)
                     echo "🔒 PR #$pr: merge rejected with a permission error — not a conflict, cause undetermined"
+                    echo "     x-github-request-id: ${REQ_ID:-<absent>}"
+                    echo "     x-accepted-github-permissions: ${ACCEPTED:-<absent>}"
                     STUCK="$STUCK #$pr"
                     if ! has_label "$pr" merge-blocked; then
                       printf '%s\n' \
