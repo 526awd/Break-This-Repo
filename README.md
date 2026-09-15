@@ -1,6 +1,7 @@
 > [!NOTE]
 > 不不不我无是愤怒的😡
-> 你的胆子真是肥嘟嘟滴！
+> 你的胆子真是肥嘟嘟滴😡
+
 
 ---
 > [!CAUTION]
@@ -19,6 +20,7 @@
 
 ## 警告!
 > [!CAUTION]
+> [!NOTE]
 > To [@mpmp666](https://github.com/mpmp666), if you posting shit ads again, i'll report ur fking shit github account for abusing this repo
 
 ---
