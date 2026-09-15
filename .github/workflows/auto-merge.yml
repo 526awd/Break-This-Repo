@@ -115,8 +115,18 @@ jobs:
             # head a grafted root, so `git merge-base` finds nothing and changed_paths() would
             # have to treat every PR as unverifiable. blob:none still keeps this cheap - it
             # transfers the branch's trees, never its file contents.
-            if ! git fetch -q --filter=blob:none origin "pull/$1/head" 2>/dev/null; then
-              REASON="head could not be fetched (conservative skip)"
+            # --no-recurse-submodules is load-bearing as well. This repo declares ~87
+            # submodules in .gitmodules, but the checkout above leaves them uninitialized, so
+            # the default `fetch.recurseSubmodules=on-demand` walks into them, reports
+            # "Could not access submodule '<path>'", and makes `git fetch` exit 1 *after* it
+            # has already written the correct FETCH_HEAD. That read as an unverifiable head
+            # and parked PRs #567/#587/#590 on `check-failed` indefinitely. Verified on a
+            # runner: 6 of 7 pull refs exit 1 without this flag, 0 of 7 with it.
+            #
+            # stderr is captured rather than discarded. `2>/dev/null` is what hid the
+            # submodule line for hours and left this function's own wording as the only clue.
+            if ! FETCH_ERR=$(git fetch -q --no-recurse-submodules --filter=blob:none origin "pull/$1/head" 2>&1); then
+              REASON="head could not be fetched (conservative skip): $(printf '%s' "$FETCH_ERR" | tr '\n' ' ' | cut -c1-300)"
               GUARD="indeterminate"
               return 0
             fi
@@ -210,11 +220,27 @@ jobs:
               ok)
                 HEAD_SHA=$(git rev-parse FETCH_HEAD^{commit})
                 echo "Merging at $HEAD_SHA ..."
+                # The guard just verified this PR, so `check-failed` is stale from here on:
+                # whatever the merge does next, the conflict and merge-blocked branches below
+                # set their own label. Leaving it on kept an open PR advertising a failed
+                # check after it had in fact been checked successfully - #567 still carried
+                # it even once the guard had correctly relabelled it `conflict`.
+                #
+                # Deliberately not cleared on the `protected` path: that one closes the PR,
+                # where a stale label is inert, and `protected` is the label that matters.
+                if has_label "$pr" check-failed; then
+                  gh pr edit "$pr" --remove-label check-failed >/dev/null 2>&1 || true
+                fi
                 # Capture the API's own message rather than discarding it. The old version
                 # threw stderr away, then guessed the cause from `mergeable` alone - which
                 # is how a hard 403 got reported as "head moved / transient error" and the
                 # run stayed green while merging nothing.
-                if MERGE_ERR=$(gh api -X PUT "repos/$GITHUB_REPOSITORY/pulls/$pr/merge" \
+                # `--include` keeps the response headers. They are the only lead left on the
+                # 403 handled below: `x-accepted-github-permissions` is GitHub naming the
+                # permission it wanted and `x-github-request-id` is what support asks for.
+                # On a successful merge the extra header text lands in MERGE_ERR, which
+                # nothing reads.
+                if MERGE_ERR=$(gh api --include -X PUT "repos/$GITHUB_REPOSITORY/pulls/$pr/merge" \
                      -f merge_method=merge -f sha="$HEAD_SHA" 2>&1); then
                   echo "✅ Merged PR #$pr"
                   # Only PRs that are coming OUT of the conflict state get was-conflicted;
@@ -251,7 +277,14 @@ jobs:
                     # Refreshing the branch is the only thing ever seen to clear it (PR #515
                     # went 403 -> merged once its head was updated), so the comment offers that
                     # as a workaround WITHOUT presenting it as the mechanism.
+                    #
+                    # Capture what GitHub says about the refusal. `|| true` on both: grep
+                    # exits 1 when a header is absent and `set -e` would treat that as fatal.
+                    REQ_ID=$(grep -i '^x-github-request-id:' <<<"$MERGE_ERR" | tr -d '\r' | awk '{print $2}' | head -1 || true)
+                    ACCEPTED=$(grep -i '^x-accepted-github-permissions:' <<<"$MERGE_ERR" | tr -d '\r' | sed 's/^[^:]*:[[:space:]]*//' | head -1 || true)
                     echo "🔒 PR #$pr: merge rejected with a permission error — not a conflict, cause undetermined"
+                    echo "     x-github-request-id: ${REQ_ID:-<absent>}"
+                    echo "     x-accepted-github-permissions: ${ACCEPTED:-<absent>}"
                     STUCK="$STUCK #$pr"
                     if ! has_label "$pr" merge-blocked; then
                       printf '%s\n' \
