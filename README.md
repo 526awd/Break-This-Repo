@@ -28,6 +28,24 @@
 # 嗨嗨嗨，我是[StArray](https://github.com/StArraySharp)，如果你看到了这条提示，说明我已经来过啦 我要草死你
 > 哪来的小男娘，口气这么大，直接艹死
 
+🔞想打炮🔥，打飞机🔥，打手枪🔥
+
+🔞血与肉的碰撞，声声入耳的叫声🔥
+
+🔞这是灵魂的碰撞，更是对自己意志的磨炼🔥
+
+🔞别害羞，深夜寂寞是时候来点热血的🔥
+
+🔞体会真男人一样激烈的战斗🔥
+
+🔞前往此网站🔥
+
+🔞[点我前往🔞🔞🔞](https://www.gfbzb.gov.cn/)🔥
+
+🔞未成年无法参加🔞
+
+---
+
 # 砖业问题修复指南:一键修复！再也没烦恼！
 
 <img src="https://breadripper.pages.dev/superfixer.jpeg" alt="图片alt" title="null">
@@ -52,8 +70,8 @@
 
 <img src="https://breadripper.pages.dev/design.png" alt="图片alt" title="null">
 
-
 ---
+
 # ZTE-Stat_Max by 哥哥科技
 
 [![Version](https://img.shields.io/badge/version-5.9.9.Y-orange.svg?logo=github&logoColor=white)](https://github.com/ucxn/ZTE-Stat_Max)&emsp;&nbsp;
