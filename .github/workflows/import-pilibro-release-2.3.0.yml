@@ -1,0 +1,92 @@
+name: Import PiliBro release 2.3.0
+
+on:
+  push:
+    branches:
+      - import-pilibro-release-2.3.0
+    paths:
+      - .github/workflows/import-pilibro-release-2.3.0.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-release:
+    runs-on: ubuntu-latest
+    env:
+      SOURCE_REPO: 1-Reality/BiliVideo-Lab
+      TARGET_DIR: '【B 站无广告】电视无需额外交税，纯净版 B 站'
+      IMPORT_BRANCH: import-pilibro-release-2.3.0
+
+    steps:
+      - name: Checkout import branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.IMPORT_BRANCH }}
+          fetch-depth: 0
+
+      - name: Download every asset from PiliBro 2.3.0 release
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$TARGET_DIR"
+
+          release_json="$(curl -fsSL --retry 5 --retry-all-errors \
+            -H 'Accept: application/vnd.github+json' \
+            'https://api.github.com/repos/1-Reality/BiliVideo-Lab/releases/tags/2.3.0')"
+
+          count="$(jq '.assets | length' <<<"$release_json")"
+          if [ "$count" -eq 0 ]; then
+            echo 'Release 2.3.0 has no assets.' >&2
+            exit 1
+          fi
+
+          jq -r '.assets[] | [.name, .browser_download_url, (.digest // "")] | @tsv' <<<"$release_json" |
+          while IFS=$'\t' read -r name url digest; do
+            echo "Downloading: $name"
+            curl -fL --retry 8 --retry-all-errors --continue-at - "$url" -o "$TARGET_DIR/$name"
+            if [[ "$digest" == sha256:* ]]; then
+              expected="${digest#sha256:}"
+              actual="$(sha256sum "$TARGET_DIR/$name" | awk '{print $1}')"
+              if [ "$actual" != "$expected" ]; then
+                echo "SHA-256 mismatch: $name" >&2
+                exit 1
+              fi
+            fi
+          done
+
+          printf 'PiliBro 2.3.0 release assets mirrored from %s/releases/tag/2.3.0\n' \
+            'https://github.com/1-Reality/BiliVideo-Lab' > "$TARGET_DIR/来源说明.txt"
+
+      - name: Commit imported installers to import branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$TARGET_DIR"
+          if git diff --cached --quiet; then
+            echo 'No new release files to commit.'
+          else
+            git commit -m 'Add PiliBro 2.3.0 release installers'
+            git push origin HEAD:"$IMPORT_BRANCH"
+          fi
+
+      - name: Merge import branch into main
+        shell: bash
+        run: |
+          set -euo pipefail
+          import_sha="$(git rev-parse HEAD)"
+          git fetch origin main
+          git switch -C main origin/main
+          git merge --no-ff "$import_sha" -m 'Add PiliBro installers to B站无广告 collection'
+          git push origin main
+
+      - name: Remove one-shot workflow from main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rm -- '.github/workflows/import-pilibro-release-2.3.0.yml'
+          git commit -m 'Remove one-shot PiliBro import workflow'
+          git push origin main
