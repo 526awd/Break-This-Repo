@@ -1,12 +1,11 @@
-
-> [!CAUTION]
-> This repository automatically merges pull requests without conflicts.
-> Please note that the `.github` directory is protected.
+> [!NOTE]
+> 不不不我无是愤怒的😡
+> 你的胆子真是肥嘟嘟滴！
 
 ---
 > [!CAUTION]
-> 不不不我无是愤怒的😡
-> 你的胆子真是肥嘟嘟滴！
+> This repository automatically merges pull requests without conflicts.
+> Please note that the `.github` directory is protected.
 
 ---
 
