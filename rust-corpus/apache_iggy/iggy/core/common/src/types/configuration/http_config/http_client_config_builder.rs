@@ -1,0 +1,114 @@
+// Licensed to the Apache Software Foundation (ASF) under one
+// or more contributor license agreements.  See the NOTICE file
+// distributed with this work for additional information
+// regarding copyright ownership.  The ASF licenses this file
+// to you under the Apache License, Version 2.0 (the
+// "License"); you may not use this file except in compliance
+// with the License.  You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+
+use crate::{HttpClientConfig, IggyError, NonZeroIggyDuration, utils::net::validate_api_url};
+
+/// The builder for the `HttpClientConfig` configuration.
+/// Allows configuring the HTTP client with custom settings or using defaults:
+/// - `api_url`: Default is "http://127.0.0.1:3000"
+/// - `retries`: Default is 3.
+/// - `heartbeat_interval`: Default is 5 seconds.
+#[derive(Debug, Default)]
+pub struct HttpClientConfigBuilder {
+    config: HttpClientConfig,
+}
+
+impl HttpClientConfigBuilder {
+    /// Create a new `HttpClientConfigBuilder` with default settings.
+    pub fn new() -> Self {
+        HttpClientConfigBuilder::default()
+    }
+
+    /// Sets the API URL for the HTTP client.
+    pub fn with_api_url(mut self, url: String) -> Self {
+        self.config.api_url = url;
+        self
+    }
+
+    /// Sets the number of retries for the HTTP client.
+    pub fn with_retries(mut self, retries: u32) -> Self {
+        self.config.retries = retries;
+        self
+    }
+
+    /// Sets the interval between the heartbeats sent to the server.
+    pub fn with_heartbeat_interval(mut self, interval: NonZeroIggyDuration) -> Self {
+        self.config.heartbeat_interval = interval;
+        self
+    }
+
+    /// Sets the JWT for A2A authentication.
+    pub fn with_jwt(mut self, token: String) -> Self {
+        self.config.jwt = Some(token);
+        self
+    }
+
+    /// Builds the `HttpClientConfig` instance.
+    pub fn build(mut self) -> Result<HttpClientConfig, IggyError> {
+        self.config.api_url = self.config.api_url.trim().to_owned();
+        validate_api_url(&self.config.api_url)?;
+
+        Ok(self.config)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::str::FromStr;
+
+    #[test]
+    fn build_should_trim_and_validate_api_url() {
+        let config = HttpClientConfigBuilder::default()
+            .with_api_url(" http://127.0.0.1:3000 ".to_string())
+            .build()
+            .expect("expected valid HTTP API URL");
+
+        assert_eq!(config.api_url, "http://127.0.0.1:3000");
+    }
+
+    #[test]
+    fn build_should_trim_whitespace_before_validation() {
+        let config = HttpClientConfigBuilder::default()
+            .with_api_url("\n\thttp://localhost:8080 \t".to_string())
+            .build()
+            .expect("expected build() to trim before validation");
+
+        assert_eq!(config.api_url, "http://localhost:8080");
+    }
+
+    #[test]
+    fn build_should_keep_the_heartbeat_interval() {
+        let interval = NonZeroIggyDuration::from_str("10s").unwrap();
+
+        let config = HttpClientConfigBuilder::default()
+            .with_heartbeat_interval(interval)
+            .build()
+            .expect("expected valid HTTP client config");
+
+        assert_eq!(interval, config.heartbeat_interval);
+    }
+
+    #[test]
+    fn build_should_fail_for_invalid_api_url() {
+        let result = HttpClientConfigBuilder::default()
+            .with_api_url("http://127.0.0.1:0".to_string())
+            .build();
+
+        assert!(result.is_err());
+    }
+}

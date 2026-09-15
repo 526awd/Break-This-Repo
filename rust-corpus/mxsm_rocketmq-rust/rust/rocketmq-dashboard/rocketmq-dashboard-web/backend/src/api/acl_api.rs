@@ -1,0 +1,120 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+use crate::api::request::ApiExtension as Extension;
+use crate::api::request::ApiJson as Json;
+use crate::api::request::ApiPath as Path;
+use crate::api::request::ApiQuery as Query;
+use crate::error::DashboardError;
+use crate::middleware::AuditTerminalFactSink;
+use crate::model::AclMutationResult;
+use crate::model::AclPolicyRequest;
+use crate::model::AclPolicyView;
+use crate::model::AclQuery;
+use crate::model::AclUserUpsertRequest;
+use crate::model::AclUserView;
+use crate::model::ApiResponse;
+use crate::service;
+use crate::state::AppState;
+use axum::extract::State;
+
+pub async fn list_users(
+    State(state): State<AppState>,
+    Query(query): Query<AclQuery>,
+) -> Result<Json<ApiResponse<Vec<AclUserView>>>, DashboardError> {
+    Ok(Json(ApiResponse::success(service::list_users(&state, query).await?)))
+}
+
+pub async fn create_user(
+    State(state): State<AppState>,
+    Extension(audit): Extension<AuditTerminalFactSink>,
+    Json(payload): Json<AclUserUpsertRequest>,
+) -> Result<Json<ApiResponse<AclMutationResult>>, DashboardError> {
+    let result = service::create_user(&state, payload).await?;
+    // Access keys and user credentials are never usable audit resource names.
+    audit
+        .record_success(None, Some(state.published().environment.environment_id))
+        .await;
+    Ok(Json(ApiResponse::success(result)))
+}
+
+pub async fn update_user(
+    State(state): State<AppState>,
+    Extension(audit): Extension<AuditTerminalFactSink>,
+    Path(access_key): Path<String>,
+    Json(payload): Json<AclUserUpsertRequest>,
+) -> Result<Json<ApiResponse<AclMutationResult>>, DashboardError> {
+    let result = service::update_user(&state, &access_key, payload).await?;
+    audit
+        .record_success(None, Some(state.published().environment.environment_id))
+        .await;
+    Ok(Json(ApiResponse::success(result)))
+}
+
+pub async fn delete_user(
+    State(state): State<AppState>,
+    Extension(audit): Extension<AuditTerminalFactSink>,
+    Path(access_key): Path<String>,
+    Query(query): Query<AclQuery>,
+) -> Result<Json<ApiResponse<AclMutationResult>>, DashboardError> {
+    let result = service::delete_user(&state, &access_key, query).await?;
+    audit
+        .record_success(None, Some(state.published().environment.environment_id))
+        .await;
+    Ok(Json(ApiResponse::success(result)))
+}
+
+pub async fn list_policies(
+    State(state): State<AppState>,
+    Query(query): Query<AclQuery>,
+) -> Result<Json<ApiResponse<Vec<AclPolicyView>>>, DashboardError> {
+    Ok(Json(ApiResponse::success(service::list_policies(&state, query).await?)))
+}
+
+pub async fn create_policy(
+    State(state): State<AppState>,
+    Extension(audit): Extension<AuditTerminalFactSink>,
+    Json(payload): Json<AclPolicyRequest>,
+) -> Result<Json<ApiResponse<AclMutationResult>>, DashboardError> {
+    let result = service::create_policy(&state, payload).await?;
+    audit
+        .record_success(None, Some(state.published().environment.environment_id))
+        .await;
+    Ok(Json(ApiResponse::success(result)))
+}
+
+pub async fn update_policy(
+    State(state): State<AppState>,
+    Extension(audit): Extension<AuditTerminalFactSink>,
+    Path(policy_name): Path<String>,
+    Json(payload): Json<AclPolicyRequest>,
+) -> Result<Json<ApiResponse<AclMutationResult>>, DashboardError> {
+    let result = service::update_policy(&state, &policy_name, payload).await?;
+    audit
+        .record_success(Some(&policy_name), Some(state.published().environment.environment_id))
+        .await;
+    Ok(Json(ApiResponse::success(result)))
+}
+
+pub async fn delete_policy(
+    State(state): State<AppState>,
+    Extension(audit): Extension<AuditTerminalFactSink>,
+    Path(policy_name): Path<String>,
+    Query(query): Query<AclQuery>,
+) -> Result<Json<ApiResponse<AclMutationResult>>, DashboardError> {
+    let result = service::delete_policy(&state, &policy_name, query).await?;
+    audit
+        .record_success(Some(&policy_name), Some(state.published().environment.environment_id))
+        .await;
+    Ok(Json(ApiResponse::success(result)))
+}

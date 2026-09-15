@@ -1,0 +1,39 @@
+[package]
+name = "fresh-core"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Core types and utilities for the Fresh editor"
+
+[dependencies]
+# `rc` teaches serde to (de)serialize `Arc<T>`. `EditorStateSnapshot` shares
+# each buffer's text properties as `Arc<[TextProperty]>` rather than copying
+# them per tick, and the snapshot derives Serialize/Deserialize — without
+# this feature the crate only builds when something else in the graph turns
+# `rc` on, which is why building `fresh-core` on its own broke.
+serde = { workspace = true, features = ["rc"] }
+serde_json.workspace = true
+schemars.workspace = true
+anyhow.workspace = true
+lsp-types.workspace = true
+ts-rs.workspace = true
+unicode-width = "0.2"
+rquickjs = { workspace = true, optional = true }
+rquickjs-serde = { workspace = true, optional = true }
+
+# rquickjs-sys has no pre-generated bindings for FreeBSD
+[target.'cfg(target_os = "freebsd")'.dependencies]
+rquickjs = { workspace = true, optional = true, features = ["bindgen"] }
+
+# rquickjs-sys has no pre-generated bindings for NetBSD
+[target.'cfg(target_os = "netbsd")'.dependencies]
+rquickjs = { workspace = true, optional = true, features = ["bindgen"] }
+
+[dev-dependencies]
+proptest = "1.9"
+
+[features]
+plugins = ["dep:rquickjs", "dep:rquickjs-serde"]

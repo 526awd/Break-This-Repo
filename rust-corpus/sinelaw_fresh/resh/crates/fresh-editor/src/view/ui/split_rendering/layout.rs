@@ -1,0 +1,396 @@
+//! Layout & geometry helpers for split panes.
+//!
+//! Everything in this module deals with rectangles, view anchors, viewport
+//! bounds and view preferences. Nothing here
+//! depends on any shared render-time "mega struct".
+
+use crate::model::buffer::Buffer;
+use crate::model::cursor::Cursors;
+use crate::model::event::LeafId;
+use crate::state::{EditorState, ViewMode};
+use crate::view::shell::splits::PaneChrome;
+use crate::view::split::SplitViewState;
+use crate::view::ui::view_pipeline::ViewLine;
+use crate::view::viewport::Viewport;
+use ratatui::layout::Rect;
+use std::collections::HashMap;
+
+/// Anchor describing where to start rendering within a slice of view lines.
+pub(super) struct ViewAnchor {
+    pub start_line_idx: usize,
+}
+
+/// Layout for compose (centered page) mode: the effective render area and
+/// the side paddings.
+pub(crate) struct ComposeLayout {
+    pub render_area: Rect,
+    pub left_pad: u16,
+    pub right_pad: u16,
+}
+
+/// Rectangle partitioning for one split: tabs, content, vertical scrollbar,
+/// horizontal scrollbar — the model's answer, read for its content rect by
+/// the painter and whole by the parity tests in `view::shell::splits`, which
+/// pin the description to it.
+#[cfg_attr(not(test), allow(dead_code))]
+pub(crate) struct SplitLayout {
+    pub tabs_rect: Rect,
+    pub content_rect: Rect,
+    pub scrollbar_rect: Rect,
+    pub horizontal_scrollbar_rect: Rect,
+}
+
+/// View-level preferences resolved from `SplitViewState` (with fallback
+/// defaults).
+pub(super) struct ViewPreferences {
+    pub view_mode: ViewMode,
+    pub compose_width: Option<u16>,
+    pub compose_column_guides: Option<Vec<u16>>,
+    pub rulers: Vec<usize>,
+    /// Per-split line number visibility (from BufferViewState).
+    pub show_line_numbers: bool,
+    /// Per-split current line highlight visibility (from BufferViewState).
+    pub highlight_current_line: bool,
+}
+
+/// Partition a split area into tabs / content / scrollbar rectangles.
+///
+/// **A read of the layout.** This was the arithmetic below — four rectangles
+/// derived by hand from three bools, with the horizontal bar's width the one
+/// part a reader would get wrong from the picture (it stops short of the
+/// vertical bar's column rather than running under it). It is
+/// `shell::splits::pane_interior` now, laid out at the pane's own size, so
+/// there is one statement of how a pane divides itself and the chrome that
+/// hangs off these rectangles can become nodes against the same description.
+pub(crate) fn split_layout(id: LeafId, split_area: Rect, chrome: PaneChrome) -> SplitLayout {
+    use crate::view::shell::splits::{
+        content_key, hscroll_key, pane_interior, tabs_key, vscroll_key, PaneSlots,
+    };
+    let mut ui: fresh_ui::Ui<()> = fresh_ui::Ui::new();
+    ui.frame(
+        pane_interior::<()>(id, chrome, PaneSlots::bare(id)),
+        fresh_ui::Size::new(split_area.width, split_area.height),
+    );
+    let at = |k: fresh_ui::Key| -> Rect {
+        let r = ui
+            .find_by_key(&k)
+            .map(|e| ui.rect_of(e))
+            .unwrap_or_default();
+        Rect::new(
+            split_area.x.saturating_add(r.x.max(0) as u16),
+            split_area.y.saturating_add(r.y.max(0) as u16),
+            r.w,
+            r.h,
+        )
+    };
+    SplitLayout {
+        tabs_rect: at(tabs_key(id)),
+        content_rect: at(content_key(id)),
+        scrollbar_rect: at(vscroll_key(id)),
+        horizontal_scrollbar_rect: at(hscroll_key(id)),
+    }
+}
+
+/// **The arithmetic the description replaced**, kept as what the swap is
+/// pinned against — see `shell::splits`'s parity tests.
+#[cfg(test)]
+pub(crate) fn reference_split_layout(
+    split_area: Rect,
+    tab_bar_visible: bool,
+    show_vertical_scrollbar: bool,
+    show_horizontal_scrollbar: bool,
+) -> SplitLayout {
+    let tabs_height = if tab_bar_visible { 1u16 } else { 0u16 };
+    let scrollbar_width = if show_vertical_scrollbar { 1u16 } else { 0u16 };
+    let hscrollbar_height = if show_horizontal_scrollbar {
+        1u16
+    } else {
+        0u16
+    };
+
+    let tabs_rect = Rect::new(split_area.x, split_area.y, split_area.width, tabs_height);
+    let content_rect = Rect::new(
+        split_area.x,
+        split_area.y + tabs_height,
+        split_area.width.saturating_sub(scrollbar_width),
+        split_area
+            .height
+            .saturating_sub(tabs_height)
+            .saturating_sub(hscrollbar_height),
+    );
+    let scrollbar_rect = Rect::new(
+        split_area.x + split_area.width.saturating_sub(scrollbar_width),
+        split_area.y + tabs_height,
+        scrollbar_width,
+        split_area
+            .height
+            .saturating_sub(tabs_height)
+            .saturating_sub(hscrollbar_height),
+    );
+    let horizontal_scrollbar_rect = Rect::new(
+        split_area.x,
+        split_area.y + split_area.height.saturating_sub(hscrollbar_height),
+        split_area.width.saturating_sub(scrollbar_width),
+        hscrollbar_height,
+    );
+
+    SplitLayout {
+        tabs_rect,
+        content_rect,
+        scrollbar_rect,
+        horizontal_scrollbar_rect,
+    }
+}
+
+/// Sync viewport width/height to `content_rect`, and ensure the primary
+/// cursor is visible (unless `pin_to_top` keeps a self-managing panel
+/// anchored at the top).
+#[allow(clippy::too_many_arguments)]
+pub(super) fn sync_viewport_to_content(
+    viewport: &mut Viewport,
+    buffer: &mut Buffer,
+    cursors: &Cursors,
+    content_rect: Rect,
+    hidden_ranges: &[(usize, usize)],
+    compose_width: Option<u16>,
+    show_line_numbers: bool,
+    pin_to_top: bool,
+    virtual_space: crate::config::VirtualSpaceMode,
+) {
+    let size_changed =
+        viewport.width != content_rect.width || viewport.height != content_rect.height;
+
+    if size_changed {
+        viewport.resize(content_rect.width, content_rect.height);
+    }
+
+    // Mirror per-split state into the viewport so its scroll math
+    // sees the renderer's effective wrap width / gutter.  Without
+    // this, on a wide terminal with `compose_width` set, scroll math
+    // counts visual rows at the raw split width while the renderer
+    // wraps at the compose-clamped width — `max_scroll_row` ends up
+    // too small and the user can't reach the buffer's tail.
+    viewport.compose_width = compose_width;
+    viewport.show_line_numbers = show_line_numbers;
+
+    // A pinned (non-scrollable) panel owns its own content window (its
+    // List/Tree scrolls internally), so the buffer viewport must stay
+    // anchored at the top. `ensure_visible` would otherwise chase the
+    // hidden cursor and push the panel's header chrome off-screen
+    // (issue #2434 follow-up).
+    if pin_to_top {
+        viewport.set_top_byte(0);
+        viewport.set_top_view_line_offset(0);
+        viewport.left_column = 0;
+        return;
+    }
+
+    let primary = *cursors.primary();
+    let virtual_columns =
+        crate::model::virtual_space::cursor_virtual_columns(virtual_space, buffer, &primary);
+    viewport.ensure_visible_with_virtual(buffer, &primary, hidden_ranges, virtual_columns);
+}
+
+/// Pull per-split view preferences from `SplitViewState`, falling back to
+/// reasonable defaults when one is not available.
+pub(super) fn resolve_view_preferences(
+    _state: &EditorState,
+    split_view_states: Option<&HashMap<LeafId, SplitViewState>>,
+    split_id: LeafId,
+) -> ViewPreferences {
+    if let Some(view_states) = split_view_states {
+        if let Some(view_state) = view_states.get(&split_id) {
+            return ViewPreferences {
+                view_mode: view_state.view_mode.clone(),
+                compose_width: view_state.compose_width,
+                compose_column_guides: view_state.compose_column_guides.clone(),
+                rulers: view_state.rulers.clone(),
+                show_line_numbers: view_state.show_line_numbers,
+                highlight_current_line: view_state.highlight_current_line,
+            };
+        }
+    }
+
+    ViewPreferences {
+        view_mode: ViewMode::Source,
+        compose_width: None,
+        compose_column_guides: None,
+        rulers: Vec::new(),
+        show_line_numbers: true,
+        highlight_current_line: true,
+    }
+}
+
+/// Resolve the first line index for rendering, given the viewport's top byte.
+pub(super) fn calculate_view_anchor(view_lines: &[ViewLine], top_byte: usize) -> ViewAnchor {
+    for (idx, line) in view_lines.iter().enumerate() {
+        if let Some(first_source) = line.char_source_bytes.iter().find_map(|m| *m) {
+            if first_source >= top_byte {
+                // Found a line with source >= top_byte, but we may need to
+                // include previous lines if they're injected headers.
+                let mut start_idx = idx;
+                while start_idx > 0 {
+                    let prev_line = &view_lines[start_idx - 1];
+                    let prev_has_source = prev_line.char_source_bytes.iter().any(|m| m.is_some());
+                    if !prev_has_source {
+                        start_idx -= 1;
+                    } else {
+                        break;
+                    }
+                }
+                return ViewAnchor {
+                    start_line_idx: start_idx,
+                };
+            }
+        }
+    }
+
+    ViewAnchor { start_line_idx: 0 }
+}
+
+/// Compute the compose-mode layout for a given area.
+pub(super) fn calculate_compose_layout(
+    area: Rect,
+    view_mode: &ViewMode,
+    compose_width: Option<u16>,
+) -> ComposeLayout {
+    // Enable centering/margins if:
+    // 1. View mode is explicitly Compose, OR
+    // 2. compose_width is set (plugin-driven compose mode)
+    let should_compose = view_mode == &ViewMode::PageView || compose_width.is_some();
+
+    if !should_compose {
+        return ComposeLayout {
+            render_area: area,
+            left_pad: 0,
+            right_pad: 0,
+        };
+    }
+
+    let target_width = compose_width.unwrap_or(area.width);
+    let clamped_width = target_width.min(area.width).max(1);
+    if clamped_width >= area.width {
+        return ComposeLayout {
+            render_area: area,
+            left_pad: 0,
+            right_pad: 0,
+        };
+    }
+
+    let pad_total = area.width - clamped_width;
+    let left_pad = pad_total / 2;
+    let right_pad = pad_total - left_pad;
+
+    ComposeLayout {
+        render_area: Rect::new(area.x + left_pad, area.y, clamped_width, area.height),
+        left_pad,
+        right_pad,
+    }
+}
+
+/// How far [`calculate_viewport_end`] scans for one line's end.
+///
+/// It needs the end only to clamp a window that the byte budget already caps at
+/// a few screenfuls, so a line whose end is further away than this is treated
+/// as running to the end of the buffer — which, for the files where that
+/// happens, it does. It is also where the walk stops: a line this long already
+/// fills (far past) its single unwrapped row, and there is nothing below it on
+/// screen to walk to.
+const VIEWPORT_END_SCAN_BYTES: usize = 64 * 1024;
+
+/// Compute the byte offset just past the last visible line of the viewport.
+///
+/// The returned `viewport_start..viewport_end` span is what the decoration pass
+/// (syntax highlight, reference highlight, bracket/rainbow overlay) scans every
+/// frame. For an over-long line — e.g. a minified SVG/JSON on a single line —
+/// the line can be hundreds of KB while only `viewport_width` columns are
+/// actually on screen, so each line's contribution is clamped to the visible
+/// horizontal window (`left_column + viewport_width`, with slack for multibyte
+/// content) and the walk stops at the first over-long line. Without this every
+/// cursor move re-scans the whole line, which is the per-keystroke lag in
+/// issue #2529.
+pub(super) fn calculate_viewport_end(
+    state: &mut EditorState,
+    viewport_start: usize,
+    estimated_line_length: usize,
+    visible_count: usize,
+    left_column: usize,
+    viewport_width: usize,
+) -> usize {
+    // Upper bound, in bytes, on how far past a line's start the visible window
+    // can reach. One displayed column maps to at most ~4 source bytes (a 4-byte
+    // UTF-8 scalar), so `(left_column + viewport_width) * 4` safely covers the
+    // visible cells while keeping the scanned span proportional to the screen,
+    // not the line. `0` width (only seen in degenerate callers) disables the
+    // clamp so we keep the previous full-line behavior.
+    let visible_byte_budget = left_column.saturating_add(viewport_width).saturating_mul(4);
+
+    // Line *starts* walked, not lines read: the window's end only needs each
+    // line's position and the byte budget above. Reading the lines meant
+    // pulling a 100 KB piece per row of a file that is one long line, every
+    // frame, to compute a bound the budget already caps.
+    let _ = estimated_line_length;
+    let mut viewport_end = viewport_start;
+    let mut line_start = viewport_start;
+    let buffer_len = state.buffer.len();
+    for _ in 0..visible_count {
+        let next = state
+            .buffer
+            .next_line_start_within(line_start, VIEWPORT_END_SCAN_BYTES);
+        let line_end = match next {
+            // The next line starts where this one ends — after its terminator,
+            // which is what the reader's own `line_start + content.len()` gave.
+            Some(next) => next,
+            None => buffer_len,
+        };
+
+        if visible_byte_budget == 0 {
+            viewport_end = line_end;
+        } else {
+            viewport_end = line_end.min(line_start.saturating_add(visible_byte_budget));
+        }
+
+        // No line break within reach is the over-long line this walk used to
+        // guard against by measuring: the clamp above already covers the
+        // visible window, and there is nothing below such a line to walk to.
+        let Some(next) = next else {
+            break;
+        };
+        line_start = next;
+        if line_start >= buffer_len {
+            break;
+        }
+    }
+    viewport_end
+}
+
+/// Source-byte span actually covered by `rows` — the visual rows that will
+/// be drawn this frame.
+///
+/// With soft wrap on, `calculate_viewport_end` cannot describe the visible
+/// window: one logical line can occupy *every* row, and the top row can sit
+/// thousands of wrap segments into it (`top_view_line_offset`), so the
+/// decoration pass needs a span that starts where the drawn rows start, not
+/// at the line's `top_byte`. The rows already carry a source byte per
+/// character, so read the window off them (issue #2843: past the first few
+/// wrapped rows of a 441 KB single-line JSON the request stayed at
+/// `0..952`, and every row below rendered in whatever single span happened
+/// to overlap it).
+///
+/// Cost is proportional to the screen, not the line. Returns `None` when no
+/// drawn row carries source bytes (all-virtual rows, past-EOF filler), so
+/// callers keep their previous window.
+pub(super) fn visible_source_span(rows: &[ViewLine]) -> Option<(usize, usize)> {
+    let mut span: Option<(usize, usize)> = None;
+    for row in rows {
+        for (ch, src) in row.text.chars().zip(row.char_source_bytes.iter()) {
+            let Some(start) = *src else { continue };
+            let end = start.saturating_add(ch.len_utf8());
+            span = Some(match span {
+                Some((lo, hi)) => (lo.min(start), hi.max(end)),
+                None => (start, end),
+            });
+        }
+    }
+    span
+}

@@ -1,0 +1,84 @@
+# Copyright 2023 The RocketMQ Rust Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+[package]
+name                   = "rocketmq-runtime"
+version.workspace      = true
+authors.workspace      = true
+edition.workspace      = true
+homepage.workspace     = true
+repository.workspace   = true
+license.workspace      = true
+keywords               = ["Runtime", "async", "tokio", "futures"]
+categories             = ["asynchronous"]
+readme                 = "README.md"
+description.workspace  = true
+rust-version.workspace = true
+
+[features]
+default = []
+async_fs = ["tokio/fs"]
+
+[dependencies]
+cheetah-string.workspace = true
+chrono = { version = "0.4", features = ["serde"] }
+config.workspace = true
+cron = "0.17"
+dashmap.workspace = true
+futures = { version = "0.3", features = ["default", "thread-pool"] }
+local-ip-address = "0.6.13"
+num_cpus.workspace = true
+parking_lot.workspace = true
+rocketmq-error = { path = "../rocketmq-error" }
+serde.workspace = true
+serde_json.workspace = true
+smallvec.workspace = true
+sysinfo.workspace = true
+thiserror.workspace = true
+tokio = { workspace = true, features = ["io-util", "macros", "net", "rt", "rt-multi-thread", "signal", "sync", "time"] }
+tokio-util.workspace = true
+tracing.workspace = true
+trait-variant.workspace = true
+uuid = { version = "1", features = ["v4"] }
+
+[dev-dependencies]
+criterion = { version = "0.8.2", features = ["html_reports"] }
+loom = "0.7.2"
+tempfile = "3.27.0"
+tokio = { workspace = true, features = ["test-util"] }
+trybuild = "1.0.116"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { workspace = true, features = ["Win32_Storage_FileSystem"] }
+
+[[test]]
+name = "service_context_scope_compile_fail"
+path = "tests/service_context_scope_compile_fail.rs"
+
+[[bench]]
+name    = "task_group_lifecycle_bench"
+harness = false
+
+[[bench]]
+name    = "scheduled_task_group_bench"
+harness = false
+
+[[bench]]
+name    = "blocking_executor_bench"
+harness = false
+
+[[bench]]
+name    = "budgeted_queue_bench"
+harness = false

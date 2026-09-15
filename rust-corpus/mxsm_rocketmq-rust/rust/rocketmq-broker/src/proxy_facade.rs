@@ -1,0 +1,353 @@
+//  Copyright 2023 The RocketMQ Rust Authors
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+
+use std::collections::HashMap;
+use std::sync::Arc;
+use std::time::Duration;
+
+pub use crate::config::broker_config::BrokerConfig;
+use crate::config::error::BrokerConfigError;
+use crate::config::validated::ValidatedBrokerConfig;
+use cheetah_string::CheetahString;
+use rocketmq_model::common::attribute::topic_message_type::TopicMessageType;
+use rocketmq_model::common::config::TopicConfig;
+use rocketmq_model::common::mix_all;
+use rocketmq_observability::TelemetryHandle;
+use rocketmq_protocol::protocol::remoting_command_defaults::application_remoting_command_factory;
+use rocketmq_protocol::protocol::remoting_command_defaults::RemotingCommandFactory;
+use rocketmq_protocol::protocol::route::route_data_view::BrokerData;
+use rocketmq_protocol::protocol::route::route_data_view::QueueData;
+use rocketmq_protocol::protocol::route::topic_route_data::TopicRouteData;
+use rocketmq_protocol::protocol::subscription::subscription_group_config::SubscriptionGroupConfig;
+use rocketmq_runtime::ChildServiceContext;
+use rocketmq_runtime::TaskGroup;
+use rocketmq_security_api::Principal;
+use rocketmq_store::MessageStoreConfig;
+use rocketmq_transport::api::EmbeddedDispatchOutcome;
+use rocketmq_transport::api::RequestDeadline;
+
+use crate::broker_runtime::BrokerRuntime;
+use crate::lifecycle::BrokerReadiness;
+use crate::lifecycle::BrokerStartupError;
+
+pub struct ProxyBrokerFacade {
+    runtime: BrokerRuntime,
+    local_request_tasks: TaskGroup,
+    started: bool,
+}
+
+impl ProxyBrokerFacade {
+    /// Creates an embedded Broker using the store root carried by `broker_config`.
+    ///
+    /// This is the narrow constructor for local Proxy composition. Callers that
+    /// need non-default store tuning can continue to use [`Self::try_new`].
+    pub fn try_new_from_broker_config(
+        broker_config: BrokerConfig,
+        service_context: ChildServiceContext,
+        telemetry_handle: TelemetryHandle,
+    ) -> Result<Self, BrokerConfigError> {
+        Self::try_new_from_broker_config_with_factory(
+            broker_config,
+            service_context,
+            telemetry_handle,
+            application_remoting_command_factory(),
+        )
+    }
+
+    /// Creates a proxy facade from broker configuration using explicit remoting defaults.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`BrokerConfigError`] when the broker or derived message-store configuration is invalid.
+    pub fn try_new_from_broker_config_with_factory(
+        broker_config: BrokerConfig,
+        service_context: ChildServiceContext,
+        telemetry_handle: TelemetryHandle,
+        command_factory: RemotingCommandFactory,
+    ) -> Result<Self, BrokerConfigError> {
+        let message_store_config = MessageStoreConfig {
+            store_path_root_dir: broker_config.store_path_root_dir.clone(),
+            ..MessageStoreConfig::default()
+        };
+        Self::try_new_with_factory(
+            broker_config,
+            message_store_config,
+            service_context,
+            telemetry_handle,
+            command_factory,
+        )
+    }
+
+    pub fn try_new(
+        broker_config: BrokerConfig,
+        message_store_config: MessageStoreConfig,
+        service_context: ChildServiceContext,
+        telemetry_handle: TelemetryHandle,
+    ) -> Result<Self, BrokerConfigError> {
+        Self::try_new_with_factory(
+            broker_config,
+            message_store_config,
+            service_context,
+            telemetry_handle,
+            application_remoting_command_factory(),
+        )
+    }
+
+    /// Creates a proxy facade from broker and message-store configurations using explicit remoting defaults.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`BrokerConfigError`] when either configuration is invalid.
+    pub fn try_new_with_factory(
+        mut broker_config: BrokerConfig,
+        message_store_config: MessageStoreConfig,
+        service_context: ChildServiceContext,
+        telemetry_handle: TelemetryHandle,
+        command_factory: RemotingCommandFactory,
+    ) -> Result<Self, BrokerConfigError> {
+        broker_config.transfer_msg_by_heap = true;
+        broker_config.broker_server_config.listen_port = broker_config.listen_port;
+        let validated_config = ValidatedBrokerConfig::try_from_parts(broker_config, message_store_config)?;
+        Ok(Self::from_validated_config_with_factory(
+            validated_config,
+            service_context,
+            telemetry_handle,
+            command_factory,
+        ))
+    }
+
+    pub fn from_validated_config(
+        validated_config: ValidatedBrokerConfig,
+        service_context: ChildServiceContext,
+        telemetry_handle: TelemetryHandle,
+    ) -> Self {
+        Self::from_validated_config_with_factory(
+            validated_config,
+            service_context,
+            telemetry_handle,
+            application_remoting_command_factory(),
+        )
+    }
+
+    /// Creates a proxy facade from validated configuration using explicit remoting defaults.
+    pub fn from_validated_config_with_factory(
+        validated_config: ValidatedBrokerConfig,
+        service_context: ChildServiceContext,
+        telemetry_handle: TelemetryHandle,
+        command_factory: RemotingCommandFactory,
+    ) -> Self {
+        let runtime_context = service_context.component("embedded-broker");
+        let local_request_tasks = service_context.component("local-request").task_group().clone();
+        Self {
+            runtime: BrokerRuntime::new_with_validated_config_telemetry_and_factory(
+                Arc::new(validated_config),
+                runtime_context,
+                telemetry_handle,
+                command_factory,
+            ),
+            local_request_tasks,
+            started: false,
+        }
+    }
+
+    pub async fn initialize(&mut self) -> Result<(), BrokerStartupError> {
+        self.started = false;
+        self.runtime.initialize().await
+    }
+
+    pub async fn start(&mut self) -> Result<BrokerReadiness, BrokerStartupError> {
+        self.started = false;
+        let readiness = self.runtime.start().await?;
+        self.started = true;
+        Ok(readiness)
+    }
+
+    pub async fn shutdown(&mut self) {
+        self.started = false;
+        self.runtime.shutdown().await;
+    }
+
+    /// Checks completed Broker startup and the current Store write state without issuing a mutation.
+    pub fn is_ready(&self) -> bool {
+        self.started && self.runtime.local_store_is_ready()
+    }
+
+    pub fn broker_config(&self) -> Arc<BrokerConfig> {
+        self.runtime.broker_config()
+    }
+
+    pub fn query_route(&self, topic: &str) -> crate::broker_error::BrokerResult<TopicRouteData> {
+        let topic_name = CheetahString::from(topic);
+        let topic_config = self
+            .runtime
+            .topic_config(&topic_name)
+            .ok_or_else(|| crate::broker_error::topic_not_found(topic))?;
+
+        Ok(build_topic_route(&self.runtime.broker_config(), topic_config.as_ref()))
+    }
+
+    pub fn query_topic_message_type(&self, topic: &str) -> crate::broker_error::BrokerResult<TopicMessageType> {
+        let topic_name = CheetahString::from(topic);
+        let topic_config = self
+            .runtime
+            .topic_config(&topic_name)
+            .ok_or_else(|| crate::broker_error::topic_not_found(topic))?;
+        Ok(topic_config.get_topic_message_type())
+    }
+
+    pub fn query_subscription_group(
+        &self,
+        group: &str,
+    ) -> crate::broker_error::BrokerResult<Option<Arc<SubscriptionGroupConfig>>> {
+        Ok(self.runtime.subscription_group(&CheetahString::from(group)))
+    }
+
+    /// Dispatches one local Proxy command through the prepared Broker graph.
+    ///
+    /// The transport boundary fixes the origin to `EmbeddedCaller::BrokerProxy`;
+    /// the principal below is a composition-owned service identity and is never
+    /// read from command headers.
+    ///
+    /// # Errors
+    ///
+    /// Returns an error when the dispatcher is unavailable or an operational
+    /// Transport failure prevents completion. A deadline rejection preserves
+    /// the legacy Broker timeout error; other source-free terminal controls
+    /// retain the fixed response-processing failure mapping.
+    pub async fn process_request(
+        &self,
+        request: rocketmq_protocol::protocol::remoting_command::RemotingCommand,
+        timeout: Duration,
+    ) -> crate::broker_error::BrokerResult<EmbeddedDispatchOutcome> {
+        self.process_request_with_deadline(request, RequestDeadline::after(timeout))
+            .await
+    }
+
+    async fn process_request_with_deadline(
+        &self,
+        mut request: rocketmq_protocol::protocol::remoting_command::RemotingCommand,
+        deadline: RequestDeadline,
+    ) -> crate::broker_error::BrokerResult<EmbeddedDispatchOutcome> {
+        request.make_custom_header_to_net();
+        let dispatcher = self
+            .runtime
+            .canonical_dispatcher()
+            .ok_or_else(embedded_broker_request_processor_not_ready)?;
+        let result = dispatcher
+            .dispatch_embedded_wait_response(
+                &self.local_request_tasks,
+                Principal::new("broker-proxy"),
+                Some(deadline),
+                request,
+            )
+            .await;
+        match result {
+            Ok(outcome) => embedded_dispatch_request_outcome(outcome, deadline.budget()),
+            Err(error) => Err(crate::broker_error::internal("embedded_broker_dispatch", error)),
+        }
+    }
+}
+
+fn embedded_broker_request_processor_not_ready() -> rocketmq_error::SharedError {
+    crate::broker_error::not_initialized("embedded_broker_request_processor")
+}
+
+fn embedded_dispatch_request_outcome(
+    outcome: EmbeddedDispatchOutcome,
+    timeout: Duration,
+) -> crate::broker_error::BrokerResult<EmbeddedDispatchOutcome> {
+    match outcome {
+        outcome @ (EmbeddedDispatchOutcome::Reply(_)
+        | EmbeddedDispatchOutcome::OneWay { .. }
+        | EmbeddedDispatchOutcome::Deferred { .. }
+        | EmbeddedDispatchOutcome::NoReply { .. }) => Ok(outcome),
+        EmbeddedDispatchOutcome::DeadlineExceeded => Err(crate::broker_error::timeout(
+            "embedded_broker_response",
+            timeout.as_millis().min(u128::from(u64::MAX)) as u64,
+        )),
+        EmbeddedDispatchOutcome::AdmissionRejected
+        | EmbeddedDispatchOutcome::Cancelled
+        | EmbeddedDispatchOutcome::SessionClosed
+        | EmbeddedDispatchOutcome::CompletionClosed
+        | EmbeddedDispatchOutcome::IdentityExhausted => Err(embedded_dispatch_source_free_failure()),
+        // `EmbeddedDispatchOutcome` is non-exhaustive; retain the fixed legacy
+        // failure boundary if a future source-free control is introduced.
+        _ => Err(embedded_dispatch_source_free_failure()),
+    }
+}
+
+fn embedded_dispatch_source_free_failure() -> rocketmq_error::SharedError {
+    crate::broker_error::response_process_failed("embedded_broker_dispatch", "transport dispatch failed")
+}
+
+fn build_topic_route(broker_config: &BrokerConfig, topic_config: &TopicConfig) -> TopicRouteData {
+    let broker_name = broker_config.broker_identity.broker_name.clone();
+    let broker_addr = CheetahString::from(broker_config.get_broker_addr());
+    let mut broker_addrs = HashMap::new();
+    broker_addrs.insert(mix_all::MASTER_ID, broker_addr);
+
+    TopicRouteData {
+        queue_datas: vec![QueueData::new(
+            broker_name.clone(),
+            topic_config.read_queue_nums,
+            topic_config.write_queue_nums,
+            topic_config.perm,
+            topic_config.topic_sys_flag,
+        )],
+        broker_datas: vec![BrokerData::new(
+            broker_config.broker_identity.broker_cluster_name.clone(),
+            broker_name,
+            broker_addrs,
+            None,
+        )],
+        ..TopicRouteData::default()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn embedded_broker_request_processor_not_ready_uses_not_initialized_kind() {
+        let error = embedded_broker_request_processor_not_ready();
+
+        assert_eq!(error.descriptor(), &rocketmq_error::CORE_LIFECYCLE_NOT_INITIALIZED);
+    }
+
+    #[test]
+    fn embedded_dispatch_deadline_preserves_legacy_timeout_mapping() {
+        let error =
+            embedded_dispatch_request_outcome(EmbeddedDispatchOutcome::DeadlineExceeded, Duration::from_millis(41))
+                .expect_err("deadline control must remain a Broker timeout");
+
+        assert_eq!(error.descriptor(), &rocketmq_error::CORE_OPERATION_TIMED_OUT);
+    }
+
+    #[test]
+    fn embedded_dispatch_source_free_controls_keep_fixed_failure_mapping() {
+        for outcome in [
+            EmbeddedDispatchOutcome::AdmissionRejected,
+            EmbeddedDispatchOutcome::Cancelled,
+            EmbeddedDispatchOutcome::SessionClosed,
+            EmbeddedDispatchOutcome::CompletionClosed,
+            EmbeddedDispatchOutcome::IdentityExhausted,
+        ] {
+            let error = embedded_dispatch_request_outcome(outcome, Duration::ZERO)
+                .expect_err("source-free control must not become an operational error");
+
+            assert_eq!(error.descriptor(), &rocketmq_error::PROTOCOL_RESPONSE_FAILED);
+        }
+    }
+}

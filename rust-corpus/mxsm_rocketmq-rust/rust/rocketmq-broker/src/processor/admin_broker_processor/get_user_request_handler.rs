@@ -1,0 +1,62 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use crate::auth::auth_admin_service::AuthAdminService;
+use rocketmq_error::SharedError;
+use rocketmq_protocol::code::request_code::RequestCode;
+use rocketmq_protocol::code::response_code::ResponseCode;
+use rocketmq_protocol::protocol::header::get_user_request_headers::GetUserRequestHeader;
+use rocketmq_protocol::protocol::remoting_command::RemotingCommand;
+use rocketmq_protocol::protocol::RemotingSerializable;
+use std::sync::Arc;
+
+#[derive(Clone)]
+pub struct GetUserRequestHandler {
+    auth_admin_service: Arc<AuthAdminService>,
+}
+
+impl GetUserRequestHandler {
+    pub fn new(auth_admin_service: Arc<AuthAdminService>) -> Self {
+        Self { auth_admin_service }
+    }
+
+    pub async fn get_user(
+        &self,
+        _request_code: RequestCode,
+        request: &mut RemotingCommand,
+    ) -> crate::broker_error::BrokerResult<Option<RemotingCommand>> {
+        let request_header = request.decode_command_custom_header::<GetUserRequestHeader>()?;
+        let response = RemotingCommand::create_java_default_error_response_command();
+
+        if request_header.username.is_empty() {
+            return Ok(Some(
+                response
+                    .set_code(ResponseCode::InvalidParameter)
+                    .set_remark("The username is blank"),
+            ));
+        }
+
+        match self.auth_admin_service.get_user(request_header.username.as_str()).await {
+            Ok(Some(user_info)) => Ok(Some(
+                RemotingCommand::create_success_response_command().set_body(user_info.encode()?),
+            )),
+            Ok(None) => Ok(Some(RemotingCommand::create_success_response_command())),
+            Err(error) => Ok(Some(map_error_response(response, error))),
+        }
+    }
+}
+
+fn map_error_response(response: RemotingCommand, error: SharedError) -> RemotingCommand {
+    super::map_auth_admin_error_response(response, error)
+}

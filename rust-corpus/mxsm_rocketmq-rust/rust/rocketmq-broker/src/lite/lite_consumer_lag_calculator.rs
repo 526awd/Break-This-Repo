@@ -1,0 +1,185 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::collections::HashMap;
+
+use cheetah_string::CheetahString;
+use rocketmq_model::common::lite::get_lite_topic;
+use rocketmq_model::common::lite::get_parent_topic;
+use rocketmq_model::common::lite::is_lite_topic_queue;
+use rocketmq_protocol::protocol::body::lite_lag_info::LiteLagInfo;
+
+use crate::offset::manager::consumer_offset_manager::TOPIC_GROUP_SEPARATOR;
+
+pub(crate) type LiteOffsetTable = HashMap<CheetahString, HashMap<i32, i64>>;
+
+pub(crate) trait LiteConsumerLagDataSource {
+    fn offset_table_snapshot(&self) -> LiteOffsetTable;
+
+    fn max_offset(&self, lmq_name: &CheetahString) -> i64;
+
+    fn message_store_timestamp(&self, lmq_name: &CheetahString, offset: i64) -> i64;
+}
+
+pub(crate) struct LiteConsumerLagCalculator;
+
+impl LiteConsumerLagCalculator {
+    const INIT_CONSUME_TIMESTAMP: i64 = -1;
+
+    pub(crate) fn get_lag_count_top_k(
+        data_source: &impl LiteConsumerLagDataSource,
+        group: &CheetahString,
+        top_k: i32,
+    ) -> (Vec<LiteLagInfo>, i64) {
+        let mut total_lag_count = 0;
+        let offset_table = data_source.offset_table_snapshot();
+        let mut lag_infos = Self::collect_group_offsets(&offset_table, Some(group))
+            .into_iter()
+            .filter_map(|(lmq_name, consumer_offset)| {
+                let lag_count = Self::offset_diff(data_source, &lmq_name, consumer_offset);
+                if lag_count <= 0 {
+                    return None;
+                }
+
+                total_lag_count += lag_count;
+                let mut lag_info = LiteLagInfo::new();
+                lag_info
+                    .with_lite_topic(Self::decode_lite_topic(&lmq_name))
+                    .with_lag_count(lag_count)
+                    .with_earliest_unconsumed_timestamp(Self::message_store_timestamp(
+                        data_source,
+                        &lmq_name,
+                        consumer_offset,
+                    ));
+                Some(lag_info)
+            })
+            .collect::<Vec<_>>();
+
+        lag_infos.sort_by(|left, right| {
+            right
+                .lag_count()
+                .cmp(&left.lag_count())
+                .then_with(|| left.lite_topic().as_str().cmp(right.lite_topic().as_str()))
+        });
+        Self::truncate_top_k(&mut lag_infos, top_k);
+
+        (lag_infos, total_lag_count)
+    }
+
+    pub(crate) fn get_lag_timestamp_top_k(
+        data_source: &impl LiteConsumerLagDataSource,
+        group: &CheetahString,
+        parent_topic: &CheetahString,
+        top_k: i32,
+    ) -> (Vec<LiteLagInfo>, i64) {
+        let offset_table = data_source.offset_table_snapshot();
+        let mut lag_infos = Self::collect_group_offsets(&offset_table, Some(group))
+            .into_iter()
+            .filter(|(lmq_name, _)| get_parent_topic(lmq_name.as_str()).as_deref() == Some(parent_topic.as_str()))
+            .filter_map(|(lmq_name, consumer_offset)| {
+                let lag_count = Self::offset_diff(data_source, &lmq_name, consumer_offset);
+                if lag_count <= 0 {
+                    return None;
+                }
+
+                let timestamp = Self::message_store_timestamp(data_source, &lmq_name, consumer_offset);
+                let mut lag_info = LiteLagInfo::new();
+                lag_info
+                    .with_lite_topic(Self::decode_lite_topic(&lmq_name))
+                    .with_lag_count(lag_count)
+                    .with_earliest_unconsumed_timestamp(timestamp);
+                Some(lag_info)
+            })
+            .collect::<Vec<_>>();
+
+        lag_infos.sort_by(|left, right| {
+            left.earliest_unconsumed_timestamp()
+                .cmp(&right.earliest_unconsumed_timestamp())
+                .then_with(|| right.lag_count().cmp(&left.lag_count()))
+                .then_with(|| left.lite_topic().as_str().cmp(right.lite_topic().as_str()))
+        });
+        Self::truncate_top_k(&mut lag_infos, top_k);
+
+        let earliest_unconsumed_timestamp = lag_infos
+            .first()
+            .map(|lag_info| lag_info.earliest_unconsumed_timestamp())
+            .unwrap_or(Self::INIT_CONSUME_TIMESTAMP);
+
+        (lag_infos, earliest_unconsumed_timestamp)
+    }
+
+    fn collect_group_offsets(
+        offset_table: &LiteOffsetTable,
+        target_group: Option<&CheetahString>,
+    ) -> Vec<(CheetahString, i64)> {
+        let mut offsets = Vec::new();
+
+        for (topic_at_group, queue_offsets) in offset_table {
+            let Some((topic, group)) = topic_at_group.as_str().split_once(TOPIC_GROUP_SEPARATOR) else {
+                continue;
+            };
+            if !is_lite_topic_queue(topic) {
+                continue;
+            }
+            if let Some(target_group) = target_group {
+                if group != target_group.as_str() {
+                    continue;
+                }
+            }
+            let Some(consumer_offset) = queue_offsets.get(&0).copied() else {
+                continue;
+            };
+            offsets.push((CheetahString::from_slice(topic), consumer_offset));
+        }
+
+        offsets
+    }
+
+    fn offset_diff(
+        data_source: &impl LiteConsumerLagDataSource,
+        lmq_name: &CheetahString,
+        consumer_offset: i64,
+    ) -> i64 {
+        if consumer_offset < 0 {
+            return 0;
+        }
+
+        let broker_offset = data_source.max_offset(lmq_name);
+        (broker_offset - consumer_offset).max(0)
+    }
+
+    fn message_store_timestamp(
+        data_source: &impl LiteConsumerLagDataSource,
+        lmq_name: &CheetahString,
+        offset: i64,
+    ) -> i64 {
+        if offset < 0 {
+            return Self::INIT_CONSUME_TIMESTAMP;
+        }
+
+        data_source.message_store_timestamp(lmq_name, offset).max(0)
+    }
+
+    fn decode_lite_topic(lmq_name: &CheetahString) -> CheetahString {
+        get_lite_topic(lmq_name.as_str())
+            .map(CheetahString::from_string)
+            .unwrap_or_else(|| lmq_name.clone())
+    }
+
+    fn truncate_top_k(lag_infos: &mut Vec<LiteLagInfo>, top_k: i32) {
+        if top_k > 0 {
+            lag_infos.truncate(top_k as usize);
+        }
+    }
+}

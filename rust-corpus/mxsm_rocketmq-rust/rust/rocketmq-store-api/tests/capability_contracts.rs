@@ -1,0 +1,157 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::future::ready;
+use std::future::Future;
+
+use bytes::Bytes;
+use rocketmq_error::STORAGE_BACKEND_UNAVAILABLE;
+use rocketmq_model::message::MessageQueue;
+use rocketmq_store_api::AdminStore;
+use rocketmq_store_api::DerivedRecordSink;
+use rocketmq_store_api::MessageAppender;
+use rocketmq_store_api::MessageReader;
+use rocketmq_store_api::OffsetIndex;
+use rocketmq_store_api::ReplicationControl;
+use rocketmq_store_api::StoreError;
+use rocketmq_store_api::StoreHealth;
+use rocketmq_store_api::StoreLifecycle;
+use rocketmq_store_api::StoreOperation;
+
+#[derive(Default)]
+struct ContractStore;
+
+impl StoreLifecycle for ContractStore {
+    fn load(&mut self) -> impl Future<Output = Result<bool, StoreError>> + Send {
+        ready(Ok(true))
+    }
+
+    fn start(&mut self) -> impl Future<Output = Result<(), StoreError>> + Send {
+        ready(Ok(()))
+    }
+
+    fn shutdown(&mut self) -> impl Future<Output = Result<(), StoreError>> + Send {
+        ready(Ok(()))
+    }
+}
+
+impl MessageAppender<Bytes> for ContractStore {
+    type Receipt = usize;
+
+    fn append_message(&mut self, message: Bytes) -> impl Future<Output = Result<Self::Receipt, StoreError>> + Send {
+        ready(Ok(message.len()))
+    }
+}
+
+impl MessageReader for ContractStore {
+    type Request = MessageQueue;
+    type Output = Option<Bytes>;
+
+    fn read(&self, _request: Self::Request) -> impl Future<Output = Result<Self::Output, StoreError>> + Send {
+        ready(Ok(None))
+    }
+}
+
+impl OffsetIndex for ContractStore {
+    type Query = MessageQueue;
+    type Output = (i64, i64);
+
+    fn query_offset(&self, _query: &Self::Query) -> Result<Self::Output, StoreError> {
+        Ok((0, 1))
+    }
+}
+
+impl StoreHealth for ContractStore {
+    type Snapshot = bool;
+
+    fn health_snapshot(&self) -> Self::Snapshot {
+        true
+    }
+}
+
+impl ReplicationControl for ContractStore {
+    type Command = i64;
+    type State = i64;
+
+    fn replication_state(&self) -> Self::State {
+        0
+    }
+
+    fn apply_replication(
+        &mut self,
+        command: Self::Command,
+    ) -> impl Future<Output = Result<Self::State, StoreError>> + Send {
+        ready(Ok(command))
+    }
+}
+
+impl DerivedRecordSink for ContractStore {
+    type Record = Bytes;
+    type Progress = usize;
+
+    fn append_derived(
+        &mut self,
+        record: Self::Record,
+    ) -> impl Future<Output = Result<Self::Progress, StoreError>> + Send {
+        ready(Ok(record.len()))
+    }
+}
+
+impl AdminStore for ContractStore {
+    type Request = ();
+    type Response = ();
+
+    fn execute_admin(&mut self, (): Self::Request) -> impl Future<Output = Result<Self::Response, StoreError>> + Send {
+        ready(Ok(()))
+    }
+}
+
+fn assert_capabilities<T>()
+where
+    T: StoreLifecycle
+        + MessageAppender<Bytes>
+        + MessageReader
+        + OffsetIndex
+        + StoreHealth
+        + ReplicationControl
+        + DerivedRecordSink
+        + AdminStore,
+{
+}
+
+fn assert_static_append_future<T>(store: &mut T) -> impl Future<Output = Result<usize, StoreError>> + Send + '_
+where
+    T: MessageAppender<Bytes, Receipt = usize>,
+{
+    store.append_message(Bytes::from_static(b"message"))
+}
+
+#[test]
+fn capabilities_use_store_error_with_static_append_future() {
+    assert_capabilities::<ContractStore>();
+    let mut store = ContractStore;
+    let _future = assert_static_append_future(&mut store);
+}
+
+#[test]
+fn store_error_uses_catalog_identity_and_closed_operation_vocabulary() {
+    let error = StoreError::new(&STORAGE_BACKEND_UNAVAILABLE, StoreOperation::Append);
+
+    assert_eq!(&STORAGE_BACKEND_UNAVAILABLE, error.descriptor());
+    assert_eq!(StoreOperation::Append, error.operation());
+    assert_eq!(
+        "storage.backend.unavailable: Storage backend is unavailable",
+        error.to_string()
+    );
+}

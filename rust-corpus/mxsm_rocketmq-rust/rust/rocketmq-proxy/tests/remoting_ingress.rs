@@ -1,0 +1,722 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+#![recursion_limit = "256"]
+
+use std::collections::HashSet;
+use std::net::SocketAddr;
+use std::sync::Arc;
+use std::sync::Mutex;
+use std::time::Duration;
+
+use cheetah_string::CheetahString;
+use rocketmq_auth::cal_signature;
+use rocketmq_protocol::code::request_code::RequestCode;
+use rocketmq_protocol::code::response_code::ResponseCode;
+use rocketmq_protocol::protocol::header::client_request_header::GetRouteInfoRequestHeader;
+use rocketmq_protocol::protocol::header::heartbeat_request_header::HeartbeatRequestHeader;
+use rocketmq_protocol::protocol::header::notify_consumer_ids_changed_request_header::NotifyConsumerIdsChangedRequestHeader;
+use rocketmq_protocol::protocol::heartbeat::consumer_data::ConsumerData;
+use rocketmq_protocol::protocol::heartbeat::heartbeat_data::HeartbeatData;
+use rocketmq_protocol::protocol::remoting_command::RemotingCommand;
+use rocketmq_protocol::protocol::route::topic_route_data::TopicRouteData;
+use rocketmq_protocol::protocol::RemotingSerializable;
+use rocketmq_proxy::ClientSessionRegistry;
+use rocketmq_proxy::ClusterServiceManager;
+use rocketmq_proxy::DefaultAssignmentService;
+use rocketmq_proxy::DefaultConsumerService;
+use rocketmq_proxy::DefaultMessageService;
+use rocketmq_proxy::DefaultTransactionService;
+use rocketmq_proxy::GrpcConfig;
+use rocketmq_proxy::MetadataService;
+use rocketmq_proxy::ProxyAuthConfig;
+use rocketmq_proxy::ProxyAuthRuntime;
+use rocketmq_proxy::ProxyConfig;
+use rocketmq_proxy::ProxyRuntime;
+use rocketmq_proxy::ProxyTopicMessageType;
+use rocketmq_proxy::RemotingConfig;
+use rocketmq_proxy::ResolvedEndpoint;
+use rocketmq_proxy::ResourceIdentity;
+use rocketmq_proxy::RouteService;
+use rocketmq_proxy::SubscriptionGroupMetadata;
+use rocketmq_proxy_core::ProxyContext;
+use rocketmq_proxy_core::ProxyServiceFuture;
+use rocketmq_runtime::RuntimeContext;
+use rocketmq_transport::api::ProxyProtocolConfig;
+use rocketmq_transport::test_support::Connection;
+use std::collections::BTreeMap;
+use tokio::io::AsyncWriteExt;
+use tokio::sync::oneshot;
+use tokio::time::timeout;
+
+static REMOTING_INGRESS_TEST_LOCK: tokio::sync::Mutex<()> = tokio::sync::Mutex::const_new(());
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+struct ObservedRouteContext {
+    local_addr: Option<String>,
+    remote_addr: Option<String>,
+}
+
+#[derive(Default)]
+struct RecordingRouteService {
+    observed: Mutex<Vec<ObservedRouteContext>>,
+}
+
+impl RecordingRouteService {
+    fn observed(&self) -> Vec<ObservedRouteContext> {
+        self.observed.lock().expect("route service mutex poisoned").clone()
+    }
+}
+
+impl RouteService for RecordingRouteService {
+    fn query_route<'a>(
+        &'a self,
+        context: &'a ProxyContext,
+        _topic: &'a ResourceIdentity,
+        _endpoints: &'a [ResolvedEndpoint],
+    ) -> ProxyServiceFuture<'a, TopicRouteData> {
+        Box::pin(async move {
+            self.observed
+                .lock()
+                .expect("route service mutex poisoned")
+                .push(ObservedRouteContext {
+                    local_addr: context.local_addr().map(str::to_owned),
+                    remote_addr: context.remote_addr().map(str::to_owned),
+                });
+            Ok(TopicRouteData::default())
+        })
+    }
+}
+
+#[derive(Default)]
+struct StaticMetadataService;
+
+impl MetadataService for StaticMetadataService {
+    fn topic_message_type<'a>(
+        &'a self,
+        _context: &'a ProxyContext,
+        _topic: &'a ResourceIdentity,
+    ) -> ProxyServiceFuture<'a, ProxyTopicMessageType> {
+        Box::pin(async { Ok(ProxyTopicMessageType::Normal) })
+    }
+
+    fn subscription_group<'a>(
+        &'a self,
+        _context: &'a ProxyContext,
+        _topic: &'a ResourceIdentity,
+        _group: &'a ResourceIdentity,
+    ) -> ProxyServiceFuture<'a, Option<SubscriptionGroupMetadata>> {
+        Box::pin(async { Ok(None) })
+    }
+}
+
+#[tokio::test]
+async fn query_route_over_remoting_integration_injects_transport_context() {
+    let _guard = REMOTING_INGRESS_TEST_LOCK.lock().await;
+    let route_service = Arc::new(RecordingRouteService::default());
+    let service_manager = Arc::new(ClusterServiceManager::with_services(
+        route_service.clone(),
+        Arc::new(StaticMetadataService),
+        Arc::new(DefaultAssignmentService),
+        Arc::new(DefaultMessageService),
+        Arc::new(DefaultConsumerService),
+        Arc::new(DefaultTransactionService),
+    ));
+
+    let ProxyTestAddrs {
+        grpc: grpc_addr,
+        remoting: remoting_addr,
+    } = free_proxy_test_addrs();
+    let runtime_context = RuntimeContext::from_current("proxy-remoting-route-test");
+    let runtime = ProxyRuntime::builder(
+        ProxyConfig {
+            grpc: GrpcConfig {
+                listen_addr: grpc_addr.to_string(),
+                ..GrpcConfig::default()
+            },
+            remoting: RemotingConfig {
+                enabled: true,
+                listen_addr: remoting_addr.to_string(),
+                ..RemotingConfig::default()
+            },
+            ..ProxyConfig::default()
+        },
+        runtime_context.service_context("proxy-remoting-route"),
+        rocketmq_observability::TelemetryHandle::noop(),
+    )
+    .with_service_manager(service_manager)
+    .build()
+    .expect("the injected child context should build the proxy runtime");
+
+    let (shutdown_tx, shutdown_rx) = oneshot::channel::<()>();
+    let server_task = tokio::spawn(async move {
+        runtime
+            .serve_with_shutdown(async move {
+                let _ = shutdown_rx.await;
+            })
+            .await
+    });
+
+    let mut connection = connect_remoting_with_retry(remoting_addr).await;
+    let request = RemotingCommand::create_request_command(
+        RequestCode::GetRouteinfoByTopic,
+        GetRouteInfoRequestHeader::new("TopicA", None),
+    );
+    let opaque = request.opaque();
+    connection
+        .send_command(request)
+        .await
+        .expect("remoting request should be sent");
+
+    let response = timeout(Duration::from_secs(3), async {
+        loop {
+            match connection.receive_command().await {
+                Some(Ok(response)) => break response,
+                Some(Err(error)) => panic!("failed to decode remoting response: {error}"),
+                None => continue,
+            }
+        }
+    })
+    .await
+    .expect("remoting response should arrive before timeout");
+
+    assert_eq!(response.code(), ResponseCode::Success as i32);
+    assert_eq!(response.opaque(), opaque);
+
+    let _ = shutdown_tx.send(());
+    let serve_result = server_task.await.expect("server task should join");
+    assert!(
+        serve_result.is_ok(),
+        "server should shut down cleanly: {serve_result:?}"
+    );
+
+    let observed = route_service.observed();
+    assert_eq!(observed.len(), 1);
+    assert_eq!(
+        observed[0].local_addr.as_deref(),
+        Some(remoting_addr.to_string().as_str())
+    );
+    assert!(
+        observed[0]
+            .remote_addr
+            .as_deref()
+            .is_some_and(|remote| remote.starts_with("127.0.0.1:")),
+        "expected remote address to be recorded, got {:?}",
+        observed[0].remote_addr
+    );
+}
+
+#[tokio::test]
+async fn proxy_protocol_source_identity_reaches_remoting_context() {
+    let _guard = REMOTING_INGRESS_TEST_LOCK.lock().await;
+    let route_service = Arc::new(RecordingRouteService::default());
+    let service_manager = Arc::new(ClusterServiceManager::with_services(
+        route_service.clone(),
+        Arc::new(StaticMetadataService),
+        Arc::new(DefaultAssignmentService),
+        Arc::new(DefaultMessageService),
+        Arc::new(DefaultConsumerService),
+        Arc::new(DefaultTransactionService),
+    ));
+    let ProxyTestAddrs {
+        grpc: grpc_addr,
+        remoting: remoting_addr,
+    } = free_proxy_test_addrs();
+    let runtime_context = RuntimeContext::from_current("proxy-remoting-proxy-protocol-test");
+    let runtime = ProxyRuntime::builder(
+        ProxyConfig {
+            grpc: GrpcConfig {
+                listen_addr: grpc_addr.to_string(),
+                ..GrpcConfig::default()
+            },
+            remoting: RemotingConfig {
+                enabled: true,
+                listen_addr: remoting_addr.to_string(),
+                proxy_protocol: ProxyProtocolConfig {
+                    enabled: true,
+                    trusted_proxies: vec!["127.0.0.0/8".parse().expect("trusted CIDR")],
+                    ..ProxyProtocolConfig::default()
+                },
+            },
+            ..ProxyConfig::default()
+        },
+        runtime_context.service_context("proxy-remoting-proxy-protocol"),
+        rocketmq_observability::TelemetryHandle::noop(),
+    )
+    .with_service_manager(service_manager)
+    .build()
+    .expect("proxy runtime should build");
+    let (shutdown_tx, shutdown_rx) = oneshot::channel::<()>();
+    let server_task = tokio::spawn(async move {
+        runtime
+            .serve_with_shutdown(async move {
+                let _ = shutdown_rx.await;
+            })
+            .await
+    });
+
+    let mut stream = connect_stream_with_retry(remoting_addr).await;
+    stream
+        .write_all(
+            format!(
+                "PROXY TCP4 198.51.100.99 {} 40000 {}\r\n",
+                remoting_addr.ip(),
+                remoting_addr.port()
+            )
+            .as_bytes(),
+        )
+        .await
+        .expect("write PROXY header");
+    let mut connection = Connection::new(stream);
+    let request = RemotingCommand::create_request_command(
+        RequestCode::GetRouteinfoByTopic,
+        GetRouteInfoRequestHeader::new("TopicA", None),
+    );
+    connection.send_command(request).await.expect("send request");
+    assert_eq!(
+        receive_remoting_response(&mut connection).await.code(),
+        ResponseCode::Success as i32
+    );
+
+    let _ = shutdown_tx.send(());
+    let serve_result = server_task.await.expect("server task should join");
+    assert!(
+        serve_result.is_ok(),
+        "server should shut down cleanly: {serve_result:?}"
+    );
+    assert_eq!(
+        route_service.observed(),
+        vec![ObservedRouteContext {
+            local_addr: Some(remoting_addr.to_string()),
+            remote_addr: Some("198.51.100.99:40000".to_owned()),
+        }]
+    );
+}
+
+#[tokio::test]
+async fn query_route_over_remoting_integration_enforces_auth_enabled_runtime() {
+    let _guard = REMOTING_INGRESS_TEST_LOCK.lock().await;
+    let test_dir = std::env::temp_dir().join(format!("rocketmq-rust-proxy-remoting-auth-{}", uuid::Uuid::new_v4()));
+    std::fs::create_dir_all(&test_dir).expect("create proxy remoting auth test dir");
+    let acl_file = test_dir.join("plain_acl.yml");
+    std::fs::write(
+        &acl_file,
+        r#"
+accounts:
+  - accessKey: alice
+    secretKey: secret
+    admin: true
+"#,
+    )
+    .expect("write proxy remoting auth acl file");
+
+    let runtime_context = RuntimeContext::from_current("proxy-remoting-auth-test");
+    let auth_runtime = ProxyAuthRuntime::from_proxy_config(
+        &ProxyAuthConfig {
+            auth_config_path: test_dir.join("auth-store").to_string_lossy().into_owned(),
+            acl_file: acl_file.to_string_lossy().into_owned(),
+            authentication_enabled: true,
+            authorization_enabled: true,
+            ..ProxyAuthConfig::default()
+        },
+        &runtime_context.service_context("proxy-remoting-auth-runtime"),
+    )
+    .await
+    .expect("proxy auth runtime should build")
+    .expect("proxy auth runtime should be enabled");
+    let route_service = Arc::new(RecordingRouteService::default());
+    let service_manager = Arc::new(ClusterServiceManager::with_services(
+        route_service.clone(),
+        Arc::new(StaticMetadataService),
+        Arc::new(DefaultAssignmentService),
+        Arc::new(DefaultMessageService),
+        Arc::new(DefaultConsumerService),
+        Arc::new(DefaultTransactionService),
+    ));
+
+    let ProxyTestAddrs {
+        grpc: grpc_addr,
+        remoting: remoting_addr,
+    } = free_proxy_test_addrs();
+    let runtime = ProxyRuntime::builder(
+        ProxyConfig {
+            grpc: GrpcConfig {
+                listen_addr: grpc_addr.to_string(),
+                ..GrpcConfig::default()
+            },
+            remoting: RemotingConfig {
+                enabled: true,
+                listen_addr: remoting_addr.to_string(),
+                ..RemotingConfig::default()
+            },
+            ..ProxyConfig::default()
+        },
+        runtime_context.service_context("proxy-remoting-auth"),
+        rocketmq_observability::TelemetryHandle::noop(),
+    )
+    .with_service_manager(service_manager)
+    .with_auth_runtime(auth_runtime)
+    .build()
+    .expect("the injected child context should build the proxy runtime");
+
+    let (shutdown_tx, shutdown_rx) = oneshot::channel::<()>();
+    let server_task = tokio::spawn(async move {
+        runtime
+            .serve_with_shutdown(async move {
+                let _ = shutdown_rx.await;
+            })
+            .await
+    });
+    let mut connection = connect_remoting_with_retry(remoting_addr).await;
+
+    let unauthorized = RemotingCommand::create_request_command(
+        RequestCode::GetRouteinfoByTopic,
+        GetRouteInfoRequestHeader::new("TopicA", None),
+    )
+    .set_opaque(41);
+    connection
+        .send_command(unauthorized)
+        .await
+        .expect("unauthenticated remoting request should be sent");
+    let response = receive_remoting_response(&mut connection).await;
+    assert_eq!(response.code(), ResponseCode::NoPermission as i32);
+    assert_eq!(response.opaque(), 41);
+
+    let mut authorized = RemotingCommand::create_request_command(
+        RequestCode::GetRouteinfoByTopic,
+        GetRouteInfoRequestHeader::new("TopicA", None),
+    )
+    .set_opaque(42);
+    sign_remoting_command(&mut authorized, "alice", "secret");
+    connection
+        .send_command(authorized)
+        .await
+        .expect("authenticated remoting request should be sent");
+    let response = receive_remoting_response(&mut connection).await;
+    assert_eq!(
+        response.code(),
+        ResponseCode::Success as i32,
+        "authenticated response remark: {:?}",
+        response.remark()
+    );
+    assert_eq!(response.opaque(), 42);
+    assert_eq!(route_service.observed().len(), 1);
+
+    let _ = shutdown_tx.send(());
+    let serve_result = server_task.await.expect("server task should join");
+    assert!(
+        serve_result.is_ok(),
+        "server should shut down cleanly: {serve_result:?}"
+    );
+    let _ = std::fs::remove_dir_all(test_dir);
+}
+
+#[tokio::test]
+async fn heartbeat_replacement_retires_old_session_and_preserves_new_binding() {
+    let _guard = REMOTING_INGRESS_TEST_LOCK.lock().await;
+    let sessions = ClientSessionRegistry::default();
+    let service_manager = Arc::new(ClusterServiceManager::with_services(
+        Arc::new(RecordingRouteService::default()),
+        Arc::new(StaticMetadataService),
+        Arc::new(DefaultAssignmentService),
+        Arc::new(DefaultMessageService),
+        Arc::new(DefaultConsumerService),
+        Arc::new(DefaultTransactionService),
+    ));
+    let ProxyTestAddrs {
+        grpc: grpc_addr,
+        remoting: remoting_addr,
+    } = free_proxy_test_addrs();
+    let runtime_context = RuntimeContext::from_current("proxy-remoting-v2-session-binding-test");
+    let runtime = ProxyRuntime::builder(
+        ProxyConfig {
+            grpc: GrpcConfig {
+                listen_addr: grpc_addr.to_string(),
+                ..GrpcConfig::default()
+            },
+            remoting: RemotingConfig {
+                enabled: true,
+                listen_addr: remoting_addr.to_string(),
+                ..RemotingConfig::default()
+            },
+            ..ProxyConfig::default()
+        },
+        runtime_context.service_context("proxy-remoting-v2-session-binding"),
+        rocketmq_observability::TelemetryHandle::noop(),
+    )
+    .with_service_manager(service_manager)
+    .with_session_registry(sessions.clone())
+    .build()
+    .expect("Proxy session binding runtime should build");
+    let (shutdown_tx, shutdown_rx) = oneshot::channel::<()>();
+    let server_task = tokio::spawn(async move {
+        runtime
+            .serve_with_shutdown(async move {
+                let _ = shutdown_rx.await;
+            })
+            .await
+    });
+
+    let mut old_client = connect_remoting_with_retry(remoting_addr).await;
+    let invalid = RemotingCommand::create_request_command(RequestCode::HeartBeat, HeartbeatRequestHeader::default())
+        .set_body(b"not-json".to_vec());
+    old_client.send_command(invalid).await.expect("send invalid heartbeat");
+    assert_ne!(
+        receive_remoting_response(&mut old_client).await.code(),
+        ResponseCode::Success as i32
+    );
+    assert_eq!(sessions.remoting_channel_count(), 0, "failed heartbeat must not bind");
+
+    send_heartbeat(&mut old_client, "client-a", "GroupA").await;
+    assert_eq!(sessions.remoting_channel_count(), 1);
+
+    let mut new_client = connect_remoting_with_retry(remoting_addr).await;
+    send_heartbeat(&mut new_client, "client-a", "GroupA").await;
+    assert_eq!(sessions.remoting_channel_count(), 1);
+
+    expect_remoting_eof(&mut old_client).await;
+    timeout(Duration::from_secs(3), async {
+        loop {
+            if sessions.remoting_channel_count() == 1
+                && sessions.consumer_client_ids("GroupA") == vec!["client-a".to_owned()]
+            {
+                break;
+            }
+            tokio::task::yield_now().await;
+        }
+    })
+    .await
+    .expect("old retirement disconnect must preserve the newer client binding");
+
+    let mut admin = connect_remoting_with_retry(remoting_addr).await;
+    let push_request = RemotingCommand::create_request_command(
+        RequestCode::NotifyConsumerIdsChanged,
+        NotifyConsumerIdsChangedRequestHeader {
+            consumer_group: CheetahString::from_static_str("GroupA"),
+            rpc_request_header: None,
+        },
+    )
+    .set_opaque(9_857);
+    admin
+        .send_command(push_request)
+        .await
+        .expect("send server-push trigger");
+    let push = receive_remoting_response(&mut new_client).await;
+    assert_eq!(RequestCode::from(push.code()), RequestCode::NotifyConsumerIdsChanged);
+    assert_eq!(push.opaque(), 9_857);
+    assert!(push.is_oneway_rpc());
+    let push_header = push
+        .decode_command_custom_header::<NotifyConsumerIdsChangedRequestHeader>()
+        .expect("typed server push header should decode");
+    assert_eq!(push_header.consumer_group, "GroupA");
+    assert_eq!(
+        receive_remoting_response(&mut admin).await.code(),
+        ResponseCode::Success as i32
+    );
+
+    new_client.shutdown().await.expect("close active client session");
+    timeout(Duration::from_secs(3), async {
+        loop {
+            if sessions.remoting_channel_count() == 0 && sessions.consumer_client_ids("GroupA").is_empty() {
+                break;
+            }
+            tokio::task::yield_now().await;
+        }
+    })
+    .await
+    .expect("active disconnect should retire its exact client binding");
+
+    let _ = shutdown_tx.send(());
+    let serve_result = server_task.await.expect("server task should join");
+    assert!(
+        serve_result.is_ok(),
+        "server should shut down cleanly: {serve_result:?}"
+    );
+}
+
+async fn send_heartbeat(connection: &mut Connection, client_id: &str, consumer_group: &str) {
+    let heartbeat = HeartbeatData {
+        client_id: CheetahString::from(client_id),
+        producer_data_set: HashSet::new(),
+        consumer_data_set: HashSet::from([ConsumerData {
+            group_name: CheetahString::from(consumer_group),
+            ..ConsumerData::default()
+        }]),
+        heartbeat_fingerprint: 0,
+        is_without_sub: false,
+    };
+    let request = RemotingCommand::create_request_command(RequestCode::HeartBeat, HeartbeatRequestHeader::default())
+        .set_body(heartbeat.encode().expect("heartbeat should encode"));
+    connection.send_command(request).await.expect("send valid heartbeat");
+    assert_eq!(
+        receive_remoting_response(connection).await.code(),
+        ResponseCode::Success as i32
+    );
+}
+
+#[tokio::test]
+async fn request_code_not_supported_over_remoting_integration_returns_compatible_response() {
+    let _guard = REMOTING_INGRESS_TEST_LOCK.lock().await;
+    let service_manager = Arc::new(ClusterServiceManager::with_services(
+        Arc::new(RecordingRouteService::default()),
+        Arc::new(StaticMetadataService),
+        Arc::new(DefaultAssignmentService),
+        Arc::new(DefaultMessageService),
+        Arc::new(DefaultConsumerService),
+        Arc::new(DefaultTransactionService),
+    ));
+
+    let ProxyTestAddrs {
+        grpc: grpc_addr,
+        remoting: remoting_addr,
+    } = free_proxy_test_addrs();
+    let runtime_context = RuntimeContext::from_current("proxy-remoting-unsupported-test");
+    let runtime = ProxyRuntime::builder(
+        ProxyConfig {
+            grpc: GrpcConfig {
+                listen_addr: grpc_addr.to_string(),
+                ..GrpcConfig::default()
+            },
+            remoting: RemotingConfig {
+                enabled: true,
+                listen_addr: remoting_addr.to_string(),
+                ..RemotingConfig::default()
+            },
+            ..ProxyConfig::default()
+        },
+        runtime_context.service_context("proxy-remoting-unsupported"),
+        rocketmq_observability::TelemetryHandle::noop(),
+    )
+    .with_service_manager(service_manager)
+    .build()
+    .expect("the injected child context should build the proxy runtime");
+
+    let (shutdown_tx, shutdown_rx) = oneshot::channel::<()>();
+    let server_task = tokio::spawn(async move {
+        runtime
+            .serve_with_shutdown(async move {
+                let _ = shutdown_rx.await;
+            })
+            .await
+    });
+
+    let mut connection = connect_remoting_with_retry(remoting_addr).await;
+    let request = RemotingCommand::create_remoting_command(RequestCode::AuthCreateUser).set_opaque(88);
+    let opaque = request.opaque();
+    connection
+        .send_command(request)
+        .await
+        .expect("unsupported remoting request should be sent");
+
+    let response = receive_remoting_response(&mut connection).await;
+    assert_eq!(response.code(), ResponseCode::RequestCodeNotSupported as i32);
+    assert_eq!(response.opaque(), opaque);
+    assert_eq!(
+        response.remark().map(|remark| remark.as_str()),
+        Some(rocketmq_error::PROTOCOL_REQUEST_UNSUPPORTED.public_message())
+    );
+
+    let _ = shutdown_tx.send(());
+    let serve_result = server_task.await.expect("server task should join");
+    assert!(
+        serve_result.is_ok(),
+        "server should shut down cleanly: {serve_result:?}"
+    );
+}
+
+async fn connect_remoting_with_retry(addr: SocketAddr) -> Connection {
+    Connection::new(connect_stream_with_retry(addr).await)
+}
+
+async fn connect_stream_with_retry(addr: SocketAddr) -> tokio::net::TcpStream {
+    let mut last_error = None;
+    for _ in 0..20 {
+        match tokio::net::TcpStream::connect(addr).await {
+            Ok(stream) => return stream,
+            Err(error) => {
+                last_error = Some(error);
+                tokio::time::sleep(Duration::from_millis(25)).await;
+            }
+        }
+    }
+
+    panic!("remoting client failed to connect to {addr}: {last_error:?}");
+}
+
+async fn receive_remoting_response(connection: &mut Connection) -> RemotingCommand {
+    timeout(Duration::from_secs(3), async {
+        loop {
+            match connection.receive_command().await {
+                Some(Ok(response)) => break response,
+                Some(Err(error)) => panic!("failed to decode remoting response: {error}"),
+                None => continue,
+            }
+        }
+    })
+    .await
+    .expect("remoting response should arrive before timeout")
+}
+
+async fn expect_remoting_eof(connection: &mut Connection) {
+    timeout(Duration::from_secs(3), async {
+        match connection.receive_command().await {
+            None => {}
+            Some(Ok(_)) => panic!("superseded client received an unexpected command"),
+            Some(Err(error)) => panic!("superseded client received an invalid remoting frame: {error}"),
+        }
+    })
+    .await
+    .expect("superseded client session should receive EOF");
+}
+
+fn sign_remoting_command(command: &mut RemotingCommand, access_key: &str, secret_key: &str) {
+    command.make_custom_header_to_net();
+    command.ensure_ext_fields_initialized();
+    command.add_ext_field("AccessKey", access_key);
+
+    let mut sorted_fields = BTreeMap::new();
+    if let Some(fields) = command.ext_fields() {
+        for (key, value) in fields {
+            if key.as_str() != "Signature" {
+                sorted_fields.insert(key.clone(), value.clone());
+            }
+        }
+    }
+
+    let mut content = Vec::new();
+    for value in sorted_fields.values() {
+        content.extend_from_slice(value.as_bytes());
+    }
+    if let Some(body) = command.body() {
+        content.extend_from_slice(body);
+    }
+
+    let signature = cal_signature(content.as_slice(), secret_key).expect("remoting signature should build");
+    command.add_ext_field("Signature", signature.as_str());
+}
+
+struct ProxyTestAddrs {
+    grpc: SocketAddr,
+    remoting: SocketAddr,
+}
+
+fn free_proxy_test_addrs() -> ProxyTestAddrs {
+    let grpc_listener = std::net::TcpListener::bind("127.0.0.1:0").expect("bind local grpc port probe");
+    let remoting_listener = std::net::TcpListener::bind("127.0.0.1:0").expect("bind local remoting port probe");
+    let grpc = grpc_listener.local_addr().expect("discover local grpc addr");
+    let remoting = remoting_listener.local_addr().expect("discover local remoting addr");
+    drop((grpc_listener, remoting_listener));
+
+    ProxyTestAddrs { grpc, remoting }
+}

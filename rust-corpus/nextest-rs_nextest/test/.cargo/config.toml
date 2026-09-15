@@ -1,0 +1,12 @@
+[alias]
+xfmt = "fmt -- --config imports_granularity=Crate --config group_imports=One --config format_code_in_doc_comments=true"
+local-nt = "run --package cargo-nextest -- nextest"
+
+[build]
+# Required for tokio_console support
+rustflags = ["--cfg", "tokio_unstable"]
+
+[target.'cfg(target_env = "musl")']
+# See https://github.com/rust-lang/compiler-team/issues/422 for why we're specifying +crt-static. We
+# always want musl builds to be static.
+rustflags = ["-C", "target-feature=+crt-static", "--cfg", "tokio_unstable"]

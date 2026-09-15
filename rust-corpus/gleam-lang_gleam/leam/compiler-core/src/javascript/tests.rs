@@ -1,0 +1,372 @@
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-FileCopyrightText: 2021 The Gleam contributors
+
+use crate::{
+    analyse::TargetSupport,
+    build::{Origin, Target},
+    config::PackageConfig,
+    javascript::*,
+    uid::UniqueIdGenerator,
+    warning::{TypeWarningEmitter, WarningEmitter},
+};
+use camino::{Utf8Path, Utf8PathBuf};
+use lsp_types::Position;
+
+mod assert;
+mod assignments;
+mod bit_arrays;
+mod blocks;
+mod bools;
+mod case;
+mod case_clause_guards;
+mod consts;
+mod custom_types;
+mod echo;
+mod externals;
+mod functions;
+mod generics;
+mod lists;
+mod modules;
+mod numbers;
+mod panic;
+mod prelude;
+mod records;
+mod recursion;
+mod results;
+mod sourcemaps;
+mod strings;
+mod todo;
+mod tuples;
+mod type_alias;
+mod typescript;
+mod use_;
+
+pub static CURRENT_PACKAGE: &str = "thepackage";
+
+#[macro_export]
+macro_rules! assert_js {
+    ($(($name:literal, $module_src:literal)),+, $src:literal $(,)?) => {
+        let compiled =
+            $crate::javascript::tests::compile_js($src, vec![$(($crate::javascript::tests::CURRENT_PACKAGE, $name, $module_src)),*]);
+            let mut output = String::from("----- SOURCE CODE\n");
+            for (name, src) in [$(($name, $module_src)),*] {
+                output.push_str("-- ");
+                output.push_str(name);
+                output.push_str(".gleam\n");
+                output.push_str(src);
+                output.push_str("\n\n");
+            }
+            output.push_str("-- main.gleam\n");
+            output.push_str($src);
+            output.push_str("\n\n----- COMPILED JAVASCRIPT\n");
+            output.push_str(&compiled);
+
+        insta::assert_snapshot!(insta::internals::AutoName, output, $src);
+    };
+
+    ($(($dep_package:expr, $dep_name:expr, $dep_src:expr)),+, $src:literal $(,)?) => {{
+        let compiled =
+            $crate::javascript::tests::compile_js($src, vec![$(($dep_package, $dep_name, $dep_src)),*]);
+        let output = format!(
+            "----- SOURCE CODE\n{}\n\n----- COMPILED JAVASCRIPT\n{}",
+            $src, compiled
+        );
+        insta::assert_snapshot!(insta::internals::AutoName, output, $src);
+    }};
+
+    (($dep_package:expr, $dep_name:expr, $dep_src:expr), $src:expr, $js:expr $(,)?) => {{
+        let output =
+            $crate::javascript::tests::compile_js($src, Some(($dep_package, $dep_name, $dep_src)));
+        assert_eq!(($src, output), ($src, $js.to_string()));
+    }};
+
+    ($src:expr $(,)?) => {{
+        let compiled =
+            $crate::javascript::tests::compile_js($src, vec![]);
+        let output = format!(
+            "----- SOURCE CODE\n{}\n\n----- COMPILED JAVASCRIPT\n{}",
+            $src, compiled
+        );
+        insta::assert_snapshot!(insta::internals::AutoName, output, $src);
+    }};
+
+    ($src:expr, $js:expr $(,)?) => {{
+        let output =
+            $crate::javascript::tests::compile_js($src, vec![]);
+        assert_eq!(($src, output), ($src, $js.to_string()));
+    }};
+}
+
+#[macro_export]
+macro_rules! assert_source_map {
+    ($src:expr $(,)?) => {{
+        let (compiled, source_map) =
+            $crate::javascript::tests::compile_js_with_source_map($src, vec![]);
+
+        let output = format!(
+            "----- SOURCE CODE\n{}\n\n----- COMPILED JAVASCRIPT\n{}\n\n----- SOURCE MAP\n{}",
+            $crate::javascript::tests::append_line_numbers($src),
+            $crate::javascript::tests::append_line_numbers(&compiled),
+            $crate::javascript::tests::source_map_to_string($src, &compiled, source_map)
+        );
+        insta::assert_snapshot!(insta::internals::AutoName, output, $src);
+    }};
+}
+
+#[macro_export]
+macro_rules! assert_ts_def {
+    (($dep_1_package:expr, $dep_1_name:expr, $dep_1_src:expr), ($dep_2_package:expr, $dep_2_name:expr, $dep_2_src:expr), $src:expr $(,)?) => {{
+        let compiled = $crate::javascript::tests::compile_ts(
+            $src,
+            vec![
+                ($dep_1_package, $dep_1_name, $dep_1_src),
+                ($dep_2_package, $dep_2_name, $dep_2_src),
+            ],
+        );
+        let output = format!(
+            "----- SOURCE CODE\n{}\n\n----- TYPESCRIPT DEFINITIONS\n{}",
+            $src, compiled
+        );
+        insta::assert_snapshot!(insta::internals::AutoName, output, $src);
+    }};
+
+    (($dep_package:expr, $dep_name:expr, $dep_src:expr), $src:expr $(,)?) => {{
+        let compiled =
+            $crate::javascript::tests::compile_ts($src, vec![($dep_package, $dep_name, $dep_src)]);
+        let output = format!(
+            "----- SOURCE CODE\n{}\n\n----- TYPESCRIPT DEFINITIONS\n{}",
+            $src, compiled
+        );
+        insta::assert_snapshot!(insta::internals::AutoName, output, $src);
+    }};
+
+    ($src:expr $(,)?) => {{
+        let compiled = $crate::javascript::tests::compile_ts($src, vec![]);
+        let output = format!(
+            "----- SOURCE CODE\n{}\n\n----- TYPESCRIPT DEFINITIONS\n{}",
+            $src, compiled
+        );
+        insta::assert_snapshot!(insta::internals::AutoName, output, $src);
+    }};
+}
+
+pub fn compile(src: &str, deps: Vec<(&str, &str, &str)>) -> TypedModule {
+    let mut modules = imbl::HashMap::new();
+    let ids = UniqueIdGenerator::new();
+    // DUPE: preludeinsertion
+    // TODO: Currently we do this here and also in the tests. It would be better
+    // to have one place where we create all this required state for use in each
+    // place.
+    let _ = modules.insert(
+        PRELUDE_MODULE_NAME.into(),
+        crate::type_::build_prelude(&ids),
+    );
+    let mut direct_dependencies = HashMap::from_iter(vec![]);
+
+    deps.iter().for_each(|(dep_package, dep_name, dep_src)| {
+        let mut dep_config = PackageConfig::default();
+        dep_config.name = (*dep_package).into();
+        let parsed = crate::parse::parse_module(
+            Utf8PathBuf::from("test/path"),
+            dep_src,
+            &WarningEmitter::null(),
+        )
+        .expect("dep syntax error");
+        let mut ast = parsed.module;
+        ast.name = (*dep_name).into();
+        let line_numbers = LineNumbers::new(dep_src);
+
+        let dep = crate::analyse::ModuleAnalyzerConstructor::<()> {
+            target: Target::JavaScript,
+            ids: &ids,
+            origin: Origin::Src,
+            importable_modules: &modules,
+            warnings: &TypeWarningEmitter::null(),
+            direct_dependencies: &HashMap::new(),
+            dev_dependencies: &HashSet::new(),
+            target_support: TargetSupport::Enforced,
+            package_config: &dep_config,
+        }
+        .infer_module(ast, line_numbers, "".into())
+        .expect("should successfully infer");
+        let _ = modules.insert((*dep_name).into(), dep.type_info);
+        let _ = direct_dependencies.insert((*dep_package).into(), ());
+    });
+
+    let parsed =
+        crate::parse::parse_module(Utf8PathBuf::from("test/path"), src, &WarningEmitter::null())
+            .expect("syntax error");
+    let mut ast = parsed.module;
+    ast.name = "my/mod".into();
+    let line_numbers = LineNumbers::new(src);
+    let mut config = PackageConfig::default();
+    config.name = "thepackage".into();
+
+    crate::analyse::ModuleAnalyzerConstructor::<()> {
+        target: Target::JavaScript,
+        ids: &ids,
+        origin: Origin::Src,
+        importable_modules: &modules,
+        warnings: &TypeWarningEmitter::null(),
+        direct_dependencies: &direct_dependencies,
+        dev_dependencies: &HashSet::new(),
+        target_support: TargetSupport::NotEnforced,
+        package_config: &config,
+    }
+    .infer_module(ast, line_numbers, "src/module.gleam".into())
+    .expect("should successfully infer")
+}
+
+pub fn compile_js(src: &str, deps: Vec<(&str, &str, &str)>) -> String {
+    let ast = compile(src, deps);
+    let line_numbers = LineNumbers::new(src);
+    let stdlib_package = StdlibPackage::Present;
+    let (output, _) = module(ModuleConfig {
+        module: &ast,
+        line_numbers: &line_numbers,
+        src: &"".into(),
+        typescript: TypeScriptDeclarations::None,
+        source_map: false,
+        stdlib_package,
+        path: Utf8Path::new("src/module.gleam"),
+        project_root: "project/root".into(),
+    });
+
+    output.replace(
+        std::include_str!("../../templates/echo.mjs"),
+        "// ...omitted code from `templates/echo.mjs`...",
+    )
+}
+
+pub fn compile_js_with_source_map(src: &str, deps: Vec<(&str, &str, &str)>) -> (String, SourceMap) {
+    let ast = compile(src, deps);
+    let line_numbers = LineNumbers::new(src);
+    let stdlib_package = StdlibPackage::Present;
+    let (output, source_map) = module(ModuleConfig {
+        module: &ast,
+        line_numbers: &line_numbers,
+        src: &"".into(),
+        typescript: TypeScriptDeclarations::None,
+        source_map: true,
+        stdlib_package,
+        path: Utf8Path::new("src/module.gleam"),
+        project_root: "project/root".into(),
+    });
+    let source_map = source_map.expect("source map should always be present");
+
+    let output = output.replace(
+        std::include_str!("../../templates/echo.mjs"),
+        "// ...omitted code from `templates/echo.mjs`...",
+    );
+    (output, source_map)
+}
+
+pub fn compile_ts(src: &str, deps: Vec<(&str, &str, &str)>) -> String {
+    let ast = compile(src, deps);
+    ts_declaration(&ast)
+}
+
+// Append zero indexed line numbers to the code for easier reading of source maps.
+pub fn append_line_numbers(src: &str) -> String {
+    src.lines()
+        .enumerate()
+        .map(|(line, content)| format!("{} |{}", line, content))
+        .collect::<Vec<String>>()
+        .join("\n")
+}
+
+// Pretty-print a sourcemap to a string that might be readable by humans.
+pub fn source_map_to_string(src: &str, compiled: &str, source_map: SourceMap) -> String {
+    let mut output = String::new();
+    output.push_str("File: ");
+    output.push_str(source_map.get_file().expect("source map file"));
+    output.push_str("\nSources:");
+    for source in source_map.sources() {
+        output.push(' ');
+        output.push_str(source);
+    }
+    output.push_str("\nMappings:\n");
+    output.push_str("----- \n");
+    let src_line_numbers = LineNumbers::new(&src);
+    let compiled_line_numbers = LineNumbers::new(&compiled);
+
+    // Since source maps can have multiple tokens for the same source index, we skip over the
+    // intermediate tokens and only keep tokens with a new source index.
+    //
+    // Construct a vector of tuples of (src_line, src_col, dst_line, dst_col)
+    //
+    let mut merged_tokens: Vec<((u32, u32), (u32, u32))> = Vec::new();
+    // Push a sentinel token at 0, 0
+    merged_tokens.push(((0, 0), (0, 0)));
+    let mut prev_token_src = (0, 0);
+    for token in source_map.tokens() {
+        if prev_token_src == token.get_src() {
+            // Same source index, so extend the current token
+            // This is for making the source map more readable
+            continue;
+        } else {
+            // Different source index, so add the current token to the merged tokens
+            merged_tokens.push((token.get_src(), token.get_dst()));
+            prev_token_src = token.get_src();
+        };
+    }
+    let sorted_src_tokens = merged_tokens
+        .iter()
+        .sorted_by_key(|(src, _)| src)
+        .map(|(src, _)| *src)
+        .collect::<Vec<_>>();
+    let by_dst = merged_tokens
+        .iter()
+        .sorted_by_key(|(_, dst)| dst)
+        .collect::<Vec<_>>();
+
+    let mut prev_compiled_index = 0;
+    // iterate over all but the last mapping
+    for i in 0..by_dst.len() - 1 {
+        let ((src_line, src_col), (dst_line, dst_col)) = by_dst[i];
+        let ((_, _), (next_dst_line, next_dst_col)) = by_dst[i + 1];
+        let (next_src_line, next_src_col) = sorted_src_tokens
+            .iter()
+            .find(|src| **src > (*src_line, *src_col))
+            .expect("next src token must exist");
+
+        let src_index = src_line_numbers.byte_index(Position::new(*src_line, *src_col)) as usize;
+        let compiled_index =
+            compiled_line_numbers.byte_index(Position::new(*dst_line, *dst_col)) as usize;
+        let next_src_index =
+            src_line_numbers.byte_index(Position::new(*next_src_line, *next_src_col)) as usize;
+        let next_compiled_index =
+            compiled_line_numbers.byte_index(Position::new(*next_dst_line, *next_dst_col)) as usize;
+
+        output.push_str(&src[src_index..next_src_index]);
+        output.push_str("\n⏷\n");
+        output.push_str(&compiled[compiled_index..next_compiled_index]);
+        output.push_str("\n----- \n");
+        prev_compiled_index = next_compiled_index;
+    }
+    // Print the last mapping. this needs to be done separately because the last mapping
+    // will likely extend to the rest of the source code.
+    let (src_token, _) = by_dst.last().expect("last mapping must exist");
+    let src_index: usize =
+        src_line_numbers.byte_index(Position::new(src_token.0, src_token.1)) as usize;
+    // find the next src token after the last mapping if one exists
+    let next_src_token = sorted_src_tokens.iter().find(|src| **src > *src_token);
+    match next_src_token {
+        Some(next_src_token) => {
+            let next_src_index = src_line_numbers
+                .byte_index(Position::new(next_src_token.0, next_src_token.1))
+                as usize;
+            output.push_str(&src[src_index..next_src_index]);
+            output.push('\n');
+        }
+        None => {
+            // If there is no next src token, print the rest of the source and compiled code
+            output.push_str(&src[src_index..]);
+            output.push('\n');
+        }
+    }
+    output.push_str("⏷\n");
+    output.push_str(&compiled[prev_compiled_index..]);
+    output.push_str("\n----- \n");
+    output
+}

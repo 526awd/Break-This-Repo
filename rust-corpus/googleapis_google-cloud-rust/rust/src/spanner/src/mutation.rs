@@ -1,0 +1,1210 @@
+// Copyright 2026 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use crate::key::KeySet;
+use crate::model::Mutation as ProtoMutation;
+use crate::model::batch_write_request::MutationGroup as ProtoMutationGroup;
+use crate::model::mutation::{Delete as ProtoDelete, Operation, Write as ProtoWrite};
+use crate::value::Value;
+use rand::rng;
+use rand::seq::IteratorRandom;
+use std::slice::Iter;
+use std::vec::IntoIter;
+
+/// Represents an individual table modification to be applied to Cloud Spanner.
+///
+/// # Example
+/// ```rust
+/// use google_cloud_spanner::mutation::Mutation;
+///
+/// let mutation = Mutation::new_insert_builder("Users")
+///     .set("UserId").to(&1)
+///     .set("UserName").to(&"Alice")
+///     .build();
+/// ```
+///
+/// Use the methods on `Mutation` to create a builder for the desired operation type.
+#[derive(Clone, Debug, PartialEq)]
+pub struct Mutation {
+    pub(crate) inner: InternalMutation,
+}
+
+#[derive(Clone, Debug, PartialEq)]
+pub(crate) enum InternalMutation {
+    /// Inserts a new row in a table. If the row already exists, the write or transaction fails with
+    /// `ALREADY_EXISTS`.
+    Insert(Write),
+    /// Updates an existing row in a table. If the row does not already exist, the transaction fails
+    /// with error `NOT_FOUND`.
+    Update(Write),
+    /// Like `Insert`, except that if the row already exists, then its column values are
+    /// overwritten with the ones provided.
+    InsertOrUpdate(Write),
+    /// Like `Insert`, except that if the row already exists, it is deleted, and the column
+    /// values provided are inserted instead.
+    Replace(Write),
+    /// Deletes rows from a table. Succeeds whether or not the referenced rows were present.
+    Delete(Delete),
+}
+
+/// A mutation that inserts, updates, or replaces rows in a table.
+#[derive(Clone, Debug, PartialEq)]
+pub(crate) struct Write {
+    pub(crate) table: String,
+    pub(crate) columns: Vec<String>,
+    pub(crate) values: Vec<Value>,
+}
+
+/// A mutation that deletes rows from a table.
+#[derive(Clone, Debug, PartialEq)]
+pub(crate) struct Delete {
+    pub(crate) table: String,
+    // This will be replaced with the KeySet definition from the
+    // spanner-keys branch once it has been merged.
+    pub(crate) key_set: KeySet,
+}
+
+impl Mutation {
+    /// Returns a builder that can be used to construct an `Insert` mutation against `table`.
+    ///
+    /// # Example
+    /// ```rust
+    /// use google_cloud_spanner::mutation::Mutation;
+    /// let mutation = Mutation::new_insert_builder("Users")
+    ///     .set("UserId").to(&1)
+    ///     .build();
+    /// ```
+    pub fn new_insert_builder(table: impl Into<String>) -> WriteBuilder {
+        WriteBuilder::new(table, MutationType::Insert)
+    }
+
+    /// Returns a builder that can be used to construct an `Update` mutation against `table`.
+    ///
+    /// # Example
+    /// ```rust
+    /// use google_cloud_spanner::mutation::Mutation;
+    /// let mutation = Mutation::new_update_builder("Users")
+    ///     .set("UserId").to(&1)
+    ///     .set("UserName").to(&"Bob")
+    ///     .build();
+    /// ```
+    pub fn new_update_builder(table: impl Into<String>) -> WriteBuilder {
+        WriteBuilder::new(table, MutationType::Update)
+    }
+
+    /// Returns a builder that can be used to construct an `InsertOrUpdate` mutation against `table`.
+    ///
+    /// # Example
+    /// ```rust
+    /// use google_cloud_spanner::mutation::Mutation;
+    /// let mutation = Mutation::new_insert_or_update_builder("Users")
+    ///     .set("UserId").to(&1)
+    ///     .set("UserName").to(&"Bob")
+    ///     .build();
+    /// ```
+    pub fn new_insert_or_update_builder(table: impl Into<String>) -> WriteBuilder {
+        WriteBuilder::new(table, MutationType::InsertOrUpdate)
+    }
+
+    /// Returns a builder that can be used to construct a `Replace` mutation against `table`.
+    ///
+    /// # Example
+    /// ```rust
+    /// use google_cloud_spanner::mutation::Mutation;
+    /// let mutation = Mutation::new_replace_builder("Users")
+    ///     .set("UserId").to(&1)
+    ///     .set("UserName").to(&"Bob")
+    ///     .build();
+    /// ```
+    pub fn new_replace_builder(table: impl Into<String>) -> WriteBuilder {
+        WriteBuilder::new(table, MutationType::Replace)
+    }
+
+    /// Returns a mutation that will delete all rows with primary keys covered by `key_set`.
+    ///
+    /// # Example
+    /// ```text
+    /// // Example omitted temporarily until the new KeySet API is merged
+    /// ```
+    pub fn delete(table: impl Into<String>, key_set: KeySet) -> Mutation {
+        Mutation {
+            inner: InternalMutation::Delete(Delete {
+                table: table.into(),
+                key_set,
+            }),
+        }
+    }
+
+    pub(crate) fn build_proto(self) -> ProtoMutation {
+        match self.inner {
+            InternalMutation::Insert(write) => ProtoMutation::new().set_insert(write.into_proto()),
+            InternalMutation::Update(write) => ProtoMutation::new().set_update(write.into_proto()),
+            InternalMutation::InsertOrUpdate(write) => {
+                ProtoMutation::new().set_insert_or_update(write.into_proto())
+            }
+            InternalMutation::Replace(write) => {
+                ProtoMutation::new().set_replace(write.into_proto())
+            }
+            InternalMutation::Delete(delete) => {
+                ProtoMutation::new().set_delete(delete.into_proto())
+            }
+        }
+    }
+
+    /// Returns `true` if the mutation is a non-`Insert` operation that can provide a valid routing key.
+    /// Excludes `Insert`, queue operations (`Send`, `Ack`), and unroutable `Delete` operations
+    /// (e.g. `all = true`, empty `KeySet`, or missing `KeySet`).
+    fn is_routable_non_insert(mutation: &ProtoMutation) -> bool {
+        match &mutation.operation {
+            Some(Operation::Update(_) | Operation::InsertOrUpdate(_) | Operation::Replace(_)) => {
+                true
+            }
+            Some(Operation::Delete(delete)) => delete.key_set.as_ref().is_some_and(|key_set| {
+                !key_set.all && (!key_set.keys.is_empty() || !key_set.ranges.is_empty())
+            }),
+            _ => false,
+        }
+    }
+
+    /// Selects a reference to the best mutation to act as a routing `mutation_key`.
+    /// Prefers any non-`Insert` variation (like `Update`, `InsertOrUpdate`, `Replace`, `Delete`)
+    /// since inserts more often use auto-generated columns (e.g. for primary key generation).
+    /// Using a mutation with only non-generated values as the mutation key is preferred, as it reduces
+    /// the overhead internally in Spanner.
+    /// If only `Insert` mutations are present, it selects the insert mutation with the largest number of rows.
+    pub(crate) fn select_mutation_key_ref(mutations: &[ProtoMutation]) -> Option<&ProtoMutation> {
+        match mutations {
+            [] => None,
+            [single_mutation] => Some(single_mutation),
+            _ => {
+                // 1. Prefer any routable non-Insert mutation, choosing one at random.
+                let selected_non_insert = mutations
+                    .iter()
+                    .filter(|mutation| Self::is_routable_non_insert(mutation))
+                    .choose(&mut rng());
+
+                if let Some(mutation) = selected_non_insert {
+                    return Some(mutation);
+                }
+
+                // 2. If only Inserts are present, choose the one with the largest number of values (rows).
+                let max_insert = mutations
+                    .iter()
+                    .filter_map(|mutation| match &mutation.operation {
+                        Some(Operation::Insert(write)) => Some((mutation, write.values.len())),
+                        _ => None,
+                    })
+                    .max_by_key(|&(_, number_of_rows)| number_of_rows)
+                    .map(|(mutation, _)| mutation);
+
+                max_insert.or_else(|| mutations.first())
+            }
+        }
+    }
+
+    /// Selects the best mutation to act as a routing `mutation_key`.
+    ///
+    /// Delegates to [`Self::select_mutation_key_ref`] and clones the selected mutation.
+    pub(crate) fn select_mutation_key(mutations: &[ProtoMutation]) -> Option<ProtoMutation> {
+        Self::select_mutation_key_ref(mutations).cloned()
+    }
+}
+
+impl Write {
+    fn into_proto(self) -> ProtoWrite {
+        ProtoWrite::new()
+            .set_table(self.table)
+            .set_columns(self.columns)
+            .set_values(vec![
+                self.values
+                    .into_iter()
+                    .map(Value::into_serde_value)
+                    .collect::<wkt::ListValue>(),
+            ])
+    }
+}
+
+impl Delete {
+    fn into_proto(self) -> ProtoDelete {
+        ProtoDelete::new()
+            .set_table(self.table)
+            .set_key_set(self.key_set.into_proto())
+    }
+}
+
+/// A builder for constructing `Write` mutations fluently.
+pub struct WriteBuilder {
+    table: String,
+    mutation_type: MutationType,
+    columns: Vec<String>,
+    values: Vec<Value>,
+}
+
+enum MutationType {
+    Insert,
+    Update,
+    InsertOrUpdate,
+    Replace,
+}
+
+impl WriteBuilder {
+    fn new(table: impl Into<String>, mutation_type: MutationType) -> Self {
+        Self {
+            table: table.into(),
+            mutation_type,
+            columns: Vec::new(),
+            values: Vec::new(),
+        }
+    }
+
+    /// Returns a binder to set the value of `column_name` that should be applied by the mutation.
+    ///
+    /// # Example
+    /// ```rust
+    /// use google_cloud_spanner::mutation::Mutation;
+    /// let mutation = Mutation::new_insert_builder("Users")
+    ///     .set("UserId").to(&1)
+    ///     .build();
+    /// ```
+    pub fn set(self, column_name: impl Into<String>) -> ValueBinder {
+        ValueBinder {
+            builder: self,
+            column: column_name.into(),
+        }
+    }
+
+    /// Builds and returns the finalized `Mutation`.
+    pub fn build(self) -> Mutation {
+        let write = Write {
+            table: self.table,
+            columns: self.columns,
+            values: self.values,
+        };
+        let inner = match self.mutation_type {
+            MutationType::Insert => InternalMutation::Insert(write),
+            MutationType::Update => InternalMutation::Update(write),
+            MutationType::InsertOrUpdate => InternalMutation::InsertOrUpdate(write),
+            MutationType::Replace => InternalMutation::Replace(write),
+        };
+        Mutation { inner }
+    }
+}
+
+/// A binder that associates a column name with a value within a `WriteBuilder`.
+pub struct ValueBinder {
+    builder: WriteBuilder,
+    column: String,
+}
+
+impl ValueBinder {
+    /// Sets the value for the column.
+    pub fn to<T: Into<Value>>(mut self, value: T) -> WriteBuilder {
+        self.builder.columns.push(self.column);
+        self.builder.values.push(value.into());
+        self.builder
+    }
+}
+
+/// A group of mutations that are applied atomically in a [crate::batch::BatchWriteTransaction].
+#[derive(Clone, Debug, PartialEq)]
+#[non_exhaustive]
+pub struct MutationGroup {
+    mutations: Vec<Mutation>,
+}
+
+impl MutationGroup {
+    /// Creates a new mutation group from a list of mutations.
+    pub fn new(mutations: Vec<Mutation>) -> Self {
+        Self { mutations }
+    }
+
+    /// Returns a reference to the collection of mutations in this group.
+    pub fn mutations(&self) -> &[Mutation] {
+        &self.mutations
+    }
+
+    pub(crate) fn build_proto(self) -> ProtoMutationGroup {
+        ProtoMutationGroup::new().set_mutations(self.mutations.into_iter().map(|m| m.build_proto()))
+    }
+}
+
+impl IntoIterator for MutationGroup {
+    type Item = Mutation;
+    type IntoIter = IntoIter<Mutation>;
+
+    fn into_iter(self) -> Self::IntoIter {
+        self.mutations.into_iter()
+    }
+}
+
+impl<'a> IntoIterator for &'a MutationGroup {
+    type Item = &'a Mutation;
+    type IntoIter = Iter<'a, Mutation>;
+
+    fn into_iter(self) -> Self::IntoIter {
+        self.mutations.iter()
+    }
+}
+
+/// Constructs a [`Mutation`] using declarative syntax.
+///
+/// # Examples
+///
+/// ```
+/// use google_cloud_spanner::key::KeySet;
+/// use google_cloud_spanner::mutation;
+///
+/// // Insert operation
+/// let insert_mut = mutation!(insert "Singers" {
+///     SingerId: 1_i64,
+///     FirstName: "Marc",
+///     LastName: "Richards",
+/// });
+///
+/// // Update operation
+/// let update_mut = mutation!(update "Albums" {
+///     SingerId: 1_i64,
+///     AlbumId: 1_i64,
+///     MarketingBudget: 100_000_i64,
+/// });
+///
+/// // Insert or Update operation
+/// let upsert_mut = mutation!(insert_or_update "Singers" {
+///     SingerId: 1_i64,
+///     FirstName: "Marc",
+///     LastName: "Richards",
+/// });
+///
+/// // Replace operation
+/// let replace_mut = mutation!(replace "Singers" {
+///     SingerId: 1_i64,
+///     FirstName: "Marc",
+///     LastName: "Richards",
+/// });
+///
+/// // Delete operation
+/// let delete_mut = mutation!(delete "Singers", KeySet::all());
+/// ```
+#[macro_export]
+macro_rules! mutation {
+    // Internal helper matcher for column names (ident vs string expr)
+    (@col $id:ident) => {
+        stringify!($id)
+    };
+    (@col $lit:expr) => {
+        $lit
+    };
+
+    // Internal helper for write operations
+    (@build_write $builder:ident, $table:tt, { $($col:tt : $val:expr),* $(,)? }) => {
+        $crate::mutation::Mutation::$builder($table)
+            $(.set($crate::mutation!(@col $col)).to($val))*
+            .build()
+    };
+
+    // Delete operation
+    (delete $table:expr, $key_set:expr) => {
+        $crate::mutation::Mutation::delete($table, $key_set)
+    };
+
+    // Insert operation
+    (insert $table:tt { $($rest:tt)* }) => {
+        $crate::mutation!(@build_write new_insert_builder, $table, { $($rest)* })
+    };
+
+    // Update operation
+    (update $table:tt { $($rest:tt)* }) => {
+        $crate::mutation!(@build_write new_update_builder, $table, { $($rest)* })
+    };
+
+    // Insert or update operation
+    (insert_or_update $table:tt { $($rest:tt)* }) => {
+        $crate::mutation!(@build_write new_insert_or_update_builder, $table, { $($rest)* })
+    };
+
+    // Replace operation
+    (replace $table:tt { $($rest:tt)* }) => {
+        $crate::mutation!(@build_write new_replace_builder, $table, { $($rest)* })
+    };
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::key::{Key, KeySet};
+    use crate::model::Mutation as ProtoMutation;
+    use crate::model::mutation::{
+        Ack as ProtoAck, Delete as ProtoDelete, Send as ProtoSend, Write as ProtoWrite,
+    };
+    use crate::to_value::ToValue;
+    use std::slice;
+
+    #[test]
+    fn auto_traits() {
+        static_assertions::assert_impl_all!(Mutation: Send, Sync, Clone, std::fmt::Debug);
+        static_assertions::assert_impl_all!(Write: Send, Sync, Clone, std::fmt::Debug);
+        static_assertions::assert_impl_all!(Delete: Send, Sync, Clone, std::fmt::Debug);
+        static_assertions::assert_impl_all!(WriteBuilder: Send, Sync);
+        static_assertions::assert_impl_all!(ValueBinder: Send, Sync);
+        static_assertions::assert_impl_all!(MutationGroup: Send, Sync, Clone, std::fmt::Debug);
+    }
+
+    #[test]
+    fn mutation_group() {
+        let mutation1 = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(1)
+            .build();
+        let mutation2 = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(2)
+            .build();
+        let group = MutationGroup::new(vec![mutation1.clone(), mutation2.clone()]);
+        assert_eq!(group.mutations.len(), 2);
+        assert_eq!(group.mutations[0], mutation1);
+        assert_eq!(group.mutations[1], mutation2);
+    }
+
+    #[test]
+    fn mutation_group_into_iter() {
+        let mutation1 = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(1)
+            .build();
+        let mutation2 = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(2)
+            .build();
+        let group = MutationGroup::new(vec![mutation1.clone(), mutation2.clone()]);
+
+        let mutations: Vec<_> = group.into_iter().collect();
+        assert_eq!(mutations, vec![mutation1, mutation2]);
+    }
+
+    #[test]
+    fn mutation_group_iter_ref() {
+        let mutation1 = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(1)
+            .build();
+        let mutation2 = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(2)
+            .build();
+        let group = MutationGroup::new(vec![mutation1.clone(), mutation2.clone()]);
+
+        let mutations: Vec<_> = (&group).into_iter().collect();
+        assert_eq!(mutations, vec![&mutation1, &mutation2]);
+    }
+
+    #[test]
+    fn value_binder_to_owned_value() {
+        let by_ref = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(1)
+            .build();
+        let by_value = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(1.to_value())
+            .build();
+        assert_eq!(by_ref, by_value);
+    }
+
+    #[test]
+    #[allow(clippy::needless_borrows_for_generic_args)]
+    fn test_value_binder_borrowed_types() {
+        let id_string = String::from("user-123");
+        let age = 42i64;
+        let active = true;
+
+        let mutation = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(&id_string)
+            .set("Age")
+            .to(&age)
+            .set("Active")
+            .to(&active)
+            .set("Role")
+            .to(&"admin")
+            .build();
+
+        match mutation.inner {
+            InternalMutation::Insert(write) => {
+                assert_eq!(write.values[0].as_string(), "user-123");
+                assert_eq!(write.values[1].as_string(), "42");
+                assert!(write.values[2].as_bool());
+                assert_eq!(write.values[3].as_string(), "admin");
+            }
+            _ => panic!("Expected Insert mutation"),
+        }
+    }
+
+    #[test]
+    fn value_binder_to_turbofished_ref_none() {
+        let mut_ref_turbofished = Mutation::new_insert_builder("Users")
+            .set("Age")
+            .to::<&Option<i64>>(&None)
+            .build();
+        let mut_owned_none = Mutation::new_insert_builder("Users")
+            .set("Age")
+            .to::<Option<i64>>(None)
+            .build();
+        assert_eq!(mut_ref_turbofished, mut_owned_none);
+    }
+
+    #[test]
+    fn value_binder_to_untyped_null() {
+        let mut_null = Mutation::new_insert_builder("Users")
+            .set("Age")
+            .to(Value::null())
+            .build();
+        let mut_unit_none = Mutation::new_insert_builder("Users")
+            .set("Age")
+            .to(None::<()>)
+            .build();
+        let mut_value_none = Mutation::new_insert_builder("Users")
+            .set("Age")
+            .to(None::<Value>)
+            .build();
+        assert_eq!(mut_null, mut_unit_none);
+        assert_eq!(mut_null, mut_value_none);
+    }
+
+    #[test]
+    fn insert_builder() {
+        let mutation = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(1)
+            .set("UserName")
+            .to("Alice")
+            .build();
+
+        match mutation.inner {
+            InternalMutation::Insert(write) => {
+                assert_eq!(write.table, "Users");
+                assert_eq!(write.columns, vec!["UserId", "UserName"]);
+                assert_eq!(write.values.len(), 2);
+                assert_eq!(write.values[0].as_string(), "1");
+                assert_eq!(write.values[1].as_string(), "Alice");
+            }
+            _ => panic!("Expected Insert mutation"),
+        }
+    }
+
+    #[test]
+    fn update_builder() {
+        let mutation = Mutation::new_update_builder("Users")
+            .set("UserId")
+            .to(1)
+            .build();
+
+        match mutation.inner {
+            InternalMutation::Update(write) => {
+                assert_eq!(write.table, "Users");
+                assert_eq!(write.columns, vec!["UserId"]);
+                assert_eq!(write.values.len(), 1);
+                assert_eq!(write.values[0].as_string(), "1");
+            }
+            _ => panic!("Expected Update mutation"),
+        }
+    }
+
+    #[test]
+    fn insert_or_update_builder() {
+        let mutation = Mutation::new_insert_or_update_builder("Users")
+            .set("UserId")
+            .to(1)
+            .build();
+
+        match mutation.inner {
+            InternalMutation::InsertOrUpdate(write) => {
+                assert_eq!(write.table, "Users");
+                assert_eq!(write.columns, vec!["UserId"]);
+                assert_eq!(write.values.len(), 1);
+                assert_eq!(write.values[0].as_string(), "1");
+            }
+            _ => panic!("Expected InsertOrUpdate mutation"),
+        }
+    }
+
+    #[test]
+    fn replace_builder() {
+        let mutation = Mutation::new_replace_builder("Users")
+            .set("UserId")
+            .to(1)
+            .build();
+
+        match mutation.inner {
+            InternalMutation::Replace(write) => {
+                assert_eq!(write.table, "Users");
+                assert_eq!(write.columns, vec!["UserId"]);
+                assert_eq!(write.values.len(), 1);
+                assert_eq!(write.values[0].as_string(), "1");
+            }
+            _ => panic!("Expected Replace mutation"),
+        }
+    }
+
+    #[test]
+    fn build_proto_insert() {
+        let mutation = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(1)
+            .set("UserName")
+            .to("Alice")
+            .build();
+        let proto = mutation.build_proto();
+        match proto.operation {
+            Some(Operation::Insert(write)) => {
+                assert_eq!(write.table, "Users");
+                assert_eq!(write.columns, vec!["UserId", "UserName"]);
+                assert_eq!(write.values.len(), 1);
+                assert_eq!(write.values[0].len(), 2);
+                assert_eq!(write.values[0][0], serde_json::json!("1"));
+                assert_eq!(write.values[0][1], serde_json::json!("Alice"));
+            }
+            _ => panic!("Expected Insert operation, got {:?}", proto.operation),
+        }
+    }
+
+    #[test]
+    fn build_proto_update() {
+        let mutation = Mutation::new_update_builder("Users")
+            .set("UserId")
+            .to(1)
+            .build();
+        let proto = mutation.build_proto();
+        match proto.operation {
+            Some(Operation::Update(write)) => {
+                assert_eq!(write.table, "Users");
+                assert_eq!(write.columns, vec!["UserId"]);
+                assert_eq!(write.values.len(), 1);
+            }
+            _ => panic!("Expected Update operation, got {:?}", proto.operation),
+        }
+    }
+
+    #[test]
+    fn build_proto_insert_or_update() {
+        let mutation = Mutation::new_insert_or_update_builder("Users")
+            .set("UserId")
+            .to(1)
+            .build();
+        let proto = mutation.build_proto();
+        match proto.operation {
+            Some(Operation::InsertOrUpdate(write)) => {
+                assert_eq!(write.table, "Users");
+                assert_eq!(write.columns, vec!["UserId"]);
+                assert_eq!(write.values.len(), 1);
+            }
+            _ => panic!(
+                "Expected InsertOrUpdate operation, got {:?}",
+                proto.operation
+            ),
+        }
+    }
+
+    #[test]
+    fn build_proto_replace() {
+        let mutation = Mutation::new_replace_builder("Users")
+            .set("UserId")
+            .to(1)
+            .build();
+        let proto = mutation.build_proto();
+        match proto.operation {
+            Some(Operation::Replace(write)) => {
+                assert_eq!(write.table, "Users");
+                assert_eq!(write.columns, vec!["UserId"]);
+                assert_eq!(write.values.len(), 1);
+            }
+            _ => panic!("Expected Replace operation, got {:?}", proto.operation),
+        }
+    }
+
+    #[test]
+    fn build_proto_delete() {
+        let key_set = KeySet::builder().build();
+        let mutation = Mutation::delete("Users", key_set);
+        let proto = mutation.build_proto();
+        match proto.operation {
+            Some(Operation::Delete(delete)) => {
+                assert_eq!(delete.table, "Users");
+            }
+            _ => panic!("Expected Delete operation, got {:?}", proto.operation),
+        }
+    }
+
+    #[test]
+    fn test_select_mutation_key_empty() {
+        let mutations = vec![];
+        let key = Mutation::select_mutation_key(&mutations);
+        assert!(
+            key.is_none(),
+            "select_mutation_key on empty slice must return None"
+        );
+        assert!(
+            Mutation::select_mutation_key_ref(&mutations).is_none(),
+            "select_mutation_key_ref on empty slice must return None"
+        );
+    }
+
+    #[test]
+    fn select_mutation_key_ref_single_mutation() {
+        let insert_mutation = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(1)
+            .build()
+            .build_proto();
+        let update_mutation = Mutation::new_update_builder("Users")
+            .set("UserId")
+            .to(2)
+            .build()
+            .build_proto();
+        let delete_all = Mutation::delete("Users", KeySet::all()).build_proto();
+        let send_mutation = ProtoMutation::new().set_send(ProtoSend::new());
+
+        assert_eq!(
+            Mutation::select_mutation_key_ref(slice::from_ref(&insert_mutation)),
+            Some(&insert_mutation),
+            "single insert mutation must be returned directly"
+        );
+        assert_eq!(
+            Mutation::select_mutation_key_ref(slice::from_ref(&update_mutation)),
+            Some(&update_mutation),
+            "single update mutation must be returned directly"
+        );
+        assert_eq!(
+            Mutation::select_mutation_key_ref(slice::from_ref(&delete_all)),
+            Some(&delete_all),
+            "single delete all mutation must be returned directly"
+        );
+        assert_eq!(
+            Mutation::select_mutation_key_ref(slice::from_ref(&send_mutation)),
+            Some(&send_mutation),
+            "single send mutation must be returned directly"
+        );
+    }
+
+    #[test]
+    fn test_select_mutation_key_prefers_insert_or_update_over_insert() {
+        let m1 = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(1)
+            .build()
+            .build_proto();
+        let m2 = Mutation::new_insert_or_update_builder("Users")
+            .set("UserId")
+            .to(2)
+            .build()
+            .build_proto();
+        let mutations = vec![m1.clone(), m2.clone()];
+        let key = Mutation::select_mutation_key(&mutations);
+        assert_eq!(key, Some(m2));
+    }
+
+    #[test]
+    fn test_select_mutation_key_only_insert_prefers_largest() {
+        let m1 = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(1)
+            .build()
+            .build_proto();
+
+        // Create an insert mutation with two rows (larger than m1 which has one row)
+        let row1 = vec![serde_json::json!("2")]
+            .into_iter()
+            .collect::<wkt::ListValue>();
+        let row2 = vec![serde_json::json!("3")]
+            .into_iter()
+            .collect::<wkt::ListValue>();
+        let write2 = ProtoWrite::new()
+            .set_table("Users")
+            .set_columns(vec!["UserId".to_string()])
+            .set_values(vec![row1, row2]);
+        let m2 = ProtoMutation::new().set_insert(write2);
+
+        let mutations = vec![m1.clone(), m2.clone()];
+        let key = Mutation::select_mutation_key(&mutations);
+        assert_eq!(key, Some(m2));
+    }
+
+    #[test]
+    fn test_select_mutation_key_mix() {
+        let m1 = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(1)
+            .build()
+            .build_proto();
+        let m2 = Mutation::new_update_builder("Users")
+            .set("UserId")
+            .to(2)
+            .build()
+            .build_proto();
+        let m3 = Mutation::new_insert_or_update_builder("Users")
+            .set("UserId")
+            .to(3)
+            .build()
+            .build_proto();
+        let mutations = vec![m1.clone(), m2.clone(), m3.clone()];
+        let key = Mutation::select_mutation_key(&mutations).expect("Expected a key");
+        // Either of the non-insert mutations (m2 or m3) can be selected randomly.
+        assert!(
+            key == m2 || key == m3,
+            "Expected either m2 or m3 to be selected, got {:?}",
+            key
+        );
+    }
+
+    #[test]
+    fn test_select_mutation_key_only_non_insert() {
+        let m1 = Mutation::new_update_builder("Users")
+            .set("UserId")
+            .to(1)
+            .build()
+            .build_proto();
+        let m2 = Mutation::new_replace_builder("Users")
+            .set("UserId")
+            .to(2)
+            .build()
+            .build_proto();
+        let mutations = vec![m1.clone(), m2.clone()];
+        let key = Mutation::select_mutation_key(&mutations).expect("Expected a key");
+        // Either non-insert mutation can be selected randomly.
+        assert!(
+            key == m1 || key == m2,
+            "Expected either m1 or m2 to be selected, got {:?}",
+            key
+        );
+    }
+
+    #[test]
+    fn test_select_mutation_key_operation_none() {
+        let m1 = ProtoMutation::default();
+        let m2 = ProtoMutation::default();
+        let mutations = vec![m1.clone(), m2.clone()];
+        let key = Mutation::select_mutation_key(&mutations);
+        assert_eq!(key, Some(m1));
+    }
+
+    #[test]
+    fn select_mutation_key_ref_returns_reference() {
+        let insert_mutation = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(1)
+            .build()
+            .build_proto();
+        let update_mutation = Mutation::new_update_builder("Users")
+            .set("UserId")
+            .to(2)
+            .build()
+            .build_proto();
+        let mutations = vec![insert_mutation, update_mutation.clone()];
+        let selected_reference = Mutation::select_mutation_key_ref(&mutations);
+        assert_eq!(
+            selected_reference,
+            Some(&update_mutation),
+            "select_mutation_key_ref must return a reference to the selected non-insert mutation"
+        );
+    }
+
+    #[test]
+    fn select_mutation_key_ref_excludes_send_and_ack() {
+        let send_mutation = ProtoMutation::new().set_send(ProtoSend::new());
+        let ack_mutation = ProtoMutation::new().set_ack(ProtoAck::new());
+        let insert_mutation = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(1)
+            .build()
+            .build_proto();
+        let update_mutation = Mutation::new_update_builder("Users")
+            .set("UserId")
+            .to(2)
+            .build()
+            .build_proto();
+
+        // 1. [Send, Insert] selects Insert because Send is excluded from candidate non-inserts
+        let send_and_insert = vec![send_mutation.clone(), insert_mutation.clone()];
+        assert_eq!(
+            Mutation::select_mutation_key_ref(&send_and_insert),
+            Some(&insert_mutation),
+            "select_mutation_key_ref must prefer Insert over Send"
+        );
+
+        // 2. [Ack, Update] selects Update because Ack is excluded
+        let ack_and_update = vec![ack_mutation.clone(), update_mutation.clone()];
+        assert_eq!(
+            Mutation::select_mutation_key_ref(&ack_and_update),
+            Some(&update_mutation),
+            "select_mutation_key_ref must prefer Update over Ack"
+        );
+
+        // 3. Only [Send, Ack] falls back to the first mutation
+        let send_and_ack = vec![send_mutation.clone(), ack_mutation];
+        assert_eq!(
+            Mutation::select_mutation_key_ref(&send_and_ack),
+            Some(&send_mutation),
+            "select_mutation_key_ref must fall back to first when only Send and Ack are present"
+        );
+    }
+
+    #[test]
+    fn select_mutation_key_ref_excludes_delete_all() {
+        let delete_all = Mutation::delete("Users", KeySet::all()).build_proto();
+        let insert_mutation = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(1)
+            .build()
+            .build_proto();
+        let update_mutation = Mutation::new_update_builder("Users")
+            .set("UserId")
+            .to(2)
+            .build()
+            .build_proto();
+
+        // [Delete(all = true), Insert] selects Insert because Delete(all) cannot provide a routing key
+        let delete_and_insert = vec![delete_all.clone(), insert_mutation.clone()];
+        assert_eq!(
+            Mutation::select_mutation_key_ref(&delete_and_insert),
+            Some(&insert_mutation),
+            "select_mutation_key_ref must prefer Insert over Delete(all)"
+        );
+
+        // [Delete(all = true), Update] selects Update
+        let delete_and_update = vec![delete_all.clone(), update_mutation.clone()];
+        assert_eq!(
+            Mutation::select_mutation_key_ref(&delete_and_update),
+            Some(&update_mutation),
+            "select_mutation_key_ref must prefer Update over Delete(all)"
+        );
+
+        // Only [Delete(all = true)] falls back to the first mutation
+        let only_delete_all = vec![delete_all.clone()];
+        assert_eq!(
+            Mutation::select_mutation_key_ref(&only_delete_all),
+            Some(&delete_all),
+            "select_mutation_key_ref must fall back to first when only Delete(all) is present"
+        );
+    }
+
+    #[test]
+    fn select_mutation_key_ref_excludes_empty_keyset_delete() {
+        let empty_delete = Mutation::delete("Users", KeySet::builder().build()).build_proto();
+        let insert_mutation = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(1)
+            .build()
+            .build_proto();
+        let update_mutation = Mutation::new_update_builder("Users")
+            .set("UserId")
+            .to(2)
+            .build()
+            .build_proto();
+
+        // [Empty Delete, Insert] selects Insert because empty delete cannot provide a routing key
+        let delete_and_insert = vec![empty_delete.clone(), insert_mutation.clone()];
+        assert_eq!(
+            Mutation::select_mutation_key_ref(&delete_and_insert),
+            Some(&insert_mutation),
+            "select_mutation_key_ref must prefer Insert over empty Delete"
+        );
+
+        // [Empty Delete, Update] selects Update
+        let delete_and_update = vec![empty_delete.clone(), update_mutation.clone()];
+        assert_eq!(
+            Mutation::select_mutation_key_ref(&delete_and_update),
+            Some(&update_mutation),
+            "select_mutation_key_ref must prefer Update over empty Delete"
+        );
+
+        // Only [Empty Delete] falls back to the first mutation
+        let only_empty_delete = vec![empty_delete.clone()];
+        assert_eq!(
+            Mutation::select_mutation_key_ref(&only_empty_delete),
+            Some(&empty_delete),
+            "select_mutation_key_ref must fall back to first when only empty Delete is present"
+        );
+    }
+
+    #[test]
+    fn select_mutation_key_ref_excludes_delete_none_keyset() {
+        let delete_none = ProtoMutation::new().set_delete(ProtoDelete::new().set_table("Users"));
+        let insert_mutation = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(1)
+            .build()
+            .build_proto();
+        let update_mutation = Mutation::new_update_builder("Users")
+            .set("UserId")
+            .to(2)
+            .build()
+            .build_proto();
+
+        // 1. [Delete(key_set == None), Insert] selects Insert because Delete without keys cannot provide a routing key
+        let delete_and_insert = vec![delete_none.clone(), insert_mutation.clone()];
+        assert_eq!(
+            Mutation::select_mutation_key_ref(&delete_and_insert),
+            Some(&insert_mutation),
+            "select_mutation_key_ref must prefer Insert over Delete with None key_set"
+        );
+
+        // 2. [Delete(key_set == None), Update] selects Update
+        let delete_and_update = vec![delete_none.clone(), update_mutation.clone()];
+        assert_eq!(
+            Mutation::select_mutation_key_ref(&delete_and_update),
+            Some(&update_mutation),
+            "select_mutation_key_ref must prefer Update over Delete with None key_set"
+        );
+
+        // 3. Only [Delete(key_set == None)] falls back to the first mutation
+        let only_delete_none = vec![delete_none.clone()];
+        assert_eq!(
+            Mutation::select_mutation_key_ref(&only_delete_none),
+            Some(&delete_none),
+            "select_mutation_key_ref must fall back to first when only Delete with None key_set is present"
+        );
+    }
+
+    #[test]
+    fn select_mutation_key_ref_prefers_valid_keyed_delete_over_insert() {
+        let keyed_delete = Mutation::delete(
+            "Users",
+            KeySet::builder()
+                .add_key(Key::new(vec![Value::from(1_i64)]))
+                .build(),
+        )
+        .build_proto();
+        let insert_mutation = Mutation::new_insert_builder("Users")
+            .set("UserId")
+            .to(2)
+            .build()
+            .build_proto();
+
+        let delete_and_insert = vec![insert_mutation.clone(), keyed_delete.clone()];
+        assert_eq!(
+            Mutation::select_mutation_key_ref(&delete_and_insert),
+            Some(&keyed_delete),
+            "select_mutation_key_ref must prefer a valid keyed Delete over an Insert"
+        );
+    }
+
+    #[test]
+    fn test_mutation_macro_insert() {
+        let macro_mutation = mutation!(insert "Singers" {
+            SingerId: 1_i64,
+            FirstName: "Marc",
+            LastName: "Richards",
+        });
+
+        let builder_mutation = Mutation::new_insert_builder("Singers")
+            .set("SingerId")
+            .to(1_i64)
+            .set("FirstName")
+            .to("Marc")
+            .set("LastName")
+            .to("Richards")
+            .build();
+
+        assert_eq!(macro_mutation, builder_mutation);
+    }
+
+    #[test]
+    fn test_mutation_macro_update_with_string_literal() {
+        let macro_mutation = mutation!(update "Albums" {
+            SingerId: 1_i64,
+            "AlbumTitle": "New Title",
+            MarketingBudget: 100_000_i64,
+        });
+
+        let builder_mutation = Mutation::new_update_builder("Albums")
+            .set("SingerId")
+            .to(1_i64)
+            .set("AlbumTitle")
+            .to("New Title")
+            .set("MarketingBudget")
+            .to(100_000_i64)
+            .build();
+
+        assert_eq!(macro_mutation, builder_mutation);
+    }
+
+    #[test]
+    fn test_mutation_macro_insert_or_update() {
+        let macro_mutation = mutation!(insert_or_update "Singers" {
+            SingerId: 2_i64,
+            FirstName: "Alice",
+        });
+
+        let builder_mutation = Mutation::new_insert_or_update_builder("Singers")
+            .set("SingerId")
+            .to(2_i64)
+            .set("FirstName")
+            .to("Alice")
+            .build();
+
+        assert_eq!(macro_mutation, builder_mutation);
+    }
+
+    #[test]
+    fn test_mutation_macro_replace() {
+        let macro_mutation = mutation!(replace "Singers" {
+            SingerId: 3_i64,
+            FirstName: "Bob",
+        });
+
+        let builder_mutation = Mutation::new_replace_builder("Singers")
+            .set("SingerId")
+            .to(3_i64)
+            .set("FirstName")
+            .to("Bob")
+            .build();
+
+        assert_eq!(macro_mutation, builder_mutation);
+    }
+
+    #[test]
+    fn test_mutation_macro_delete() {
+        let macro_mutation = mutation!(delete "Singers", KeySet::all());
+        let direct_mutation = Mutation::delete("Singers", KeySet::all());
+
+        assert_eq!(macro_mutation, direct_mutation);
+    }
+
+    #[test]
+    fn test_mutation_macro_complex_table_expressions() {
+        fn get_table() -> &'static str {
+            "Singers"
+        }
+        mod constants {
+            pub const TABLE: &str = "Singers";
+        }
+
+        let macro_mutation1 = mutation!(insert (get_table()) {
+            SingerId: 1_i64,
+        });
+        let macro_mutation2 = mutation!(insert (constants::TABLE) {
+            SingerId: 1_i64,
+        });
+        let delete_mutation = mutation!(delete constants::TABLE, KeySet::all());
+
+        let expected_insert = Mutation::new_insert_builder("Singers")
+            .set("SingerId")
+            .to(1_i64)
+            .build();
+        let expected_delete = Mutation::delete("Singers", KeySet::all());
+
+        assert_eq!(macro_mutation1, expected_insert);
+        assert_eq!(macro_mutation2, expected_insert);
+        assert_eq!(delete_mutation, expected_delete);
+    }
+}

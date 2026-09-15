@@ -1,0 +1,754 @@
+// Licensed to the Apache Software Foundation (ASF) under one
+// or more contributor license agreements.  See the NOTICE file
+// distributed with this work for additional information
+// regarding copyright ownership.  The ASF licenses this file
+// to you under the Apache License, Version 2.0 (the
+// "License"); you may not use this file except in compliance
+// with the License.  You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+
+//! Transport-to-consensus session bridge for server.
+//!
+//! Maps ephemeral transport connections to durable consensus sessions.
+//! Each connection goes through: `connect → login → register → bound`.
+//!
+//! The [`SessionManager`] is the server-side counterpart of the SDK's
+//! session lifecycle. It does **not** own the `ClientTable`. That lives
+//! in the consensus layer. This module tracks the binding between a
+//! transport connection and the consensus-level `(client_id, session)` pair.
+
+use crate::cluster_meta::ClusterRoster;
+use ahash::AHashMap;
+use message_bus::installer::conn_info::ClientTransportKind;
+use shard::ConnectedClientInfo;
+use std::net::SocketAddr;
+use std::rc::Rc;
+use std::time::{Duration, Instant};
+
+/// What the request funnel resolves from one `connections` lookup per frame.
+///
+/// The bound consensus session, the acting user, the transport peer address
+/// and the read-your-writes floor. `Default` (everything absent, no address,
+/// floor `0`) stands for a connection neither this map nor the bus knows.
+#[derive(Debug, Clone, Copy, Default)]
+pub(crate) struct ConnectionContext {
+    /// `(client_id, session)` once register committed, `None` before.
+    pub bound: Option<(u128, u64)>,
+    /// Acting user from `login`, `None` while still `Connected`.
+    pub user_id: Option<u32>,
+    /// Peer address recorded by [`SessionManager::ensure_connection`]; the
+    /// non-replicated reads pick the advertised address from it, and
+    /// `None` degrades to the catch-all address.
+    pub address: Option<SocketAddr>,
+    /// Read-your-writes floor: the metadata commit this connection's own
+    /// writes have reached, which its reads must not be served below.
+    ///
+    /// A connection this map does not know reads as `0` -- it was promised
+    /// nothing, so its reads wait for nothing.
+    pub metadata_watermark: u64,
+}
+
+/// Connection lifecycle states.
+///
+/// ```text
+///   Connected ──login──> Authenticated ──register──> Bound
+///
+///   Bound ──evict──> Connected   (another conn binds same client_id)
+///   {any} ──disconnect──> ∅
+/// ```
+#[derive(Debug, Clone)]
+pub enum ConnectionState {
+    /// Connection established, not yet authenticated.
+    Connected,
+    /// Login succeeded (credentials verified). `user_id` is known.
+    /// Waiting for register to establish a consensus session.
+    Authenticated { user_id: u32 },
+    /// Register committed through consensus. Connection is bound to a
+    /// `(client_id, session)` pair. Requests on this connection use
+    /// these values to populate `RoutedRequestHeader.client` and
+    /// `RoutedRequestHeader.session`.
+    Bound {
+        user_id: u32,
+        client_id: u128,
+        session: u64,
+    },
+}
+
+/// SDK identity reported in the login-register version prefix.
+#[derive(Debug, Clone)]
+pub struct ClientSdkInfo {
+    pub sdk_name: String,
+    pub sdk_version: String,
+    /// Packed protocol version, see `iggy_binary_protocol::ProtocolVersion`.
+    pub protocol_version: u32,
+}
+
+/// Per-connection metadata tracked by the session manager.
+#[derive(Debug, Clone)]
+pub struct Connection {
+    pub address: SocketAddr,
+    pub transport: ClientTransportKind,
+    pub state: ConnectionState,
+    /// Last time the client proved liveness (a `ping`). The heartbeat
+    /// verifier evicts connections stale past the configured threshold.
+    pub last_heartbeat: Instant,
+    /// Recorded at login; `None` until the connection authenticates.
+    pub sdk: Option<ClientSdkInfo>,
+    /// Highest metadata op this connection has been told committed.
+    ///
+    /// Seeded from the bound session (the register's own commit op, which
+    /// floors everything the client committed before it re-homed) and raised by
+    /// every committed reply relayed on this connection. The read gate holds a
+    /// local read until the node's applied frontier covers it, so a client
+    /// cannot be served state older than a write it already saw acked.
+    ///
+    /// Per-connection rather than per-client: the number only has to cover what
+    /// THIS socket was told, and a client that reconnects re-seeds from the
+    /// session it binds.
+    pub metadata_watermark: u64,
+}
+
+/// Bridges transport connections to consensus sessions.
+///
+/// NOT thread-safe: each shard owns one `SessionManager` on its
+/// single-threaded compio runtime, the same way the rest of server
+/// is structured. All mutators take `&mut self`; the type carries no
+/// internal locking.
+///
+/// ## Invariants
+///
+/// - A `connection_id` appears in at most one of `connections`.
+/// - A `client_id` appears in at most one `Bound` connection (one connection
+///   per consensus session). If a client reconnects with the same `client_id`,
+///   the old connection must be evicted first.
+pub struct SessionManager {
+    /// `ahash` over `std`: connection and client ids are server-minted, so
+    /// there is no `HashDoS` surface, and both maps sit on the per-frame path.
+    /// Neither is order-sensitive (`iter_clients` and `collect_stale` both
+    /// consume the whole map).
+    connections: AHashMap<u128, Connection>,
+    /// Reverse index: `client_id` → `connection_id` for fast lookup when
+    /// a consensus reply arrives and needs routing to the right connection.
+    client_to_connection: AHashMap<u128, u128>,
+    /// This shard's copy of the configured cluster roster, served by the
+    /// `GetClusterMetadata` read. Lives here because it is the
+    /// per-shard context already threaded to the non-replicated read path;
+    /// installed once at bootstrap, disabled until then.
+    cluster_roster: Rc<ClusterRoster>,
+}
+
+impl SessionManager {
+    #[must_use]
+    pub fn new() -> Self {
+        Self {
+            connections: AHashMap::new(),
+            client_to_connection: AHashMap::new(),
+            cluster_roster: Rc::new(ClusterRoster::disabled()),
+        }
+    }
+
+    /// Install this shard's configured cluster roster (once, at bootstrap).
+    pub fn set_cluster_roster(&mut self, roster: Rc<ClusterRoster>) {
+        self.cluster_roster = roster;
+    }
+
+    /// The configured cluster roster for the `GetClusterMetadata` read.
+    #[must_use]
+    pub fn cluster_roster(&self) -> Rc<ClusterRoster> {
+        Rc::clone(&self.cluster_roster)
+    }
+
+    pub fn ensure_connection(
+        &mut self,
+        connection_id: u128,
+        address: SocketAddr,
+        transport: ClientTransportKind,
+    ) {
+        self.connections
+            .entry(connection_id)
+            .or_insert_with(|| Connection {
+                address,
+                transport,
+                state: ConnectionState::Connected,
+                last_heartbeat: Instant::now(),
+                sdk: None,
+                metadata_watermark: 0,
+            });
+    }
+
+    /// The request funnel's per-frame view of a connection: stamp the
+    /// liveness clock and read back everything the dispatch arms resolve
+    /// from it, in ONE map lookup.
+    ///
+    /// `None` means the connection is not registered yet, which happens
+    /// only on a transport's first frame; the caller installs it from the
+    /// bus metadata ([`Self::ensure_connection`]) and asks again.
+    pub(crate) fn touch_connection(&mut self, connection_id: u128) -> Option<ConnectionContext> {
+        let conn = self.connections.get_mut(&connection_id)?;
+        conn.last_heartbeat = Instant::now();
+        let (bound, user_id) = match conn.state {
+            ConnectionState::Bound {
+                user_id,
+                client_id,
+                session,
+            } => (Some((client_id, session)), Some(user_id)),
+            ConnectionState::Authenticated { user_id } => (None, Some(user_id)),
+            ConnectionState::Connected => (None, None),
+        };
+        Some(ConnectionContext {
+            bound,
+            user_id,
+            address: Some(conn.address),
+            metadata_watermark: conn.metadata_watermark,
+        })
+    }
+
+    /// Connection ids whose last heartbeat is older than `max_age` -- the
+    /// stale set the heartbeat verifier evicts. Only `Bound`/`Authenticated`
+    /// connections are considered (a freshly-`Connected` socket mid-handshake
+    /// is left alone until it authenticates).
+    #[must_use]
+    pub fn collect_stale(&self, max_age: Duration, now: Instant) -> Vec<u128> {
+        self.connections
+            .iter()
+            .filter(|(_, conn)| !matches!(conn.state, ConnectionState::Connected))
+            .filter(|(_, conn)| now.duration_since(conn.last_heartbeat) > max_age)
+            .map(|(&id, _)| id)
+            .collect()
+    }
+
+    /// The consensus client id a connection is bound to, if any. The heartbeat
+    /// verifier reads it to look up consumer-group membership before deciding
+    /// whether an eviction would actually release anything.
+    #[must_use]
+    pub fn bound_client_id(&self, connection_id: u128) -> Option<u128> {
+        match self.connections.get(&connection_id)?.state {
+            ConnectionState::Bound { client_id, .. } => Some(client_id),
+            ConnectionState::Authenticated { .. } | ConnectionState::Connected => None,
+        }
+    }
+
+    /// Record (or refresh on re-login) the SDK identity for a connection.
+    /// No state-machine constraint: the gate already validated the version
+    /// and a missing connection just drops the record.
+    pub fn record_sdk_info(&mut self, connection_id: u128, info: ClientSdkInfo) {
+        if let Some(conn) = self.connections.get_mut(&connection_id) {
+            conn.sdk = Some(info);
+        }
+    }
+
+    /// Remove a connection (disconnect). Cleans up the reverse index if bound.
+    ///
+    /// Returns the bound `(client_id, session)` when the removed connection had
+    /// one, so the caller can submit a session-matched `Logout` (the committed
+    /// apply releases the client-table slot cluster-wide).
+    pub fn remove_connection(&mut self, connection_id: u128) -> Option<(u128, u64)> {
+        if let Some(conn) = self.connections.remove(&connection_id)
+            && let ConnectionState::Bound {
+                client_id, session, ..
+            } = conn.state
+        {
+            self.client_to_connection.remove(&client_id);
+            return Some((client_id, session));
+        }
+        None
+    }
+
+    /// Transition to `Authenticated` after successful login.
+    ///
+    /// # Errors
+    /// Returns `Err` if the connection doesn't exist or isn't in `Connected` state.
+    pub fn login(&mut self, connection_id: u128, user_id: u32) -> Result<(), SessionError> {
+        let conn = self
+            .connections
+            .get_mut(&connection_id)
+            .ok_or(SessionError::ConnectionNotFound(connection_id))?;
+        match conn.state {
+            ConnectionState::Connected => {
+                conn.state = ConnectionState::Authenticated { user_id };
+                // The floor belongs to whoever was told those ops committed,
+                // and this socket now serves someone else: a `Connected`
+                // connection is either fresh or one `bind_session` demoted, so
+                // carrying the old mark over would make the new login wait for
+                // a write it never issued. Never the other direction - the
+                // bind below re-seeds from the register epoch.
+                conn.metadata_watermark = 0;
+                Ok(())
+            }
+            _ => Err(SessionError::InvalidTransition {
+                connection_id,
+                from: state_name(&conn.state),
+                to: "Authenticated",
+            }),
+        }
+    }
+
+    /// Transition to `Bound` after register commits through consensus.
+    ///
+    /// The `client_id` is the ephemeral u128 the client generated.
+    /// The `session` is the commit op number assigned by the consensus layer.
+    ///
+    /// If another connection was previously bound to this `client_id`, it is
+    /// forcibly unbound (set back to `Connected`). Only one connection per
+    /// session at a time.
+    ///
+    /// # Errors
+    /// Returns `Err` if the connection doesn't exist or isn't `Authenticated`.
+    ///
+    /// # Panics
+    /// Panics if the connection disappears between validation and mutation
+    /// (impossible in single-threaded use).
+    pub fn bind_session(
+        &mut self,
+        connection_id: u128,
+        client_id: u128,
+        session: u64,
+    ) -> Result<(), SessionError> {
+        // Validate state first (immutable borrow).
+        let conn = self
+            .connections
+            .get(&connection_id)
+            .ok_or(SessionError::ConnectionNotFound(connection_id))?;
+        let ConnectionState::Authenticated { user_id } = conn.state else {
+            return Err(SessionError::InvalidTransition {
+                connection_id,
+                from: state_name(&conn.state),
+                to: "Bound",
+            });
+        };
+
+        // Evict any previous connection bound to this client_id.
+        if let Some(&old_conn_id) = self.client_to_connection.get(&client_id)
+            && old_conn_id != connection_id
+            && let Some(old_conn) = self.connections.get_mut(&old_conn_id)
+        {
+            old_conn.state = ConnectionState::Connected;
+        }
+
+        // Now mutate the target connection.
+        let bound = self
+            .connections
+            .get_mut(&connection_id)
+            .expect("bind_session: connection validated above, single-threaded");
+        bound.state = ConnectionState::Bound {
+            user_id,
+            client_id,
+            session,
+        };
+        // The session IS the register's commit op, so it floors every metadata
+        // op this client saw committed before it re-homed here. Without the
+        // seed a re-homed connection reads at zero and the gate admits the
+        // pre-write state its own last write already replaced.
+        bound.metadata_watermark = bound.metadata_watermark.max(session);
+        self.client_to_connection.insert(client_id, connection_id);
+        Ok(())
+    }
+
+    /// Raise this connection's metadata watermark to `commit`. Monotone, so a
+    /// late or out-of-order reply cannot lower it; no-op for an unknown
+    /// connection.
+    ///
+    /// Only committed replies belong here. A pre-consensus rejection stamps the
+    /// primary's `commit_max`, which is an op this connection was never
+    /// promised and, on a backup-homed connection, one it would then wait for.
+    pub fn record_metadata_watermark(&mut self, connection_id: u128, commit: u64) {
+        if let Some(conn) = self.connections.get_mut(&connection_id) {
+            conn.metadata_watermark = conn.metadata_watermark.max(commit);
+        }
+    }
+
+    /// The highest metadata op this connection was told committed, or `0` when
+    /// it was told none (an unknown or still-unbound connection, which has no
+    /// write to read back).
+    #[must_use]
+    pub fn metadata_watermark(&self, connection_id: u128) -> u64 {
+        self.connections
+            .get(&connection_id)
+            .map_or(0, |conn| conn.metadata_watermark)
+    }
+
+    /// Look up the consensus session for a connection.
+    ///
+    /// Returns `(client_id, session)` if the connection is `Bound`, `None`
+    /// otherwise. The request funnel reads it through the crate-private
+    /// `touch_connection` instead, which resolves it in the same lookup as
+    /// the heartbeat; this is for the session-op paths that only need the
+    /// binding.
+    #[must_use]
+    pub fn get_session(&self, connection_id: u128) -> Option<(u128, u64)> {
+        let conn = self.connections.get(&connection_id)?;
+        match conn.state {
+            ConnectionState::Bound {
+                client_id, session, ..
+            } => Some((client_id, session)),
+            _ => None,
+        }
+    }
+
+    /// Look up the authenticated user id for a connection.
+    #[must_use]
+    pub fn get_user_id(&self, connection_id: u128) -> Option<u32> {
+        let conn = self.connections.get(&connection_id)?;
+        match conn.state {
+            ConnectionState::Authenticated { user_id } | ConnectionState::Bound { user_id, .. } => {
+                Some(user_id)
+            }
+            ConnectionState::Connected => None,
+        }
+    }
+
+    /// Flatten one connection into a [`ConnectedClientInfo`] for `get_me`.
+    ///
+    /// This is the single per-shard source for the client-info reads:
+    /// `user_id`, `transport`, and `address` all come from the local
+    /// `SessionManager`, so the caller no longer consults the message
+    /// bus's `client_meta`.
+    #[must_use]
+    pub fn client_record(&self, connection_id: u128) -> Option<ConnectedClientInfo> {
+        let conn = self.connections.get(&connection_id)?;
+        Some(record_from(connection_id, conn))
+    }
+
+    /// Iterate every locally-homed connected client as a
+    /// [`ConnectedClientInfo`]. The per-shard half of the `get_clients`
+    /// scatter-gather.
+    pub fn iter_clients(&self) -> impl Iterator<Item = ConnectedClientInfo> + '_ {
+        self.connections
+            .iter()
+            .map(|(&id, conn)| record_from(id, conn))
+    }
+}
+
+impl Default for SessionManager {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+#[derive(Debug)]
+pub enum SessionError {
+    ConnectionNotFound(u128),
+    InvalidTransition {
+        connection_id: u128,
+        from: &'static str,
+        to: &'static str,
+    },
+}
+
+impl std::fmt::Display for SessionError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::ConnectionNotFound(id) => write!(f, "connection {id} not found"),
+            Self::InvalidTransition {
+                connection_id,
+                from,
+                to,
+            } => write!(
+                f,
+                "connection {connection_id}: invalid transition {from} -> {to}"
+            ),
+        }
+    }
+}
+
+impl std::error::Error for SessionError {}
+
+/// Flatten a connection + its id into a [`ConnectedClientInfo`].
+fn record_from(connection_id: u128, conn: &Connection) -> ConnectedClientInfo {
+    let user_id = match conn.state {
+        ConnectionState::Authenticated { user_id } | ConnectionState::Bound { user_id, .. } => {
+            Some(user_id)
+        }
+        ConnectionState::Connected => None,
+    };
+    let vsr_client_id = match conn.state {
+        ConnectionState::Bound { client_id, .. } => Some(client_id),
+        ConnectionState::Authenticated { .. } | ConnectionState::Connected => None,
+    };
+    ConnectedClientInfo {
+        client_id: connection_id,
+        vsr_client_id,
+        user_id,
+        transport: conn.transport,
+        address: conn.address,
+        sdk_name: conn.sdk.as_ref().map(|sdk| sdk.sdk_name.clone()),
+        sdk_version: conn.sdk.as_ref().map(|sdk| sdk.sdk_version.clone()),
+        protocol_version: conn.sdk.as_ref().map(|sdk| sdk.protocol_version),
+    }
+}
+
+const fn state_name(state: &ConnectionState) -> &'static str {
+    match state {
+        ConnectionState::Connected => "Connected",
+        ConnectionState::Authenticated { .. } => "Authenticated",
+        ConnectionState::Bound { .. } => "Bound",
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::net::{IpAddr, Ipv4Addr};
+
+    fn addr(port: u16) -> SocketAddr {
+        SocketAddr::new(IpAddr::V4(Ipv4Addr::LOCALHOST), port)
+    }
+
+    #[test]
+    fn record_sdk_info_exposed_via_iter_clients() {
+        let mut mgr = SessionManager::new();
+        mgr.ensure_connection(1, addr(5000), ClientTransportKind::Tcp);
+
+        // Pre-login: no SDK identity.
+        let info = mgr.iter_clients().next().unwrap();
+        assert!(info.sdk_name.is_none());
+
+        mgr.record_sdk_info(
+            1,
+            ClientSdkInfo {
+                sdk_name: "rust-sdk".to_string(),
+                sdk_version: "1.0.0".to_string(),
+                protocol_version: 42,
+            },
+        );
+        let info = mgr.iter_clients().next().unwrap();
+        assert_eq!(info.sdk_name.as_deref(), Some("rust-sdk"));
+        assert_eq!(info.sdk_version.as_deref(), Some("1.0.0"));
+        assert_eq!(info.protocol_version, Some(42));
+
+        // Re-login overwrites (client may reconnect after an upgrade).
+        mgr.record_sdk_info(
+            1,
+            ClientSdkInfo {
+                sdk_name: "rust-sdk".to_string(),
+                sdk_version: "2.0.0".to_string(),
+                protocol_version: 43,
+            },
+        );
+        let info = mgr.iter_clients().next().unwrap();
+        assert_eq!(info.sdk_version.as_deref(), Some("2.0.0"));
+
+        // Unknown connection: record is dropped, no panic.
+        mgr.record_sdk_info(
+            999,
+            ClientSdkInfo {
+                sdk_name: "go-sdk".to_string(),
+                sdk_version: "0.1.0".to_string(),
+                protocol_version: 1,
+            },
+        );
+        assert_eq!(mgr.iter_clients().count(), 1);
+    }
+
+    #[test]
+    fn full_lifecycle() {
+        let mut mgr = SessionManager::new();
+
+        let conn = 1;
+        mgr.ensure_connection(conn, addr(5000), ClientTransportKind::Tcp);
+        assert_eq!(mgr.iter_clients().count(), 1);
+        assert!(mgr.get_session(conn).is_none());
+
+        // Login
+        mgr.login(conn, 42).unwrap();
+        assert!(mgr.get_session(conn).is_none()); // not bound yet
+
+        // Register committed. Bind session
+        let client_id: u128 = 0xDEAD_BEEF;
+        let session: u64 = 100;
+        mgr.bind_session(conn, client_id, session).unwrap();
+
+        assert_eq!(mgr.get_session(conn), Some((client_id, session)));
+
+        // Disconnect returns the bound (client_id, session) and clears state.
+        assert_eq!(mgr.remove_connection(conn), Some((client_id, session)));
+        assert_eq!(mgr.iter_clients().count(), 0);
+        assert!(mgr.get_session(conn).is_none());
+    }
+
+    #[test]
+    fn login_requires_connected_state() {
+        let mut mgr = SessionManager::new();
+        let conn = 1;
+        mgr.ensure_connection(conn, addr(5000), ClientTransportKind::Tcp);
+        mgr.login(conn, 1).unwrap();
+
+        // Double login should fail. Already Authenticated.
+        assert!(mgr.login(conn, 2).is_err());
+    }
+
+    #[test]
+    fn bind_requires_authenticated_state() {
+        let mut mgr = SessionManager::new();
+        let conn = 1;
+        mgr.ensure_connection(conn, addr(5000), ClientTransportKind::Tcp);
+
+        // Bind without login should fail.
+        assert!(mgr.bind_session(conn, 1, 1).is_err());
+    }
+
+    #[test]
+    fn bind_evicts_old_connection_for_same_client() {
+        let mut mgr = SessionManager::new();
+
+        // First connection binds to client_id 99.
+        let conn1 = 1;
+        mgr.ensure_connection(conn1, addr(5000), ClientTransportKind::Tcp);
+        mgr.login(conn1, 1).unwrap();
+        mgr.bind_session(conn1, 99, 10).unwrap();
+        assert_eq!(mgr.get_session(conn1), Some((99, 10)));
+
+        // Second connection binds to same client_id. Evicts conn1.
+        let conn2 = 2;
+        mgr.ensure_connection(conn2, addr(5001), ClientTransportKind::Tcp);
+        mgr.login(conn2, 1).unwrap();
+        mgr.bind_session(conn2, 99, 20).unwrap();
+
+        // conn2 now owns client 99; conn1 reverted to Connected.
+        assert_eq!(mgr.get_session(conn2), Some((99, 20)));
+        assert!(mgr.get_session(conn1).is_none());
+    }
+
+    #[test]
+    fn remove_nonexistent_connection_is_noop() {
+        let mut mgr = SessionManager::new();
+        mgr.remove_connection(999); // should not panic
+    }
+
+    #[test]
+    fn login_nonexistent_connection_errors() {
+        let mut mgr = SessionManager::new();
+        assert!(mgr.login(999, 1).is_err());
+    }
+
+    #[test]
+    fn multiple_independent_sessions() {
+        let mut mgr = SessionManager::new();
+
+        let c1 = 1;
+        let c2 = 2;
+        mgr.ensure_connection(c1, addr(5000), ClientTransportKind::Tcp);
+        mgr.ensure_connection(c2, addr(5001), ClientTransportKind::Tcp);
+        mgr.login(c1, 1).unwrap();
+        mgr.login(c2, 2).unwrap();
+        mgr.bind_session(c1, 100, 10).unwrap();
+        mgr.bind_session(c2, 200, 20).unwrap();
+
+        assert_eq!(mgr.get_session(c1), Some((100, 10)));
+        assert_eq!(mgr.get_session(c2), Some((200, 20)));
+        assert_eq!(mgr.iter_clients().count(), 2);
+
+        assert_eq!(mgr.remove_connection(c1), Some((100, 10)));
+        assert!(mgr.get_session(c1).is_none());
+        assert_eq!(mgr.get_session(c2), Some((200, 20)));
+    }
+    // Every disconnect releases its consensus session, group member or not.
+    // Holding the slot open for a resume window instead leaked it: nothing
+    // sweeps it afterwards. The heartbeat verifier runs only when
+    // `heartbeat.enabled` is set, and even then evicts only connections that
+    // still hold a consumer-group membership, so the slot survived for the
+    // process lifetime and pushed the client table toward capacity eviction,
+    // which silently erases dedup watermarks.
+    #[test]
+    fn disconnect_releases_the_bound_session_for_logout() {
+        let mut mgr = SessionManager::new();
+        let conn = 1;
+        mgr.ensure_connection(conn, addr(5100), ClientTransportKind::Tcp);
+        mgr.login(conn, 3).unwrap();
+        mgr.bind_session(conn, 100, 7).unwrap();
+
+        assert_eq!(
+            mgr.remove_connection(conn),
+            Some((100, 7)),
+            "the disconnect must hand back (client_id, epoch) so the caller can log it out"
+        );
+        assert!(mgr.get_session(conn).is_none());
+        assert_eq!(
+            mgr.remove_connection(conn),
+            None,
+            "a second disconnect has nothing left to release"
+        );
+    }
+
+    /// The bind seed is what makes a re-homed connection safe: the register's
+    /// commit op floors every metadata op the client committed elsewhere, so
+    /// the read gate cannot admit the pre-write state on a node that has not
+    /// caught up. A recorder that could lower the mark would undo it.
+    #[test]
+    fn given_a_bound_connection_when_replies_arrive_should_keep_the_watermark_monotone() {
+        let mut mgr = SessionManager::new();
+        let conn = 1;
+        mgr.ensure_connection(conn, addr(5200), ClientTransportKind::Tcp);
+        assert_eq!(
+            mgr.metadata_watermark(conn),
+            0,
+            "an unbound connection was promised nothing"
+        );
+
+        mgr.login(conn, 3).unwrap();
+        mgr.bind_session(conn, 100, 42).unwrap();
+        assert_eq!(
+            mgr.metadata_watermark(conn),
+            42,
+            "the bound session is the register's commit op and floors the mark"
+        );
+
+        mgr.record_metadata_watermark(conn, 50);
+        mgr.record_metadata_watermark(conn, 7);
+        assert_eq!(
+            mgr.metadata_watermark(conn),
+            50,
+            "a lower commit must not lower the mark"
+        );
+    }
+
+    /// A socket that logs in again is serving a new caller, so it must not
+    /// inherit the floor of the one before it: the mark is what the PREVIOUS
+    /// login was told committed, and waiting for it would only ever delay the
+    /// new one.
+    #[test]
+    fn given_a_rebound_connection_when_it_logs_in_again_should_start_from_no_floor() {
+        let mut mgr = SessionManager::new();
+        let conn = 1;
+        mgr.ensure_connection(conn, addr(5201), ClientTransportKind::Tcp);
+        mgr.login(conn, 3).unwrap();
+        mgr.bind_session(conn, 100, 42).unwrap();
+        mgr.record_metadata_watermark(conn, 50);
+
+        // `bind_session` for the same client id on ANOTHER connection demotes
+        // this one to `Connected`, which is the state a re-login accepts.
+        mgr.ensure_connection(2, addr(5202), ClientTransportKind::Tcp);
+        mgr.login(2, 3).unwrap();
+        mgr.bind_session(2, 100, 43).unwrap();
+        assert_eq!(
+            mgr.metadata_watermark(conn),
+            50,
+            "the demotion alone leaves the mark; the re-login is what clears it"
+        );
+
+        mgr.login(conn, 7).unwrap();
+        assert_eq!(
+            mgr.metadata_watermark(conn),
+            0,
+            "a different user on this socket was promised nothing"
+        );
+    }
+
+    /// An unknown connection is not an error: the disconnect callback can win
+    /// the race against a reply relay, and a gate reading `0` then serves the
+    /// read instead of parking a socket that is already gone.
+    #[test]
+    fn given_an_unknown_connection_when_recording_a_watermark_should_be_inert() {
+        let mut mgr = SessionManager::new();
+        mgr.record_metadata_watermark(9, 5);
+        assert_eq!(mgr.metadata_watermark(9), 0);
+    }
+}

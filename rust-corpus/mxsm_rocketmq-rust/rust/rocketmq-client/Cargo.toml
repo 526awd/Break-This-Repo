@@ -1,0 +1,305 @@
+# Copyright 2023 The RocketMQ Rust Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+[package]
+name                   = "rocketmq-client-rust"
+version.workspace      = true
+authors.workspace      = true
+edition.workspace      = true
+homepage.workspace     = true
+repository.workspace   = true
+license.workspace      = true
+keywords               = ["rocketmq-rust", "async", "rocketmq-client", "futures"]
+categories             = ["api-bindings", "asynchronous"]
+readme                 = "README.md"
+description            = "Rust implementation of Apache rocketmq client"
+rust-version.workspace = true
+
+[features]
+default = ["admin-full"]
+admin-read = []
+admin-mutation = []
+admin-full = ["admin-read", "admin-mutation"]
+observability = [
+  "rocketmq-observability/otel-traces",
+  "rocketmq-transport/observability-traces",
+]
+observability-metrics = ["rocketmq-observability/otel-metrics", "rocketmq-transport/observability"]
+otlp-traces = ["observability", "rocketmq-observability/otlp-traces"]
+nameserver-dns-discovery = ["dep:hickory-resolver"]
+test-support = []
+
+[dependencies]
+rocketmq-model           = { workspace = true }
+rocketmq-protocol        = { workspace = true }
+rocketmq-runtime         = { workspace = true }
+rocketmq-security-api    = { workspace = true }
+rocketmq-transport       = { workspace = true, features = ["socks"] }
+rocketmq-error.workspace = true
+rocketmq-auth.workspace  = true
+rocketmq-observability   = { workspace = true }
+
+#json spupport
+serde.workspace      = true
+serde_json.workspace = true
+
+tokio.workspace      = true
+tokio-util.workspace = true
+
+trait-variant = { workspace = true }
+num_cpus      = { workspace = true }
+rand          = { workspace = true }
+
+#log
+tracing.workspace = true
+
+arc-swap    = "1.9"
+parking_lot = { workspace = true }
+bytes       = { workspace = true }
+dashmap     = { workspace = true }
+smallvec    = { workspace = true }
+
+futures        = { workspace = true }
+cheetah-string = { workspace = true }
+hickory-resolver = { workspace = true, optional = true }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["test-util"] }
+rocketmq-namesrv   = { workspace = true }
+rocketmq-transport = { workspace = true, features = ["socks", "test-support", "tls"] }
+criterion = { version = "0.8.2", features = ["async_tokio"] }
+pkcs8.workspace = true
+rcgen = "0.14"
+tempfile = "3.27.0"
+tokio-rustls = "0.26"
+trybuild  = "1.0.116"
+
+[[bench]]
+name    = "produce_accumulator_benchmark"
+harness = false
+
+[[bench]]
+name    = "concurrent_optimization_benchmark"
+harness = false
+
+[[bench]]
+name    = "thread_local_index_bench"
+harness = false
+
+[[bench]]
+name    = "message_util_bench"
+harness = false
+
+[[bench]]
+name    = "oneway_benchmark"
+harness = false
+
+[[bench]]
+name    = "producer_oneway_egress"
+harness = false
+
+[[bench]]
+name    = "select_queue_benchmark"
+harness = false
+
+[[bench]]
+name    = "client_hot_path_benchmark"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "client_send_pipeline_benchmark"
+harness = false
+
+[[bench]]
+name    = "client_consume_pipeline_benchmark"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "client_runtime_spawn_benchmark"
+harness = false
+
+[[bench]]
+name    = "request_future_holder_lifecycle_bench"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "latency_fault_detector_lifecycle_bench"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "local_file_offset_store_lifecycle_bench"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "orderly_lock_periodic_lifecycle_bench"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "pop_orderly_lock_refresh_lifecycle_bench"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "trace_worker_lifecycle_bench"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "produce_accumulator_guard_lifecycle_bench"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "consumer_stats_manager_lifecycle_bench"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "namesrv_refresh_lifecycle_bench"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "concurrent_clean_expire_lifecycle_bench"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "pull_message_service_lifecycle_bench"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "client_pull_scheduler_benchmark"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "rebalance_service_lifecycle_bench"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "connection_event_listener_lifecycle_bench"
+harness = false
+required-features = ["test-support"]
+
+[[bench]]
+name    = "lite_pull_task_lifecycle_bench"
+harness = false
+required-features = ["test-support"]
+
+[[test]]
+name = "client_lifecycle_probes_test"
+required-features = ["test-support"]
+
+[[test]]
+name = "latency_fault_java_compat"
+required-features = ["test-support"]
+
+[[test]]
+name = "integration_tests"
+required-features = ["test-support"]
+
+[[test]]
+name = "lite_pull_assignment_registry_tests"
+required-features = ["test-support"]
+
+[[test]]
+name = "lite_pull_concurrency_contract_tests"
+required-features = ["test-support"]
+
+[[test]]
+name = "lite_pull_suspend_timeout"
+required-features = ["test-support"]
+
+[[test]]
+name = "pull_message_service_test"
+required-features = ["test-support"]
+
+[[test]]
+name = "rebalance_concurrent_safety_test"
+required-features = ["test-support"]
+
+[[example]]
+name = "simple-producer"
+path = "examples/producer/simple_producer.rs"
+
+[[example]]
+name = "producer"
+path = "examples/quickstart/producer.rs"
+
+[[example]]
+name = "simple-batch-producer"
+path = "examples/batch/simple_batch_producer.rs"
+
+
+[[example]]
+name = "callback-batch-producer"
+path = "examples/batch/callback_batch_producer.rs"
+
+[[example]]
+name = "request-producer"
+path = "examples/rpc/request_producer.rs"
+
+[[example]]
+name = "request-callback-producer"
+path = "examples/rpc/request_callback_producer.rs"
+
+[[example]]
+name = "consumer"
+path = "examples/quickstart/consumer.rs"
+
+[[example]]
+name = "dashboard-debug-client"
+path = "examples/quickstart/dashboard_debug_client.rs"
+
+[[example]]
+name = "broadcast-consumer"
+path = "examples/broadcast/push_consumer.rs"
+
+[[example]]
+name = "ordermessage-producer"
+path = "examples/ordermessage/ordermessage_producer.rs"
+
+[[example]]
+name = "hash-selector-producer"
+path = "examples/ordermessage/hash_selector_producer.rs"
+
+[[example]]
+name = "random-selector-producer"
+path = "examples/ordermessage/random_selector_producer.rs"
+
+[[example]]
+name = "ordermessage-consumer"
+path = "examples/ordermessage/ordermessage_consumer.rs"
+
+[[example]]
+name = "transaction-producer"
+path = "examples/transaction/transaction_producer.rs"
+
+[[example]]
+name = "client-production-benchmark"
+path = "examples/benchmark/client_production_benchmark.rs"
+
+[[example]]
+name = "pop-consumer"
+path = "examples/consumer/pop_consumer.rs"

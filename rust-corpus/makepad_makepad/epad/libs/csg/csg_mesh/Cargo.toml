@@ -1,0 +1,10 @@
+[package]
+name = "makepad-csg-mesh"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+nightly = ["makepad-csg-math/nightly"]
+
+[dependencies]
+makepad-csg-math = { path = "../csg_math" }

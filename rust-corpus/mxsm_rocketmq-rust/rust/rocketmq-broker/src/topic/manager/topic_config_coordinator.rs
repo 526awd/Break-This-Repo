@@ -1,0 +1,964 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::fmt;
+use std::future::Future;
+use std::pin::Pin;
+use std::sync::atomic::AtomicU64;
+use std::sync::atomic::Ordering;
+use std::sync::Arc;
+use std::time::Duration;
+use std::time::Instant;
+
+use crate::broker::metadata_reconciliation::MetadataWriteConclusion;
+use crate::broker_error::BrokerResult as Result;
+use crate::config::config_manager::ConfigManager;
+use rocketmq_error::SharedError;
+use rocketmq_runtime::blocking::BlockingTaskState;
+use rocketmq_runtime::BlockingExecutor;
+use rocketmq_runtime::ChildServiceContext;
+use rocketmq_runtime::MetadataDeadline;
+use rocketmq_runtime::MetadataIoActor;
+use rocketmq_runtime::ShutdownDeadline;
+use rocketmq_runtime::TaskGroup;
+use rocketmq_runtime::TaskId;
+use tokio::sync::mpsc;
+use tokio::sync::oneshot;
+use tokio::sync::Mutex;
+use tracing::warn;
+
+use crate::topic::manager::topic_config_manager::TopicConfigManager;
+
+const COMMAND_CAPACITY: usize = 256;
+const TOPIC_CONFIG_BLOCKING_PREFIX: &str = "broker.topic-config.";
+const TOPIC_CONFIG_METADATA_RESOURCE: &str = "metadata-io:broker.topic-config";
+
+pub(crate) type TopicRegistrationFuture = Pin<Box<dyn Future<Output = Result<()>> + Send + 'static>>;
+pub(crate) type TopicRegistrationAction = Box<dyn FnOnce() -> TopicRegistrationFuture + Send + 'static>;
+
+/// The outcome of one topic config persistence command.
+///
+/// The persistence conclusion is reported separately from a registration
+/// failure, because a registration callback runs only after the snapshot was
+/// written: when it fails the file still holds the change, so the durable state
+/// is known and a supervised topic can be released even though the command as a
+/// whole failed.
+pub(crate) struct TopicConfigCommandOutcome {
+    /// What the persistence step confirmed about the durable file.
+    pub(crate) conclusion: crate::broker::metadata_reconciliation::MetadataWriteConclusion,
+    /// A failure that did not come from persistence, such as the registration
+    /// callback.
+    pub(crate) registration_error: Option<SharedError>,
+}
+
+impl TopicConfigCommandOutcome {
+    /// Wraps a persistence conclusion that stands on its own.
+    fn persisted(conclusion: crate::broker::metadata_reconciliation::MetadataWriteConclusion) -> Self {
+        Self {
+            conclusion,
+            registration_error: None,
+        }
+    }
+
+    /// Returns the error to report to the caller, if the command failed.
+    pub(crate) fn error(&self) -> Option<SharedError> {
+        self.registration_error
+            .clone()
+            .or_else(|| crate::broker::metadata_reconciliation::conclusion_error(&self.conclusion))
+    }
+
+    /// Returns whether the command completed without a failure.
+    pub(crate) fn is_ok(&self) -> bool {
+        self.error().is_none()
+    }
+}
+
+impl fmt::Debug for TopicConfigCommandOutcome {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter
+            .debug_struct("TopicConfigCommandOutcome")
+            .field("durable", &self.conclusion.is_durable())
+            .field("registration_error", &self.registration_error.is_some())
+            .finish()
+    }
+}
+
+/// Reduces a command outcome to the error the caller has to report.
+///
+/// Callers that do not act on the persistence conclusion use this so the
+/// failure they report is the same one a supervisor would use.
+pub(crate) fn outcome_result(outcome: TopicConfigCommandOutcome) -> Result<()> {
+    match outcome.error() {
+        Some(error) => Err(error),
+        None => Ok(()),
+    }
+}
+
+enum TopicConfigCommand {
+    Persist {
+        registration: Option<TopicRegistrationAction>,
+        completion: Option<oneshot::Sender<TopicConfigCommandOutcome>>,
+        _pending: TopicConfigPendingGuard,
+    },
+    Finalize {
+        completion: oneshot::Sender<TopicConfigCommandOutcome>,
+    },
+}
+
+struct TopicConfigPendingGuard {
+    pending: Arc<AtomicU64>,
+}
+
+impl Drop for TopicConfigPendingGuard {
+    fn drop(&mut self) {
+        self.pending.fetch_sub(1, Ordering::AcqRel);
+    }
+}
+
+struct TopicConfigRuntimeCapabilities {
+    task_group: TaskGroup,
+    blocking: BlockingExecutor,
+}
+
+struct TopicConfigRun {
+    worker: TaskId,
+}
+
+struct TopicConfigLifecycle {
+    run: Option<TopicConfigRun>,
+    finalized: bool,
+}
+
+#[derive(Debug, Clone)]
+pub(crate) struct TopicConfigCoordinatorShutdownReport {
+    pub(crate) admission_closed: bool,
+    pub(crate) pending_at_end: u64,
+    pub(crate) final_persist_succeeded: bool,
+    pub(crate) worker_exited: bool,
+    pub(crate) registration_quiesced: bool,
+    pub(crate) unregister_succeeded: bool,
+    pub(crate) blocking_still_running: usize,
+    pub(crate) timed_out: bool,
+    pub(crate) elapsed: Duration,
+    pub(crate) detail: Option<String>,
+}
+
+impl TopicConfigCoordinatorShutdownReport {
+    pub(crate) fn is_healthy(&self) -> bool {
+        self.can_unregister() && self.unregister_succeeded
+    }
+
+    pub(crate) fn can_unregister(&self) -> bool {
+        self.admission_closed
+            && self.pending_at_end == 0
+            && self.final_persist_succeeded
+            && self.worker_exited
+            && self.registration_quiesced
+            && self.blocking_still_running == 0
+            && !self.timed_out
+            && self.detail.is_none()
+    }
+
+    pub(crate) fn can_detach(&self) -> bool {
+        self.is_healthy()
+    }
+}
+
+pub(crate) struct TopicConfigCoordinator {
+    manager: Arc<TopicConfigManager>,
+    runtime_capabilities: TopicConfigRuntimeCapabilities,
+    lifecycle: Mutex<TopicConfigLifecycle>,
+    admission: Mutex<Option<mpsc::Sender<TopicConfigCommand>>>,
+    pending: Arc<AtomicU64>,
+    rejected_after_close: AtomicU64,
+    persist_failures: Arc<AtomicU64>,
+    registration_failures: Arc<AtomicU64>,
+    metadata_io: Option<MetadataIoActor>,
+}
+
+impl TopicConfigCoordinator {
+    pub(crate) fn new(manager: Arc<TopicConfigManager>, service_context: ChildServiceContext) -> Self {
+        Self::new_with_metadata_io(manager, service_context, None)
+    }
+
+    pub(crate) fn new_with_metadata_io(
+        manager: Arc<TopicConfigManager>,
+        service_context: ChildServiceContext,
+        metadata_io: Option<MetadataIoActor>,
+    ) -> Self {
+        let runtime_capabilities = TopicConfigRuntimeCapabilities {
+            task_group: service_context.task_group().clone(),
+            blocking: service_context.metadata_io().clone(),
+        };
+        Self {
+            manager,
+            runtime_capabilities,
+            lifecycle: Mutex::new(TopicConfigLifecycle {
+                run: None,
+                finalized: false,
+            }),
+            admission: Mutex::new(None),
+            pending: Arc::new(AtomicU64::new(0)),
+            rejected_after_close: AtomicU64::new(0),
+            persist_failures: Arc::new(AtomicU64::new(0)),
+            registration_failures: Arc::new(AtomicU64::new(0)),
+            metadata_io,
+        }
+    }
+
+    pub(crate) fn manager(&self) -> &Arc<TopicConfigManager> {
+        &self.manager
+    }
+
+    pub(crate) fn pending_count(&self) -> u64 {
+        self.pending.load(Ordering::Acquire)
+    }
+
+    pub(crate) fn rejected_after_close_count(&self) -> u64 {
+        self.rejected_after_close.load(Ordering::Acquire)
+    }
+
+    pub(crate) fn persist_failure_count(&self) -> u64 {
+        self.persist_failures.load(Ordering::Acquire)
+    }
+
+    pub(crate) fn registration_failure_count(&self) -> u64 {
+        self.registration_failures.load(Ordering::Acquire)
+    }
+
+    fn runtime_capabilities(&self) -> &TopicConfigRuntimeCapabilities {
+        &self.runtime_capabilities
+    }
+
+    fn blocking_still_running(&self) -> usize {
+        self.runtime_capabilities
+            .blocking
+            .snapshot()
+            .tasks
+            .iter()
+            .filter(|task| {
+                (task.name.starts_with(TOPIC_CONFIG_BLOCKING_PREFIX) || task.name == TOPIC_CONFIG_METADATA_RESOURCE)
+                    && matches!(
+                        task.state,
+                        BlockingTaskState::Running | BlockingTaskState::TimedOutStillRunning
+                    )
+            })
+            .count()
+    }
+
+    async fn wait_for_blocking_tasks_until(&self, deadline: ShutdownDeadline) -> usize {
+        loop {
+            let blocking_still_running = self.blocking_still_running();
+            if blocking_still_running == 0 || deadline.is_expired() {
+                return blocking_still_running;
+            }
+            tokio::task::yield_now().await;
+        }
+    }
+
+    async fn ensure_started(&self) -> Result<()> {
+        let mut lifecycle = self.lifecycle.lock().await;
+        if lifecycle.finalized {
+            return Err(topic_coordinator_error("coordinator is already finalized"));
+        }
+        if lifecycle.run.is_some() {
+            return Ok(());
+        }
+
+        let capabilities = self.runtime_capabilities();
+        let (sender, receiver) = mpsc::channel(COMMAND_CAPACITY);
+        let manager = Arc::clone(&self.manager);
+        let blocking = capabilities.blocking.clone();
+        let persist_failures = Arc::clone(&self.persist_failures);
+        let registration_failures = Arc::clone(&self.registration_failures);
+        let metadata_io = self.metadata_io.clone();
+        let worker = capabilities
+            .task_group
+            .spawn_service(
+                "broker.topic-config.coordinator",
+                run_topic_config_worker(
+                    manager,
+                    blocking,
+                    metadata_io,
+                    receiver,
+                    persist_failures,
+                    registration_failures,
+                ),
+            )
+            .map_err(topic_coordinator_source)?;
+        *self.admission.lock().await = Some(sender);
+        lifecycle.run = Some(TopicConfigRun { worker });
+        Ok(())
+    }
+
+    pub(crate) async fn load(&self) -> Result<bool> {
+        self.ensure_started().await?;
+        let manager = Arc::clone(&self.manager);
+        self.runtime_capabilities()
+            .blocking
+            .spawn_io("broker.topic-config.load", move || manager.load())
+            .await
+            .map_err(topic_coordinator_source)
+    }
+
+    #[cfg(feature = "rocksdb_store")]
+    pub(crate) async fn export_to_json(&self) -> Result<()> {
+        self.ensure_started().await?;
+        let manager = Arc::clone(&self.manager);
+        self.runtime_capabilities()
+            .blocking
+            .spawn_io("broker.topic-config.export-json", move || manager.export_to_json())
+            .await
+            .map_err(topic_coordinator_source)?
+    }
+
+    pub(crate) async fn persist_and_wait(&self) -> Result<TopicConfigCommandOutcome> {
+        self.submit(None, true)
+            .await?
+            .ok_or_else(|| topic_coordinator_error("topic config command was accepted without a conclusion"))
+    }
+
+    pub(crate) async fn persist_accepted(&self) -> Result<()> {
+        self.submit(None, false).await.map(|_| ())
+    }
+
+    pub(crate) async fn persist_and_register_wait(
+        &self,
+        registration: TopicRegistrationAction,
+    ) -> Result<TopicConfigCommandOutcome> {
+        self.submit(Some(registration), true)
+            .await?
+            .ok_or_else(|| topic_coordinator_error("topic config command was accepted without a conclusion"))
+    }
+
+    pub(crate) async fn persist_and_register_accepted(&self, registration: TopicRegistrationAction) -> Result<()> {
+        self.submit(Some(registration), false).await.map(|_| ())
+    }
+
+    async fn submit(
+        &self,
+        registration: Option<TopicRegistrationAction>,
+        wait: bool,
+    ) -> Result<Option<TopicConfigCommandOutcome>> {
+        self.ensure_started().await?;
+        let (completion, receiver) = if wait {
+            let (sender, receiver) = oneshot::channel();
+            (Some(sender), Some(receiver))
+        } else {
+            (None, None)
+        };
+        self.pending.fetch_add(1, Ordering::AcqRel);
+        let command = TopicConfigCommand::Persist {
+            registration,
+            completion,
+            _pending: TopicConfigPendingGuard {
+                pending: Arc::clone(&self.pending),
+            },
+        };
+
+        let admission = self.admission.lock().await;
+        let Some(sender) = admission.as_ref() else {
+            self.rejected_after_close.fetch_add(1, Ordering::AcqRel);
+            return Err(topic_coordinator_error("topic config admission is closed"));
+        };
+        sender
+            .send(command)
+            .await
+            .map_err(|_| topic_coordinator_error("topic config worker is unavailable"))?;
+        drop(admission);
+
+        match receiver {
+            Some(receiver) => receiver
+                .await
+                .map_err(|_| topic_coordinator_error("topic config command result channel closed"))
+                .map(Some),
+            // An accepted command reports no conclusion: the caller did not wait
+            // for one, and a persistence failure is recorded in the counters and
+            // the warning log instead.
+            None => Ok(None),
+        }
+    }
+
+    pub(crate) async fn shutdown_until(&self, deadline: ShutdownDeadline) -> TopicConfigCoordinatorShutdownReport {
+        let started = Instant::now();
+        if let Err(error) = self.ensure_started().await {
+            return TopicConfigCoordinatorShutdownReport {
+                admission_closed: false,
+                pending_at_end: self.pending_count(),
+                final_persist_succeeded: false,
+                worker_exited: false,
+                registration_quiesced: false,
+                unregister_succeeded: false,
+                blocking_still_running: 0,
+                timed_out: false,
+                elapsed: started.elapsed(),
+                detail: Some(error.to_string()),
+            };
+        }
+        let mut lifecycle = self.lifecycle.lock().await;
+        let Some(run) = lifecycle.run.take() else {
+            lifecycle.finalized = true;
+            return TopicConfigCoordinatorShutdownReport {
+                admission_closed: true,
+                pending_at_end: self.pending_count(),
+                final_persist_succeeded: true,
+                worker_exited: true,
+                registration_quiesced: true,
+                unregister_succeeded: false,
+                blocking_still_running: self.blocking_still_running(),
+                timed_out: false,
+                elapsed: started.elapsed(),
+                detail: None,
+            };
+        };
+
+        let (completion, receiver) = oneshot::channel();
+        let mut admission = self.admission.lock().await;
+        let sender = admission.take();
+        let admission_closed = sender.is_some();
+        let send_result = match sender {
+            Some(sender) => sender.send(TopicConfigCommand::Finalize { completion }).await,
+            None => Err(mpsc::error::SendError(TopicConfigCommand::Finalize { completion })),
+        };
+        drop(admission);
+
+        let mut detail = send_result
+            .err()
+            .map(|_| "failed to enqueue final persistence".to_string());
+        let final_persist_succeeded = if detail.is_none() {
+            match tokio::time::timeout(deadline.remaining(), receiver).await {
+                Ok(Ok(outcome)) => match outcome.error() {
+                    Some(error) => {
+                        detail = Some(error.to_string());
+                        false
+                    }
+                    None => true,
+                },
+                Ok(Err(_)) => {
+                    detail = Some("final persistence result channel closed".to_string());
+                    false
+                }
+                Err(_) => false,
+            }
+        } else {
+            false
+        };
+        let persistence_timed_out = deadline.is_expired() || (!final_persist_succeeded && detail.is_none());
+        let worker_exited = self
+            .runtime_capabilities()
+            .task_group
+            .wait_task(run.worker, deadline.remaining())
+            .await;
+        let blocking_still_running = self.wait_for_blocking_tasks_until(deadline).await;
+        let report = TopicConfigCoordinatorShutdownReport {
+            admission_closed,
+            pending_at_end: self.pending_count(),
+            final_persist_succeeded,
+            worker_exited,
+            registration_quiesced: worker_exited,
+            unregister_succeeded: false,
+            blocking_still_running,
+            timed_out: persistence_timed_out || !worker_exited || blocking_still_running > 0,
+            elapsed: started.elapsed(),
+            detail,
+        };
+        if report.can_detach() {
+            lifecycle.finalized = true;
+        } else {
+            lifecycle.run = Some(run);
+        }
+        report
+    }
+}
+
+async fn run_topic_config_worker(
+    manager: Arc<TopicConfigManager>,
+    blocking: BlockingExecutor,
+    metadata_io: Option<MetadataIoActor>,
+    mut receiver: mpsc::Receiver<TopicConfigCommand>,
+    persist_failures: Arc<AtomicU64>,
+    registration_failures: Arc<AtomicU64>,
+) {
+    while let Some(command) = receiver.recv().await {
+        match command {
+            TopicConfigCommand::Persist {
+                registration,
+                completion,
+                _pending,
+            } => {
+                let mut outcome = TopicConfigCommandOutcome::persisted(
+                    persist_stable(&manager, &blocking, metadata_io.as_ref()).await,
+                );
+                if outcome.conclusion.is_durable() {
+                    if let Some(registration) = registration {
+                        match registration().await {
+                            Ok(()) => {
+                                outcome = TopicConfigCommandOutcome::persisted(
+                                    persist_stable(&manager, &blocking, metadata_io.as_ref()).await,
+                                );
+                            }
+                            Err(error) => {
+                                registration_failures.fetch_add(1, Ordering::AcqRel);
+                                // The snapshot was already written, so this is
+                                // not a persistence failure. The conclusion
+                                // keeps describing the durable file.
+                                outcome.registration_error = Some(error);
+                            }
+                        }
+                    }
+                }
+                if !outcome.is_ok() {
+                    persist_failures.fetch_add(1, Ordering::AcqRel);
+                }
+                if let Some(completion) = completion {
+                    let _ = completion.send(outcome);
+                } else if let Some(error) = outcome.error() {
+                    warn!(?error, "asynchronous topic config command failed");
+                }
+            }
+            TopicConfigCommand::Finalize { completion } => {
+                let outcome = TopicConfigCommandOutcome::persisted(
+                    persist_stable(&manager, &blocking, metadata_io.as_ref()).await,
+                );
+                if !outcome.is_ok() {
+                    persist_failures.fetch_add(1, Ordering::AcqRel);
+                }
+                let _ = completion.send(outcome);
+                break;
+            }
+        }
+    }
+}
+
+async fn persist_stable(
+    manager: &Arc<TopicConfigManager>,
+    blocking: &BlockingExecutor,
+    metadata_io: Option<&MetadataIoActor>,
+) -> MetadataWriteConclusion {
+    // The persistence step is chosen once per command, so the conclusion
+    // recorded by the last iteration is the one that describes the file.
+    let mut observed = MetadataWriteConclusion::BlockingPersisted;
+    loop {
+        let persisted_version = if manager.supports_metadata_io_actor() {
+            if let Some(metadata_io) = metadata_io {
+                let (version, path, content) = match manager.encoded_persistence_snapshot() {
+                    Ok(snapshot) => snapshot,
+                    Err(error) => return MetadataWriteConclusion::FailedBeforeCommit(error),
+                };
+                let observation = metadata_io
+                    .submit_next_observed(
+                        "broker.topic-config",
+                        path,
+                        content,
+                        MetadataDeadline::after(Duration::from_secs(30)),
+                    )
+                    .await
+                    .map_err(crate::runtime_to_rocketmq_error);
+                observed = match observation {
+                    Ok(observation) => crate::broker::metadata_reconciliation::conclude_metadata_write(
+                        "broker.topic-config",
+                        observation,
+                    ),
+                    Err(error) => MetadataWriteConclusion::FailedBeforeCommit(error),
+                };
+                // An unconfirmed generation is not retried here. The runtime
+                // fences a target whose replacement was never confirmed, so a
+                // second attempt cannot be admitted until the fence is cleared.
+                if !observed.is_durable() {
+                    return observed;
+                }
+                version
+            } else {
+                let manager_for_write = Arc::clone(manager);
+                match blocking
+                    .spawn_io("broker.topic-config.persist", move || {
+                        manager_for_write.persist_latest_snapshot()
+                    })
+                    .await
+                {
+                    Ok(Ok(version)) => version,
+                    Ok(Err(error)) => return MetadataWriteConclusion::FailedBeforeCommit(error),
+                    Err(error) => return MetadataWriteConclusion::FailedBeforeCommit(topic_coordinator_source(error)),
+                }
+            }
+        } else {
+            let manager_for_write = Arc::clone(manager);
+            match blocking
+                .spawn_io("broker.topic-config.persist", move || {
+                    manager_for_write.persist_latest_snapshot()
+                })
+                .await
+            {
+                Ok(Ok(version)) => version,
+                Ok(Err(error)) => return MetadataWriteConclusion::FailedBeforeCommit(error),
+                Err(error) => return MetadataWriteConclusion::FailedBeforeCommit(topic_coordinator_source(error)),
+            }
+        };
+        if manager.data_version() == persisted_version {
+            return observed;
+        }
+    }
+}
+
+fn topic_coordinator_error(error: impl ToString) -> SharedError {
+    crate::broker_error::not_initialized(format!("topic config coordinator: {}", error.to_string()))
+}
+
+fn topic_coordinator_source(error: impl std::error::Error + Send + Sync + 'static) -> SharedError {
+    crate::broker_error::not_initialized_source("topic config coordinator", error)
+}
+
+#[cfg(test)]
+mod tests {
+    use std::sync::atomic::AtomicBool;
+    use std::sync::atomic::Ordering;
+    use std::sync::mpsc;
+    use std::sync::Arc;
+    use std::time::Duration;
+
+    use crate::config::broker_config::BrokerConfig;
+    use rocketmq_model::common::config::TopicConfig;
+    use rocketmq_runtime::BlockingLane;
+    use rocketmq_runtime::RuntimeContext;
+    use rocketmq_runtime::ShutdownDeadline;
+    use rocketmq_store::MessageStoreConfig;
+    use tempfile::TempDir;
+    use tokio::sync::oneshot;
+
+    use super::TopicConfigCoordinator;
+    use super::TopicRegistrationAction;
+    use crate::broker::metadata_reconciliation::MetadataWriteConclusion;
+    use crate::topic::manager::topic_config_manager::TopicConfigManager;
+
+    fn test_coordinator(temp_dir: &TempDir) -> (RuntimeContext, Arc<TopicConfigCoordinator>) {
+        let root = temp_dir.path().to_string_lossy().to_string();
+        let broker_config = BrokerConfig {
+            store_path_root_dir: root.clone().into(),
+            ..BrokerConfig::default()
+        };
+        let message_store_config = MessageStoreConfig {
+            store_path_root_dir: root.into(),
+            ..MessageStoreConfig::default()
+        };
+        let manager = Arc::new(TopicConfigManager::new(
+            &broker_config,
+            &message_store_config,
+            false,
+            None,
+        ));
+        let runtime = RuntimeContext::from_current("topic-config-coordinator-test");
+        let coordinator = Arc::new(TopicConfigCoordinator::new(
+            manager,
+            runtime.service_context("topic-config-coordinator"),
+        ));
+        (runtime, coordinator)
+    }
+
+    #[tokio::test]
+    async fn shutdown_drains_accepted_registration_before_closing_admission() {
+        let temp_dir = TempDir::new().expect("temp dir should be created");
+        let (runtime, coordinator) = test_coordinator(&temp_dir);
+        coordinator
+            .manager()
+            .update_topic_config(TopicConfig::with_queues("BarrierTopic", 1, 1), 0);
+        let (entered_tx, entered_rx) = oneshot::channel();
+        let (release_tx, release_rx) = oneshot::channel();
+        let registration: TopicRegistrationAction = Box::new(move || {
+            Box::pin(async move {
+                let _ = entered_tx.send(());
+                let _ = release_rx.await;
+                Ok(())
+            })
+        });
+        coordinator
+            .persist_and_register_accepted(registration)
+            .await
+            .expect("command should be admitted");
+        entered_rx.await.expect("registration should enter");
+        assert_eq!(coordinator.pending_count(), 1);
+
+        let coordinator_for_shutdown = Arc::clone(&coordinator);
+        let shutdown = tokio::spawn(async move {
+            coordinator_for_shutdown
+                .shutdown_until(ShutdownDeadline::after(Duration::from_secs(5)))
+                .await
+        });
+        tokio::task::yield_now().await;
+        assert_eq!(coordinator.pending_count(), 1);
+        release_tx.send(()).expect("registration should still be waiting");
+
+        let mut report = shutdown.await.expect("shutdown task should join");
+        assert!(report.can_unregister(), "{report:?}");
+        assert_eq!(report.pending_at_end, 0);
+        report.unregister_succeeded = true;
+        assert!(report.can_detach(), "{report:?}");
+        assert!(coordinator.persist_and_wait().await.is_err());
+        assert_eq!(coordinator.rejected_after_close_count(), 1);
+        let runtime_report = runtime.shutdown_tasks(Duration::from_secs(1)).await;
+        assert!(runtime_report.is_healthy(), "{}", runtime_report.to_json());
+    }
+
+    #[tokio::test]
+    async fn persistence_runs_through_single_worker_and_records_no_failure() {
+        let temp_dir = TempDir::new().expect("temp dir should be created");
+        let (runtime, coordinator) = test_coordinator(&temp_dir);
+        coordinator
+            .manager()
+            .update_topic_config(TopicConfig::with_queues("PersistedTopic", 3, 4), 0);
+
+        coordinator.persist_and_wait().await.expect("snapshot should persist");
+        assert_eq!(coordinator.pending_count(), 0);
+        assert_eq!(coordinator.persist_failure_count(), 0);
+        assert_eq!(coordinator.registration_failure_count(), 0);
+
+        let report = coordinator
+            .shutdown_until(ShutdownDeadline::after(Duration::from_secs(5)))
+            .await;
+        assert!(report.can_unregister(), "{report:?}");
+        let runtime_report = runtime.shutdown_tasks(Duration::from_secs(1)).await;
+        assert!(runtime_report.is_healthy(), "{}", runtime_report.to_json());
+    }
+
+    /// Fails after the target was replaced, which the actor reports as an
+    /// unconfirmed replacement.
+    #[derive(Debug)]
+    struct UnconfirmedReplacementFileSystem;
+
+    impl rocketmq_runtime::MetadataFileSystem for UnconfirmedReplacementFileSystem {
+        fn persist_atomic(&self, _target: &std::path::Path, _bytes: &[u8]) -> rocketmq_runtime::RuntimeResult<()> {
+            Err(rocketmq_runtime::RuntimeError::io(
+                rocketmq_runtime::MetadataIoOperation::SyncParent.runtime_operation(),
+                std::io::Error::other("injected parent directory sync failure"),
+            ))
+        }
+    }
+
+    fn test_coordinator_with_metadata_io(
+        temp_dir: &TempDir,
+        file_system: Arc<dyn rocketmq_runtime::MetadataFileSystem>,
+    ) -> (RuntimeContext, Arc<TopicConfigCoordinator>) {
+        let root = temp_dir.path().to_string_lossy().to_string();
+        let broker_config = BrokerConfig {
+            store_path_root_dir: root.clone().into(),
+            ..BrokerConfig::default()
+        };
+        let message_store_config = MessageStoreConfig {
+            store_path_root_dir: root.into(),
+            ..MessageStoreConfig::default()
+        };
+        let manager = Arc::new(TopicConfigManager::new(
+            &broker_config,
+            &message_store_config,
+            false,
+            None,
+        ));
+        let runtime = RuntimeContext::from_current("topic-config-coordinator-metadata-test");
+        let actor = rocketmq_runtime::MetadataIoConfig::default()
+            .into_plan()
+            .expect("default metadata I/O config is valid")
+            .start_with_file_system(
+                &runtime.service_context("topic-config-coordinator-metadata"),
+                file_system,
+            )
+            .expect("metadata actor should start");
+        let coordinator = Arc::new(TopicConfigCoordinator::new_with_metadata_io(
+            manager,
+            runtime.service_context("topic-config-coordinator"),
+            Some(actor),
+        ));
+        (runtime, coordinator)
+    }
+
+    #[tokio::test]
+    async fn a_registration_failure_reports_the_persistence_conclusion_as_durable() {
+        let temp_dir = TempDir::new().expect("temp dir should be created");
+        let (runtime, coordinator) = test_coordinator(&temp_dir);
+        coordinator
+            .manager()
+            .update_topic_config(TopicConfig::with_queues("ConclusionTopic", 1, 1), 0);
+        let failed: TopicRegistrationAction =
+            Box::new(|| Box::pin(async { Err(crate::broker_error::service_failed("registration")) }));
+
+        let outcome = coordinator
+            .persist_and_register_wait(failed)
+            .await
+            .expect("the command is admitted and reports an outcome");
+
+        // The snapshot reached the file before the callback ran, so the
+        // durability of this topic is known even though the command failed.
+        assert!(!outcome.is_ok());
+        assert!(
+            outcome.conclusion.is_durable(),
+            "a registration failure must not be reported as a persistence failure"
+        );
+        assert!(!outcome.conclusion.retains_dirty_marker());
+        assert!(outcome.registration_error.is_some());
+        assert!(outcome.error().is_some());
+        assert_eq!(coordinator.registration_failure_count(), 1);
+
+        let report = coordinator
+            .shutdown_until(ShutdownDeadline::after(Duration::from_secs(5)))
+            .await;
+        assert!(report.can_unregister(), "{report:?}");
+        let runtime_report = runtime.shutdown_tasks(Duration::from_secs(1)).await;
+        assert!(runtime_report.is_healthy(), "{}", runtime_report.to_json());
+    }
+
+    #[tokio::test]
+    async fn an_unconfirmed_snapshot_keeps_the_topic_marker() {
+        let temp_dir = TempDir::new().expect("temp dir should be created");
+        let (runtime, coordinator) =
+            test_coordinator_with_metadata_io(&temp_dir, Arc::new(UnconfirmedReplacementFileSystem));
+        coordinator
+            .manager()
+            .update_topic_config(TopicConfig::with_queues("UnconfirmedTopic", 1, 1), 0);
+
+        let outcome = coordinator
+            .persist_and_wait()
+            .await
+            .expect("the command is admitted and reports an outcome");
+
+        assert!(!outcome.is_ok());
+        assert!(
+            !outcome.conclusion.is_durable(),
+            "an unconfirmed replacement is not a durable conclusion"
+        );
+        assert!(
+            outcome.conclusion.retains_dirty_marker(),
+            "the supervised topic must stay marked while its durability is unknown"
+        );
+        assert!(matches!(
+            outcome.conclusion,
+            MetadataWriteConclusion::Unconfirmed {
+                reason: crate::broker::metadata_reconciliation::UnconfirmedReason::CommitUnconfirmed,
+                ..
+            }
+        ));
+
+        let report = coordinator
+            .shutdown_until(ShutdownDeadline::after(Duration::from_secs(5)))
+            .await;
+        // The injected filesystem fails every write, so the final persistence
+        // during shutdown cannot succeed either. What matters here is that the
+        // worker still exited and reported the real remaining work.
+        assert!(report.worker_exited, "{report:?}");
+        assert!(!report.final_persist_succeeded, "{report:?}");
+        let runtime_report = runtime.shutdown_tasks(Duration::from_secs(1)).await;
+        assert!(runtime_report.is_healthy(), "{}", runtime_report.to_json());
+    }
+
+    #[tokio::test]
+    async fn failed_registration_keeps_admission_open_for_periodic_retry() {
+        let temp_dir = TempDir::new().expect("temp dir should be created");
+        let (runtime, coordinator) = test_coordinator(&temp_dir);
+        coordinator
+            .manager()
+            .update_topic_config(TopicConfig::with_queues("RetryRegistrationTopic", 1, 1), 0);
+        let failed: TopicRegistrationAction = Box::new(|| {
+            Box::pin(async {
+                let context = rocketmq_error::ErrorContext::new()
+                    .with_text(rocketmq_error::fields::PHASE, "connect")
+                    .with_secret_presence(rocketmq_error::fields::REMOTE_ADDR_PRESENT)
+                    .with_secret_presence(rocketmq_error::fields::SOURCE_PRESENT);
+                Err(crate::broker_error::from_shared(Arc::new(
+                    rocketmq_error::Error::caused_by(
+                        &rocketmq_error::TRANSPORT_CONNECTION_FAILED,
+                        std::io::Error::other("unavailable"),
+                    )
+                    .with_context(context),
+                )))
+            })
+        });
+        let outcome = coordinator
+            .persist_and_register_wait(failed)
+            .await
+            .expect("the command is admitted and reports an outcome");
+        assert!(
+            !outcome.is_ok(),
+            "a registration failure is reported through the command outcome"
+        );
+        assert!(outcome.registration_error.is_some());
+        assert_eq!(coordinator.registration_failure_count(), 1);
+
+        let retried = Arc::new(AtomicBool::new(false));
+        let retried_action = Arc::clone(&retried);
+        let retry: TopicRegistrationAction = Box::new(move || {
+            Box::pin(async move {
+                retried_action.store(true, Ordering::Release);
+                Ok(())
+            })
+        });
+        coordinator
+            .persist_and_register_wait(retry)
+            .await
+            .expect("a later periodic registration should be admitted");
+        assert!(retried.load(Ordering::Acquire));
+        assert_eq!(coordinator.registration_failure_count(), 1);
+
+        let report = coordinator
+            .shutdown_until(ShutdownDeadline::after(Duration::from_secs(5)))
+            .await;
+        assert!(report.can_unregister(), "{report:?}");
+        let runtime_report = runtime.shutdown_tasks(Duration::from_secs(1)).await;
+        assert!(runtime_report.is_healthy(), "{}", runtime_report.to_json());
+    }
+
+    #[tokio::test(flavor = "multi_thread", worker_threads = 2)]
+    async fn shutdown_ignores_unrelated_metadata_blocking_work() {
+        let temp_dir = TempDir::new().expect("temp dir should be created");
+        let (runtime, coordinator) = test_coordinator(&temp_dir);
+        coordinator
+            .manager()
+            .update_topic_config(TopicConfig::with_queues("ScopedShutdownTopic", 1, 1), 0);
+        coordinator.persist_and_wait().await.expect("snapshot should persist");
+
+        let blocking = runtime.blocking(BlockingLane::MetadataIo).clone();
+        let (entered_sender, entered_receiver) = oneshot::channel();
+        let (release_sender, release_receiver) = mpsc::channel();
+        let unrelated = tokio::spawn(async move {
+            blocking
+                .spawn_io("unrelated.metadata.persist", move || {
+                    let _ = entered_sender.send(());
+                    release_receiver
+                        .recv_timeout(Duration::from_secs(5))
+                        .expect("unrelated metadata task should be released");
+                })
+                .await
+        });
+        entered_receiver.await.expect("unrelated metadata task should start");
+        assert_eq!(
+            runtime
+                .blocking(BlockingLane::MetadataIo)
+                .snapshot()
+                .blocking_still_running,
+            1
+        );
+
+        let report = coordinator
+            .shutdown_until(ShutdownDeadline::after(Duration::from_secs(5)))
+            .await;
+        assert!(report.can_unregister(), "{report:?}");
+        assert_eq!(report.blocking_still_running, 0, "{report:?}");
+
+        release_sender
+            .send(())
+            .expect("unrelated metadata task should be releasable");
+        unrelated
+            .await
+            .expect("unrelated metadata future should join")
+            .expect("unrelated metadata task should complete");
+        let runtime_report = runtime.shutdown_tasks(Duration::from_secs(1)).await;
+        assert!(runtime_report.is_healthy(), "{}", runtime_report.to_json());
+    }
+}

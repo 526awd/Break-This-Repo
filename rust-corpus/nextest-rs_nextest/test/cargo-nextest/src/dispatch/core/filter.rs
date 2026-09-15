@@ -1,0 +1,296 @@
+// Copyright (c) The nextest Contributors
+// SPDX-License-Identifier: MIT OR Apache-2.0
+
+//! Test filtering options for core commands.
+
+use super::value_enums::{PlatformFilterOpts, RunIgnoredOpt};
+use crate::{ExpectedError, Result, reuse_build::make_path_mapper};
+use camino::Utf8PathBuf;
+use clap::{ArgAction, Args};
+use guppy::graph::PackageGraph;
+use nextest_runner::{
+    cargo_config::EnvironmentMap,
+    config::core::{EvaluatableProfile, get_num_cpus},
+    list::{BinaryList, ListProgressOptions, RustTestArtifact, TestExecuteContext, TestList},
+    partition::PartitionerBuilder,
+    reuse_build::ReuseBuildInfo,
+    run_mode::NextestRunMode,
+    test_filter::{FilterBound, RunIgnored, TestFilter, TestFilterPatterns},
+};
+use std::sync::Arc;
+
+/// Test filtering options.
+#[derive(Debug, Args)]
+#[command(next_help_heading = "Filter options")]
+pub(crate) struct TestBuildFilter {
+    /// Run ignored tests.
+    #[arg(long, value_enum, value_name = "WHICH")]
+    run_ignored: Option<RunIgnoredOpt>,
+
+    /// Test partition, e.g. hash:1/2, count:2/3, or slice:1/3.
+    #[arg(long)]
+    partition: Option<PartitionerBuilder>,
+
+    /// Filter test binaries by build platform (DEPRECATED).
+    ///
+    /// Instead, use -E with 'platform(host)' or 'platform(target)'.
+    #[arg(
+        long,
+        hide_short_help = true,
+        value_enum,
+        value_name = "PLATFORM",
+        default_value_t
+    )]
+    pub(crate) platform_filter: PlatformFilterOpts,
+
+    /// Test filterset (see {n}<https://nexte.st/docs/filtersets>).
+    #[arg(
+        long,
+        alias = "filter-expr",
+        short = 'E',
+        value_name = "EXPR",
+        long_help = "Test filterset.\n\nRun `cargo nextest help filterset` for the full reference, \
+            or see <https://nexte.st/docs/filtersets>.",
+        action(ArgAction::Append)
+    )]
+    pub(crate) filterset: Vec<String>,
+
+    /// Ignore the default filter configured in the profile.
+    ///
+    /// By default, all filtersets are intersected with the default filter configured in the
+    /// profile. This flag disables that behavior.
+    ///
+    /// This flag doesn't change the definition of the `default()` filterset.
+    #[arg(long)]
+    ignore_default_filter: bool,
+
+    /// Test name filters.
+    #[arg(help_heading = None, name = "FILTERS")]
+    pre_double_dash_filters: Vec<String>,
+
+    /// Test name filters and emulated test binary arguments.
+    ///
+    /// These arguments emulate the flags accepted by libtest (the standard Rust
+    /// test harness), so that `cargo nextest run -- <args>` works similarly to
+    /// `cargo test -- <args>`.
+    ///
+    /// Supported arguments:
+    ///
+    /// `--ignored`: Only run ignored tests (equivalent to `--run-ignored ignored-only`).
+    ///
+    /// `--include-ignored`: Run both ignored and non-ignored tests (equivalent to `--run-ignored all`).
+    ///
+    /// `--skip PATTERN`: Skip tests matching PATTERN. May be specified multiple
+    /// times.
+    ///
+    /// `--exact`: Require that filters after -- match test names exactly, rather
+    /// than as substrings.
+    ///
+    /// `--nocapture` (or `--no-capture`): Run tests serially and do not capture
+    /// output. Equivalent to the `--no-capture` flag before --.
+    #[arg(help_heading = None, value_name = "FILTERS_AND_ARGS", last = true)]
+    filters: Vec<String>,
+}
+
+impl TestBuildFilter {
+    #[expect(clippy::too_many_arguments)]
+    pub(crate) fn compute_test_list<'g>(
+        &self,
+        ctx: &TestExecuteContext<'_>,
+        graph: &'g PackageGraph,
+        workspace_root: Utf8PathBuf,
+        binary_list: Arc<BinaryList>,
+        test_filter: &TestFilter,
+        env: EnvironmentMap,
+        profile: &EvaluatableProfile<'_>,
+        reuse_build: &ReuseBuildInfo,
+        list_progress_options: ListProgressOptions,
+    ) -> Result<TestList<'g>> {
+        let path_mapper = make_path_mapper(
+            reuse_build,
+            graph,
+            &binary_list.rust_build_meta.target_directory,
+            &binary_list.rust_build_meta.build_directory,
+        )?;
+
+        // Use the canonicalized workspace root from PathMapper if a remap
+        // was specified. This ensures NEXTEST_WORKSPACE_ROOT is an absolute,
+        // normalized path consistent with CARGO_MANIFEST_DIR.
+        let workspace_root = match path_mapper.new_workspace_root() {
+            Some(canonical) => canonical.to_owned(),
+            None => workspace_root,
+        };
+
+        let rust_build_meta = binary_list.rust_build_meta.map_paths(&path_mapper);
+        let test_artifacts = RustTestArtifact::from_binary_list(
+            graph,
+            binary_list,
+            &rust_build_meta,
+            &path_mapper,
+            self.platform_filter.into(),
+        )?;
+        TestList::new(
+            ctx,
+            test_artifacts,
+            rust_build_meta,
+            test_filter,
+            self.partition.as_ref(),
+            workspace_root,
+            env,
+            profile,
+            if self.ignore_default_filter {
+                FilterBound::All
+            } else {
+                FilterBound::DefaultSet
+            },
+            // TODO: do we need to allow customizing this?
+            get_num_cpus(),
+            list_progress_options,
+        )
+        .map_err(|err| ExpectedError::CreateTestListError { err })
+    }
+
+    pub(crate) fn make_test_filter(
+        &self,
+        mode: NextestRunMode,
+        filter_exprs: Vec<nextest_filtering::Filterset>,
+    ) -> Result<TestFilterWithCaptureOpts> {
+        // Merge the test binary args into the patterns.
+        let mut run_ignored = self.run_ignored.map(Into::into);
+        let mut patterns = TestFilterPatterns::new(self.pre_double_dash_filters.clone());
+        let mut no_capture = false;
+        self.merge_test_binary_args(&mut run_ignored, &mut patterns, &mut no_capture)?;
+
+        Ok(TestFilterWithCaptureOpts {
+            test_filter: TestFilter::new(
+                mode,
+                run_ignored.unwrap_or_default(),
+                patterns,
+                filter_exprs,
+            )?,
+            no_capture,
+        })
+    }
+
+    fn merge_test_binary_args(
+        &self,
+        run_ignored: &mut Option<RunIgnored>,
+        patterns: &mut TestFilterPatterns,
+        no_capture: &mut bool,
+    ) -> Result<()> {
+        // First scan to see if `--exact` is specified. If so, then everything here will be added to
+        // `--exact`.
+        let mut is_exact = false;
+        for arg in &self.filters {
+            if arg == "--" {
+                break;
+            }
+            if arg == "--exact" {
+                if is_exact {
+                    return Err(ExpectedError::test_binary_args_parse_error(
+                        "duplicated",
+                        vec![arg.clone()],
+                    ));
+                }
+                is_exact = true;
+            }
+        }
+
+        let mut ignore_filters = Vec::new();
+        let mut read_trailing_filters = false;
+        let mut seen_nocapture = false;
+
+        let mut unsupported_args = Vec::new();
+
+        let mut it = self.filters.iter();
+        while let Some(arg) = it.next() {
+            if read_trailing_filters || !arg.starts_with('-') {
+                if is_exact {
+                    patterns.add_exact_pattern(arg.clone());
+                } else {
+                    patterns.add_substring_pattern(arg.clone());
+                }
+            } else if arg == "--include-ignored" {
+                ignore_filters.push((arg.clone(), RunIgnored::All));
+            } else if arg == "--ignored" {
+                ignore_filters.push((arg.clone(), RunIgnored::Only));
+            } else if arg == "--" {
+                read_trailing_filters = true;
+            } else if arg == "--skip" {
+                let skip_arg = it.next().ok_or_else(|| {
+                    ExpectedError::test_binary_args_parse_error(
+                        "missing required argument",
+                        vec![arg.clone()],
+                    )
+                })?;
+
+                if is_exact {
+                    patterns.add_skip_exact_pattern(skip_arg.clone());
+                } else {
+                    patterns.add_skip_pattern(skip_arg.clone());
+                }
+            } else if arg == "--exact" {
+                // Already handled above.
+            } else if arg == "--nocapture" || arg == "--no-capture" {
+                if seen_nocapture {
+                    return Err(ExpectedError::test_binary_args_parse_error(
+                        "duplicated",
+                        vec![arg.clone()],
+                    ));
+                }
+                seen_nocapture = true;
+                *no_capture = true;
+            } else {
+                unsupported_args.push(arg.clone());
+            }
+        }
+
+        for (s, f) in ignore_filters {
+            if let Some(run_ignored) = run_ignored {
+                if *run_ignored != f {
+                    return Err(ExpectedError::test_binary_args_parse_error(
+                        "mutually exclusive",
+                        vec![s],
+                    ));
+                } else {
+                    return Err(ExpectedError::test_binary_args_parse_error(
+                        "duplicated",
+                        vec![s],
+                    ));
+                }
+            } else {
+                *run_ignored = Some(f);
+            }
+        }
+
+        if !unsupported_args.is_empty() {
+            return Err(ExpectedError::test_binary_args_parse_error(
+                "unsupported",
+                unsupported_args,
+            ));
+        }
+
+        Ok(())
+    }
+}
+
+/// The result of parsing test filters, including emulated test binary arguments
+/// that affect runner behavior (not just filtering).
+pub(crate) struct TestFilterWithCaptureOpts {
+    /// The constructed test filter.
+    pub(crate) test_filter: TestFilter,
+
+    /// Whether `--nocapture` or `--no-capture` was specified after `--`.
+    pub(crate) no_capture: bool,
+}
+
+/// Archive build filtering options.
+#[derive(Debug, Args)]
+#[command(next_help_heading = "Filter options")]
+pub(crate) struct ArchiveBuildFilter {
+    /// Archive filterset (see <https://nexte.st/docs/filtersets>).
+    ///
+    /// This argument does not accept test predicates.
+    #[arg(long, short = 'E', value_name = "EXPR", action(ArgAction::Append))]
+    pub(crate) filterset: Vec<String>,
+}

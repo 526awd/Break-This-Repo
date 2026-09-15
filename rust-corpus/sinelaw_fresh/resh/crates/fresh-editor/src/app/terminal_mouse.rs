@@ -1,0 +1,667 @@
+//! Terminal mouse event handling.
+//!
+//! This module handles forwarding mouse events to the terminal PTY when the terminal
+//! is in alternate screen mode (used by programs like vim, less, htop, etc.).
+//!
+//! When in alternate screen mode, mouse events that fall within the terminal's content
+//! area are converted to terminal escape sequences and sent to the PTY, allowing
+//! full-screen terminal programs to receive and handle mouse input.
+
+use crate::app::window::Window;
+use crate::input::handler::{TerminalMouseButton, TerminalMouseEventKind};
+use crate::model::event::BufferId;
+use anyhow::Result as AnyhowResult;
+use crossterm::event::{MouseButton, MouseEvent, MouseEventKind};
+use ratatui::layout::Rect;
+
+impl Window {
+    /// Check if mouse event should be forwarded to the terminal.
+    /// Returns true if the event was forwarded (and handled).
+    /// `forwarding` is the configured `terminal.mouse_forwarding` policy.
+    pub(crate) fn try_forward_mouse_to_terminal(
+        &mut self,
+        col: u16,
+        row: u16,
+        // The terminal under the pointer and the rectangle its grid occupies,
+        // resolved by `Editor::terminal_pane_at`. Asked there because it is a
+        // question about the shell's tree, which this side cannot see.
+        at: (BufferId, Rect),
+        mouse_event: MouseEvent,
+        forwarding: crate::config::TerminalMouseForwarding,
+    ) -> Option<AnyhowResult<bool>> {
+        // Only forward if the focused split is a live terminal.
+        if !self.focused_terminal_live() {
+            return None;
+        }
+
+        // Ctrl reserves the Left-button / motion gesture for Fresh's own
+        // file-link hover + open (the xterm/VS Code convention: Ctrl/Cmd+Click
+        // opens links, overriding the inner program's mouse capture). Never
+        // forward those to the PTY — otherwise a program that enabled mouse
+        // reporting (DECSET 1000/1002/1003) or is in the alternate screen would
+        // swallow the click before `try_open_terminal_link` /
+        // `update_terminal_link_hover` (mouse_input.rs) ever see it, and links
+        // would only work at a bare shell prompt. Non-Ctrl events still forward
+        // normally, so the program keeps its ordinary mouse behaviour.
+        if mouse_event
+            .modifiers
+            .contains(crossterm::event::KeyModifiers::CONTROL)
+            && matches!(
+                mouse_event.kind,
+                MouseEventKind::Down(MouseButton::Left)
+                    | MouseEventKind::Up(MouseButton::Left)
+                    | MouseEventKind::Drag(MouseButton::Left)
+                    | MouseEventKind::Moved
+            )
+        {
+            return None;
+        }
+
+        let (buffer_id, content_rect) = at;
+
+        // `send_terminal_mouse` writes to the *focused* terminal and makes the
+        // coordinates relative to `content_rect`, so both must describe the
+        // same pane. If the pointer is over a *different* terminal pane than
+        // the focused one, forwarding would inject that pane's mouse reports
+        // into the focused child's stdin — a child that may never have enabled
+        // mouse reporting at all (sinelaw/fresh#2745). Only the focused
+        // terminal receives the mouse.
+        if buffer_id != self.active_buffer() {
+            return None;
+        }
+
+        let forward = match forwarding {
+            // Legacy rule: forward every event to any alternate-screen
+            // program, whether or not it asked for the mouse.
+            crate::config::TerminalMouseForwarding::AltScreen => {
+                self.is_terminal_in_alternate_screen(buffer_id)
+            }
+            // Button/motion events are forwarded only when the inner program
+            // actually subscribed to the mouse (DECSET 1000/1002/1003) —
+            // writing mouse escape sequences into a program that never
+            // enabled reporting just injects garbage into its stdin. Shift is
+            // the universal escape hatch (xterm convention): a shifted
+            // press/drag is never forwarded, so text can always be
+            // drag-selected even under a mouse-hungry program. Wheel events
+            // additionally keep the alternate-screen rule: alternate-scroll
+            // mode (arrow-key synthesis for pagers like `less`) lives in
+            // `forward_mouse_to_terminal` and must keep seeing them.
+            crate::config::TerminalMouseForwarding::Requested => {
+                let wants_mouse = self.terminal_wants_mouse(buffer_id);
+                let is_scroll = matches!(
+                    mouse_event.kind,
+                    MouseEventKind::ScrollUp
+                        | MouseEventKind::ScrollDown
+                        | MouseEventKind::ScrollLeft
+                        | MouseEventKind::ScrollRight
+                );
+                let shift = mouse_event
+                    .modifiers
+                    .contains(crossterm::event::KeyModifiers::SHIFT);
+                if is_scroll {
+                    wants_mouse || self.is_terminal_in_alternate_screen(buffer_id)
+                } else if matches!(mouse_event.kind, MouseEventKind::Moved) {
+                    // Buttonless motion belongs only to all-motion tracking
+                    // (1003); spamming it at click-only/button-drag programs
+                    // is out of spec (and its echo can churn the PTY).
+                    self.terminal_wants_mouse_motion(buffer_id)
+                } else {
+                    wants_mouse && !shift
+                }
+            }
+        };
+        if !forward {
+            return None;
+        }
+
+        // Forward the event.
+        Some(self.forward_mouse_to_terminal(col, row, content_rect, mouse_event))
+    }
+
+    /// Whether the inner program of `buffer_id`'s terminal enabled any
+    /// mouse-reporting mode (DECSET 1000/1002/1003). The mouse belongs to
+    /// the program only when it asked for it; otherwise presses stay with
+    /// the editor (focus + drag-to-select).
+    pub fn terminal_wants_mouse(&self, buffer_id: BufferId) -> bool {
+        if let Some(terminal_id) = self.get_terminal_id(buffer_id) {
+            if let Some(handle) = self.terminal_manager.get(terminal_id) {
+                if let Ok(state) = handle.state.lock() {
+                    return state.wants_mouse_events();
+                }
+            }
+        }
+        false
+    }
+
+    /// Whether the inner program enabled ALL-motion mouse tracking
+    /// (DECSET 1003) — the only mode that legitimately receives
+    /// buttonless motion reports.
+    pub fn terminal_wants_mouse_motion(&self, buffer_id: BufferId) -> bool {
+        if let Some(terminal_id) = self.get_terminal_id(buffer_id) {
+            if let Some(handle) = self.terminal_manager.get(terminal_id) {
+                if let Ok(state) = handle.state.lock() {
+                    return state.wants_mouse_motion();
+                }
+            }
+        }
+        false
+    }
+
+    /// Detect a clickable file-path link in the live terminal grid at the given
+    /// screen position.
+    ///
+    /// Returns the terminal buffer, the content-area-relative grid row, the
+    /// detected link (path + optional line/col + column span), and the
+    /// terminal's OSC 7 working directory (for resolving relative paths).
+    ///
+    /// Only fires in live terminal mode (not the read-only scrollback view).
+    /// It intentionally *does* fire for alternate-screen / mouse-reporting
+    /// programs: the Ctrl gesture is reserved for links and withheld from the
+    /// PTY (see `try_forward_mouse_to_terminal`), so a path printed by such a
+    /// program stays Ctrl-hoverable / Ctrl-clickable. The returned link is
+    /// textual only — the caller resolves and checks it.
+    pub(crate) fn detect_terminal_link_at(
+        &self,
+        col: u16,
+        row: u16,
+        // See `try_forward_mouse_to_terminal`.
+        at: (BufferId, Rect),
+    ) -> Option<(
+        BufferId,
+        u16,
+        crate::services::terminal::path_link::DetectedLink,
+        Option<std::path::PathBuf>,
+    )> {
+        if !self.focused_terminal_live() {
+            return None;
+        }
+        let (buffer_id, content_rect) = at;
+        // Detection runs even for alternate-screen / mouse-reporting programs:
+        // this is only reached for Ctrl-held gestures (see the callers in
+        // `terminal_link.rs`, both Ctrl-gated), which `try_forward_mouse_to_terminal`
+        // deliberately withholds from the PTY so a path shown by vim/less/htop or
+        // any mouse-capturing program is still Ctrl-hoverable and Ctrl-clickable.
+        let term_col = col.saturating_sub(content_rect.x) as usize;
+        let term_row = row.saturating_sub(content_rect.y);
+
+        let terminal_id = self.get_terminal_id(buffer_id)?;
+        let handle = self.terminal_manager.get(terminal_id)?;
+        let (line, cwd) = {
+            let state = handle.state.lock().ok()?;
+            let line: String = state.get_line(term_row).iter().map(|c| c.c).collect();
+            let cwd = state.cwd().map(|p| p.to_path_buf());
+            (line, cwd)
+        };
+
+        let link = crate::services::terminal::path_link::detect_link_at(&line, term_col)?;
+        Some((buffer_id, term_row, link, cwd))
+    }
+
+    /// Detect a clickable file-path link in the terminal *scrollback* view at
+    /// the given screen position.
+    ///
+    /// The scrollback view is a normal read-only buffer (the synced terminal
+    /// history) shown only for the active terminal buffer when not in live
+    /// terminal mode. Clicks map through the standard screen→buffer-position
+    /// machinery; we then read the buffer line under the cursor and detect a
+    /// path link in it.
+    ///
+    /// Returns the terminal buffer, the detected link, and the terminal's
+    /// OSC 7 working directory (for resolving relative paths).
+    /// `at` is the pane the cell is over and where its content sits, which
+    /// the caller asks the shell tree for — the same parameter, for the same
+    /// reason, as its sibling [`Window::detect_terminal_link_at`]. A `Window`
+    /// cannot see the tree, and the scan this replaces answered "which pane
+    /// covers this cell" out of the painter's record of the last frame.
+    pub(crate) fn detect_terminal_scrollback_link_at(
+        &self,
+        col: u16,
+        row: u16,
+        at: (crate::model::event::LeafId, ratatui::layout::Rect),
+    ) -> Option<(
+        BufferId,
+        crate::services::terminal::path_link::DetectedLink,
+        Option<std::path::PathBuf>,
+    )> {
+        // Scrollback links exist only when the focused split's terminal is in
+        // read-only scrollback (a live terminal shows the grid instead).
+        if self.focused_terminal_live() {
+            return None;
+        }
+        let active = self.active_buffer();
+        if !self.is_terminal_buffer(active) {
+            return None;
+        }
+
+        // The scan also checked that the pane it found is showing the active
+        // terminal, which is a question about the model rather than about the
+        // paint.
+        let (split_id, content_rect) = at;
+        if self.pane_buffer(split_id) != Some(active) {
+            return None;
+        }
+
+        let state = self.buffers.get(&active)?;
+        let gutter_width = state.margins.left_total_width() as u16;
+        let cached_mappings = self.pane_view(split_id).map(|v| v.rows.clone());
+        let (fallback, compose_width) = self
+            .buffers
+            .splits()
+            .and_then(|(_, vs)| vs.get(&split_id))
+            .map(|vs| (vs.viewport.top_byte(), vs.compose_width))
+            .unwrap_or((0, None));
+
+        // `allow_gutter_click = false`: a click in the gutter isn't on a path.
+        let byte_pos = crate::app::click_geometry::screen_to_buffer_position(
+            col,
+            row,
+            content_rect,
+            gutter_width,
+            cached_mappings.as_deref(),
+            fallback,
+            false,
+            compose_width,
+        )?;
+
+        let pos = crate::model::buffer_position::byte_to_2d(&state.buffer, byte_pos);
+        let line_bytes = state.buffer.get_line(pos.line)?;
+        let line = String::from_utf8_lossy(&line_bytes);
+        let line = line.strip_suffix('\n').unwrap_or(&line);
+        // `pos.column` is a byte offset within the line; convert to a char
+        // column for the (char-indexed) detector.
+        let char_col = line
+            .char_indices()
+            .take_while(|(b, _)| *b < pos.column)
+            .count();
+
+        let link = crate::services::terminal::path_link::detect_link_at(line, char_col)?;
+        let cwd = self
+            .get_terminal_id(active)
+            .and_then(|tid| self.terminal_manager.get(tid))
+            .and_then(|h| {
+                h.state
+                    .lock()
+                    .ok()
+                    .and_then(|s| s.cwd().map(|p| p.to_path_buf()))
+            });
+
+        Some((active, link, cwd))
+    }
+
+    /// Forward a mouse event to the terminal PTY.
+    /// Converts screen coordinates to terminal-relative coordinates and sends the event.
+    fn forward_mouse_to_terminal(
+        &mut self,
+        col: u16,
+        row: u16,
+        content_rect: Rect,
+        mouse_event: MouseEvent,
+    ) -> AnyhowResult<bool> {
+        // Convert to terminal-relative coordinates (0-based from content area).
+        let term_col = col.saturating_sub(content_rect.x);
+        let term_row = row.saturating_sub(content_rect.y);
+
+        // Send to terminal.
+        let kind = convert_kind(mouse_event.kind);
+        self.send_terminal_mouse(term_col, term_row, kind, mouse_event.modifiers);
+
+        // Terminal renders itself, so we need to trigger a render.
+        Ok(true)
+    }
+}
+
+/// Convert crossterm MouseButton to our TerminalMouseButton.
+fn convert_button(btn: MouseButton) -> TerminalMouseButton {
+    match btn {
+        MouseButton::Left => TerminalMouseButton::Left,
+        MouseButton::Right => TerminalMouseButton::Right,
+        MouseButton::Middle => TerminalMouseButton::Middle,
+    }
+}
+
+/// Convert a crossterm `MouseEventKind` to the kind the PTY encoders speak.
+///
+/// Total: every kind the input parser can produce has a wire representation,
+/// horizontal wheel included (xterm buttons 6 and 7). This used to drop
+/// `ScrollLeft`/`ScrollRight` on the floor — and because the caller reports
+/// "handled" either way, a horizontal wheel over a mouse-tracking terminal
+/// was swallowed rather than falling through to Fresh's own panning.
+fn convert_kind(kind: MouseEventKind) -> TerminalMouseEventKind {
+    match kind {
+        MouseEventKind::Down(btn) => TerminalMouseEventKind::Down(convert_button(btn)),
+        MouseEventKind::Up(btn) => TerminalMouseEventKind::Up(convert_button(btn)),
+        MouseEventKind::Drag(btn) => TerminalMouseEventKind::Drag(convert_button(btn)),
+        MouseEventKind::Moved => TerminalMouseEventKind::Moved,
+        MouseEventKind::ScrollUp => TerminalMouseEventKind::ScrollUp,
+        MouseEventKind::ScrollDown => TerminalMouseEventKind::ScrollDown,
+        MouseEventKind::ScrollLeft => TerminalMouseEventKind::ScrollLeft,
+        MouseEventKind::ScrollRight => TerminalMouseEventKind::ScrollRight,
+    }
+}
+
+#[cfg(test)]
+mod convert_kind_tests {
+    use super::*;
+
+    #[test]
+    fn horizontal_wheel_has_a_wire_representation() {
+        assert_eq!(
+            convert_kind(MouseEventKind::ScrollLeft),
+            TerminalMouseEventKind::ScrollLeft
+        );
+        assert_eq!(
+            convert_kind(MouseEventKind::ScrollRight),
+            TerminalMouseEventKind::ScrollRight
+        );
+    }
+
+    #[test]
+    fn other_kinds_are_unchanged() {
+        assert_eq!(
+            convert_kind(MouseEventKind::Down(MouseButton::Left)),
+            TerminalMouseEventKind::Down(TerminalMouseButton::Left)
+        );
+        assert_eq!(
+            convert_kind(MouseEventKind::Drag(MouseButton::Middle)),
+            TerminalMouseEventKind::Drag(TerminalMouseButton::Middle)
+        );
+        assert_eq!(
+            convert_kind(MouseEventKind::Moved),
+            TerminalMouseEventKind::Moved
+        );
+        assert_eq!(
+            convert_kind(MouseEventKind::ScrollUp),
+            TerminalMouseEventKind::ScrollUp
+        );
+        assert_eq!(
+            convert_kind(MouseEventKind::ScrollDown),
+            TerminalMouseEventKind::ScrollDown
+        );
+    }
+}
+
+impl super::Editor {
+    /// Begin a text-selection drag on a terminal split that was showing the
+    /// live PTY grid when the mouse went down (see
+    /// `MouseState::terminal_drag_pending` — a bare click only focuses).
+    ///
+    /// Live terminals have no cursor/selection model of their own, so the
+    /// split is dropped into read-only scrollback first — exactly the
+    /// Ctrl+Space / scroll-up transition. `sync_terminal_to_buffer` pins the
+    /// scrollback viewport to the just-appended visible screen, making the
+    /// scrollback view pixel-identical to the grid the user aimed at: the
+    /// view grid-wraps at the capture-time PTY width (fresh#2649), so grid
+    /// row r is visual row r of the anchored viewport and grid columns map
+    /// 1:1 within a row (no gutter). That lets both the press
+    /// origin and the current drag position resolve to exact byte positions
+    /// without waiting for a re-render; the standard text-selection drag
+    /// machinery then takes over (Ctrl+C copies through the editor
+    /// clipboard as usual; Ctrl+Space resumes the live terminal).
+    pub(super) fn begin_terminal_grid_selection(
+        &mut self,
+        split_id: crate::model::event::LeafId,
+        buffer_id: BufferId,
+        origin_col: u16,
+        origin_row: u16,
+        col: u16,
+        row: u16,
+    ) -> AnyhowResult<()> {
+        self.active_window_mut().mouse_state.terminal_drag_pending = None;
+
+        let Some(content_rect) =
+            self.drop_terminal_grid_into_selection_scrollback(split_id, buffer_id)
+        else {
+            return Ok(());
+        };
+
+        // Resolve both grid positions to byte positions. Columns are taken
+        // as byte offsets into the line (terminal rows are overwhelmingly
+        // single-width; `snap_to_char_boundary` keeps multi-byte glyphs
+        // safe), and subsequent drag motion refines through the standard
+        // width-aware `handle_text_selection_drag` path anyway.
+        let anchor =
+            self.terminal_grid_byte_at(split_id, buffer_id, content_rect, origin_col, origin_row);
+        let head = self.terminal_grid_byte_at(split_id, buffer_id, content_rect, col, row);
+        let (Some(anchor), Some(head)) = (anchor, head) else {
+            return Ok(());
+        };
+
+        if let Some(view_state) = self
+            .windows
+            .get_mut(&self.active_window)
+            .and_then(|w| w.buffers.splits_mut())
+            .and_then(|(_, vs)| vs.get_mut(&split_id))
+        {
+            let cursor = view_state.cursors.primary_mut();
+            cursor.position = head;
+            cursor.anchor = Some(anchor);
+        }
+
+        // Hand off to the standard drag machinery for subsequent motion.
+        let ms = &mut self.active_window_mut().mouse_state;
+        ms.dragging_text_selection = true;
+        ms.drag_selection_split = Some(split_id);
+        ms.drag_selection_anchor = Some(anchor);
+        Ok(())
+    }
+
+    /// Double-click on the live terminal grid: select the word under the
+    /// pointer. Same trick as [`Editor::begin_terminal_grid_selection`] — the
+    /// live grid has no selection model, so the split first drops into
+    /// implicit scrollback (pixel-identical view), then the standard
+    /// word-selection and word-wise drag machinery take over.
+    pub(super) fn begin_terminal_grid_word_selection(
+        &mut self,
+        split_id: crate::model::event::LeafId,
+        buffer_id: BufferId,
+        col: u16,
+        row: u16,
+    ) -> AnyhowResult<()> {
+        self.active_window_mut().mouse_state.terminal_drag_pending = None;
+
+        let Some(content_rect) =
+            self.drop_terminal_grid_into_selection_scrollback(split_id, buffer_id)
+        else {
+            return Ok(());
+        };
+        let Some(pos) = self.terminal_grid_byte_at(split_id, buffer_id, content_rect, col, row)
+        else {
+            return Ok(());
+        };
+
+        if let Some(view_state) = self
+            .windows
+            .get_mut(&self.active_window)
+            .and_then(|w| w.buffers.splits_mut())
+            .and_then(|(_, vs)| vs.get_mut(&split_id))
+        {
+            let cursor = view_state.cursors.primary_mut();
+            cursor.position = pos;
+            cursor.anchor = None;
+        }
+        self.handle_action(crate::input::keybindings::Action::SelectWord)?;
+
+        // Mirror `handle_editor_double_click`: arm word-wise drag extension.
+        if let Some((sel_start, sel_end)) = self
+            .windows
+            .get(&self.active_window)
+            .and_then(|w| w.buffers.splits())
+            .and_then(|(_, vs)| vs.get(&split_id))
+            .map(|vs| {
+                let c = vs.cursors.primary();
+                (c.selection_start(), c.selection_end())
+            })
+        {
+            let ms = &mut self.active_window_mut().mouse_state;
+            ms.dragging_text_selection = true;
+            ms.drag_selection_split = Some(split_id);
+            ms.drag_selection_anchor = Some(sel_start);
+            ms.drag_selection_by_words = true;
+            ms.drag_selection_word_end = Some(sel_end);
+        }
+        Ok(())
+    }
+
+    /// Triple-click on the live terminal grid: select the whole line under
+    /// the pointer, via the same implicit-scrollback detour.
+    pub(super) fn begin_terminal_grid_line_selection(
+        &mut self,
+        split_id: crate::model::event::LeafId,
+        buffer_id: BufferId,
+        col: u16,
+        row: u16,
+    ) -> AnyhowResult<()> {
+        self.active_window_mut().mouse_state.terminal_drag_pending = None;
+
+        let Some(content_rect) =
+            self.drop_terminal_grid_into_selection_scrollback(split_id, buffer_id)
+        else {
+            return Ok(());
+        };
+        let Some(pos) = self.terminal_grid_byte_at(split_id, buffer_id, content_rect, col, row)
+        else {
+            return Ok(());
+        };
+
+        if let Some(view_state) = self
+            .windows
+            .get_mut(&self.active_window)
+            .and_then(|w| w.buffers.splits_mut())
+            .and_then(|(_, vs)| vs.get_mut(&split_id))
+        {
+            let cursor = view_state.cursors.primary_mut();
+            cursor.position = pos;
+            cursor.anchor = None;
+        }
+        self.handle_action(crate::input::keybindings::Action::SelectLine)?;
+        Ok(())
+    }
+
+    /// Drop a *live* terminal grid split into read-only scrollback for a
+    /// selection gesture, pinned pixel-identical to the grid (see
+    /// [`Editor::begin_terminal_grid_selection`]), and mark the visit
+    /// implicit (drag-initiated) so completing the gesture — copying, or a
+    /// bare click abandoning the selection — resumes the live grid
+    /// automatically. Returns the split's content rect, or `None` when the
+    /// situation changed under the gesture (buffer no longer a terminal,
+    /// split already in scrollback, layout gone) and nothing was done.
+    fn drop_terminal_grid_into_selection_scrollback(
+        &mut self,
+        split_id: crate::model::event::LeafId,
+        buffer_id: BufferId,
+    ) -> Option<Rect> {
+        if !self.active_window().is_terminal_buffer(buffer_id)
+            || self
+                .active_window()
+                .split_terminal_scrollback(split_id, buffer_id)
+        {
+            return None;
+        }
+        // The pane is named, so its content rectangle is the tree's; the scan
+        // this replaces also checked that the pane still shows this buffer,
+        // which `pane_buffer` answers from the model rather than from the
+        // painter's record of the last frame.
+        let content_rect = self.pane_content_rect(split_id)?;
+        if self
+            .windows
+            .get(&self.active_window)
+            .and_then(|w| w.pane_buffer(split_id))
+            != Some(buffer_id)
+        {
+            return None;
+        }
+
+        // Drop into read-only scrollback. The press already focused the
+        // split, so the sync pins THIS split's viewport to the grid's row 0.
+        self.active_window_mut()
+            .set_split_terminal_scrollback(split_id, buffer_id, true);
+        self.active_window_mut()
+            .set_split_terminal_drag_scrollback(split_id, buffer_id, true);
+        self.active_window_mut().sync_terminal_mode_flags();
+        self.set_status_message(
+            "Terminal mode disabled - read only (Ctrl+Space to resume)".to_string(),
+        );
+        Some(content_rect)
+    }
+
+    /// Resolve a screen position over a terminal scrollback view to a byte
+    /// offset: grid row `r` is buffer line `top_line + r` and grid columns
+    /// map 1:1 (wrap off, no gutter). Exact for any scroll position, with no
+    /// dependency on render-cached view-line mappings.
+    pub(super) fn terminal_grid_byte_at(
+        &self,
+        split_id: crate::model::event::LeafId,
+        buffer_id: BufferId,
+        content_rect: Rect,
+        col: u16,
+        row: u16,
+    ) -> Option<usize> {
+        let win = self.windows.get(&self.active_window)?;
+        let (_, view_states) = win.buffers.splits()?;
+        let vs = view_states.get(&split_id)?;
+        let state = win.buffers.get(&buffer_id)?;
+        let (top_line, _) = state.buffer.position_to_line_col(vs.viewport.top_byte());
+        let grid_row = row.saturating_sub(content_rect.y) as usize;
+        // Account for horizontal scroll (a pinned view starts at 0, but an
+        // explicit scrollback view may have been scrolled right).
+        let grid_col =
+            col.saturating_sub(content_rect.x) as usize + vs.viewport.left_column as usize;
+
+        // Grid-wrapped scroll-back (fresh#2649): visual rows are exact-column
+        // wrap segments of the logical lines, so walk the segments from the
+        // viewport anchor to the clicked row instead of assuming one buffer
+        // line per grid row (which was only ever true for unwrapped lines —
+        // a grid row that continued a wrapped line used to resolve to the
+        // wrong buffer line entirely).
+        if vs.viewport.grid_wrap && vs.viewport.line_wrap_enabled {
+            let cols = vs.viewport.grid_cols();
+            let mut remaining = vs.viewport.top_view_line_offset() + grid_row;
+            let mut line_idx = top_line;
+            loop {
+                let Some(bytes) = state.buffer.get_line(line_idx) else {
+                    // Clicked past the buffer's tail: clamp to the end.
+                    return Some(state.buffer.len());
+                };
+                let text = String::from_utf8_lossy(&bytes);
+                let trimmed = text.trim_end_matches(['\n', '\r']);
+                let rows =
+                    crate::view::line_wrap_cache::count_visual_rows_for_text_grid(trimmed, cols)
+                        as usize;
+                if remaining < rows {
+                    let line_start = state.buffer.line_col_to_position(line_idx, 0);
+                    let layout =
+                        crate::view::line_wrap_cache::layout_for_plain_text_grid(trimmed, cols, 4);
+                    // A column past the row's rendered content resolves to
+                    // the row segment's END (the next segment's start, or the
+                    // line end on the last row) — same as click_geometry's
+                    // past-content clamp for ordinary buffer views. It must
+                    // NOT go through `source_byte_at_visual_col`, whose
+                    // out-of-range fallback clamps to the LAST character's
+                    // start byte and would drop the final character from any
+                    // selection whose drag overshoots the text.
+                    let byte_in_line = match layout.get(remaining) {
+                        Some(seg) if grid_col < seg.visual_width() => seg
+                            .source_byte_at_visual_col(grid_col)
+                            .unwrap_or(trimmed.len()),
+                        _ => layout
+                            .get(remaining + 1)
+                            .and_then(|next| next.source_start_byte)
+                            .unwrap_or(trimmed.len()),
+                    };
+                    return Some(
+                        state
+                            .buffer
+                            .snap_to_char_boundary(line_start + byte_in_line.min(trimmed.len())),
+                    );
+                }
+                remaining -= rows;
+                line_idx += 1;
+            }
+        }
+
+        let pos = state
+            .buffer
+            .line_col_to_position(top_line + grid_row, grid_col);
+        Some(state.buffer.snap_to_char_boundary(pos))
+    }
+}

@@ -1,0 +1,344 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::fs;
+use std::fs::OpenOptions;
+use std::io::Write;
+use std::path::Path;
+use std::path::PathBuf;
+
+use rocketmq_error::SharedError;
+use rocketmq_store::KeyValueStore;
+use rocketmq_store::RocksDbColumnFamily;
+use rocketmq_store::RocksDbColumnFamilyConfig;
+use rocketmq_store::RocksDbConfig;
+use rocketmq_store::RocksDbRangeScanOptions;
+use rocketmq_store::RocksDbScanOptions;
+use rocketmq_store::RocksDbStore;
+use rocketmq_store::RocksDbWriteBatch;
+use rocketmq_store::StoreError;
+use rocketmq_store::StoreOperation;
+use rocketmq_store_rocksdb::profile_marker::pop_consumer_profile_prefix;
+use rocketmq_store_rocksdb::profile_marker::POP_CONSUMER_PROFILE_MARKER_KEY;
+use serde::Deserialize;
+use serde::Serialize;
+
+const POP_RECORD_KEY_SEPARATOR: u8 = b'@';
+pub(crate) const POP_ROCKSDB_DIRECTORY: &str = "kvStore";
+const STORAGE_FORMAT_INVENTORY: &str = "config/storage-format-inventory.json";
+
+pub(crate) fn pop_rocksdb_path(store_path_root_dir: impl AsRef<Path>) -> PathBuf {
+    store_path_root_dir.as_ref().join(POP_ROCKSDB_DIRECTORY)
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub(crate) enum PopConsumerRetryType {
+    NormalTopic,
+    RetryTopicV1,
+    RetryTopicV2,
+}
+
+impl PopConsumerRetryType {
+    pub(crate) fn code(self) -> i32 {
+        match self {
+            Self::NormalTopic => 0,
+            Self::RetryTopicV1 => 1,
+            Self::RetryTopicV2 => 2,
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub(crate) struct PopConsumerRecord {
+    pub(crate) pop_time: i64,
+    pub(crate) group_id: String,
+    pub(crate) topic_id: String,
+    pub(crate) queue_id: i32,
+    pub(crate) retry_flag: i32,
+    pub(crate) invisible_time: i64,
+    pub(crate) offset: i64,
+    pub(crate) attempt_times: i32,
+    pub(crate) attempt_id: String,
+    pub(crate) suspend: bool,
+}
+
+impl PopConsumerRecord {
+    pub(crate) fn visibility_timeout(&self) -> i64 {
+        self.pop_time + self.invisible_time
+    }
+
+    pub(crate) fn is_retry(&self) -> bool {
+        self.retry_flag != PopConsumerRetryType::NormalTopic.code()
+    }
+
+    pub(crate) fn key_bytes(&self) -> Result<Vec<u8>, SharedError> {
+        validate_key_component("group_id", &self.group_id)?;
+        validate_key_component("topic_id", &self.topic_id)?;
+
+        let mut key = Vec::with_capacity(8 + self.group_id.len() + 1 + self.topic_id.len() + 1 + 4 + 1 + 8);
+        key.extend_from_slice(&self.visibility_timeout().to_be_bytes());
+        key.extend_from_slice(self.group_id.as_bytes());
+        key.push(POP_RECORD_KEY_SEPARATOR);
+        key.extend_from_slice(self.topic_id.as_bytes());
+        key.push(POP_RECORD_KEY_SEPARATOR);
+        key.extend_from_slice(&self.queue_id.to_be_bytes());
+        key.push(POP_RECORD_KEY_SEPARATOR);
+        key.extend_from_slice(&self.offset.to_be_bytes());
+        Ok(key)
+    }
+
+    pub(crate) fn value_bytes(&self) -> Result<Vec<u8>, SharedError> {
+        serde_json::to_vec(self)
+            .map_err(|error| crate::broker_error::serialization_failed("encode_pop_consumer_record", "json", error))
+    }
+
+    pub(crate) fn decode(body: &[u8]) -> Result<Self, SharedError> {
+        serde_json::from_slice(body)
+            .map_err(|error| crate::broker_error::serialization_failed("decode_pop_consumer_record", "json", error))
+    }
+}
+
+pub(crate) struct PopConsumerRocksDbStore {
+    config: RocksDbConfig,
+    store: RocksDbStore,
+}
+
+pub(crate) struct PopConsumerProfileState {
+    pub(crate) marker: Option<Vec<u8>>,
+    pub(crate) records: Vec<(Vec<u8>, Vec<u8>)>,
+}
+
+impl PopConsumerRocksDbStore {
+    pub(crate) fn open(path: PathBuf, block_cache_size: usize, write_buffer_size: usize) -> Result<Self, SharedError> {
+        let config = pop_rocksdb_config(path, block_cache_size, write_buffer_size);
+        let store = RocksDbStore::open(config.clone())
+            .map_err(broker_storage_error)?
+            .ok_or_else(invalid_rocksdb_configuration)?;
+        Ok(Self { config, store })
+    }
+
+    pub(crate) fn config(&self) -> &RocksDbConfig {
+        &self.config
+    }
+
+    pub(crate) fn file_path(&self) -> &Path {
+        &self.config.path
+    }
+
+    pub(crate) fn write_records(&self, records: &[PopConsumerRecord]) -> Result<(), SharedError> {
+        let pop_state_cf = RocksDbColumnFamily::PopState.name();
+        let mut batch = RocksDbWriteBatch::with_capacity(records.len());
+        for record in records {
+            batch.put_cf(pop_state_cf, record.key_bytes()?, record.value_bytes()?);
+        }
+        self.store
+            .write_batch(StoreOperation::Admin, &batch)
+            .map_err(broker_storage_error)
+    }
+
+    pub(crate) fn delete_records(&self, records: &[PopConsumerRecord]) -> Result<(), SharedError> {
+        let pop_state_cf = RocksDbColumnFamily::PopState.name();
+        let mut batch = RocksDbWriteBatch::with_capacity(records.len());
+        for record in records {
+            batch.delete_cf(pop_state_cf, record.key_bytes()?);
+        }
+        self.store
+            .write_batch(StoreOperation::Admin, &batch)
+            .map_err(broker_storage_error)
+    }
+
+    pub(crate) fn scan_expired_records(
+        &self,
+        lower_bound: i64,
+        upper_bound: i64,
+        max_count: usize,
+    ) -> Result<Vec<PopConsumerRecord>, SharedError> {
+        if max_count == 0 || lower_bound >= upper_bound {
+            return Ok(Vec::new());
+        }
+
+        let options = RocksDbRangeScanOptions::new(
+            RocksDbColumnFamily::PopState.name(),
+            lower_bound.to_be_bytes().to_vec(),
+            upper_bound.to_be_bytes().to_vec(),
+            max_count,
+        );
+        self.store
+            .range_scan(StoreOperation::Admin, &options)
+            .map_err(broker_storage_error)?
+            .into_iter()
+            .map(|item| PopConsumerRecord::decode(&item.value))
+            .collect()
+    }
+
+    pub(crate) fn load_profile_state(&self) -> Result<PopConsumerProfileState, SharedError> {
+        let cf = RocksDbColumnFamily::PopConsumerProfile.name();
+        let marker = self
+            .store
+            .get_cf(StoreOperation::Admin, cf, POP_CONSUMER_PROFILE_MARKER_KEY)
+            .map_err(broker_storage_error)?
+            .map(|value| value.to_vec());
+        let records = self
+            .store
+            .prefix_scan(
+                StoreOperation::Admin,
+                &RocksDbScanOptions::prefix(cf, pop_consumer_profile_prefix(), 0),
+            )
+            .map_err(broker_storage_error)?
+            .into_iter()
+            .map(|item| (item.key.to_vec(), item.value.to_vec()))
+            .collect();
+        Ok(PopConsumerProfileState { marker, records })
+    }
+
+    pub(crate) fn write_profile_record(
+        &self,
+        marker: Vec<u8>,
+        key: Vec<u8>,
+        value: Vec<u8>,
+    ) -> Result<(), SharedError> {
+        let cf = RocksDbColumnFamily::PopConsumerProfile.name();
+        let mut batch = RocksDbWriteBatch::with_capacity(2);
+        batch.put_cf(cf, POP_CONSUMER_PROFILE_MARKER_KEY.to_vec(), marker);
+        batch.put_cf(cf, key, value);
+        self.store
+            .write_batch(StoreOperation::Admin, &batch)
+            .map_err(broker_storage_error)?;
+        self.persist_profile_format_inventory()
+    }
+
+    #[cfg(any(test, feature = "test-support"))]
+    pub(crate) fn write_profile_marker_fixture(&self, marker: Vec<u8>) -> Result<(), SharedError> {
+        self.store
+            .put_cf(
+                StoreOperation::Admin,
+                RocksDbColumnFamily::PopConsumerProfile.name(),
+                POP_CONSUMER_PROFILE_MARKER_KEY,
+                &marker,
+            )
+            .map_err(broker_storage_error)
+    }
+
+    pub(crate) fn close(&self) {
+        self.store.close();
+    }
+
+    fn persist_profile_format_inventory(&self) -> Result<(), SharedError> {
+        let store_root = self.config.path.parent().ok_or_else(|| {
+            codec_error(format!(
+                "POP RocksDB path has no Store root: {}",
+                self.config.path.display()
+            ))
+        })?;
+        let inventory = store_root.join(STORAGE_FORMAT_INVENTORY);
+        match fs::read(&inventory) {
+            Ok(bytes) => {
+                let value: serde_json::Value = serde_json::from_slice(&bytes).map_err(|error| {
+                    crate::broker_error::serialization_failed("decode_storage_format_inventory", "json", error)
+                })?;
+                if value
+                    .pointer("/popConsumerProfile/declared")
+                    .and_then(serde_json::Value::as_bool)
+                    == Some(true)
+                {
+                    return Ok(());
+                }
+                return Err(codec_error(
+                    "storage format inventory exists without a declared POP consumer profile",
+                ));
+            }
+            Err(error) if error.kind() == std::io::ErrorKind::NotFound => {}
+            Err(error) => return Err(crate::broker_error::storage_read_source(error)),
+        }
+
+        let parent = inventory
+            .parent()
+            .ok_or_else(|| codec_error("storage format inventory has no parent"))?;
+        fs::create_dir_all(parent).map_err(crate::broker_error::storage_write_source)?;
+        let temporary = parent.join(format!(".storage-format-inventory.{}.tmp", std::process::id()));
+        let body = b"{\n  \"popConsumerProfile\": {\n    \"declared\": true\n  }\n}\n";
+        let mut file = OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .open(&temporary)
+            .map_err(crate::broker_error::storage_write_source)?;
+        let write_result = (|| -> std::io::Result<()> {
+            file.write_all(body)?;
+            file.sync_all()?;
+            fs::rename(&temporary, &inventory)
+        })();
+        if let Err(error) = write_result {
+            let _ = fs::remove_file(&temporary);
+            if inventory.is_file() {
+                return self.persist_profile_format_inventory();
+            }
+            return Err(crate::broker_error::storage_write_source(error));
+        }
+        Ok(())
+    }
+}
+
+pub(super) fn broker_storage_error(source: StoreError) -> SharedError {
+    crate::broker_error::internal("broker POP RocksDB operation failed", source)
+}
+
+fn invalid_rocksdb_configuration() -> SharedError {
+    crate::broker_error::configuration_invalid("popRocksdbConfig")
+}
+
+fn codec_error(reason: impl Into<String>) -> SharedError {
+    crate::broker_error::serialization_failure("POP RocksDB storage", reason.into())
+}
+
+fn pop_rocksdb_config(path: PathBuf, block_cache_size: usize, write_buffer_size: usize) -> RocksDbConfig {
+    RocksDbConfig {
+        enabled: true,
+        path,
+        wal_enabled: true,
+        sync_write: true,
+        column_families: vec![
+            pop_column_family_config(RocksDbColumnFamily::Default.name(), block_cache_size, write_buffer_size),
+            pop_column_family_config(
+                RocksDbColumnFamily::PopState.name(),
+                block_cache_size,
+                write_buffer_size,
+            ),
+            pop_column_family_config(
+                RocksDbColumnFamily::PopConsumerProfile.name(),
+                block_cache_size,
+                write_buffer_size,
+            ),
+        ],
+        ..RocksDbConfig::default()
+    }
+}
+
+fn pop_column_family_config(
+    name: &str,
+    block_cache_size: usize,
+    write_buffer_size: usize,
+) -> RocksDbColumnFamilyConfig {
+    RocksDbColumnFamilyConfig::pop(name, block_cache_size, write_buffer_size)
+}
+
+fn validate_key_component(field: &'static str, value: &str) -> Result<(), SharedError> {
+    if value.is_empty() {
+        return Err(crate::broker_error::configuration_invalid(field));
+    }
+    if value.as_bytes().contains(&POP_RECORD_KEY_SEPARATOR) {
+        return Err(crate::broker_error::configuration_invalid(field));
+    }
+    Ok(())
+}

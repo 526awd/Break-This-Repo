@@ -1,0 +1,797 @@
+use std::{
+    collections::{BTreeMap, BTreeSet},
+    fs::File,
+    io::Write,
+    path::{Path, PathBuf},
+};
+
+use clap::Args;
+use dora_recording::RecordingReader;
+use eyre::{Context, bail};
+
+use crate::command::{Executable, Run};
+
+/// Replay a recorded dataflow from a `.drec` file.
+///
+/// Reads a recording, identifies which nodes produced the recorded data,
+/// replaces them with replay nodes, and runs the modified dataflow.
+/// Downstream nodes receive replayed data identically to live data.
+///
+/// Examples:
+///
+///   Replay at original speed:
+///     dora replay recording.drec
+///
+///   Replay at 2x speed:
+///     dora replay recording.drec --speed 2.0
+///
+///   Replay as fast as possible:
+///     dora replay recording.drec --speed 0
+///
+///   Only replace specific nodes:
+///     dora replay recording.drec --replace sensor,camera
+///
+///   Just generate the modified YAML:
+///     dora replay recording.drec --output-yaml modified.yml
+#[derive(Debug, Args)]
+#[clap(verbatim_doc_comment)]
+pub struct Replay {
+    /// Path to the `.drec` recording file
+    #[clap(value_name = "FILE")]
+    file: String,
+
+    /// Nodes to replace with replay (comma-separated). Default: all recorded source nodes.
+    #[clap(long, value_name = "NODE_IDS", value_delimiter = ',')]
+    replace: Vec<String>,
+
+    /// Playback speed multiplier (default: 1.0, 0 = fast as possible)
+    #[clap(long, default_value = "1.0", value_parser = parse_speed)]
+    speed: f64,
+
+    /// Loop the recording
+    #[clap(long)]
+    r#loop: bool,
+
+    /// Just generate modified YAML, don't run
+    #[clap(long, value_name = "PATH")]
+    output_yaml: Option<String>,
+}
+
+impl Executable for Replay {
+    fn execute(self) -> eyre::Result<()> {
+        // Run::execute() sets up its own tracing subscriber.
+        run_replay(self)
+    }
+}
+
+/// Smallest positive `--speed` we accept. Below this the pacing math
+/// (`(delta as f64 / speed) as u64` nanoseconds) saturates to a sleep of many
+/// years, which is never intended; `1e-6` still permits extreme slow-motion (a
+/// 1 s recorded gap stretched to ~11.6 days), so it rejects only pathological
+/// denormal-ish values, not any plausible debugging speed.
+const MIN_SPEED: f64 = 1e-6;
+
+/// clap `value_parser` for `--speed`.
+///
+/// A bare `f64` parse accepts `-1`, `nan`, and `inf`. The pacing math
+/// (`replay-node::pacing_sleep_nanos`) treats anything `<= 0.0` as "as fast as
+/// possible", a `NaN` slips through that guard (`NaN <= 0.0` is false) only to
+/// yield `0` from the `as u64` cast, and a tiny positive value saturates that
+/// cast to a multi-year sleep — so negatives, `NaN`, and absurdly small values
+/// all silently misbehave. Validate here, at parse time, before `run_replay`
+/// opens the recording:
+///
+/// - `0` and `inf` both mean "as fast as possible"; `inf` is normalized to
+///   `0.0` rather than rejected because `dora replay` already accepts and acts
+///   on it, and `dora-cli` is inside the 1.0 stability guarantee (an
+///   overflowing literal like `1e400` parses to `inf` and lands here too).
+/// - any finite multiplier `>= MIN_SPEED` is accepted;
+/// - everything else (negative, `NaN`, `-inf`, `0 < speed < MIN_SPEED`) is a
+///   clean clap usage error that echoes what the user typed.
+fn parse_speed(s: &str) -> Result<f64, String> {
+    let speed: f64 = s
+        .parse()
+        .map_err(|e| format!("`{s}` is not a number: {e}"))?;
+    if speed == f64::INFINITY || speed == 0.0 {
+        return Ok(0.0);
+    }
+    if speed.is_finite() && speed >= MIN_SPEED {
+        return Ok(speed);
+    }
+    Err(format!(
+        "`{s}` is not a valid --speed: use 0 or `inf` for as-fast-as-possible, \
+         or a finite multiplier >= {MIN_SPEED}"
+    ))
+}
+
+fn run_replay(args: Replay) -> eyre::Result<()> {
+    let file = File::open(&args.file).wrap_err_with(|| {
+        format!(
+            "failed to open recording file `{}`\n\n  \
+             hint: check the path is correct. Recording files have the `.drec` extension",
+            args.file
+        )
+    })?;
+    let mut reader = RecordingReader::open(file).wrap_err("failed to read recording header")?;
+
+    let header = reader.header().clone();
+    let descriptor_yaml = std::str::from_utf8(&header.descriptor_yaml)
+        .wrap_err("invalid descriptor YAML in recording")?;
+
+    let mut descriptor: serde_yaml::Value =
+        serde_yaml::from_str(descriptor_yaml).wrap_err("failed to parse descriptor YAML")?;
+
+    // Discover which nodes produced recorded data and how many messages each
+    // output carries (used to size receiver queues below).
+    let mut recorded_counts: BTreeMap<String, BTreeMap<String, u64>> = BTreeMap::new();
+    // Only the ids are needed here; `next_entry_header` skips copying each
+    // entry's event payload out of the record buffer.
+    while let Some(entry) = reader.next_entry_header()? {
+        *recorded_counts
+            .entry(entry.node_id)
+            .or_default()
+            .entry(entry.output_id)
+            .or_default() += 1;
+    }
+
+    if recorded_counts.is_empty() {
+        bail!(
+            "recording `{}` contains no messages\n\n  \
+             hint: the recording may be empty or corrupted. \
+             Try re-recording with `dora record`",
+            args.file
+        );
+    }
+
+    // Determine which nodes to replace
+    let nodes_to_replace: BTreeSet<String> = if args.replace.is_empty() {
+        recorded_counts.keys().cloned().collect()
+    } else {
+        let requested: BTreeSet<String> = args.replace.into_iter().collect();
+        for name in &requested {
+            if !recorded_counts.contains_key(name) {
+                bail!(
+                    "node `{name}` not found in recording. Recorded nodes: {}",
+                    recorded_counts
+                        .keys()
+                        .cloned()
+                        .collect::<Vec<_>>()
+                        .join(", ")
+                );
+            }
+        }
+        requested
+    };
+
+    if args.speed == 0.0 && nodes_to_replace.len() < recorded_counts.len() {
+        eprintln!(
+            "warning: partial --replace with --speed 0: live intermediate nodes may re-emit \
+             faster than their downstream consumers' default input queues can absorb"
+        );
+    }
+
+    // Find replay node binary
+    let replay_node_bin = find_replay_node_binary()?;
+    let recording_path =
+        dunce::canonicalize(&args.file).wrap_err("failed to canonicalize recording path")?;
+
+    // Modify the descriptor YAML
+    let nodes = descriptor
+        .get_mut("nodes")
+        .and_then(|v| v.as_sequence_mut())
+        .ok_or_else(|| eyre::eyre!("descriptor has no nodes array"))?;
+
+    replace_recorded_nodes_with_replay(
+        nodes,
+        &nodes_to_replace,
+        &replay_node_bin,
+        &recording_path,
+        args.speed,
+        args.r#loop,
+    );
+    raise_replayed_input_queue_sizes(nodes, &nodes_to_replace, &recorded_counts);
+
+    let modified_yaml =
+        serde_yaml::to_string(&descriptor).wrap_err("failed to serialize modified descriptor")?;
+
+    // If --output-yaml, just write and exit
+    if let Some(output_path) = args.output_yaml {
+        std::fs::write(&output_path, &modified_yaml)
+            .wrap_err_with(|| format!("failed to write {output_path}"))?;
+        eprintln!("Modified descriptor written to {output_path}");
+        return Ok(());
+    }
+
+    // Write to temp file and run
+    let mut tmp =
+        tempfile::NamedTempFile::with_suffix(".yml").wrap_err("failed to create temp file")?;
+    tmp.write_all(modified_yaml.as_bytes())?;
+    tmp.flush()?;
+    let tmp_path = tmp.into_temp_path();
+
+    eprintln!(
+        "Replaying {} nodes from {}",
+        nodes_to_replace.len(),
+        args.file
+    );
+    eprintln!(
+        "Replaced: {}",
+        nodes_to_replace
+            .iter()
+            .cloned()
+            .collect::<Vec<_>>()
+            .join(", ")
+    );
+    eprintln!("Speed: {}x\n", args.speed);
+
+    // The modified YAML lives in /tmp, but the original descriptor's
+    // `build: cargo build -p <node>` directives need to run in a dir where
+    // Cargo.toml is reachable and the descriptor's relative `path:` entries
+    // resolve. Mirror `dora record`'s fix (#1674) with the .drec file's
+    // parent as the working_dir.
+    //
+    // Convention: the .drec is expected to live next to (or under) the
+    // original dataflow directory -- i.e. `dora record foo.yml -o foo.drec`
+    // writes foo.drec into foo.yml's parent if invoked from that dir. If a
+    // user moves the .drec to a dir without the workspace visible (e.g.
+    // `/tmp`), they'll get the same confusing error they'd get from
+    // `cargo build` in that dir, which is expected -- build commands need
+    // to resolve against a workspace.
+    let recording_dir = PathBuf::from(&args.file)
+        .parent()
+        .filter(|p| !p.as_os_str().is_empty())
+        .map(PathBuf::from)
+        .unwrap_or_else(|| PathBuf::from("."));
+    let run = Run::new(tmp_path.to_string_lossy().to_string()).with_working_dir(recording_dir);
+    run.execute()
+}
+
+/// Rewrites each recorded node in the descriptor into a replay node: swaps its
+/// `path` for the `dora-replay-node` binary, strips the build/source/operator
+/// keys and its `inputs`, republishes its recorded `outputs`, and injects the
+/// `DORA_REPLAY_*` env the replay node reads (file, node id, speed, loop).
+fn replace_recorded_nodes_with_replay(
+    nodes: &mut serde_yaml::Sequence,
+    nodes_to_replace: &BTreeSet<String>,
+    replay_node_bin: &Path,
+    recording_path: &Path,
+    speed: f64,
+    r#loop: bool,
+) {
+    for node in nodes.iter_mut() {
+        let node_id = node
+            .get("id")
+            .and_then(|v| v.as_str())
+            .unwrap_or_default()
+            .to_string();
+
+        if !nodes_to_replace.contains(&node_id) {
+            continue;
+        }
+
+        let outputs = replay_node_outputs(node);
+        node["path"] = serde_yaml::Value::String(replay_node_bin.to_string_lossy().to_string());
+
+        if let serde_yaml::Value::Mapping(map) = node {
+            for key in [
+                "build",
+                "git",
+                "branch",
+                "tag",
+                "rev",
+                "operator",
+                "operators",
+                "custom",
+                "args",
+                "inputs",
+            ] {
+                map.remove(serde_yaml::Value::String(key.to_string()));
+            }
+            map.insert(serde_yaml::Value::String("outputs".to_string()), outputs);
+        }
+
+        let env = node.get_mut("env").and_then(|v| v.as_mapping_mut());
+        let env = if let Some(env) = env {
+            env
+        } else {
+            node["env"] = serde_yaml::Value::Mapping(serde_yaml::Mapping::new());
+            node.get_mut("env").unwrap().as_mapping_mut().unwrap()
+        };
+
+        env.insert(
+            serde_yaml::Value::String("DORA_REPLAY_FILE".to_string()),
+            serde_yaml::Value::String(recording_path.to_string_lossy().to_string()),
+        );
+        env.insert(
+            serde_yaml::Value::String("DORA_REPLAY_NODE".to_string()),
+            serde_yaml::Value::String(node_id),
+        );
+        env.insert(
+            serde_yaml::Value::String("DORA_REPLAY_SPEED".to_string()),
+            serde_yaml::Value::String(speed.to_string()),
+        );
+        if r#loop {
+            env.insert(
+                serde_yaml::Value::String("DORA_REPLAY_LOOP".to_string()),
+                serde_yaml::Value::String("true".to_string()),
+            );
+        }
+    }
+}
+
+fn replay_node_outputs(node: &serde_yaml::Value) -> serde_yaml::Value {
+    let mut outputs = serde_yaml::Sequence::new();
+    append_outputs(&mut outputs, node.get("outputs"));
+    append_outputs(
+        &mut outputs,
+        node.get("operator").and_then(|v| v.get("outputs")),
+    );
+    if let Some(operators) = node.get("operators").and_then(|v| v.as_sequence()) {
+        for operator in operators {
+            let Some(operator_id) = operator.get("id").and_then(|v| v.as_str()) else {
+                continue;
+            };
+            append_prefixed_outputs(&mut outputs, operator_id, operator.get("outputs"));
+        }
+    }
+    serde_yaml::Value::Sequence(outputs)
+}
+
+fn append_outputs(outputs: &mut serde_yaml::Sequence, value: Option<&serde_yaml::Value>) {
+    if let Some(node_outputs) = value.and_then(|v| v.as_sequence()) {
+        outputs.extend(node_outputs.iter().cloned());
+    }
+}
+
+fn append_prefixed_outputs(
+    outputs: &mut serde_yaml::Sequence,
+    prefix: &str,
+    value: Option<&serde_yaml::Value>,
+) {
+    if let Some(node_outputs) = value.and_then(|v| v.as_sequence()) {
+        outputs.extend(node_outputs.iter().filter_map(|output| {
+            output
+                .as_str()
+                .map(|output_id| serde_yaml::Value::String(format!("{prefix}/{output_id}")))
+        }));
+    }
+}
+
+/// Raises replayed inputs' node-level queue sizes so a full-speed replay does
+/// not drop messages *at the node input-queue layer*.
+///
+/// Replay can outpace receivers — especially with `--speed 0` — and dora's
+/// real-time defaults drop under pressure: each input queue holds
+/// `DEFAULT_QUEUE_SIZE` messages (drop-oldest), and the node event channel is
+/// sized from the queue sizes. For every input fed by a replayed node, this
+/// sets `queue_size` to the recorded message count for that output and
+/// `queue_policy: backpressure`, so one pass of the recording fits entirely
+/// and any residual overflow is logged loudly instead of dropped silently
+/// (#2144).
+///
+/// Scope and limits:
+/// - Inputs with an explicit `queue_size` are left untouched: an explicit
+///   size encodes deliberate freshness semantics (e.g. `queue_size: 1`),
+///   which replay should reproduce, not override.
+/// - Only inputs *directly* sourced from replayed nodes are adjusted. With a
+///   partial `--replace`, live intermediate nodes can re-emit at full speed
+///   into their own downstream consumers' default queues (warned at the call
+///   site).
+/// - The sizing bounds one pass of the recording; `--loop` can still
+///   overflow, at which point the backpressure policy logs errors at its
+///   hard cap instead of dropping silently.
+/// - This addresses only the node input-queue layer. The layer beneath it —
+///   the direct node-to-node zenoh data plane, whose output publishers use
+///   `CongestionControl::Drop` (`apis/rust/node/src/node/mod.rs`) — can still
+///   drop an unpaced `--speed 0` burst while `send` reports success. That
+///   holds for single-daemon replay too, since same-machine nodes exchange
+///   outputs over the same direct path, so this is not a multi-daemon-only
+///   gap. Not addressed here (dora-rs/dora#3397).
+fn raise_replayed_input_queue_sizes(
+    nodes: &mut serde_yaml::Sequence,
+    nodes_to_replace: &BTreeSet<String>,
+    recorded_counts: &BTreeMap<String, BTreeMap<String, u64>>,
+) {
+    for node in nodes.iter_mut() {
+        let node_id = node.get("id").and_then(|v| v.as_str()).unwrap_or_default();
+        if nodes_to_replace.contains(node_id) {
+            continue;
+        }
+
+        // Inputs can live at the node level, under a single `operator:`, or
+        // per-entry in an `operators:` list.
+        for holder_key in ["inputs", "operator"] {
+            let Some(holder) = node.get_mut(holder_key) else {
+                continue;
+            };
+            let inputs = match holder_key {
+                "inputs" => holder.as_mapping_mut(),
+                _ => holder.get_mut("inputs").and_then(|v| v.as_mapping_mut()),
+            };
+            if let Some(inputs) = inputs {
+                raise_input_queue_sizes(inputs, nodes_to_replace, recorded_counts);
+            }
+        }
+        if let Some(operators) = node.get_mut("operators").and_then(|v| v.as_sequence_mut()) {
+            for operator in operators.iter_mut() {
+                if let Some(inputs) = operator.get_mut("inputs").and_then(|v| v.as_mapping_mut()) {
+                    raise_input_queue_sizes(inputs, nodes_to_replace, recorded_counts);
+                }
+            }
+        }
+    }
+}
+
+fn raise_input_queue_sizes(
+    inputs: &mut serde_yaml::Mapping,
+    nodes_to_replace: &BTreeSet<String>,
+    recorded_counts: &BTreeMap<String, BTreeMap<String, u64>>,
+) {
+    let source_key = serde_yaml::Value::String("source".to_string());
+    let queue_size_key = serde_yaml::Value::String("queue_size".to_string());
+    let queue_policy_key = serde_yaml::Value::String("queue_policy".to_string());
+
+    for (_input_id, value) in inputs.iter_mut() {
+        // Inputs are either a plain `node/output` string or a mapping with
+        // a `source` key (plus optional queue_size/queue_policy/timeout).
+        let source = match &*value {
+            serde_yaml::Value::String(s) => s.clone(),
+            serde_yaml::Value::Mapping(m) => {
+                if m.contains_key(&queue_size_key) {
+                    // Explicit user sizing wins (see fn docs).
+                    continue;
+                }
+                match m.get(&source_key).and_then(|v| v.as_str()) {
+                    Some(s) => s.to_string(),
+                    None => continue,
+                }
+            }
+            _ => continue,
+        };
+        let Some((source_node, source_output)) = source.split_once('/') else {
+            continue;
+        };
+        if !nodes_to_replace.contains(source_node) {
+            continue;
+        }
+        let Some(&count) = recorded_counts
+            .get(source_node)
+            .and_then(|outputs| outputs.get(source_output))
+        else {
+            continue;
+        };
+        let new_size = count.max(dora_message::config::DEFAULT_QUEUE_SIZE as u64);
+
+        let mapping = match value {
+            serde_yaml::Value::Mapping(m) => m,
+            _ => {
+                let mut m = serde_yaml::Mapping::new();
+                m.insert(source_key.clone(), serde_yaml::Value::String(source));
+                *value = serde_yaml::Value::Mapping(m);
+                match value.as_mapping_mut() {
+                    Some(m) => m,
+                    None => continue,
+                }
+            }
+        };
+        mapping.insert(
+            queue_size_key.clone(),
+            serde_yaml::Value::Number(new_size.into()),
+        );
+        if !mapping.contains_key(&queue_policy_key) {
+            mapping.insert(
+                queue_policy_key.clone(),
+                serde_yaml::Value::String("backpressure".to_string()),
+            );
+        }
+    }
+}
+
+fn find_replay_node_binary() -> eyre::Result<PathBuf> {
+    super::node_binary::find("dora-replay-node", "dora-replay-node")
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn run_rewrite(yaml: &str, replaced: &[&str], counts: &[(&str, &str, u64)]) -> String {
+        let mut descriptor: serde_yaml::Value = serde_yaml::from_str(yaml).unwrap();
+        let nodes = descriptor
+            .get_mut("nodes")
+            .and_then(|v| v.as_sequence_mut())
+            .unwrap();
+        let nodes_to_replace: BTreeSet<String> = replaced.iter().map(|s| s.to_string()).collect();
+        let mut recorded_counts: BTreeMap<String, BTreeMap<String, u64>> = BTreeMap::new();
+        for (n, o, c) in counts {
+            recorded_counts
+                .entry(n.to_string())
+                .or_default()
+                .insert(o.to_string(), *c);
+        }
+        raise_replayed_input_queue_sizes(nodes, &nodes_to_replace, &recorded_counts);
+        serde_yaml::to_string(&descriptor).unwrap()
+    }
+
+    fn replaced_with_replay(yaml: &str, replaced: &[&str]) -> String {
+        let mut descriptor: serde_yaml::Value = serde_yaml::from_str(yaml).unwrap();
+        let nodes = descriptor
+            .get_mut("nodes")
+            .and_then(|v| v.as_sequence_mut())
+            .unwrap();
+        let nodes_to_replace: BTreeSet<String> = replaced.iter().map(|s| s.to_string()).collect();
+        replace_recorded_nodes_with_replay(
+            nodes,
+            &nodes_to_replace,
+            &PathBuf::from("/tmp/dora-replay-node"),
+            &PathBuf::from("/tmp/recording.drec"),
+            1.0,
+            false,
+        );
+        serde_yaml::to_string(&descriptor).unwrap()
+    }
+
+    #[test]
+    fn parse_speed_accepts_valid_and_rejects_invalid() {
+        // Valid: 0 (as fast as possible) and any finite positive multiplier.
+        assert_eq!(parse_speed("0").unwrap(), 0.0);
+        assert_eq!(parse_speed("1.0").unwrap(), 1.0);
+        assert_eq!(parse_speed("0.25").unwrap(), 0.25);
+        assert_eq!(parse_speed("1000").unwrap(), 1000.0);
+
+        // `inf` — and an overflowing literal, which parses to `inf` — mean
+        // "as fast as possible" and normalize to 0.0 rather than erroring
+        // (`dora replay` already accepts them; dora-cli is 1.0-stable).
+        assert_eq!(parse_speed("inf").unwrap(), 0.0);
+        assert_eq!(parse_speed("1e400").unwrap(), 0.0);
+
+        // Invalid: negative, NaN, -inf, and an absurdly small value that would
+        // saturate the pacing cast to a multi-year sleep — all previously
+        // silent misbehavior — plus non-numbers.
+        assert!(parse_speed("-1").is_err());
+        assert!(parse_speed("nan").is_err());
+        assert!(parse_speed("-inf").is_err());
+        assert!(parse_speed("1e-300").is_err());
+        assert!(parse_speed("fast").is_err());
+
+        // The error echoes what the user typed, not the parsed f64.
+        let err = parse_speed("1e-300").unwrap_err();
+        assert!(err.contains("1e-300"), "error should name the input: {err}");
+    }
+
+    /// Guards that `value_parser = parse_speed` is actually wired onto the
+    /// `--speed` arg: without it these would parse as a bare `f64` and the
+    /// invalid values would slip through, so this fails if the attribute is
+    /// dropped even though `parse_speed_accepts_valid_and_rejects_invalid`
+    /// would still pass.
+    #[test]
+    fn speed_value_parser_is_wired_onto_the_arg() {
+        use clap::Parser;
+
+        #[derive(Parser)]
+        struct Cli {
+            #[command(flatten)]
+            replay: Replay,
+        }
+
+        // Rejected at parse time (use `=` so the leading `-` isn't read as a flag).
+        assert!(Cli::try_parse_from(["dora", "rec.drec", "--speed=-1"]).is_err());
+        assert!(Cli::try_parse_from(["dora", "rec.drec", "--speed=nan"]).is_err());
+        // `inf` is accepted and normalized to as-fast-as-possible (0.0).
+        let cli = Cli::try_parse_from(["dora", "rec.drec", "--speed=inf"]).unwrap();
+        assert_eq!(cli.replay.speed, 0.0);
+    }
+
+    #[test]
+    fn replay_replacement_preserves_outputs_from_all_descriptor_node_kinds() {
+        // `custom:` is deliberately absent: `Node` is `deny_unknown_fields` and
+        // has no `custom` field, so such a descriptor cannot deserialize.
+        let out = replaced_with_replay(
+            concat!(
+                "nodes:\n",
+                "- id: single\n",
+                "  operator:\n",
+                "    python: single.py\n",
+                "    outputs:\n",
+                "      - image\n",
+                "- id: runtime\n",
+                "  operators:\n",
+                "  - id: op\n",
+                "    python: runtime.py\n",
+                "    outputs:\n",
+                "      - status\n",
+                "- id: sink\n",
+                "  inputs:\n",
+                "    image: single/image\n",
+                "    status: runtime/op/status\n",
+            ),
+            &["single", "runtime"],
+        );
+        let parsed: serde_yaml::Value = serde_yaml::from_str(&out).unwrap();
+
+        assert_eq!(parsed["nodes"][0]["outputs"][0].as_str(), Some("image"));
+        assert!(parsed["nodes"][0].get("operator").is_none());
+        assert_eq!(parsed["nodes"][1]["outputs"][0].as_str(), Some("op/status"));
+        assert!(parsed["nodes"][1].get("operators").is_none());
+        assert_eq!(
+            parsed["nodes"][2]["inputs"]["image"].as_str(),
+            Some("single/image")
+        );
+    }
+
+    #[test]
+    fn string_input_from_replayed_node_gets_count_size_and_backpressure() {
+        let out = run_rewrite(
+            "nodes:\n- id: sink\n  inputs:\n    message: source/status\n",
+            &["source"],
+            &[("source", "status", 100)],
+        );
+        let parsed: serde_yaml::Value = serde_yaml::from_str(&out).unwrap();
+        let input = &parsed["nodes"][0]["inputs"]["message"];
+        assert_eq!(input["source"].as_str(), Some("source/status"));
+        assert_eq!(input["queue_size"].as_u64(), Some(100));
+        assert_eq!(input["queue_policy"].as_str(), Some("backpressure"));
+    }
+
+    #[test]
+    fn explicit_queue_size_is_left_untouched() {
+        let out = run_rewrite(
+            "nodes:\n- id: sink\n  inputs:\n    message:\n      source: source/status\n      queue_size: 1\n",
+            &["source"],
+            &[("source", "status", 100)],
+        );
+        let parsed: serde_yaml::Value = serde_yaml::from_str(&out).unwrap();
+        let input = &parsed["nodes"][0]["inputs"]["message"];
+        assert_eq!(input["queue_size"].as_u64(), Some(1));
+        assert!(input.get("queue_policy").is_none());
+    }
+
+    #[test]
+    fn explicit_queue_policy_is_preserved() {
+        let out = run_rewrite(
+            "nodes:\n- id: sink\n  inputs:\n    message:\n      source: source/status\n      queue_policy: drop_oldest\n",
+            &["source"],
+            &[("source", "status", 100)],
+        );
+        let parsed: serde_yaml::Value = serde_yaml::from_str(&out).unwrap();
+        let input = &parsed["nodes"][0]["inputs"]["message"];
+        assert_eq!(input["queue_size"].as_u64(), Some(100));
+        assert_eq!(input["queue_policy"].as_str(), Some("drop_oldest"));
+    }
+
+    #[test]
+    fn operator_inputs_are_rewritten() {
+        let out = run_rewrite(
+            concat!(
+                "nodes:\n",
+                "- id: runtime-node\n",
+                "  operators:\n",
+                "  - id: op\n",
+                "    inputs:\n",
+                "      image: source/status\n",
+                "- id: single-op\n",
+                "  operator:\n",
+                "    inputs:\n",
+                "      image: source/status\n",
+            ),
+            &["source"],
+            &[("source", "status", 100)],
+        );
+        let parsed: serde_yaml::Value = serde_yaml::from_str(&out).unwrap();
+        for input in [
+            &parsed["nodes"][0]["operators"][0]["inputs"]["image"],
+            &parsed["nodes"][1]["operator"]["inputs"]["image"],
+        ] {
+            assert_eq!(input["queue_size"].as_u64(), Some(100));
+            assert_eq!(input["queue_policy"].as_str(), Some("backpressure"));
+        }
+    }
+
+    #[test]
+    fn small_recordings_keep_at_least_the_default_queue_size() {
+        let out = run_rewrite(
+            "nodes:\n- id: sink\n  inputs:\n    message: source/status\n",
+            &["source"],
+            &[("source", "status", 3)],
+        );
+        let parsed: serde_yaml::Value = serde_yaml::from_str(&out).unwrap();
+        assert_eq!(
+            parsed["nodes"][0]["inputs"]["message"]["queue_size"].as_u64(),
+            Some(dora_message::config::DEFAULT_QUEUE_SIZE as u64)
+        );
+    }
+
+    #[test]
+    fn timer_and_live_inputs_are_untouched() {
+        let out = run_rewrite(
+            "nodes:\n- id: sink\n  inputs:\n    tick: dora/timer/millis/10\n    live: other/data\n",
+            &["source"],
+            &[("source", "status", 100)],
+        );
+        let parsed: serde_yaml::Value = serde_yaml::from_str(&out).unwrap();
+        assert_eq!(
+            parsed["nodes"][0]["inputs"]["tick"].as_str(),
+            Some("dora/timer/millis/10")
+        );
+        assert_eq!(
+            parsed["nodes"][0]["inputs"]["live"].as_str(),
+            Some("other/data")
+        );
+    }
+
+    #[test]
+    fn replayed_nodes_themselves_are_skipped() {
+        let out = run_rewrite(
+            "nodes:\n- id: source\n  inputs:\n    feedback: other/data\n",
+            &["source", "other"],
+            &[("other", "data", 100)],
+        );
+        let parsed: serde_yaml::Value = serde_yaml::from_str(&out).unwrap();
+        assert_eq!(
+            parsed["nodes"][0]["inputs"]["feedback"].as_str(),
+            Some("other/data")
+        );
+    }
+
+    /// `record --proxy` and `replay` must agree on the output id.
+    ///
+    /// The daemon reports a single-`operator:` node's `image` as `op/image`.
+    /// If the recording stores that wire id verbatim, replay declares
+    /// `outputs: [image]` and then calls `send_output("op/image", ..)`;
+    /// `validate_output` rejects it, `send_output` still returns `Ok(())`, and
+    /// every message is silently dropped. Pin that the id the proxy path stores
+    /// is one the replacement node actually declares (dora-rs/dora#2893).
+    #[test]
+    fn proxy_recorded_output_id_is_declared_by_the_replay_node() {
+        const YAML: &str = "\
+nodes:
+  - id: single
+    operator:
+      python: single.py
+      outputs:
+        - image
+  - id: runtime
+    operators:
+      - id: op
+        python: runtime.py
+        outputs:
+          - status
+";
+        let typed: dora_core::descriptor::Descriptor =
+            serde_yaml::from_str(YAML).expect("parse typed descriptor");
+        let untyped: serde_yaml::Value = serde_yaml::from_str(YAML).expect("parse untyped");
+        let untyped_nodes = untyped["nodes"].as_sequence().expect("nodes array");
+
+        // (node id, id the daemon reports on the wire)
+        for (node_id, wire) in [("single", "op/image"), ("runtime", "op/status")] {
+            let typed_node = typed
+                .nodes
+                .iter()
+                .find(|n| n.id.to_string() == node_id)
+                .expect("node in fixture");
+            let untyped_node = untyped_nodes
+                .iter()
+                .find(|n| n["id"].as_str() == Some(node_id))
+                .expect("node in fixture");
+
+            let stored = crate::command::topic::selector::public_topic_output_id(
+                typed_node,
+                &wire.to_string().into(),
+            );
+            let declared: Vec<String> = replay_node_outputs(untyped_node)
+                .as_sequence()
+                .expect("outputs sequence")
+                .iter()
+                .map(|v| v.as_str().expect("output id").to_string())
+                .collect();
+
+            assert!(
+                declared
+                    .iter()
+                    .any(|d| d.as_str() == AsRef::<str>::as_ref(&stored)),
+                "`{node_id}`: recorded `{stored}` (from wire `{wire}`) is not in the \
+                 replay node's declared outputs {declared:?}",
+            );
+        }
+    }
+}

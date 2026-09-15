@@ -1,0 +1,100 @@
+[package]
+name = "integration-tests"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+exclude.workspace = true
+publish = false
+
+[[bin]]
+name = "cargo-nextest-dup"
+path = "test-helpers/cargo-nextest-dup.rs"
+
+[[bin]]
+name = "build-seed-archive"
+path = "test-helpers/build-seed-archive.rs"
+
+[[bin]]
+name = "rustc-shim"
+path = "test-helpers/rustc-shim.rs"
+
+[[bin]]
+name = "fake-interceptor"
+path = "test-helpers/fake-interceptor.rs"
+
+[[bin]]
+name = "passthrough"
+path = "test-helpers/passthrough.rs"
+
+[[bin]]
+name = "grab-foreground"
+path = "test-helpers/grab-foreground.rs"
+
+[[test]]
+name = "custom-harness"
+harness = false
+
+[[test]]
+name = "datatest"
+harness = false
+
+[dependencies]
+camino.workspace = true
+camino-tempfile.workspace = true
+
+# We specify default-no-update here because if users just run:
+#
+# cargo build --no-default-features --features default-no-update
+#
+# then cargo will unify features for cargo-nextest, and it will be built with self-update enabled.
+# We could ask distributors to always include `--package cargo-nextest` instead, but they're likely
+# to forget. None of our current tests depend on self-update, so just don't include it by default.
+cargo-nextest.workspace = true
+
+color-eyre.workspace = true
+clap = { workspace = true, features = ["env"] }
+enable-ansi-support.workspace = true
+fs-err.workspace = true
+hex.workspace = true
+libc.workspace = true
+nextest-metadata.workspace = true
+nextest-workspace-hack.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+shell-words.workspace = true
+whoami.workspace = true
+zstd.workspace = true
+tar.workspace = true
+
+[dev-dependencies]
+anstyle-progress.workspace = true
+camino-tempfile-ext.workspace = true
+cfg-if.workspace = true
+cp_r.workspace = true
+datatest-stable.workspace = true
+fixture-data.workspace = true
+iddqd.workspace = true
+insta.workspace = true
+itertools.workspace = true
+libtest-mimic.workspace = true
+nextest-metadata.workspace = true
+nextest-runner.workspace = true
+pathdiff.workspace = true
+quick-junit.workspace = true
+regex.workspace = true
+target-spec.workspace = true
+target-spec-miette = { workspace = true, features = ["fixtures"] }
+tokio.workspace = true
+eazip = { workspace = true }
+
+# These platforms are supported by num_threads.
+# https://docs.rs/num_threads/0.1.7/src/num_threads/lib.rs.html#5-8
+[target.'cfg(any(target_os = "linux", target_os = "android", target_os = "freebsd", target_os = "macos", target_os = "ios", target_os = "aix"))'.dev-dependencies]
+num_threads.workspace = true
+
+[target.'cfg(windows)'.dependencies]
+win32job.workspace = true
+windows-sys = { workspace = true, features = ["Win32_Foundation", "Win32_Storage_FileSystem", "Win32_System_IO", "Win32_System_JobObjects", "Win32_System_Pipes"] }
+
+[lints]
+workspace = true

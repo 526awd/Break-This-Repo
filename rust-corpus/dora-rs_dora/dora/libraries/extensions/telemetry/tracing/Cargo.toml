@@ -1,0 +1,27 @@
+[package]
+name = "dora-tracing"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+documentation.workspace = true
+readme.workspace = true
+description.workspace = true
+license.workspace = true
+repository.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+
+[dependencies]
+tracing-subscriber = { version = "0.3.23", features = ["env-filter", "json"] }
+tracing-opentelemetry = { version = "0.33.0", features = ["metrics"] }
+eyre = { workspace = true }
+tracing = { workspace = true }
+opentelemetry = { version = "0.32.0", features = ["metrics", "trace"] }
+opentelemetry_sdk = { version = "0.32.0", features = ["rt-tokio", "trace"] }
+opentelemetry-otlp = { version = "0.32.0", features = [
+    "metrics",
+    "grpc-tonic",
+] }
+uuid = { workspace = true, features = ["v4"] }

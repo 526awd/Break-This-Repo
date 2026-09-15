@@ -1,0 +1,32 @@
+[package]
+name = "dora-node-api-c"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+documentation.workspace = true
+readme.workspace = true
+description.workspace = true
+license.workspace = true
+repository.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["staticlib", "lib"]
+
+
+[features]
+default = ["tracing"]
+tracing = ["dora-node-api/tracing"]
+
+[dependencies]
+eyre = { workspace = true }
+tracing = { workspace = true }
+arrow-array = { workspace = true }
+
+[dependencies.dora-node-api]
+workspace = true
+# The C API hands raw Arrow arrays across the FFI boundary, so it names
+# Arrow types directly and needs the internal-major re-export plus the
+# borrowing `DoraArray::as_array` accessor it gates.
+features = ["arrow-v59"]

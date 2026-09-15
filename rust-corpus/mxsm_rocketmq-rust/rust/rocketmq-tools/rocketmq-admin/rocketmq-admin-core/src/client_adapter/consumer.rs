@@ -1,0 +1,1595 @@
+// Copyright 2026 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::collections::HashMap;
+use std::collections::HashSet;
+use std::time::SystemTime;
+
+use cheetah_string::CheetahString;
+use rocketmq_client_rust::{ConsumerAdmin as _, ReadFailureCode, RouteAdmin as _, TopicAdmin as _};
+use rocketmq_error::Error as CanonicalError;
+use rocketmq_model::common::consumer::consume_from_where::ConsumeFromWhere;
+use rocketmq_model::common::key_builder::KeyBuilder;
+use rocketmq_model::common::message::message_enum::MessageRequestMode;
+use rocketmq_model::common::mix_all;
+use rocketmq_model::message::MessageQueue;
+use rocketmq_model::topic::RETRY_GROUP_TOPIC_PREFIX;
+use rocketmq_protocol::common::wire_constants::MASTER_ID;
+use rocketmq_protocol::protocol::admin::consume_stats::ConsumeStats;
+use rocketmq_protocol::protocol::body::broker_body::cluster_info::ClusterInfo;
+use rocketmq_protocol::protocol::heartbeat::consume_type::ConsumeType;
+use rocketmq_protocol::protocol::heartbeat::message_model::MessageModel;
+use rocketmq_protocol::protocol::subscription::group_retry_policy::GroupRetryPolicy;
+use rocketmq_protocol::protocol::subscription::group_retry_policy_type::GroupRetryPolicyType;
+use rocketmq_protocol::protocol::subscription::subscription_group_config::validate_subscription_group_name;
+use rocketmq_protocol::protocol::subscription::subscription_group_config::SubscriptionGroupConfig;
+use serde_json::json;
+
+use crate::client_adapter::lifecycle::AdminSession;
+use crate::client_adapter::services::consumer::ConsumerService;
+use crate::core::consumer;
+use crate::core::consumer::ConsumerAdmin;
+use crate::core::consumer::ConsumerBatchMutationOutcome;
+use crate::core::consumer::ConsumerDiagnosticAdmin;
+use crate::core::consumer::DeleteSubscriptionGroupsRequest;
+use crate::core::query::AdminQueryFailureCode;
+use crate::core::query::AdminQueryResult;
+use crate::core::query::AdminQuerySource;
+use crate::core::query::AdminSourceFailure;
+use crate::core::AdminError;
+use crate::core::AdminFuture;
+use crate::core::AdminResult;
+
+mod mutation;
+mod query;
+mod workspace;
+
+use self::mutation::consumer_internal_topics;
+use self::mutation::resolve_consumer_target_broker_names;
+use self::mutation::resolve_master_broker_addr;
+#[cfg(test)]
+use self::mutation::run_consumer_delete_batch;
+#[cfg(test)]
+use self::mutation::run_consumer_upsert_batch;
+use self::mutation::validate_consumer_limits;
+#[cfg(test)]
+use self::mutation::ConsumerBatchExecutor;
+use self::query::build_consumer_group_item;
+use self::query::collect_consumer_group_meta;
+use self::query::collect_queue_client_mapping;
+use self::query::map_consumer_config;
+use self::query::map_consumer_connection;
+use self::query::map_consumer_progress;
+use self::query::map_consumer_running_info;
+use self::query::message_queue_allocation;
+use self::query::query_consumer_connection_at;
+use self::query::query_consumer_progress_at;
+use self::query::ConsumerGroupMeta;
+
+impl ConsumerAdmin for AdminSession {
+    fn list_consumer_groups<'a>(
+        &'a mut self,
+        _request: &'a consumer::ListConsumerGroupsRequest,
+    ) -> AdminFuture<'a, consumer::ListConsumerGroupsResult> {
+        Box::pin(async move {
+            self.ensure_open()?;
+            let topic_list = self
+                .inner
+                .fetch_all_topic_list()
+                .await
+                .map_err(|error| backend_error("fetch_all_topic_list", error))?;
+            let mut groups = Vec::new();
+            for retry_topic in topic_list
+                .topic_list
+                .into_iter()
+                .filter(|topic| topic.starts_with(RETRY_GROUP_TOPIC_PREFIX))
+            {
+                let group = KeyBuilder::parse_group(retry_topic.as_str());
+                let mut summary = consumer::ConsumerGroupSummary {
+                    group: group.clone(),
+                    version: 0,
+                    client_count: 0,
+                    consume_type: format!("{:?}", ConsumeType::ConsumePassively),
+                    message_model: format!("{:?}", MessageModel::Clustering),
+                    consume_tps: 0.0,
+                    diff_total: 0,
+                };
+
+                if let Ok(stats) = self
+                    .inner
+                    .examine_consume_stats(CheetahString::from(group.as_str()), None, None, None, None)
+                    .await
+                {
+                    summary.consume_tps = stats.get_consume_tps();
+                    summary.diff_total = stats.compute_total_diff();
+                }
+                if let Ok(connection) = self
+                    .inner
+                    .examine_consumer_connection_info(CheetahString::from(group.as_str()), None)
+                    .await
+                {
+                    summary.client_count = connection.get_connection_set().len() as i32;
+                    summary.consume_type = format!(
+                        "{:?}",
+                        connection.get_consume_type().unwrap_or(ConsumeType::ConsumePassively)
+                    );
+                    summary.message_model = format!(
+                        "{:?}",
+                        connection.get_message_model().unwrap_or(MessageModel::Clustering)
+                    );
+                    summary.version = connection.compute_min_version();
+                }
+                groups.push(summary);
+            }
+            groups.sort_by(|left, right| left.group.cmp(&right.group));
+            Ok(consumer::ListConsumerGroupsResult { groups })
+        })
+    }
+
+    fn list_consumer_groups_with_evidence<'a>(
+        &'a mut self,
+        _request: &'a consumer::ListConsumerGroupsRequest,
+    ) -> AdminFuture<'a, AdminQueryResult<consumer::ListConsumerGroupsResult>> {
+        Box::pin(async move {
+            self.ensure_open()?;
+            let topic_list = self
+                .inner
+                .fetch_all_topic_list()
+                .await
+                .map_err(|error| backend_error("fetch_all_topic_list", error))?;
+            let mut groups = Vec::new();
+            let mut failures = Vec::new();
+            let mut successful_sources = 1usize;
+            for retry_topic in topic_list
+                .topic_list
+                .into_iter()
+                .filter(|topic| topic.starts_with(RETRY_GROUP_TOPIC_PREFIX))
+            {
+                let group = KeyBuilder::parse_group(retry_topic.as_str());
+                let mut summary = default_consumer_group_summary(&group);
+                let stats = rocketmq_client_rust::MQAdminReadExt::examine_consume_stats_with_evidence(
+                    &self.inner,
+                    CheetahString::from(group.as_str()),
+                    None,
+                    None,
+                    None,
+                )
+                .await;
+                match stats {
+                    Ok(stats) => {
+                        successful_sources += stats.successful_brokers;
+                        summary.consume_tps = stats.stats.get_consume_tps();
+                        summary.diff_total = stats.stats.compute_total_diff();
+                        failures.extend(stats.failures.into_iter().map(|failure| {
+                            source_failure_from_client(
+                                AdminQuerySource::ConsumerStatistics,
+                                failure.broker_name(),
+                                failure.code(),
+                                failure.retryable(),
+                            )
+                        }));
+                    }
+                    Err(error) => failures.push(source_failure(AdminQuerySource::ConsumerStatistics, &group, &error)),
+                }
+                let connection_evidence = collect_group_connection_evidence(&self.inner, &group).await;
+                successful_sources += connection_evidence.successful_sources;
+                failures.extend(connection_evidence.failures);
+                if let Some(connection) = connection_evidence.summary {
+                    summary.client_count = connection.client_count;
+                    summary.consume_type = connection.consume_type;
+                    summary.message_model = connection.message_model;
+                    summary.version = connection.version;
+                }
+                groups.push(summary);
+            }
+            groups.sort_by(|left, right| left.group.cmp(&right.group));
+            AdminQueryResult::from_sources(
+                consumer::ListConsumerGroupsResult { groups },
+                successful_sources,
+                failures,
+            )
+        })
+    }
+
+    fn list_consumer_group_inventory_with_evidence<'a>(
+        &'a mut self,
+        _request: &'a consumer::ListConsumerGroupsRequest,
+    ) -> AdminFuture<'a, AdminQueryResult<consumer::ConsumerGroupInventoryResult>> {
+        Box::pin(async move {
+            self.ensure_open()?;
+            consumer_group_inventory(&mut self.inner).await
+        })
+    }
+
+    fn enrich_consumer_groups_exact_with_evidence<'a>(
+        &'a mut self,
+        request: &'a consumer::ExactConsumerGroupEnrichmentRequest,
+    ) -> AdminFuture<'a, AdminQueryResult<consumer::ListConsumerGroupsResult>> {
+        Box::pin(async move {
+            self.ensure_open()?;
+            enrich_consumer_groups_exact(&mut self.inner, request).await
+        })
+    }
+
+    fn query_consumer_lag<'a>(
+        &'a mut self,
+        request: &'a consumer::QueryConsumerLagRequest,
+    ) -> AdminFuture<'a, consumer::QueryConsumerLagResult> {
+        Box::pin(async move {
+            self.ensure_open()?;
+            let stats = self
+                .inner
+                .examine_consume_stats(
+                    CheetahString::from(request.consumer_group.as_str()),
+                    Some(CheetahString::from(request.topic.as_str())),
+                    None,
+                    None,
+                    None,
+                )
+                .await
+                .map_err(|error| backend_error("examine_consume_stats", error))?;
+            let allocation = if request.include_client_ip {
+                message_queue_allocation(&self.inner, request.consumer_group.as_str()).await
+            } else {
+                HashMap::new()
+            };
+
+            let mut queues = stats.get_offset_table().keys().cloned().collect::<Vec<_>>();
+            queues.sort();
+            let mut result = consumer::QueryConsumerLagResult {
+                consume_tps: stats.get_consume_tps(),
+                ..consumer::QueryConsumerLagResult::default()
+            };
+            for queue in queues {
+                let Some(offset) = stats.get_offset_table().get(&queue) else {
+                    continue;
+                };
+                let lag = offset.get_broker_offset() - offset.get_consumer_offset();
+                let inflight = offset.get_pull_offset() - offset.get_consumer_offset();
+                result.total_lag += lag;
+                result.inflight_total += inflight;
+                result.rows.push(consumer::ConsumerLagRow {
+                    topic: queue.topic().to_string(),
+                    broker_name: queue.broker_name().to_string(),
+                    queue_id: queue.queue_id(),
+                    broker_offset: offset.get_broker_offset(),
+                    consumer_offset: offset.get_consumer_offset(),
+                    lag,
+                    inflight,
+                    last_timestamp: offset.get_last_timestamp(),
+                    client_ip: allocation.get(&queue).cloned(),
+                });
+            }
+            Ok(result)
+        })
+    }
+
+    fn query_consumer_lag_with_evidence<'a>(
+        &'a mut self,
+        request: &'a consumer::QueryConsumerLagRequest,
+    ) -> AdminFuture<'a, AdminQueryResult<consumer::QueryConsumerLagResult>> {
+        Box::pin(async move {
+            self.ensure_open()?;
+            let stats = rocketmq_client_rust::MQAdminReadExt::examine_consume_stats_with_evidence(
+                &self.inner,
+                CheetahString::from(request.consumer_group.as_str()),
+                Some(CheetahString::from(request.topic.as_str())),
+                None,
+                None,
+            )
+            .await;
+            let stats = match stats {
+                Ok(stats) => stats,
+                Err(error) => {
+                    return AdminQueryResult::from_sources(
+                        consumer::QueryConsumerLagResult::default(),
+                        0,
+                        vec![source_failure(
+                            AdminQuerySource::ConsumerStatistics,
+                            &request.consumer_group,
+                            &error,
+                        )],
+                    );
+                }
+            };
+            let failures = stats
+                .failures
+                .into_iter()
+                .map(|failure| {
+                    source_failure_from_client(
+                        AdminQuerySource::ConsumerStatistics,
+                        failure.broker_name(),
+                        failure.code(),
+                        failure.retryable(),
+                    )
+                })
+                .collect();
+            let allocation = if request.include_client_ip {
+                message_queue_allocation(&self.inner, request.consumer_group.as_str()).await
+            } else {
+                HashMap::new()
+            };
+            let result = map_lag_result(stats.stats, &allocation);
+            AdminQueryResult::from_sources(result, stats.successful_brokers, failures)
+        })
+    }
+
+    fn query_dashboard_consumer_groups<'a>(
+        &'a mut self,
+        request: &'a consumer::DashboardConsumerGroupListRequest,
+    ) -> AdminFuture<'a, consumer::DashboardConsumerGroupListResult> {
+        Box::pin(async move {
+            self.ensure_open()?;
+            let cluster_info = self
+                .inner
+                .examine_broker_cluster_info()
+                .await
+                .map_err(|error| backend_error("examine_broker_cluster_info", error))?;
+            let group_map = collect_consumer_group_meta(&mut self.inner, &cluster_info).await?;
+            let address = normalize_address(request.address.as_deref());
+            let mut items = Vec::with_capacity(group_map.len());
+            for (group, meta) in group_map {
+                items.push(
+                    build_consumer_group_item(&mut self.inner, &group, &meta, request.skip_sys_group, address.clone())
+                        .await,
+                );
+            }
+            items.sort_by(|left, right| left.display_group_name.cmp(&right.display_group_name));
+            Ok(consumer::DashboardConsumerGroupListResult { items })
+        })
+    }
+
+    fn query_dashboard_consumer_connection<'a>(
+        &'a mut self,
+        request: &'a consumer::DashboardConsumerConnectionRequest,
+    ) -> AdminFuture<'a, consumer::DashboardConsumerConnection> {
+        Box::pin(async move {
+            self.ensure_open()?;
+            let group = normalize_consumer_group(&request.consumer_group)?;
+            let connection =
+                query_consumer_connection_at(&group, first_address(request.address.as_deref()), |group, address| {
+                    self.inner.examine_consumer_connection_info(group, address)
+                })
+                .await
+                .map_err(|error| backend_error("examine_consumer_connection_info", error))?;
+            Ok(map_consumer_connection(&group, connection))
+        })
+    }
+
+    fn query_dashboard_consumer_progress<'a>(
+        &'a mut self,
+        request: &'a consumer::DashboardConsumerProgressRequest,
+    ) -> AdminFuture<'a, consumer::DashboardConsumerProgress> {
+        Box::pin(async move {
+            self.ensure_open()?;
+            let group = normalize_consumer_group(&request.consumer_group)?;
+            let broker_addresses = parse_addresses(request.address.as_deref());
+            let stats = if broker_addresses.is_empty() {
+                query_consumer_progress_at(&group, None, None, |group, address, timeout| {
+                    self.inner.examine_consume_stats(group, None, None, address, timeout)
+                })
+                .await
+                .map_err(|error| backend_error("examine_consume_stats", error))?
+            } else {
+                let mut merged_stats = ConsumeStats::new();
+                for broker_addr in broker_addresses {
+                    let stats = query_consumer_progress_at(
+                        &group,
+                        Some(broker_addr),
+                        Some(3_000),
+                        |group, address, timeout| self.inner.examine_consume_stats(group, None, None, address, timeout),
+                    )
+                    .await
+                    .map_err(|error| backend_error("examine_consume_stats", error))?;
+                    merged_stats.consume_tps += stats.get_consume_tps();
+                    merged_stats
+                        .get_offset_table_mut()
+                        .extend(stats.get_offset_table().clone());
+                }
+                merged_stats
+            };
+
+            let queue_client_map =
+                collect_queue_client_mapping(&mut self.inner, &group, stats.get_offset_table()).await;
+            Ok(map_consumer_progress(&group, stats, &queue_client_map))
+        })
+    }
+
+    fn query_dashboard_consumer_config<'a>(
+        &'a mut self,
+        request: &'a consumer::DashboardConsumerConfigRequest,
+    ) -> AdminFuture<'a, consumer::DashboardConsumerConfig> {
+        Box::pin(async move {
+            self.ensure_open()?;
+            let group = normalize_consumer_group(&request.consumer_group)?;
+            let cluster_info = self
+                .inner
+                .examine_broker_cluster_info()
+                .await
+                .map_err(|error| backend_error("examine_broker_cluster_info", error))?;
+            let broker_address = match normalize_address(request.address.as_deref()) {
+                Some(address) => address,
+                None => {
+                    let group_map = collect_consumer_group_meta(&mut self.inner, &cluster_info).await?;
+                    let meta = group_map.get(&group).ok_or_else(|| {
+                        AdminError::invalid_argument(
+                            "consumerGroup",
+                            format!("Consumer group `{group}` was not found in the current cluster view."),
+                        )
+                    })?;
+                    resolve_first_consumer_broker_address(meta).ok_or_else(|| {
+                        AdminError::invalid_argument(
+                            "consumerGroup",
+                            format!("No broker address was found for consumer group `{group}`."),
+                        )
+                    })?
+                }
+            };
+            let config = self
+                .inner
+                .examine_subscription_group_config(broker_address.clone(), CheetahString::from(group.as_str()))
+                .await
+                .map_err(|error| backend_error("examine_subscription_group_config", error))?;
+            let broker_name =
+                resolve_broker_name_by_address(&cluster_info, broker_address.as_str()).unwrap_or_default();
+            Ok(map_consumer_config(
+                &group,
+                broker_name,
+                broker_address.to_string(),
+                &config,
+            ))
+        })
+    }
+
+    fn upsert_dashboard_consumer_group<'a>(
+        &'a mut self,
+        request: &'a consumer::DashboardConsumerUpsertRequest,
+    ) -> AdminFuture<'a, consumer::DashboardConsumerMutationResult> {
+        Box::pin(async move {
+            self.ensure_open()?;
+            let group = normalize_consumer_group(&request.consumer_group)?;
+            validate_consumer_limits(request)?;
+            let cluster_info = self
+                .inner
+                .examine_broker_cluster_info()
+                .await
+                .map_err(|error| backend_error("examine_broker_cluster_info", error))?;
+            let broker_names = resolve_consumer_target_broker_names(
+                &cluster_info,
+                &request.cluster_name_list,
+                &request.broker_name_list,
+            )?;
+
+            let mut config = SubscriptionGroupConfig::default();
+            config.set_group_name(CheetahString::from(group.as_str()));
+            config.set_consume_enable(request.consume_enable);
+            config.set_consume_from_min_enable(request.consume_from_min_enable);
+            config.set_consume_broadcast_enable(request.consume_broadcast_enable);
+            config.set_consume_message_orderly(request.consume_message_orderly);
+            config.set_retry_queue_nums(request.retry_queue_nums);
+            config.set_retry_max_times(request.retry_max_times);
+            config.set_broker_id(request.broker_id);
+            config.set_which_broker_when_consume_slowly(request.which_broker_when_consume_slowly);
+            config.set_notify_consumer_ids_changed_enable(request.notify_consumer_ids_changed_enable);
+            config.set_group_sys_flag(request.group_sys_flag);
+            config.set_consume_timeout_minute(request.consume_timeout_minute);
+
+            for broker_name in &broker_names {
+                let broker_addr = resolve_master_broker_addr(&cluster_info, broker_name).ok_or_else(|| {
+                    AdminError::invalid_argument(
+                        "brokerNameList",
+                        format!("Broker `{broker_name}` does not have a reachable master address."),
+                    )
+                })?;
+                self.inner
+                    .create_and_update_subscription_group_config(broker_addr, config.clone())
+                    .await
+                    .map_err(|error| backend_error("create_and_update_subscription_group_config", error))?;
+            }
+
+            Ok(consumer::DashboardConsumerMutationResult {
+                consumer_group: group,
+                broker_names,
+                updated: true,
+            })
+        })
+    }
+
+    fn delete_dashboard_consumer_group<'a>(
+        &'a mut self,
+        request: &'a consumer::DashboardConsumerDeleteRequest,
+    ) -> AdminFuture<'a, consumer::DashboardConsumerMutationResult> {
+        Box::pin(async move {
+            self.ensure_open()?;
+            let group = normalize_consumer_group(&request.consumer_group)?;
+            let mut selected_broker_names = request
+                .broker_name_list
+                .iter()
+                .map(|value| value.trim().to_string())
+                .filter(|value| !value.is_empty())
+                .collect::<Vec<_>>();
+            selected_broker_names.sort();
+            selected_broker_names.dedup();
+            if selected_broker_names.is_empty() {
+                return Err(AdminError::invalid_argument(
+                    "brokerNameList",
+                    "Select at least one broker before deleting the consumer group.",
+                ));
+            }
+
+            let cluster_info = self
+                .inner
+                .examine_broker_cluster_info()
+                .await
+                .map_err(|error| backend_error("examine_broker_cluster_info", error))?;
+            let group_map = collect_consumer_group_meta(&mut self.inner, &cluster_info).await?;
+            let meta = group_map.get(&group).ok_or_else(|| {
+                AdminError::invalid_argument(
+                    "consumerGroup",
+                    format!("Consumer group `{group}` was not found in the current cluster view."),
+                )
+            })?;
+            let delete_in_namesrv = !meta.broker_names.is_empty()
+                && meta
+                    .broker_names
+                    .iter()
+                    .all(|broker_name| selected_broker_names.contains(broker_name));
+
+            for broker_name in &selected_broker_names {
+                let broker_addr = resolve_master_broker_addr(&cluster_info, broker_name).ok_or_else(|| {
+                    AdminError::invalid_argument(
+                        "brokerNameList",
+                        format!("Broker `{broker_name}` does not have a reachable master address."),
+                    )
+                })?;
+                self.inner
+                    .delete_subscription_group(broker_addr.clone(), CheetahString::from(group.as_str()), Some(true))
+                    .await
+                    .map_err(|error| backend_error("delete_subscription_group", error))?;
+
+                for topic in consumer_internal_topics(&group) {
+                    self.inner
+                        .delete_topic_in_broker(
+                            HashSet::from([broker_addr.clone()]),
+                            CheetahString::from(topic.as_str()),
+                        )
+                        .await
+                        .map_err(|error| backend_error("delete_topic_in_broker", error))?;
+                    if delete_in_namesrv {
+                        let namesrv_targets = self
+                            .inner
+                            .get_name_server_address_list()
+                            .await
+                            .into_iter()
+                            .collect::<HashSet<_>>();
+                        self.inner
+                            .delete_topic_in_name_server(namesrv_targets, None, CheetahString::from(topic.as_str()))
+                            .await
+                            .map_err(|error| backend_error("delete_topic_in_name_server", error))?;
+                    }
+                }
+            }
+
+            Ok(consumer::DashboardConsumerMutationResult {
+                consumer_group: group,
+                broker_names: selected_broker_names,
+                updated: false,
+            })
+        })
+    }
+
+    fn delete_subscription_groups<'a>(
+        &'a mut self,
+        request: &'a DeleteSubscriptionGroupsRequest,
+    ) -> AdminFuture<'a, ConsumerBatchMutationOutcome> {
+        Box::pin(async move {
+            self.ensure_open()?;
+            self.client_mut()
+                .delete_subscription_group_list(
+                    CheetahString::from(request.broker_addr.as_str()),
+                    request
+                        .group_names
+                        .iter()
+                        .map(|group_name| CheetahString::from(group_name.as_str()))
+                        .collect(),
+                    request.clean_offset,
+                )
+                .await
+                .map_err(|error| backend_error("delete_subscription_group_list", error))?;
+            Ok(ConsumerBatchMutationOutcome {
+                message: format!(
+                    "deleted {} subscription groups through one broker batch request",
+                    request.group_names.len()
+                ),
+                broker_count: 1,
+            })
+        })
+    }
+
+    fn set_consumer_request_mode<'a>(
+        &'a mut self,
+        request: &'a consumer::SetConsumerRequestModeRequest,
+    ) -> AdminFuture<'a, consumer::SetConsumerRequestModeResult> {
+        Box::pin(async move {
+            self.ensure_open()?;
+            let route = self
+                .inner
+                .examine_topic_route_info(CheetahString::from(request.topic.as_str()))
+                .await
+                .map_err(|error| backend_error("examine_topic_route_info", error))?
+                .ok_or_else(|| AdminError::topic_route_not_found(request.topic.clone()))?;
+            let mode = match request.mode {
+                consumer::ConsumerRequestMode::Pull => MessageRequestMode::Pull,
+                consumer::ConsumerRequestMode::Pop => MessageRequestMode::Pop,
+            };
+            let mut broker_addrs = route
+                .broker_datas
+                .into_iter()
+                .flat_map(|broker| broker.broker_addrs().values().cloned().collect::<Vec<_>>())
+                .collect::<HashSet<_>>()
+                .into_iter()
+                .collect::<Vec<_>>();
+            broker_addrs.sort();
+
+            for broker_addr in &broker_addrs {
+                self.inner
+                    .set_message_request_mode(
+                        broker_addr.clone(),
+                        CheetahString::from(request.topic.as_str()),
+                        CheetahString::from(request.consumer_group.as_str()),
+                        mode,
+                        request.pop_share_queue_num,
+                        request.timeout_millis,
+                    )
+                    .await
+                    .map_err(|error| backend_error("set_message_request_mode", error))?;
+            }
+
+            Ok(consumer::SetConsumerRequestModeResult {
+                broker_addrs: broker_addrs.into_iter().map(|addr| addr.to_string()).collect(),
+            })
+        })
+    }
+}
+
+impl ConsumerDiagnosticAdmin for AdminSession {
+    fn query_dashboard_consumer_running_info<'a>(
+        &'a mut self,
+        request: &'a consumer::DashboardConsumerRunningInfoRequest,
+    ) -> AdminFuture<'a, consumer::DashboardConsumerRunningInfo> {
+        Box::pin(async move {
+            self.ensure_open()?;
+            let running_info = ConsumerService::query_dashboard_consumer_running_info_with_admin(&self.inner, request)
+                .await
+                .map_err(|error| backend_error("get_consumer_running_info", error))?;
+            Ok(map_consumer_running_info(
+                request.consumer_group(),
+                request.client_id(),
+                request.include_jstack(),
+                request.max_output_bytes(),
+                running_info,
+            ))
+        })
+    }
+}
+
+fn normalize_consumer_group(value: &str) -> AdminResult<String> {
+    let value = value.strip_prefix("%SYS%").unwrap_or(value).trim();
+    validate_subscription_group_name(value)
+        .map_err(|error| AdminError::invalid_argument_source("consumerGroup", error))?;
+    Ok(value.to_string())
+}
+
+fn normalize_address(value: Option<&str>) -> Option<CheetahString> {
+    value
+        .map(str::trim)
+        .filter(|value| !value.is_empty())
+        .map(CheetahString::from)
+}
+
+fn parse_addresses(value: Option<&str>) -> Vec<CheetahString> {
+    value
+        .into_iter()
+        .flat_map(|value| value.split(','))
+        .map(str::trim)
+        .filter(|value| !value.is_empty())
+        .map(CheetahString::from)
+        .collect()
+}
+
+fn first_address(value: Option<&str>) -> Option<CheetahString> {
+    parse_addresses(value).into_iter().next()
+}
+
+fn classify_consumer_group(group: &str, meta: &ConsumerGroupMeta) -> String {
+    if is_protected_consumer_group(group) {
+        "SYSTEM".to_string()
+    } else if !meta.orderly_flags.is_empty() && meta.orderly_flags.iter().all(|flag| *flag) {
+        "FIFO".to_string()
+    } else {
+        "NORMAL".to_string()
+    }
+}
+
+fn is_protected_consumer_group(group: &str) -> bool {
+    consumer::is_protected_consumer_group(group)
+}
+
+fn collect_master_broker_targets(cluster_info: &ClusterInfo) -> Vec<(String, CheetahString)> {
+    let mut targets = Vec::new();
+    if let Some(table) = cluster_info.broker_addr_table.as_ref() {
+        for (broker_name, broker_data) in table {
+            if let Some(address) = broker_data.broker_addrs().get(&MASTER_ID) {
+                targets.push((broker_name.to_string(), address.clone()));
+            }
+        }
+    }
+    targets.sort_by(|left, right| left.0.cmp(&right.0));
+    targets
+}
+
+fn resolve_first_consumer_broker_address(meta: &ConsumerGroupMeta) -> Option<CheetahString> {
+    let mut addresses = meta.broker_addresses.iter().collect::<Vec<_>>();
+    addresses.sort();
+    addresses.first().map(|value| CheetahString::from(value.as_str()))
+}
+
+fn resolve_broker_name_by_address(cluster_info: &ClusterInfo, address: &str) -> Option<String> {
+    cluster_info.broker_addr_table.as_ref().and_then(|table| {
+        table.iter().find_map(|(name, broker)| {
+            broker
+                .broker_addrs()
+                .values()
+                .any(|value| value.as_str() == address)
+                .then(|| name.to_string())
+        })
+    })
+}
+
+fn consume_from_where_label(value: ConsumeFromWhere) -> String {
+    #[allow(deprecated)]
+    match value {
+        ConsumeFromWhere::ConsumeFromLastOffset => "CONSUME_FROM_LAST_OFFSET".to_string(),
+        ConsumeFromWhere::ConsumeFromLastOffsetAndFromMinWhenBootFirst => {
+            "CONSUME_FROM_LAST_OFFSET_AND_FROM_MIN_WHEN_BOOT_FIRST".to_string()
+        }
+        ConsumeFromWhere::ConsumeFromMinOffset => "CONSUME_FROM_MIN_OFFSET".to_string(),
+        ConsumeFromWhere::ConsumeFromMaxOffset => "CONSUME_FROM_MAX_OFFSET".to_string(),
+        ConsumeFromWhere::ConsumeFromFirstOffset => "CONSUME_FROM_FIRST_OFFSET".to_string(),
+        ConsumeFromWhere::ConsumeFromTimestamp => "CONSUME_FROM_TIMESTAMP".to_string(),
+    }
+}
+
+fn serialize_group_retry_policy_json(policy: &GroupRetryPolicy) -> Result<String, serde_json::Error> {
+    let retry_policy = match policy.type_() {
+        GroupRetryPolicyType::Exponential => json!({
+            "type": "EXPONENTIAL",
+            "initial": policy.exponential_retry_policy().map(|value| value.initial()).unwrap_or(5_000),
+            "max": policy.exponential_retry_policy().map(|value| value.max()).unwrap_or(7_200_000),
+            "multiplier": policy.exponential_retry_policy().map(|value| value.multiplier()).unwrap_or(2),
+        }),
+        GroupRetryPolicyType::Customized => json!({
+            "type": "CUSTOMIZED",
+            "next": policy.customized_retry_policy().map(|value| value.next().to_vec()).unwrap_or_else(|| vec![
+                1_000, 5_000, 10_000, 30_000, 60_000, 120_000, 180_000, 240_000, 300_000,
+                360_000, 420_000, 480_000, 540_000, 600_000, 1_200_000, 1_800_000, 3_600_000,
+                7_200_000,
+            ]),
+        }),
+    };
+    serde_json::to_string_pretty(&json!({
+        "type": policy.type_(),
+        "exponentialRetryPolicy": policy.exponential_retry_policy(),
+        "customizedRetryPolicy": policy.customized_retry_policy(),
+        "retryPolicy": retry_policy,
+    }))
+}
+
+fn now_timestamp_millis() -> i64 {
+    SystemTime::now()
+        .duration_since(SystemTime::UNIX_EPOCH)
+        .map(|duration| duration.as_millis() as i64)
+        .unwrap_or_default()
+}
+
+fn default_consumer_group_summary(group: &str) -> consumer::ConsumerGroupSummary {
+    consumer::ConsumerGroupSummary {
+        group: group.to_string(),
+        version: 0,
+        client_count: 0,
+        consume_type: format!("{:?}", ConsumeType::ConsumePassively),
+        message_model: format!("{:?}", MessageModel::Clustering),
+        consume_tps: 0.0,
+        diff_total: 0,
+    }
+}
+
+#[derive(Clone)]
+struct ExactGroupObservation {
+    summary: consumer::ConsumerGroupSummary,
+    successful_sources: usize,
+    failures: Vec<AdminSourceFailure>,
+}
+
+trait ConsumerGroupSnapshotSource {
+    fn fetch_retry_topics(&mut self) -> AdminFuture<'_, Vec<CheetahString>>;
+
+    fn observe_exact_group<'a>(&'a mut self, group: &'a str) -> AdminFuture<'a, ExactGroupObservation>;
+}
+
+impl ConsumerGroupSnapshotSource for rocketmq_client_rust::DefaultMQAdminExt {
+    fn fetch_retry_topics(&mut self) -> AdminFuture<'_, Vec<CheetahString>> {
+        Box::pin(async move {
+            self.fetch_all_topic_list()
+                .await
+                .map(|topics| topics.topic_list)
+                .map_err(|error| backend_error("fetch_all_topic_list", error))
+        })
+    }
+
+    fn observe_exact_group<'a>(&'a mut self, group: &'a str) -> AdminFuture<'a, ExactGroupObservation> {
+        Box::pin(async move {
+            let mut summary = default_consumer_group_summary(group);
+            let mut successful_sources = 0usize;
+            let mut failures = Vec::new();
+            match rocketmq_client_rust::MQAdminReadExt::examine_consume_stats_with_evidence(
+                &*self,
+                CheetahString::from(group),
+                None,
+                None,
+                None,
+            )
+            .await
+            {
+                Ok(stats) => {
+                    successful_sources += stats.successful_brokers;
+                    summary.consume_tps = stats.stats.get_consume_tps();
+                    summary.diff_total = stats.stats.compute_total_diff();
+                    failures.extend(stats.failures.into_iter().map(|failure| {
+                        source_failure_from_client(
+                            AdminQuerySource::ConsumerStatistics,
+                            failure.broker_name(),
+                            failure.code(),
+                            failure.retryable(),
+                        )
+                    }));
+                }
+                Err(error) => failures.push(source_failure(AdminQuerySource::ConsumerStatistics, group, &error)),
+            }
+            let connection_evidence = collect_group_connection_evidence(self, group).await;
+            successful_sources += connection_evidence.successful_sources;
+            if connection_evidence.successful_sources == 0
+                && connection_evidence.failures.is_empty()
+                && connection_evidence.summary.is_some()
+            {
+                successful_sources += 1;
+            }
+            failures.extend(connection_evidence.failures);
+            if let Some(connection) = connection_evidence.summary {
+                summary.client_count = connection.client_count;
+                summary.consume_type = connection.consume_type;
+                summary.message_model = connection.message_model;
+                summary.version = connection.version;
+            }
+            Ok(ExactGroupObservation {
+                summary,
+                successful_sources,
+                failures,
+            })
+        })
+    }
+}
+
+async fn consumer_group_inventory(
+    source: &mut impl ConsumerGroupSnapshotSource,
+) -> AdminResult<AdminQueryResult<consumer::ConsumerGroupInventoryResult>> {
+    let topics = source.fetch_retry_topics().await?;
+    Ok(AdminQueryResult::complete(consumer::ConsumerGroupInventoryResult {
+        groups: retry_consumer_groups(topics),
+    }))
+}
+
+async fn enrich_consumer_groups_exact(
+    source: &mut impl ConsumerGroupSnapshotSource,
+    request: &consumer::ExactConsumerGroupEnrichmentRequest,
+) -> AdminResult<AdminQueryResult<consumer::ListConsumerGroupsResult>> {
+    if request.groups().is_empty() {
+        return Ok(AdminQueryResult::complete(consumer::ListConsumerGroupsResult::default()));
+    }
+    let mut groups = Vec::with_capacity(request.groups().len());
+    let mut failures = Vec::new();
+    let mut successful_sources = 0usize;
+    for group in request.groups() {
+        let observation = source.observe_exact_group(group).await?;
+        successful_sources += observation.successful_sources;
+        failures.extend(observation.failures);
+        groups.push(observation.summary);
+    }
+    AdminQueryResult::from_sources(
+        consumer::ListConsumerGroupsResult { groups },
+        successful_sources,
+        failures,
+    )
+}
+
+fn retry_consumer_groups(topics: impl IntoIterator<Item = CheetahString>) -> Vec<String> {
+    let mut groups = topics
+        .into_iter()
+        .filter(|topic| topic.starts_with(RETRY_GROUP_TOPIC_PREFIX))
+        .map(|topic| KeyBuilder::parse_group(topic.as_str()))
+        .collect::<Vec<_>>();
+    groups.sort();
+    groups.dedup();
+    groups
+}
+
+struct GroupConnectionSummary {
+    client_count: i32,
+    consume_type: String,
+    message_model: String,
+    version: i32,
+}
+
+struct GroupConnectionEvidence {
+    successful_sources: usize,
+    failures: Vec<AdminSourceFailure>,
+    summary: Option<GroupConnectionSummary>,
+}
+
+async fn collect_group_connection_evidence(
+    admin: &rocketmq_client_rust::DefaultMQAdminExt,
+    group: &str,
+) -> GroupConnectionEvidence {
+    let retry_topic = CheetahString::from_string(mix_all::get_retry_topic(group));
+    let route = match rocketmq_client_rust::MQAdminReadExt::examine_topic_route_info(admin, retry_topic).await {
+        Ok(route) => route,
+        Err(error) => {
+            return GroupConnectionEvidence {
+                successful_sources: 0,
+                failures: vec![source_failure(AdminQuerySource::ConsumerConnection, group, &error)],
+                summary: None,
+            };
+        }
+    };
+    let Some(route) = route else {
+        return GroupConnectionEvidence {
+            successful_sources: 0,
+            failures: Vec::new(),
+            summary: Some(GroupConnectionSummary {
+                client_count: 0,
+                consume_type: format!("{:?}", ConsumeType::ConsumePassively),
+                message_model: format!("{:?}", MessageModel::Clustering),
+                version: 0,
+            }),
+        };
+    };
+
+    let mut successful_sources = 0usize;
+    let mut failures = Vec::new();
+    let mut clients = std::collections::BTreeSet::new();
+    let mut consume_type = None;
+    let mut message_model = None;
+    let mut version = None;
+    for broker in route.broker_datas {
+        let Some(address) = broker.broker_addrs().get(&mix_all::MASTER_ID).cloned() else {
+            continue;
+        };
+        let broker_name = broker.broker_name().to_string();
+        match rocketmq_client_rust::MQAdminReadExt::observe_consumer_connection_at(
+            admin,
+            CheetahString::from(group),
+            address,
+        )
+        .await
+        {
+            Ok(connection) => {
+                successful_sources += 1;
+                clients.extend(connection.get_connection_set().iter().map(|connection| {
+                    (
+                        connection.get_client_id().to_string(),
+                        connection.get_language().to_string(),
+                        connection.get_version(),
+                    )
+                }));
+                consume_type = consume_type.or_else(|| connection.get_consume_type());
+                message_model = message_model.or_else(|| connection.get_message_model());
+                let candidate = connection.compute_min_version();
+                if candidate != i32::MAX {
+                    version = Some(version.map_or(candidate, |current: i32| current.min(candidate)));
+                }
+            }
+            Err(error) => failures.push(source_failure(
+                AdminQuerySource::ConsumerConnection,
+                &broker_name,
+                &error,
+            )),
+        }
+    }
+    GroupConnectionEvidence {
+        successful_sources,
+        failures,
+        summary: Some(GroupConnectionSummary {
+            client_count: i32::try_from(clients.len()).unwrap_or(i32::MAX),
+            consume_type: format!("{:?}", consume_type.unwrap_or(ConsumeType::ConsumePassively)),
+            message_model: format!("{:?}", message_model.unwrap_or(MessageModel::Clustering)),
+            version: version.unwrap_or_default(),
+        }),
+    }
+}
+
+fn map_lag_result(stats: ConsumeStats, allocation: &HashMap<MessageQueue, String>) -> consumer::QueryConsumerLagResult {
+    let mut queues = stats.get_offset_table().keys().cloned().collect::<Vec<_>>();
+    queues.sort();
+    let mut result = consumer::QueryConsumerLagResult {
+        consume_tps: stats.get_consume_tps(),
+        ..consumer::QueryConsumerLagResult::default()
+    };
+    for queue in queues {
+        let Some(offset) = stats.get_offset_table().get(&queue) else {
+            continue;
+        };
+        let lag = offset.get_broker_offset() - offset.get_consumer_offset();
+        let inflight = offset.get_pull_offset() - offset.get_consumer_offset();
+        result.total_lag += lag;
+        result.inflight_total += inflight;
+        result.rows.push(consumer::ConsumerLagRow {
+            topic: queue.topic().to_string(),
+            broker_name: queue.broker_name().to_string(),
+            queue_id: queue.queue_id(),
+            broker_offset: offset.get_broker_offset(),
+            consumer_offset: offset.get_consumer_offset(),
+            lag,
+            inflight,
+            last_timestamp: offset.get_last_timestamp(),
+            client_ip: allocation.get(&queue).cloned(),
+        });
+    }
+    result
+}
+
+fn source_failure(source: AdminQuerySource, logical_target: &str, error: &CanonicalError) -> AdminSourceFailure {
+    let code = match crate::client_adapter::services::error_view::rocketmq_http_status(error) {
+        401 | 403 => AdminQueryFailureCode::PermissionDenied,
+        404 => AdminQueryFailureCode::NotFound,
+        408 | 504 => AdminQueryFailureCode::Timeout,
+        429 => AdminQueryFailureCode::RateLimited,
+        400 | 413 | 422 => AdminQueryFailureCode::InvalidResponse,
+        _ => AdminQueryFailureCode::SourceUnavailable,
+    };
+    AdminSourceFailure::new(
+        source,
+        code,
+        crate::client_adapter::services::error_view::rocketmq_is_retryable(error),
+        logical_target,
+    )
+}
+
+fn source_failure_from_client(
+    source: AdminQuerySource,
+    logical_target: &str,
+    code: ReadFailureCode,
+    retryable: bool,
+) -> AdminSourceFailure {
+    let code = match code {
+        ReadFailureCode::SourceUnavailable => AdminQueryFailureCode::SourceUnavailable,
+        ReadFailureCode::Timeout => AdminQueryFailureCode::Timeout,
+        ReadFailureCode::PermissionDenied => AdminQueryFailureCode::PermissionDenied,
+        ReadFailureCode::NotFound => AdminQueryFailureCode::NotFound,
+        ReadFailureCode::RateLimited => AdminQueryFailureCode::RateLimited,
+        ReadFailureCode::InvalidResponse => AdminQueryFailureCode::InvalidResponse,
+    };
+    AdminSourceFailure::new(source, code, retryable, logical_target)
+}
+
+fn backend_error(operation: &'static str, error: impl crate::IntoCanonicalError) -> AdminError {
+    AdminError::from_error(operation, error.into_canonical_error())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    mod consumer_snapshot_tests {
+        use super::*;
+
+        #[derive(Default)]
+        struct FakeSource {
+            inventory_calls: usize,
+            observed_groups: Vec<String>,
+            topics: Vec<CheetahString>,
+            partial_groups: HashSet<String>,
+            failed_groups: HashSet<String>,
+        }
+
+        impl ConsumerGroupSnapshotSource for FakeSource {
+            fn fetch_retry_topics(&mut self) -> AdminFuture<'_, Vec<CheetahString>> {
+                Box::pin(async move {
+                    self.inventory_calls += 1;
+                    Ok(self.topics.clone())
+                })
+            }
+
+            fn observe_exact_group<'a>(&'a mut self, group: &'a str) -> AdminFuture<'a, ExactGroupObservation> {
+                Box::pin(async move {
+                    self.observed_groups.push(group.to_string());
+                    let failed = self.failed_groups.contains(group);
+                    let partial = self.partial_groups.contains(group);
+                    let failures = (failed || partial)
+                        .then(|| {
+                            AdminSourceFailure::new(
+                                AdminQuerySource::ConsumerStatistics,
+                                AdminQueryFailureCode::SourceUnavailable,
+                                true,
+                                "10.0.0.1:10911",
+                            )
+                        })
+                        .into_iter()
+                        .collect();
+                    Ok(ExactGroupObservation {
+                        summary: default_consumer_group_summary(group),
+                        successful_sources: usize::from(!failed),
+                        failures,
+                    })
+                })
+            }
+        }
+
+        #[tokio::test]
+        async fn inventory_is_one_rpc_and_never_enriches() {
+            let mut source = FakeSource {
+                topics: vec![
+                    "%RETRY%group-b".into(),
+                    "orders".into(),
+                    "%RETRY%group-a".into(),
+                    "%RETRY%group-b".into(),
+                ],
+                ..Default::default()
+            };
+            let result = consumer_group_inventory(&mut source).await.unwrap();
+            assert_eq!(result.data.groups, ["group-a", "group-b"]);
+            assert_eq!(source.inventory_calls, 1);
+            assert!(source.observed_groups.is_empty());
+        }
+
+        #[tokio::test]
+        async fn exact_enrichment_is_bounded_sorted_and_skips_inventory() {
+            let request =
+                consumer::ExactConsumerGroupEnrichmentRequest::try_new(["group-b", "group-a", "group-b"]).unwrap();
+            let mut source = FakeSource::default();
+            let result = enrich_consumer_groups_exact(&mut source, &request).await.unwrap();
+            assert_eq!(source.inventory_calls, 0);
+            assert_eq!(source.observed_groups, ["group-a", "group-b"]);
+            assert_eq!(
+                result
+                    .data
+                    .groups
+                    .iter()
+                    .map(|group| group.group.as_str())
+                    .collect::<Vec<_>>(),
+                ["group-a", "group-b"]
+            );
+
+            let empty = consumer::ExactConsumerGroupEnrichmentRequest::try_new(Vec::<String>::new()).unwrap();
+            enrich_consumer_groups_exact(&mut source, &empty).await.unwrap();
+            assert_eq!(source.observed_groups, ["group-a", "group-b"]);
+            assert!(consumer::ExactConsumerGroupEnrichmentRequest::try_new(["invalid.group"]).is_err());
+            assert!(consumer::ExactConsumerGroupEnrichmentRequest::try_new(
+                (0..consumer::ExactConsumerGroupEnrichmentRequest::MAX_GROUPS).map(|index| format!("group-{index}"))
+            )
+            .is_ok());
+            assert!(consumer::ExactConsumerGroupEnrichmentRequest::try_new(
+                (0..=consumer::ExactConsumerGroupEnrichmentRequest::MAX_GROUPS).map(|index| format!("group-{index}"))
+            )
+            .is_err());
+        }
+
+        #[tokio::test]
+        async fn exact_enrichment_preserves_partial_total_and_safe_evidence() {
+            let request = consumer::ExactConsumerGroupEnrichmentRequest::try_new(["group-a"]).unwrap();
+            let mut partial = FakeSource {
+                partial_groups: HashSet::from(["group-a".to_string()]),
+                ..Default::default()
+            };
+            let result = enrich_consumer_groups_exact(&mut partial, &request).await.unwrap();
+            assert!(result.partial);
+            assert_eq!(result.source_failures[0].logical_target(), "unknown");
+
+            let mut failed = FakeSource {
+                failed_groups: HashSet::from(["group-a".to_string()]),
+                ..Default::default()
+            };
+            assert!(enrich_consumer_groups_exact(&mut failed, &request).await.is_err());
+        }
+    }
+
+    #[test]
+    fn admin_session_exposes_independent_consumer_diagnostics() {
+        fn assert_diagnostic_admin<T: consumer::ConsumerDiagnosticAdmin>() {}
+
+        assert_diagnostic_admin::<AdminSession>();
+    }
+
+    #[test]
+    fn classify_consumer_group_preserves_dashboard_categories() {
+        assert_eq!(
+            classify_consumer_group("CID_RMQ_SYS_TRANS", &ConsumerGroupMeta::default()),
+            "SYSTEM"
+        );
+        assert_eq!(
+            classify_consumer_group("TOOLS_CONSUMER", &ConsumerGroupMeta::default()),
+            "SYSTEM"
+        );
+        let fifo = ConsumerGroupMeta {
+            orderly_flags: vec![true, true],
+            ..ConsumerGroupMeta::default()
+        };
+        assert_eq!(classify_consumer_group("group-fifo", &fifo), "FIFO");
+        let normal = ConsumerGroupMeta {
+            orderly_flags: vec![true, false],
+            ..ConsumerGroupMeta::default()
+        };
+        assert_eq!(classify_consumer_group("group-normal", &normal), "NORMAL");
+    }
+
+    #[test]
+    fn normalize_consumer_group_strips_dashboard_system_prefix() {
+        assert_eq!(normalize_consumer_group(" %SYS%group-a ").unwrap(), "%SYS%group-a");
+        assert_eq!(normalize_consumer_group("%SYS%group-a").unwrap(), "group-a");
+    }
+
+    #[test]
+    fn resolve_first_consumer_broker_address_is_sorted() {
+        let meta = ConsumerGroupMeta {
+            broker_addresses: HashSet::from(["172.19.80.2:10911".to_string(), "172.19.80.1:10911".to_string()]),
+            ..ConsumerGroupMeta::default()
+        };
+        assert_eq!(
+            resolve_first_consumer_broker_address(&meta).as_deref(),
+            Some("172.19.80.1:10911")
+        );
+    }
+
+    mod batch_consumer_tests {
+        use super::*;
+
+        #[derive(Default)]
+        struct FakeBatchExecutor {
+            upsert_calls: Vec<String>,
+            delete_calls: Vec<String>,
+            cleanup_calls: Vec<String>,
+            failing_upsert: Option<String>,
+            failing_delete: Option<String>,
+            failing_cleanup: Option<String>,
+        }
+
+        impl FakeBatchExecutor {
+            fn failing_upsert(target: &str) -> Self {
+                Self {
+                    failing_upsert: Some(target.to_string()),
+                    ..Self::default()
+                }
+            }
+
+            fn failing_delete(target: &str) -> Self {
+                Self {
+                    failing_delete: Some(target.to_string()),
+                    ..Self::default()
+                }
+            }
+
+            fn failing_cleanup(target: &str) -> Self {
+                Self {
+                    failing_cleanup: Some(target.to_string()),
+                    ..Self::default()
+                }
+            }
+
+            fn assert_no_mutations(&self) {
+                assert!(self.upsert_calls.is_empty());
+                assert!(self.delete_calls.is_empty());
+                assert!(self.cleanup_calls.is_empty());
+            }
+        }
+
+        impl ConsumerBatchExecutor for FakeBatchExecutor {
+            fn resolve_upsert_targets<'a>(
+                &'a mut self,
+                request: &'a consumer::DashboardConsumerUpsertRequest,
+            ) -> AdminFuture<'a, Vec<String>> {
+                Box::pin(async move {
+                    let mut targets = request.broker_name_list.clone();
+                    targets.sort();
+                    targets.dedup();
+                    if let Some(unknown) = targets
+                        .iter()
+                        .find(|target| !matches!(target.as_str(), "broker-a" | "broker-b"))
+                    {
+                        return Err(AdminError::invalid_argument(
+                            "brokerNameList",
+                            format!("Broker `{unknown}` was not found in the current cluster view."),
+                        ));
+                    }
+                    Ok(targets)
+                })
+            }
+
+            fn validate_delete_targets<'a>(&'a mut self, targets: &'a [String]) -> AdminFuture<'a, ()> {
+                Box::pin(async move {
+                    if let Some(unknown) = targets
+                        .iter()
+                        .find(|target| !matches!(target.as_str(), "broker-a" | "broker-b"))
+                    {
+                        return Err(AdminError::invalid_argument(
+                            "allBrokerNames",
+                            format!("Broker `{unknown}` was not found in the current cluster view."),
+                        ));
+                    }
+                    Ok(())
+                })
+            }
+
+            fn upsert_target<'a>(
+                &'a mut self,
+                target: &'a str,
+                _request: &'a consumer::DashboardConsumerUpsertRequest,
+            ) -> AdminFuture<'a, ()> {
+                Box::pin(async move {
+                    self.upsert_calls.push(target.to_string());
+                    if self.failing_upsert.as_deref() == Some(target) {
+                        return Err(AdminError::backend("upsert_target", "injected failure"));
+                    }
+                    Ok(())
+                })
+            }
+
+            fn delete_target<'a>(&'a mut self, target: &'a str, _group: &'a str) -> AdminFuture<'a, ()> {
+                Box::pin(async move {
+                    self.delete_calls.push(target.to_string());
+                    if self.failing_delete.as_deref() == Some(target) {
+                        return Err(AdminError::backend("delete_target", "injected failure"));
+                    }
+                    Ok(())
+                })
+            }
+
+            fn cleanup_internal_topic<'a>(
+                &'a mut self,
+                target: &'a str,
+                _broker_names: &'a [String],
+            ) -> AdminFuture<'a, ()> {
+                Box::pin(async move {
+                    self.cleanup_calls.push(target.to_string());
+                    if self.failing_cleanup.as_deref() == Some(target) {
+                        return Err(AdminError::backend("cleanup_internal_topic", "injected failure"));
+                    }
+                    Ok(())
+                })
+            }
+        }
+
+        fn upsert_fixture() -> consumer::DashboardConsumerUpsertRequest {
+            consumer::DashboardConsumerUpsertRequest {
+                cluster_name_list: Vec::new(),
+                broker_name_list: vec![" broker-b ".to_string(), "broker-a".to_string(), "broker-b".to_string()],
+                consumer_group: " orders-consumer ".to_string(),
+                consume_enable: true,
+                consume_from_min_enable: false,
+                consume_broadcast_enable: false,
+                consume_message_orderly: false,
+                retry_queue_nums: 1,
+                retry_max_times: 16,
+                broker_id: 0,
+                which_broker_when_consume_slowly: 1,
+                notify_consumer_ids_changed_enable: true,
+                group_sys_flag: 0,
+                consume_timeout_minute: 15,
+            }
+        }
+
+        fn delete_all_fixture() -> consumer::ConsumerBatchDeleteRequest {
+            consumer::ConsumerBatchDeleteRequest::try_new(
+                "orders-consumer",
+                ["broker-b", "broker-a"],
+                ["broker-a", "broker-b"],
+            )
+            .expect("valid delete request")
+        }
+
+        #[tokio::test]
+        async fn batch_upsert_sorts_deduplicates_and_continues_after_failure() {
+            let mut fake = FakeBatchExecutor::failing_upsert("broker-a");
+            let result = run_consumer_upsert_batch(
+                consumer::ConsumerBatchUpsertRequest::try_new(upsert_fixture()).unwrap(),
+                &mut fake,
+            )
+            .await
+            .unwrap();
+            assert_eq!(fake.upsert_calls, vec!["broker-a", "broker-b"]);
+            assert_eq!(
+                result
+                    .targets
+                    .iter()
+                    .map(|item| (&item.target, item.success))
+                    .collect::<Vec<_>>(),
+                vec![(&"broker-a".to_string(), false), (&"broker-b".to_string(), true),]
+            );
+            assert!(!result.success);
+        }
+
+        #[tokio::test]
+        async fn deleting_all_real_targets_cleans_retry_and_dlq_after_brokers_succeed() {
+            let mut fake = FakeBatchExecutor::default();
+            let result = run_consumer_delete_batch(
+                consumer::ConsumerBatchDeleteRequest::try_new(
+                    "orders-consumer",
+                    ["broker-b", "broker-a"],
+                    ["broker-a", "broker-b"],
+                )
+                .unwrap(),
+                &mut fake,
+            )
+            .await
+            .unwrap();
+            assert_eq!(fake.delete_calls, vec!["broker-a", "broker-b"]);
+            assert_eq!(
+                fake.cleanup_calls,
+                vec!["%RETRY%orders-consumer", "%DLQ%orders-consumer"]
+            );
+            assert!(result.success);
+        }
+
+        #[tokio::test]
+        async fn partial_delete_does_not_clean_internal_topics_and_reports_every_target() {
+            let mut fake = FakeBatchExecutor::failing_delete("broker-a");
+            let result = run_consumer_delete_batch(
+                consumer::ConsumerBatchDeleteRequest::try_new(
+                    "orders-consumer",
+                    ["broker-a", "broker-b"],
+                    ["broker-a", "broker-b"],
+                )
+                .unwrap(),
+                &mut fake,
+            )
+            .await
+            .unwrap();
+            assert!(fake.cleanup_calls.is_empty());
+            assert_eq!(result.targets.len(), 2);
+            assert!(!result.success);
+        }
+
+        #[tokio::test]
+        async fn batch_consumer_successful_subset_delete_does_not_clean_internal_topics() {
+            let mut fake = FakeBatchExecutor::default();
+            let result = run_consumer_delete_batch(
+                consumer::ConsumerBatchDeleteRequest::try_new(
+                    "orders-consumer",
+                    ["broker-a"],
+                    ["broker-a", "broker-b"],
+                )
+                .unwrap(),
+                &mut fake,
+            )
+            .await
+            .unwrap();
+
+            assert_eq!(fake.delete_calls, vec!["broker-a"]);
+            assert!(fake.cleanup_calls.is_empty());
+            assert_eq!(result.targets.len(), 1);
+            assert!(result.success);
+        }
+
+        #[tokio::test]
+        async fn cleanup_failure_is_a_structured_failed_target() {
+            let mut fake = FakeBatchExecutor::failing_cleanup("%DLQ%orders-consumer");
+            let result = run_consumer_delete_batch(delete_all_fixture(), &mut fake)
+                .await
+                .unwrap();
+            assert_eq!(result.targets.last().unwrap().target, "%DLQ%orders-consumer");
+            assert_eq!(result.targets.last().unwrap().kind, "INTERNAL_TOPIC_CLEANUP");
+            assert!(!result.targets.last().unwrap().success);
+            assert!(!result.success);
+        }
+
+        #[tokio::test]
+        async fn batch_consumer_upsert_revalidates_before_any_mutation() {
+            let mut invalid_requests = Vec::new();
+
+            let mut blank_group = upsert_fixture();
+            blank_group.consumer_group = " ".to_string();
+            invalid_requests.push(blank_group);
+
+            let mut no_target = upsert_fixture();
+            no_target.broker_name_list.clear();
+            invalid_requests.push(no_target);
+
+            let mut invalid_retry_queues = upsert_fixture();
+            invalid_retry_queues.retry_queue_nums = -1;
+            invalid_requests.push(invalid_retry_queues);
+
+            let mut invalid_retry_max = upsert_fixture();
+            invalid_retry_max.retry_max_times = -2;
+            invalid_requests.push(invalid_retry_max);
+
+            let mut system_group = upsert_fixture();
+            system_group.consumer_group = "TOOLS_CONSUMER".to_string();
+            invalid_requests.push(system_group);
+
+            for request in invalid_requests {
+                assert!(consumer::ConsumerBatchUpsertRequest::try_new(request.clone()).is_err());
+                let mut fake = FakeBatchExecutor::default();
+                let result = run_consumer_upsert_batch(
+                    consumer::batch_test_support::unchecked_upsert_request(request),
+                    &mut fake,
+                )
+                .await;
+                assert!(result.is_err());
+                fake.assert_no_mutations();
+            }
+        }
+
+        #[tokio::test]
+        async fn batch_consumer_unknown_broker_does_not_mutate_any_target() {
+            let mut request = upsert_fixture();
+            request.broker_name_list = vec!["broker-unknown".to_string()];
+            let request = consumer::ConsumerBatchUpsertRequest::try_new(request).unwrap();
+            let mut fake = FakeBatchExecutor::default();
+
+            assert!(run_consumer_upsert_batch(request, &mut fake).await.is_err());
+            fake.assert_no_mutations();
+        }
+
+        #[tokio::test]
+        async fn batch_consumer_delete_revalidates_selected_subset_before_any_mutation() {
+            assert!(consumer::ConsumerBatchDeleteRequest::try_new(
+                "orders-consumer",
+                ["broker-c"],
+                ["broker-a", "broker-b"]
+            )
+            .is_err());
+            let request = consumer::batch_test_support::unchecked_delete_request(
+                "orders-consumer",
+                vec!["broker-c".to_string()],
+                vec!["broker-a".to_string(), "broker-b".to_string()],
+            );
+            let mut fake = FakeBatchExecutor::default();
+
+            assert!(run_consumer_delete_batch(request, &mut fake).await.is_err());
+            fake.assert_no_mutations();
+        }
+
+        #[tokio::test]
+        async fn batch_consumer_delete_rejects_unknown_and_system_groups_without_mutation() {
+            let unknown = consumer::ConsumerBatchDeleteRequest::try_new(
+                "orders-consumer",
+                ["broker-unknown"],
+                ["broker-unknown"],
+            )
+            .unwrap();
+            let mut fake = FakeBatchExecutor::default();
+            assert!(run_consumer_delete_batch(unknown, &mut fake).await.is_err());
+            fake.assert_no_mutations();
+
+            assert!(
+                consumer::ConsumerBatchDeleteRequest::try_new("CID_RMQ_SYS_TRANS", ["broker-a"], ["broker-a"]).is_err()
+            );
+        }
+
+        #[test]
+        fn admin_session_exposes_independent_consumer_batch_mutations() {
+            fn assert_batch_admin<T: consumer::ConsumerBatchMutationAdmin>() {}
+
+            assert_batch_admin::<AdminSession>();
+        }
+    }
+}

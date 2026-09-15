@@ -1,0 +1,47 @@
+[package]
+name = "oxideterm-terminal"
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+
+[dependencies]
+alacritty_terminal.workspace = true
+anyhow.workspace = true
+async-channel.workspace = true
+crossbeam-channel.workspace = true
+fernomade-predict = { path = "../fernomade/predict" }
+libc.workspace = true
+memchr.workspace = true
+oxideterm-ssh = { path = "../oxideterm-ssh" }
+oxideterm-modem-transfer = { path = "../oxideterm-modem-transfer" }
+oxideterm-mosh = { path = "../oxideterm-mosh" }
+oxideterm-terminal-encoding = { path = "../oxideterm-terminal-encoding" }
+oxideterm-terminal-graphics = { path = "../oxideterm-terminal-graphics" }
+oxideterm-terminal-model = { path = "../oxideterm-terminal-model" }
+oxideterm-terminal-triggers = { path = "../oxideterm-terminal-triggers" }
+oxideterm-tmux = { path = "../oxideterm-tmux" }
+oxideterm-trzsz = { path = "../oxideterm-trzsz" }
+polling.workspace = true
+serialport.workspace = true
+serde.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+tempfile = "3.23"
+unicode-segmentation.workspace = true
+zeroize.workspace = true
+
+[target.'cfg(windows)'.dependencies]
+windows = { workspace = true, features = ["Win32_Foundation", "Win32_System_JobObjects", "Win32_System_Threading"] }
+
+[dev-dependencies]
+russh = { path = "../russh" }
+rand10.workspace = true
+criterion.workspace = true
+
+[[bench]]
+name = "terminal_pipeline"
+harness = false
+
+[[bench]]
+name = "privilege_prompt_stream"
+harness = false

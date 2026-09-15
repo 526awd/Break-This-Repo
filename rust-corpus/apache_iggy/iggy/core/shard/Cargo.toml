@@ -1,0 +1,60 @@
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
+[package]
+name = "shard"
+version = "0.1.0"
+edition = "2024"
+license = "Apache-2.0"
+publish = false
+
+[features]
+poll-diagnostics = []
+# Simulator-only test hook (`IggyShard::init_partition`): bypasses the
+# reconciler's `ReconcileOp::InsertOwned` funnel, mutating `IggyPartitions`
+# off the pump task. A `-p iggy-server` build excludes it; `cargo build
+# --workspace` unifies features and compiles it into the shared `shard`
+# unit (simulator requests it). Benign: no production caller.
+# Forwards to `partitions/simulator`: `init_partition` names
+# `RetainedPartitionLog` and calls `adopt_retained_log`, both gated there.
+simulator = ["partitions/simulator"]
+
+[dependencies]
+compio = { workspace = true }
+consensus = { workspace = true }
+crossfire = { workspace = true }
+futures = { workspace = true }
+hash32 = { workspace = true }
+iggy_binary_protocol = { workspace = true }
+iggy_common = { workspace = true }
+journal = { workspace = true }
+message_bus = { workspace = true }
+metadata = { workspace = true }
+papaya = { workspace = true }
+partitions = { workspace = true }
+prometheus-client = { workspace = true }
+server_common = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+
+[lints.clippy]
+enum_glob_use = "deny"
+pedantic = "deny"
+nursery = "warn"
+
+[lints.rust]
+warnings = "deny"

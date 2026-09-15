@@ -1,0 +1,147 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::collections::HashMap;
+use std::collections::HashSet;
+use std::time::Duration;
+
+use bytes::Bytes;
+use rocketmq_protocol::code::request_code::RequestCode;
+use rocketmq_protocol::protocol::body::request::lock_batch_request_body::LockBatchRequestBody;
+use rocketmq_protocol::protocol::body::response::lock_batch_response_body::LockBatchResponseBody;
+use rocketmq_protocol::protocol::body::unlock_batch_request_body::UnlockBatchRequestBody;
+use rocketmq_protocol::protocol::remoting_command::RemotingCommand;
+use rocketmq_protocol::protocol::RemotingDeserializable;
+use rocketmq_protocol::protocol::RemotingSerializable;
+use rocketmq_store::BrokerAdminStore;
+use tokio::time::timeout;
+use tracing::warn;
+
+use crate::broker::broker_admin_runtime::BrokerAdminRuntime;
+
+pub(super) struct BatchMqHandler;
+
+impl BatchMqHandler {
+    pub(super) const fn new() -> Self {
+        Self
+    }
+
+    pub async fn lock_natch_mq<MS: BrokerAdminStore>(
+        &self,
+        broker_runtime_inner: &BrokerAdminRuntime<MS>,
+        _request_code: RequestCode,
+        request: &mut RemotingCommand,
+    ) -> crate::broker_error::BrokerResult<Option<RemotingCommand>> {
+        let mut request_body = LockBatchRequestBody::decode(request.get_body().unwrap()).unwrap();
+        let mut lock_ok_mqset = HashSet::new();
+        let self_lock_okmqset = broker_runtime_inner.rebalance_lock_manager().try_lock_batch(
+            request_body.consumer_group.as_ref().unwrap(),
+            &request_body.mq_set,
+            request_body.client_id.as_ref().unwrap(),
+        );
+        if request_body.only_this_broker || !broker_runtime_inner.broker_config().lock_in_strict_mode {
+            lock_ok_mqset = self_lock_okmqset;
+        } else {
+            request_body.only_this_broker = true;
+            let replica_size = broker_runtime_inner.message_store_config().total_replicas;
+            let quorum = replica_size / 2 + 1;
+            if quorum <= 1 {
+                lock_ok_mqset = self_lock_okmqset;
+            } else {
+                let mut mq_lock_map = HashMap::with_capacity(32);
+                for mq in self_lock_okmqset.iter() {
+                    *mq_lock_map.entry(mq.clone()).or_insert(0) += 1;
+                }
+                let mut addr_map = HashMap::with_capacity(8);
+                addr_map.extend(broker_runtime_inner.broker_member_group().broker_addrs.clone());
+                addr_map.remove(&broker_runtime_inner.broker_config().broker_identity.broker_id);
+
+                let request_body = Bytes::from(request_body.encode().expect("lockBatchMQ encode error"));
+                let broker_outer_api = broker_runtime_inner.broker_outer_api().clone();
+                let futures = addr_map.into_values().map(|broker_addr| {
+                    let broker_outer_api = broker_outer_api.clone();
+                    let request_body_cloned = request_body.clone();
+                    async move {
+                        (
+                            broker_addr.clone(),
+                            broker_outer_api
+                                .lock_batch_mq_async(&broker_addr, request_body_cloned, 1000)
+                                .await,
+                        )
+                    }
+                });
+
+                if let Ok(results) = timeout(Duration::from_secs(2), futures::future::join_all(futures)).await {
+                    for (broker_addr, result) in results {
+                        match result {
+                            Ok(lock_ok_mqs) => {
+                                for mq in lock_ok_mqs {
+                                    *mq_lock_map.entry(mq).or_insert(0) += 1;
+                                }
+                            }
+                            Err(e) => {
+                                warn!("lockBatchMQAsync failed on {}, {:?}", broker_addr, e);
+                            }
+                        }
+                    }
+                }
+
+                for (mq, count) in &mq_lock_map {
+                    if *count >= quorum {
+                        lock_ok_mqset.insert(mq.clone());
+                    }
+                }
+            }
+        }
+        let response_body = LockBatchResponseBody {
+            lock_ok_mq_set: lock_ok_mqset,
+        };
+        Ok(Some(
+            RemotingCommand::create_success_response_command()
+                .set_body(response_body.encode().expect("lockBatchMQ encode error")),
+        ))
+    }
+
+    pub async fn unlock_batch_mq<MS: BrokerAdminStore>(
+        &self,
+        broker_runtime_inner: &BrokerAdminRuntime<MS>,
+        _request_code: RequestCode,
+        request: &mut RemotingCommand,
+    ) -> crate::broker_error::BrokerResult<Option<RemotingCommand>> {
+        let mut request_body = UnlockBatchRequestBody::decode(request.get_body().unwrap()).unwrap();
+        if request_body.only_this_broker || !broker_runtime_inner.broker_config().lock_in_strict_mode {
+            broker_runtime_inner.rebalance_lock_manager().unlock_batch(
+                request_body.consumer_group.as_ref().unwrap(),
+                &request_body.mq_set,
+                request_body.client_id.as_ref().unwrap(),
+            );
+        } else {
+            request_body.only_this_broker = true;
+            let request_body = Bytes::from(request_body.encode().expect("unlockBatchMQ encode error"));
+            for broker_addr in broker_runtime_inner.broker_member_group().broker_addrs.values() {
+                match broker_runtime_inner
+                    .broker_outer_api()
+                    .unlock_batch_mq_async(broker_addr, request_body.clone(), 1000)
+                    .await
+                {
+                    Ok(_) => {}
+                    Err(e) => {
+                        warn!("unlockBatchMQ exception on {}, {}", broker_addr, e);
+                    }
+                }
+            }
+        }
+        Ok(Some(RemotingCommand::create_success_response_command()))
+    }
+}

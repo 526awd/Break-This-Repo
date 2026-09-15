@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: 2023 The Gleam contributors
+
+name = "project_a"
+version = "0.1.0"
+
+[dependencies]
+project_b = { path = "../project_b" }
+project_c = { path = "../project_c" }
+
+[dev_dependencies]
+gleeunit = "~> 1.0"

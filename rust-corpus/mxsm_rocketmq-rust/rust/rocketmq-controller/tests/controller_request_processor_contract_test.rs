@@ -1,0 +1,908 @@
+// Copyright 2026 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::collections::BTreeMap;
+use std::collections::HashSet;
+use std::net::SocketAddr;
+use std::sync::Arc;
+use std::time::Duration;
+
+use cheetah_string::CheetahString;
+use rocketmq_controller::BrokerHeartbeatManager;
+use rocketmq_controller::ControllerConfig;
+use rocketmq_controller::ControllerManager;
+use rocketmq_controller::Node;
+use rocketmq_controller::RaftPeer;
+use rocketmq_controller::StorageBackendType;
+use rocketmq_controller::MAX_BROKER_HEARTBEAT_TIMEOUT_MILLIS;
+use rocketmq_model::common::mix_all::FIRST_BROKER_CONTROLLER_ID;
+use rocketmq_protocol::code::request_code::RequestCode;
+use rocketmq_protocol::code::response_code::ResponseCode;
+use rocketmq_protocol::protocol::body::broker_replicas_info::BrokerReplicasInfo;
+use rocketmq_protocol::protocol::body::elect_master_response_body::ElectMasterResponseBody;
+use rocketmq_protocol::protocol::body::sync_state_set_body::SyncStateSet;
+use rocketmq_protocol::protocol::header::controller::alter_sync_state_set_request_header::AlterSyncStateSetRequestHeader;
+use rocketmq_protocol::protocol::header::controller::alter_sync_state_set_response_header::AlterSyncStateSetResponseHeader;
+use rocketmq_protocol::protocol::header::controller::apply_broker_id_request_header::ApplyBrokerIdRequestHeader;
+use rocketmq_protocol::protocol::header::controller::apply_broker_id_response_header::ApplyBrokerIdResponseHeader;
+use rocketmq_protocol::protocol::header::controller::clean_broker_data_request_header::CleanBrokerDataRequestHeader;
+use rocketmq_protocol::protocol::header::controller::elect_master_request_header::ElectMasterRequestHeader;
+use rocketmq_protocol::protocol::header::controller::get_next_broker_id_request_header::GetNextBrokerIdRequestHeader;
+use rocketmq_protocol::protocol::header::controller::get_next_broker_id_response_header::GetNextBrokerIdResponseHeader;
+use rocketmq_protocol::protocol::header::controller::get_replica_info_request_header::GetReplicaInfoRequestHeader;
+use rocketmq_protocol::protocol::header::controller::get_replica_info_response_header::GetReplicaInfoResponseHeader;
+use rocketmq_protocol::protocol::header::controller::register_broker_to_controller_request_header::RegisterBrokerToControllerRequestHeader;
+use rocketmq_protocol::protocol::header::controller::register_broker_to_controller_response_header::RegisterBrokerToControllerResponseHeader;
+use rocketmq_protocol::protocol::header::elect_master_response_header::ElectMasterResponseHeader;
+use rocketmq_protocol::protocol::header::get_meta_data_response_header::GetMetaDataResponseHeader;
+use rocketmq_protocol::protocol::header::namesrv::broker_request::BrokerHeartbeatRequestHeader;
+use rocketmq_protocol::protocol::remoting_command::RemotingCommand;
+use rocketmq_protocol::protocol::RemotingDeserializable;
+use rocketmq_protocol::protocol::RemotingSerializable;
+use rocketmq_runtime::ShutdownDeadline;
+use rocketmq_transport::api::DefaultRequestProcessor;
+use rocketmq_transport::api::OutboundRequestOutcome;
+use rocketmq_transport::api::RemotingClient;
+use rocketmq_transport::api::TransportClientConfig;
+use tokio::time::sleep;
+
+const CLUSTER_NAME: &str = "contract-cluster";
+const BROKER_NAME: &str = "contract-broker";
+const BROKER_ADDR_1: &str = "127.0.0.1:10911";
+const BROKER_ADDR_2: &str = "127.0.0.1:10912";
+
+struct ProcessorHarness {
+    manager: Arc<ControllerManager>,
+    client: Arc<RemotingClient>,
+    remoting_addr: SocketAddr,
+}
+
+#[derive(Clone, Copy)]
+struct ReplicaSeed {
+    master_broker_id: i64,
+    slave_broker_id: i64,
+    master_epoch: i32,
+    sync_state_set_epoch: i32,
+}
+
+impl ProcessorHarness {
+    async fn new() -> Self {
+        let (remoting_addr, raft_addr) = reserve_controller_addresses();
+        let config = ControllerConfig::default()
+            .with_node_info(1, remoting_addr)
+            .with_raft_peers(vec![RaftPeer { id: 1, addr: raft_addr }])
+            .with_storage_backend(StorageBackendType::Memory)
+            .with_heartbeat_interval_ms(100)
+            .with_election_timeout_ms(300);
+        let runtime = rocketmq_runtime::RuntimeContext::from_current("controller-processor-contract-test");
+        let manager = Arc::new(
+            ControllerManager::new(
+                config,
+                runtime.service_context("controller"),
+                rocketmq_observability::TelemetryHandle::noop(),
+            )
+            .await
+            .expect("create controller manager"),
+        );
+        manager.initialize().await.expect("initialize controller manager");
+        manager.start().await.expect("start controller manager");
+
+        let mut nodes = BTreeMap::new();
+        nodes.insert(
+            1,
+            Node {
+                node_id: 1,
+                rpc_addr: raft_addr.to_string(),
+            },
+        );
+        manager
+            .controller()
+            .initialize_cluster(nodes)
+            .await
+            .expect("initialize single-node controller cluster");
+
+        wait_for_leader(&manager).await;
+
+        let client = Arc::new(
+            RemotingClient::builder(
+                Arc::new(TransportClientConfig::default()),
+                DefaultRequestProcessor,
+                runtime.service_context("contract-client"),
+            )
+            .build()
+            .expect("build contract client"),
+        );
+        client.start().await.expect("start contract client");
+        Self {
+            manager,
+            client,
+            remoting_addr,
+        }
+    }
+
+    async fn shutdown(self) {
+        let client_report = self
+            .client
+            .shutdown_until(ShutdownDeadline::after(Duration::from_secs(3)))
+            .await
+            .expect("shutdown contract client");
+        assert!(client_report.is_healthy(), "client shutdown report: {client_report:?}");
+        self.manager.shutdown().await.expect("shutdown controller manager");
+        let ProcessorHarness { manager, .. } = self;
+        std::mem::forget(manager);
+    }
+
+    async fn send(&mut self, mut request: RemotingCommand) -> RemotingCommand {
+        request.make_custom_header_to_net();
+        let endpoint = CheetahString::from_string(self.remoting_addr.to_string());
+        let mut response = match self
+            .client
+            .transport_client()
+            .invoke_request(Some(&endpoint), request, 5_000)
+            .await
+        {
+            Ok(OutboundRequestOutcome::Response(response)) => response,
+            Ok(OutboundRequestOutcome::Rejected(rejection)) => {
+                panic!("Controller processor request was rejected: {rejection:?}")
+            }
+            Ok(OutboundRequestOutcome::Contract(contract)) => {
+                panic!("Controller processor request contract failed: {contract:?}")
+            }
+            Err(error) => panic!("Controller processor request failed: {error:?}"),
+        };
+        response.make_custom_header_to_net();
+        response
+    }
+
+    async fn apply_broker_id(
+        &mut self,
+        broker_id: i64,
+        broker_addr: &str,
+        register_check_code: &str,
+    ) -> RemotingCommand {
+        let header = ApplyBrokerIdRequestHeader {
+            cluster_name: CheetahString::from_static_str(CLUSTER_NAME),
+            broker_name: CheetahString::from_static_str(BROKER_NAME),
+            applied_broker_id: broker_id,
+            register_check_code: CheetahString::from_string(format!("{broker_addr};{register_check_code}")),
+        };
+        self.send(RemotingCommand::create_request_command(
+            RequestCode::ControllerApplyBrokerId,
+            header,
+        ))
+        .await
+    }
+
+    async fn register_broker(&mut self, broker_id: i64, broker_addr: &str) -> RemotingCommand {
+        let header = RegisterBrokerToControllerRequestHeader {
+            cluster_name: Some(CheetahString::from_static_str(CLUSTER_NAME)),
+            broker_name: Some(CheetahString::from_static_str(BROKER_NAME)),
+            broker_id: Some(broker_id),
+            broker_address: Some(CheetahString::from_string(broker_addr.to_owned())),
+            ..Default::default()
+        };
+        self.send(RemotingCommand::create_request_command(
+            RequestCode::ControllerRegisterBroker,
+            header,
+        ))
+        .await
+    }
+
+    async fn heartbeat(&mut self, broker_id: i64, broker_addr: &str) -> RemotingCommand {
+        let header = BrokerHeartbeatRequestHeader {
+            cluster_name: CheetahString::from_static_str(CLUSTER_NAME),
+            broker_addr: CheetahString::from_string(broker_addr.to_owned()),
+            broker_name: CheetahString::from_static_str(BROKER_NAME),
+            broker_id: Some(broker_id),
+            epoch: Some(1),
+            max_offset: Some(100),
+            confirm_offset: Some(80),
+            store_ready: Some(true),
+            heartbeat_timeout_mills: Some(3_000),
+            election_priority: Some(1),
+        };
+        self.send(RemotingCommand::create_request_command(
+            RequestCode::BrokerHeartbeat,
+            header,
+        ))
+        .await
+    }
+
+    async fn elect_master(&mut self, broker_id: i64) -> RemotingCommand {
+        let header = ElectMasterRequestHeader::new(
+            CheetahString::from_static_str(CLUSTER_NAME),
+            CheetahString::from_static_str(BROKER_NAME),
+            broker_id,
+            false,
+            0,
+        );
+        self.send(RemotingCommand::create_request_command(
+            RequestCode::ControllerElectMaster,
+            header,
+        ))
+        .await
+    }
+
+    async fn seed_two_live_brokers_and_elect_master(&mut self) -> ReplicaSeed {
+        let get_next_response = self
+            .send(RemotingCommand::create_request_command(
+                RequestCode::ControllerGetNextBrokerId,
+                GetNextBrokerIdRequestHeader {
+                    cluster_name: CheetahString::from_static_str(CLUSTER_NAME),
+                    broker_name: CheetahString::from_static_str(BROKER_NAME),
+                },
+            ))
+            .await;
+        let first_header = get_next_response
+            .decode_command_custom_header::<GetNextBrokerIdResponseHeader>()
+            .expect("decode first next broker id response");
+        let master_broker_id = first_header.next_broker_id.expect("first broker id should exist") as i64;
+
+        let apply_first = self.apply_broker_id(master_broker_id, BROKER_ADDR_1, "code-1").await;
+        assert_eq!(apply_first.code(), ResponseCode::Success as i32);
+
+        let next_after_first = self
+            .send(RemotingCommand::create_request_command(
+                RequestCode::ControllerGetNextBrokerId,
+                GetNextBrokerIdRequestHeader {
+                    cluster_name: CheetahString::from_static_str(CLUSTER_NAME),
+                    broker_name: CheetahString::from_static_str(BROKER_NAME),
+                },
+            ))
+            .await;
+        let second_header = next_after_first
+            .decode_command_custom_header::<GetNextBrokerIdResponseHeader>()
+            .expect("decode second next broker id response");
+        let slave_broker_id = second_header.next_broker_id.expect("second broker id should exist") as i64;
+
+        let apply_second = self.apply_broker_id(slave_broker_id, BROKER_ADDR_2, "code-2").await;
+        assert_eq!(apply_second.code(), ResponseCode::Success as i32);
+
+        assert_eq!(
+            self.register_broker(master_broker_id, BROKER_ADDR_1).await.code(),
+            ResponseCode::Success as i32
+        );
+        assert_eq!(
+            self.register_broker(slave_broker_id, BROKER_ADDR_2).await.code(),
+            ResponseCode::Success as i32
+        );
+        assert_eq!(
+            self.heartbeat(master_broker_id, BROKER_ADDR_1).await.code(),
+            ResponseCode::Success as i32
+        );
+        assert_eq!(
+            self.heartbeat(slave_broker_id, BROKER_ADDR_2).await.code(),
+            ResponseCode::Success as i32
+        );
+
+        wait_until(
+            Duration::from_secs(5),
+            || {
+                self.manager
+                    .heartbeat_manager()
+                    .is_broker_active(CLUSTER_NAME, BROKER_NAME, master_broker_id)
+                    && self
+                        .manager
+                        .heartbeat_manager()
+                        .is_broker_active(CLUSTER_NAME, BROKER_NAME, slave_broker_id)
+            },
+            "two brokers to become active in heartbeat manager",
+        )
+        .await;
+
+        let elect_response = self.elect_master(master_broker_id).await;
+        assert_eq!(elect_response.code(), ResponseCode::Success as i32);
+        let elect_header = elect_response
+            .decode_command_custom_header::<ElectMasterResponseHeader>()
+            .expect("decode elect master response");
+        ReplicaSeed {
+            master_broker_id,
+            slave_broker_id,
+            master_epoch: elect_header.master_epoch.expect("master epoch"),
+            sync_state_set_epoch: elect_header.sync_state_set_epoch.expect("sync epoch"),
+        }
+    }
+}
+
+fn reserve_controller_addresses() -> (SocketAddr, SocketAddr) {
+    let remoting = std::net::TcpListener::bind("127.0.0.1:0").expect("reserve remoting address");
+    let raft = std::net::TcpListener::bind("127.0.0.1:0").expect("reserve raft address");
+    let addresses = (
+        remoting.local_addr().expect("remoting address"),
+        raft.local_addr().expect("raft address"),
+    );
+    drop((remoting, raft));
+    addresses
+}
+
+async fn wait_for_leader(manager: &Arc<ControllerManager>) {
+    wait_until(
+        Duration::from_secs(5),
+        || manager.is_leader(),
+        "single-node controller to become leader",
+    )
+    .await;
+}
+
+async fn wait_until<F>(timeout: Duration, mut predicate: F, context: &str)
+where
+    F: FnMut() -> bool,
+{
+    let start = std::time::Instant::now();
+    loop {
+        if predicate() {
+            return;
+        }
+        if start.elapsed() >= timeout {
+            panic!("timed out waiting for {context}");
+        }
+        sleep(Duration::from_millis(100)).await;
+    }
+}
+
+#[tokio::test]
+async fn controller_request_contract_get_next_broker_id() {
+    let mut harness = ProcessorHarness::new().await;
+    let response = harness
+        .send(RemotingCommand::create_request_command(
+            RequestCode::ControllerGetNextBrokerId,
+            GetNextBrokerIdRequestHeader {
+                cluster_name: CheetahString::from_static_str(CLUSTER_NAME),
+                broker_name: CheetahString::from_static_str(BROKER_NAME),
+            },
+        ))
+        .await;
+
+    assert_eq!(response.code(), ResponseCode::Success as i32);
+    let header = response
+        .decode_command_custom_header::<GetNextBrokerIdResponseHeader>()
+        .expect("decode next broker id response");
+    assert_eq!(
+        header.cluster_name.as_deref(),
+        Some(CheetahString::from_static_str(CLUSTER_NAME).as_str())
+    );
+    assert_eq!(
+        header.broker_name.as_deref(),
+        Some(CheetahString::from_static_str(BROKER_NAME).as_str())
+    );
+    assert_eq!(header.next_broker_id, Some(FIRST_BROKER_CONTROLLER_ID));
+
+    harness.shutdown().await;
+}
+
+#[tokio::test]
+async fn controller_request_contract_apply_broker_id() {
+    let mut harness = ProcessorHarness::new().await;
+    let response = harness
+        .apply_broker_id(FIRST_BROKER_CONTROLLER_ID as i64, BROKER_ADDR_1, "apply-contract")
+        .await;
+
+    assert_eq!(response.code(), ResponseCode::Success as i32);
+    let header = response
+        .decode_command_custom_header::<ApplyBrokerIdResponseHeader>()
+        .expect("decode apply broker id response");
+    assert_eq!(
+        header.cluster_name.as_deref(),
+        Some(CheetahString::from_static_str(CLUSTER_NAME).as_str())
+    );
+    assert_eq!(
+        header.broker_name.as_deref(),
+        Some(CheetahString::from_static_str(BROKER_NAME).as_str())
+    );
+
+    let next_response = harness
+        .send(RemotingCommand::create_request_command(
+            RequestCode::ControllerGetNextBrokerId,
+            GetNextBrokerIdRequestHeader {
+                cluster_name: CheetahString::from_static_str(CLUSTER_NAME),
+                broker_name: CheetahString::from_static_str(BROKER_NAME),
+            },
+        ))
+        .await;
+    let next_header = next_response
+        .decode_command_custom_header::<GetNextBrokerIdResponseHeader>()
+        .expect("decode next broker id response after apply");
+    assert_eq!(next_header.next_broker_id, Some(FIRST_BROKER_CONTROLLER_ID + 1));
+
+    harness.shutdown().await;
+}
+
+#[tokio::test]
+async fn controller_request_contract_rejects_invalid_apply_broker_id_headers() {
+    let mut harness = ProcessorHarness::new().await;
+    let invalid_request = ResponseCode::ControllerInvalidRequest;
+    let invalid_broker_id = ResponseCode::ControllerBrokerIdInvalid;
+
+    for (cluster_name, broker_name, broker_id, expected_code, expected_remark) in [
+        ("", BROKER_NAME, 1, invalid_request, "cluster_name"),
+        (CLUSTER_NAME, "", 1, invalid_request, "broker_name"),
+        (CLUSTER_NAME, BROKER_NAME, -1, invalid_broker_id, "non-negative"),
+    ] {
+        let response = harness
+            .send(RemotingCommand::create_request_command(
+                RequestCode::ControllerApplyBrokerId,
+                ApplyBrokerIdRequestHeader {
+                    cluster_name: CheetahString::from(cluster_name),
+                    broker_name: CheetahString::from(broker_name),
+                    applied_broker_id: broker_id,
+                    register_check_code: CheetahString::default(),
+                },
+            ))
+            .await;
+
+        assert_eq!(ResponseCode::from(response.code()), expected_code);
+        assert!(response.remark().is_some_and(|remark| remark.contains(expected_remark)));
+    }
+
+    harness.shutdown().await;
+}
+
+#[tokio::test]
+async fn controller_request_contract_register_broker() {
+    let mut harness = ProcessorHarness::new().await;
+    let broker_id = FIRST_BROKER_CONTROLLER_ID as i64;
+    assert_eq!(
+        harness
+            .apply_broker_id(broker_id, BROKER_ADDR_1, "register-contract")
+            .await
+            .code(),
+        ResponseCode::Success as i32
+    );
+
+    let response = harness.register_broker(broker_id, BROKER_ADDR_1).await;
+    assert_eq!(response.code(), ResponseCode::Success as i32);
+
+    let header = response
+        .decode_command_custom_header::<RegisterBrokerToControllerResponseHeader>()
+        .expect("decode register broker response");
+    assert_eq!(
+        header.cluster_name.as_deref(),
+        Some(CheetahString::from_static_str(CLUSTER_NAME).as_str())
+    );
+    assert_eq!(
+        header.broker_name.as_deref(),
+        Some(CheetahString::from_static_str(BROKER_NAME).as_str())
+    );
+    assert_eq!(header.master_broker_id, None);
+    assert_eq!(header.master_epoch, None);
+    let body = response.body().expect("register broker response body");
+    let sync_state_set = SyncStateSet::decode(body.as_ref()).expect("decode register broker sync state");
+    assert!(sync_state_set.get_sync_state_set().is_none() || sync_state_set.get_sync_state_set().unwrap().is_empty());
+    assert_eq!(sync_state_set.get_sync_state_set_epoch(), 0);
+
+    harness.shutdown().await;
+}
+
+#[tokio::test]
+async fn controller_request_contract_broker_heartbeat() {
+    let mut harness = ProcessorHarness::new().await;
+    let broker_id = FIRST_BROKER_CONTROLLER_ID as i64;
+    let response = harness.heartbeat(broker_id, BROKER_ADDR_1).await;
+
+    assert_eq!(response.code(), ResponseCode::Success as i32);
+    assert_eq!(
+        response.remark().map(|remark| remark.as_str()),
+        Some("Heartbeat committed; no write lease for this authority")
+    );
+    wait_until(
+        Duration::from_secs(5),
+        || {
+            harness
+                .manager
+                .heartbeat_manager()
+                .is_broker_active(CLUSTER_NAME, BROKER_NAME, broker_id)
+        },
+        "heartbeat request to mark broker active",
+    )
+    .await;
+
+    let client_report = harness
+        .client
+        .shutdown_until(ShutdownDeadline::after(Duration::from_secs(2)))
+        .await
+        .expect("shutdown heartbeat client");
+    assert!(client_report.is_healthy(), "client shutdown report: {client_report:?}");
+    wait_until(
+        Duration::from_secs(2),
+        || {
+            harness
+                .manager
+                .heartbeat_manager()
+                .get_broker_live_info(CLUSTER_NAME, BROKER_NAME, broker_id)
+                .is_none()
+        },
+        "session disconnect to remove the broker registration",
+    )
+    .await;
+    harness.manager.shutdown().await.expect("shutdown controller manager");
+    let ProcessorHarness { manager, .. } = harness;
+    std::mem::forget(manager);
+}
+
+#[tokio::test]
+async fn controller_request_contract_broker_heartbeat_rejects_invalid_identity_and_timeout() {
+    let mut harness = ProcessorHarness::new().await;
+    let mut header = BrokerHeartbeatRequestHeader {
+        cluster_name: CheetahString::from_static_str(CLUSTER_NAME),
+        broker_addr: CheetahString::from_static_str(BROKER_ADDR_1),
+        broker_name: CheetahString::from_static_str(BROKER_NAME),
+        broker_id: Some(FIRST_BROKER_CONTROLLER_ID as i64),
+        epoch: Some(1),
+        max_offset: Some(100),
+        confirm_offset: Some(80),
+        store_ready: Some(true),
+        heartbeat_timeout_mills: None,
+        election_priority: Some(1),
+    };
+
+    for heartbeat_timeout_mills in [None, Some(-1), Some((MAX_BROKER_HEARTBEAT_TIMEOUT_MILLIS + 1) as i64)] {
+        header.broker_id = Some(FIRST_BROKER_CONTROLLER_ID as i64);
+        header.heartbeat_timeout_mills = heartbeat_timeout_mills;
+        let response = harness
+            .send(RemotingCommand::create_request_command(
+                RequestCode::BrokerHeartbeat,
+                header.clone(),
+            ))
+            .await;
+
+        assert_eq!(response.code(), ResponseCode::InvalidParameter as i32);
+        assert_eq!(
+            response.remark().map(|remark| remark.as_str()),
+            Some("Request header is invalid")
+        );
+    }
+
+    header.broker_id = Some(-1);
+    header.heartbeat_timeout_mills = Some(3_000);
+    let invalid_broker_id = harness
+        .send(RemotingCommand::create_request_command(
+            RequestCode::BrokerHeartbeat,
+            header,
+        ))
+        .await;
+    assert_eq!(invalid_broker_id.code(), ResponseCode::ControllerInvalidRequest as i32);
+    assert_eq!(
+        invalid_broker_id.remark().map(|remark| remark.as_str()),
+        Some("Heart beat with invalid brokerId")
+    );
+
+    harness.shutdown().await;
+}
+
+#[tokio::test]
+async fn controller_request_contract_get_metadata_info() {
+    let mut harness = ProcessorHarness::new().await;
+    let response = harness
+        .send(RemotingCommand::create_remoting_command(
+            RequestCode::ControllerGetMetadataInfo,
+        ))
+        .await;
+
+    assert_eq!(response.code(), ResponseCode::Success as i32);
+    let header = response
+        .decode_command_custom_header::<GetMetaDataResponseHeader>()
+        .expect("decode controller metadata response");
+    assert_eq!(header.controller_leader_id.as_deref(), Some("1"));
+    assert_eq!(
+        header.controller_leader_address.as_deref(),
+        Some(harness.manager.controller_config().listen_addr.to_string().as_str())
+    );
+    assert_eq!(header.is_leader, Some(true));
+    assert!(
+        response.body().is_none(),
+        "ordinary Java metadata requests retain an empty body"
+    );
+    let last_log_index = header.last_log_index.expect("last log index");
+    let committed_log_index = header.committed_log_index.expect("committed log index");
+    let applied_log_index = header.applied_log_index.expect("applied log index");
+    assert!(last_log_index >= committed_log_index);
+    assert!(committed_log_index >= applied_log_index);
+    assert!(header.peers.as_ref().is_some_and(|peers| peers
+        .as_str()
+        .contains(&harness.manager.controller_config().listen_addr.to_string())));
+
+    harness.shutdown().await;
+}
+
+#[tokio::test]
+async fn controller_rollout_request_rejects_invalid_target_and_single_voter() {
+    let mut harness = ProcessorHarness::new().await;
+    for target in ["invalid", "1"] {
+        let mut request = RemotingCommand::create_remoting_command(RequestCode::ControllerGetMetadataInfo);
+        request.add_ext_field("checkQuorumForNode", target);
+        let response = harness.send(request).await;
+        assert_ne!(response.code(), ResponseCode::Success as i32);
+    }
+    harness.shutdown().await;
+}
+
+#[tokio::test]
+#[ignore = "requires Java 11+ and ROCKETMQ_JAVA_CLASSPATH pointing to a Java RocketMQ distribution's lib/*"]
+async fn java_process_controller_metadata_compatibility() {
+    let classpath = std::env::var_os("ROCKETMQ_JAVA_CLASSPATH").expect("ROCKETMQ_JAVA_CLASSPATH is required");
+    let harness = ProcessorHarness::new().await;
+    let source = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+        .join("../scripts/java/ControllerMetadataCompatibilitySmoke.java");
+    let mut child = tokio::process::Command::new(std::env::var_os("JAVA").unwrap_or_else(|| "java".into()))
+        .arg("--class-path")
+        .arg(classpath)
+        .arg(source)
+        .arg(harness.remoting_addr.to_string())
+        .kill_on_drop(true)
+        .spawn()
+        .expect("start Java metadata compatibility client");
+    let result = tokio::time::timeout(Duration::from_secs(45), child.wait()).await;
+    if result.is_err() {
+        child.kill().await.expect("stop timed-out Java client");
+    }
+    harness.shutdown().await;
+    assert!(result
+        .expect("Java client deadline")
+        .expect("wait for Java client")
+        .success());
+}
+
+#[tokio::test]
+async fn controller_request_contract_elect_master() {
+    let mut harness = ProcessorHarness::new().await;
+    let seed = harness.seed_two_live_brokers_and_elect_master().await;
+    let response = harness.elect_master(seed.master_broker_id).await;
+
+    assert_eq!(response.code(), ResponseCode::ControllerMasterStillExist as i32);
+    let header = response
+        .decode_command_custom_header::<ElectMasterResponseHeader>()
+        .expect("decode elect master response");
+    assert_eq!(header.master_broker_id, Some(seed.master_broker_id));
+    assert_eq!(header.master_epoch, Some(seed.master_epoch));
+    assert_eq!(header.sync_state_set_epoch, Some(seed.sync_state_set_epoch));
+    let body = ElectMasterResponseBody::decode(response.body().expect("elect master response body").as_ref())
+        .expect("decode elect master body");
+    assert_eq!(body.sync_state_set, HashSet::from([seed.master_broker_id]));
+    assert!(
+        body.broker_member_group.is_none(),
+        "master-still-exists response should match Java and omit broker member group"
+    );
+
+    harness.shutdown().await;
+}
+
+#[tokio::test]
+async fn controller_request_contract_get_replica_info() {
+    let mut harness = ProcessorHarness::new().await;
+    let seed = harness.seed_two_live_brokers_and_elect_master().await;
+    let response = harness
+        .send(RemotingCommand::create_request_command(
+            RequestCode::ControllerGetReplicaInfo,
+            GetReplicaInfoRequestHeader {
+                broker_name: CheetahString::from_static_str(BROKER_NAME),
+            },
+        ))
+        .await;
+
+    assert_eq!(response.code(), ResponseCode::Success as i32);
+    let header = response
+        .decode_command_custom_header::<GetReplicaInfoResponseHeader>()
+        .expect("decode replica info response");
+    assert_eq!(header.master_broker_id, Some(seed.master_broker_id));
+    assert_eq!(header.master_address.as_deref(), Some(BROKER_ADDR_1));
+    assert_eq!(header.master_epoch, Some(seed.master_epoch));
+    let body = SyncStateSet::decode(response.body().expect("replica info response body").as_ref())
+        .expect("decode replica info sync state");
+    assert_eq!(
+        body.get_sync_state_set().cloned().unwrap_or_default(),
+        HashSet::from([seed.master_broker_id])
+    );
+    assert_eq!(body.get_sync_state_set_epoch(), seed.sync_state_set_epoch);
+
+    harness.shutdown().await;
+}
+
+#[tokio::test]
+async fn controller_request_contract_alter_sync_state_set() {
+    let mut harness = ProcessorHarness::new().await;
+    let seed = harness.seed_two_live_brokers_and_elect_master().await;
+    let request_body = SyncStateSet::with_values(
+        HashSet::from([seed.master_broker_id, seed.slave_broker_id]),
+        seed.sync_state_set_epoch,
+    )
+    .encode()
+    .expect("encode alter sync state body");
+    let response = harness
+        .send(
+            RemotingCommand::create_request_command(
+                RequestCode::ControllerAlterSyncStateSet,
+                AlterSyncStateSetRequestHeader {
+                    broker_name: CheetahString::from_static_str(BROKER_NAME),
+                    master_broker_id: seed.master_broker_id,
+                    master_epoch: seed.master_epoch,
+                    invoke_time: 1,
+                },
+            )
+            .set_body(request_body),
+        )
+        .await;
+
+    assert_eq!(response.code(), ResponseCode::Success as i32);
+    let header = response
+        .decode_command_custom_header::<AlterSyncStateSetResponseHeader>()
+        .expect("decode alter sync state response");
+    assert_eq!(header.new_sync_state_set_epoch, seed.sync_state_set_epoch + 1);
+    let body = SyncStateSet::decode(response.body().expect("alter sync state response body").as_ref())
+        .expect("decode alter sync state body");
+    assert_eq!(
+        body.get_sync_state_set().cloned().unwrap_or_default(),
+        HashSet::from([seed.master_broker_id, seed.slave_broker_id])
+    );
+    assert_eq!(body.get_sync_state_set_epoch(), seed.sync_state_set_epoch + 1);
+
+    harness.shutdown().await;
+}
+
+#[tokio::test]
+async fn controller_request_contract_get_sync_state_data() {
+    let mut harness = ProcessorHarness::new().await;
+    let seed = harness.seed_two_live_brokers_and_elect_master().await;
+    let broker_names = vec![CheetahString::from_static_str(BROKER_NAME)];
+    let response = harness
+        .send(
+            RemotingCommand::create_remoting_command(RequestCode::ControllerGetSyncStateData)
+                .set_body(serde_json::to_vec(&broker_names).expect("encode broker names")),
+        )
+        .await;
+
+    assert_eq!(response.code(), ResponseCode::Success as i32);
+    let replicas_info = BrokerReplicasInfo::decode(response.body().expect("sync state data response body").as_ref())
+        .expect("decode sync state data body");
+    let broker_info = replicas_info
+        .get_replicas_info_table()
+        .get(&CheetahString::from_static_str(BROKER_NAME))
+        .expect("broker replicas info should exist");
+    assert_eq!(broker_info.get_master_broker_id(), seed.master_broker_id as u64);
+    assert_eq!(broker_info.get_master_address(), BROKER_ADDR_1);
+    assert_eq!(broker_info.get_master_epoch(), seed.master_epoch);
+    assert_eq!(broker_info.get_sync_state_set_epoch(), seed.sync_state_set_epoch);
+    assert_eq!(broker_info.get_in_sync_replicas().len(), 1);
+    assert_eq!(broker_info.get_not_in_sync_replicas().len(), 1);
+    assert_eq!(
+        broker_info.get_in_sync_replicas()[0].get_broker_id(),
+        seed.master_broker_id as u64
+    );
+    assert_eq!(
+        broker_info.get_not_in_sync_replicas()[0].get_broker_id(),
+        seed.slave_broker_id as u64
+    );
+    assert!(broker_info.get_in_sync_replicas()[0].get_alive());
+    assert!(broker_info.get_not_in_sync_replicas()[0].get_alive());
+
+    harness.shutdown().await;
+}
+
+#[tokio::test]
+async fn dledger_only_request_codes_return_request_code_not_supported() {
+    let mut harness = ProcessorHarness::new().await;
+
+    for request_code in [
+        RequestCode::BrokerCloseChannelRequest,
+        RequestCode::CheckNotActiveBrokerRequest,
+        RequestCode::GetBrokerLiveInfoRequest,
+        RequestCode::GetSyncStateDataRequest,
+        RequestCode::RaftBrokerHeartBeatEventRequest,
+    ] {
+        let response = harness
+            .send(RemotingCommand::create_remoting_command(request_code))
+            .await;
+
+        assert_eq!(
+            ResponseCode::from(response.code()),
+            ResponseCode::RequestCodeNotSupported,
+            "{request_code:?} should stay outside the non-DLedger controller contract"
+        );
+        assert!(
+            response
+                .remark()
+                .is_some_and(|remark| remark.contains(&request_code.to_i32().to_string())),
+            "{request_code:?} unsupported response should mention the request code"
+        );
+    }
+
+    harness.shutdown().await;
+}
+
+#[tokio::test]
+async fn controller_request_contract_update_controller_config() {
+    let mut harness = ProcessorHarness::new().await;
+    let response = harness
+        .send(
+            RemotingCommand::create_remoting_command(RequestCode::UpdateControllerConfig)
+                .set_body(b"scanNotActiveBrokerInterval=1234\nnotifyBrokerRoleChanged=false".to_vec()),
+        )
+        .await;
+
+    assert_eq!(response.code(), ResponseCode::Success as i32);
+    assert_eq!(
+        harness.manager.controller_config().scan_not_active_broker_interval,
+        1234
+    );
+    assert!(!harness.manager.controller_config().notify_broker_role_changed);
+
+    for key in ["configBlackList", "configStorePath", "rocketmqHome"] {
+        let response = harness
+            .send(
+                RemotingCommand::create_remoting_command(RequestCode::UpdateControllerConfig)
+                    .set_body(format!("{key}=blocked").into_bytes()),
+            )
+            .await;
+
+        assert_eq!(ResponseCode::from(response.code()), ResponseCode::NoPermission, "{key}");
+    }
+
+    harness.shutdown().await;
+}
+
+#[tokio::test]
+async fn controller_request_contract_get_controller_config() {
+    let mut harness = ProcessorHarness::new().await;
+    let response = harness
+        .send(RemotingCommand::create_remoting_command(
+            RequestCode::GetControllerConfig,
+        ))
+        .await;
+
+    assert_eq!(response.code(), ResponseCode::Success as i32);
+    let body = String::from_utf8(response.body().expect("get controller config response body").to_vec())
+        .expect("decode controller config body as utf8");
+    assert!(body.contains("storageBackend=memory"));
+    assert!(body.contains("notifyBrokerRoleChanged=true"));
+    assert!(body.contains("scanNotActiveBrokerInterval=5000"));
+
+    harness.shutdown().await;
+}
+
+#[tokio::test]
+async fn controller_request_contract_clean_broker_data() {
+    let mut harness = ProcessorHarness::new().await;
+    let seed = harness.seed_two_live_brokers_and_elect_master().await;
+    let response = harness
+        .send(RemotingCommand::create_request_command(
+            RequestCode::CleanBrokerData,
+            CleanBrokerDataRequestHeader {
+                cluster_name: Some(CheetahString::from_static_str(CLUSTER_NAME)),
+                broker_name: CheetahString::from_static_str(BROKER_NAME),
+                broker_controller_ids_to_clean: Some(CheetahString::from_string(format!(
+                    "{},{}",
+                    seed.master_broker_id, seed.slave_broker_id
+                ))),
+                clean_living_broker: true,
+                invoke_time: 0,
+            },
+        ))
+        .await;
+
+    assert_eq!(response.code(), ResponseCode::Success as i32);
+
+    let replica_response = harness
+        .send(RemotingCommand::create_request_command(
+            RequestCode::ControllerGetReplicaInfo,
+            GetReplicaInfoRequestHeader {
+                broker_name: CheetahString::from_static_str(BROKER_NAME),
+            },
+        ))
+        .await;
+    assert_eq!(
+        replica_response.code(),
+        ResponseCode::ControllerBrokerMetadataNotExist as i32
+    );
+
+    harness.shutdown().await;
+}

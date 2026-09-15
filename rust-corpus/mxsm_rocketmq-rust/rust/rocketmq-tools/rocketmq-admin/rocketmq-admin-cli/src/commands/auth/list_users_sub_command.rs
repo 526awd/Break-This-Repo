@@ -1,0 +1,130 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use clap::ArgGroup;
+use clap::Parser;
+
+use rocketmq_admin_core::client_adapter::services::auth::AuthService;
+use rocketmq_admin_core::client_adapter::services::auth::ListUsersRequest;
+use rocketmq_admin_core::client_adapter::services::auth::ListUsersResult;
+use rocketmq_error::Result as CanonicalResult;
+use rocketmq_protocol::protocol::body::user_info::UserInfo;
+
+use crate::commands::CommandExecute;
+
+#[derive(Debug, Clone, Parser)]
+#[command(group(ArgGroup::new("target")
+    .required(true)
+    .args(&["cluster_name", "broker_addr"])))]
+pub struct ListUsersSubCommand {
+    #[arg(short = 'c', long = "clusterName", required = false)]
+    cluster_name: Option<String>,
+
+    #[arg(short = 'b', long = "brokerAddr", required = false)]
+    broker_addr: Option<String>,
+
+    #[arg(short = 'f', long = "filter", required = false)]
+    filter: Option<String>,
+}
+
+impl CommandExecute for ListUsersSubCommand {
+    async fn execute(
+        &self,
+        credentials: Option<rocketmq_admin_core::core::security::AdminCredentials>,
+        client_runtime: std::sync::Arc<rocketmq_admin_core::client_adapter::ClientRuntime>,
+    ) -> CanonicalResult<()> {
+        let request =
+            ListUsersRequest::try_new(self.broker_addr.clone(), self.cluster_name.clone(), self.filter.clone())?;
+        let result =
+            AuthService::list_users_by_request_with_credentials(request, credentials, client_runtime.clone()).await?;
+        render_list_users_result(result)
+    }
+}
+
+fn print_users(users: Vec<UserInfo>) {
+    println!(
+        "{}",
+        format_row(&UserInfo {
+            username: Some("#UserName".into()),
+            password: Some("#Password".into()),
+            user_type: Some("#UserType".into()),
+            user_status: Some("#UserStatus".into()),
+        })
+    );
+    users.iter().for_each(|user| println!("{}", format_row(user)));
+    println!("Total users: {}", users.len());
+}
+
+fn format_row(user: &UserInfo) -> String {
+    format!(
+        "{:<16}  {:<22}  {:<22}",
+        user.username.as_deref().unwrap_or(""),
+        user.user_type.as_deref().unwrap_or(""),
+        user.user_status.as_deref().unwrap_or(""),
+    )
+}
+
+fn render_list_users_result(result: ListUsersResult) -> CanonicalResult<()> {
+    print_users(result.users);
+    if result.failed_broker_addrs.is_empty() {
+        Ok(())
+    } else {
+        Err(crate::errors::broker_response_failed("LIST_USERS", -1))
+    }
+}
+
+#[cfg(test)]
+mod tests {
+
+    use clap::Parser;
+
+    use crate::commands::auth::list_users_sub_command::ListUsersSubCommand;
+
+    #[test]
+    fn test_list_users_sub_command_with_broker_addr_using_short_commands() {
+        let args = [vec![""], vec!["-b", "127.0.0.1:3434"], vec!["-f", "some_filter"]];
+
+        let args = args.concat();
+
+        let cmd = ListUsersSubCommand::try_parse_from(args).unwrap();
+        assert_eq!(Some("127.0.0.1:3434"), cmd.broker_addr.as_deref());
+        assert_eq!(Some("some_filter"), cmd.filter.as_deref());
+    }
+
+    #[test]
+    fn test_list_users_sub_command_with_cluster_name_using_short_commands() {
+        let args = [vec![""], vec!["-c", "DefaultCluster"], vec!["-f", "some_filter"]];
+
+        let args = args.concat();
+
+        let cmd = ListUsersSubCommand::try_parse_from(args).unwrap();
+        assert_eq!(Some("DefaultCluster"), cmd.cluster_name.as_deref());
+        assert_eq!(Some("some_filter"), cmd.filter.as_deref());
+    }
+
+    #[test]
+    fn test_list_users_sub_command_using_conflicting_commands() {
+        let args = [
+            vec![""],
+            vec!["-b", "127.0.0.1:3434"],
+            vec!["-c", "DefaultCluster"],
+            vec!["-f", "some_filter"],
+        ];
+
+        let args = args.concat();
+
+        let result = ListUsersSubCommand::try_parse_from(args);
+        assert!(result.is_err());
+    }
+}

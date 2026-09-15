@@ -1,0 +1,134 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::path::PathBuf;
+
+use clap::ArgGroup;
+use clap::Parser;
+use rocketmq_error::Result as CanonicalResult;
+use rocketmq_protocol::protocol::subscription::subscription_group_config::SubscriptionGroupConfig;
+use tokio::fs::File;
+use tokio::io::AsyncReadExt;
+
+use crate::commands::CommandExecute;
+use rocketmq_admin_core::client_adapter::services::consumer::ConsumerOperationResult;
+use rocketmq_admin_core::client_adapter::services::consumer::ConsumerService;
+use rocketmq_admin_core::client_adapter::services::consumer::UpdateSubscriptionGroupListRequest;
+
+#[derive(Debug, Clone, Parser)]
+#[command(group(ArgGroup::new("target").required(true).args(&["broker_addr", "cluster_name"])))]
+pub struct UpdateSubGroupListSubCommand {
+    #[arg(
+        short = 'b',
+        long = "brokerAddr",
+        conflicts_with = "cluster_name",
+        help = "create groups to which broker"
+    )]
+    broker_addr: Option<String>,
+
+    #[arg(
+        short = 'c',
+        long = "clusterName",
+        conflicts_with = "broker_addr",
+        help = "create groups to which cluster"
+    )]
+    cluster_name: Option<String>,
+
+    #[arg(
+        short = 'f',
+        long = "filename",
+        alias = "file",
+        help = "Path to a file with a list of SubscriptionGroupConfig in json format"
+    )]
+    file: PathBuf,
+}
+
+impl UpdateSubGroupListSubCommand {
+    async fn request(&self) -> CanonicalResult<UpdateSubscriptionGroupListRequest> {
+        let mut group_config_list_bytes = Vec::new();
+        File::open(&self.file)
+            .await
+            .map_err(|source| crate::errors::io_failed_by("open_subscription_group_list", source))?
+            .read_to_end(&mut group_config_list_bytes)
+            .await
+            .map_err(|source| crate::errors::io_failed_by("read_subscription_group_list", source))?;
+
+        let group_configs = serde_json::from_slice::<Vec<SubscriptionGroupConfig>>(&group_config_list_bytes)
+            .map_err(|source| crate::errors::serialization_failed_by("JSON", source))?;
+        UpdateSubscriptionGroupListRequest::try_new(self.broker_addr.clone(), self.cluster_name.clone(), group_configs)
+    }
+
+    fn print_result(result: ConsumerOperationResult) -> CanonicalResult<()> {
+        for broker_address in &result.broker_addrs {
+            println!(
+                "submit batch of subscription group config to {} success, please check the result later",
+                broker_address
+            );
+        }
+        for failure in &result.failures {
+            eprintln!(
+                "UpdateSubGroupListSubCommand: Failed to submit subscription group config to {}: {}",
+                failure.broker_addr, failure.error
+            );
+        }
+        if result.failures.is_empty() {
+            Ok(())
+        } else {
+            Err(crate::errors::broker_response_failed(
+                "UPDATE_SUBSCRIPTION_GROUP_LIST",
+                -1,
+            ))
+        }
+    }
+}
+
+impl CommandExecute for UpdateSubGroupListSubCommand {
+    async fn execute(
+        &self,
+        credentials: Option<rocketmq_admin_core::core::security::AdminCredentials>,
+        client_runtime: std::sync::Arc<rocketmq_admin_core::client_adapter::ClientRuntime>,
+    ) -> CanonicalResult<()> {
+        let request = self.request().await?;
+        if request.configs().is_empty() {
+            return Ok(());
+        }
+        let result = ConsumerService::update_subscription_group_list_by_request_with_credentials(
+            request,
+            credentials,
+            client_runtime.clone(),
+        )
+        .await?;
+        Self::print_result(result)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::UpdateSubGroupListSubCommand;
+    use clap::Parser;
+    use std::path::PathBuf;
+
+    #[test]
+    fn test_arguments() {
+        let broker_address = "127.0.0.1:10911";
+        let input_file_name = "groups.json";
+
+        let args = vec!["mqadmin", "-b", broker_address, "-f", input_file_name];
+
+        let cmd = UpdateSubGroupListSubCommand::try_parse_from(args).unwrap();
+        assert_eq!(Some(broker_address), cmd.broker_addr.as_deref());
+        assert!(cmd.cluster_name.is_none());
+        assert_eq!(PathBuf::from(input_file_name), cmd.file);
+    }
+}

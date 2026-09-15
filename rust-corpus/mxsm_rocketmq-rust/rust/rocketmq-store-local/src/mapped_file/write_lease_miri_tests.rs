@@ -1,0 +1,193 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::sync::atomic::AtomicUsize;
+use std::sync::atomic::Ordering;
+use std::sync::Arc;
+use std::sync::Mutex;
+use std::sync::MutexGuard;
+
+use rocketmq_store_api::StoreComponent;
+use rocketmq_store_api::StoreError;
+use rocketmq_store_api::StoreOperation;
+
+use crate::mapped_file::MappedWriteLease;
+use crate::transfer::segment::SegmentLease;
+use crate::transfer::segment::TransferCacheState;
+
+/// Safe heap-backed owner used to exercise the production write-lease interface
+/// under Miri without relying on operating-system memory mapping support.
+struct SafeLeaseOwner {
+    bytes: Mutex<Vec<u8>>,
+    wrote_position: AtomicUsize,
+    writer: Mutex<()>,
+}
+
+impl SafeLeaseOwner {
+    fn new(capacity: usize) -> Self {
+        Self {
+            bytes: Mutex::new(vec![0; capacity]),
+            wrote_position: AtomicUsize::new(0),
+            writer: Mutex::new(()),
+        }
+    }
+
+    fn reserve_write(&self, required_space: usize) -> Result<Option<SafeWriteLease<'_>>, StoreError> {
+        let writer = self.writer.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+        let start_position = self.wrote_position.load(Ordering::Acquire);
+        let capacity = self.bytes.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).len();
+        if required_space == 0 {
+            return Ok(None);
+        }
+        if start_position >= capacity {
+            return Err(mapped_file_capacity_error());
+        }
+
+        let reserved = required_space.min(capacity - start_position);
+        Ok(Some(SafeWriteLease {
+            owner: self,
+            _writer: writer,
+            staging: vec![0; reserved],
+            start_position,
+        }))
+    }
+
+    fn snapshot(&self) -> Vec<u8> {
+        self.bytes
+            .lock()
+            .unwrap_or_else(|poisoned| poisoned.into_inner())
+            .clone()
+    }
+}
+
+struct SafeWriteLease<'a> {
+    owner: &'a SafeLeaseOwner,
+    _writer: MutexGuard<'a, ()>,
+    staging: Vec<u8>,
+    start_position: usize,
+}
+
+impl MappedWriteLease for SafeWriteLease<'_> {
+    fn start_position(&self) -> usize {
+        self.start_position
+    }
+
+    fn capacity(&self) -> usize {
+        self.staging.len()
+    }
+
+    fn buffer_mut(&mut self) -> &mut [u8] {
+        &mut self.staging
+    }
+
+    fn commit(self, actual_bytes: usize, _store_timestamp: Option<u64>) -> Result<Option<usize>, StoreError> {
+        if actual_bytes == 0 || actual_bytes > self.capacity() {
+            return Ok(None);
+        }
+        let Some(end_position) = self.start_position.checked_add(actual_bytes).filter(|end| {
+            *end <= self
+                .owner
+                .bytes
+                .lock()
+                .unwrap_or_else(|poisoned| poisoned.into_inner())
+                .len()
+        }) else {
+            return Ok(None);
+        };
+
+        let mut bytes = self.owner.bytes.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+        bytes[self.start_position..end_position].copy_from_slice(&self.staging[..actual_bytes]);
+        self.owner.wrote_position.store(end_position, Ordering::Release);
+        Ok(Some(end_position))
+    }
+}
+
+fn mapped_file_capacity_error() -> StoreError {
+    StoreError::new(&rocketmq_error::STORAGE_CAPACITY_EXHAUSTED, StoreOperation::Append)
+        .in_component(StoreComponent::MappedFile)
+}
+
+#[test]
+fn write_lease_publishes_only_committed_bytes() {
+    let owner = SafeLeaseOwner::new(16);
+    let mut lease = owner
+        .reserve_write(8)
+        .expect("safe lease reservation")
+        .expect("valid reservation");
+    lease.buffer_mut()[..6].copy_from_slice(b"commit");
+
+    assert_eq!(lease.commit(6, None).expect("safe lease commit"), Some(6));
+    assert_eq!(&owner.snapshot()[..6], b"commit");
+    assert_eq!(&owner.snapshot()[6..], &[0; 10]);
+}
+
+#[test]
+fn dropped_write_lease_does_not_publish_staged_bytes() {
+    let owner = SafeLeaseOwner::new(8);
+    {
+        let mut lease = owner
+            .reserve_write(4)
+            .expect("safe lease reservation")
+            .expect("valid reservation");
+        lease.buffer_mut().copy_from_slice(b"drop");
+    }
+
+    assert_eq!(owner.wrote_position.load(Ordering::Acquire), 0);
+    assert_eq!(owner.snapshot(), vec![0; 8]);
+}
+
+#[test]
+fn invalid_commit_preserves_bytes_and_position() {
+    let owner = SafeLeaseOwner::new(8);
+    let lease = owner
+        .reserve_write(4)
+        .expect("safe lease reservation")
+        .expect("valid reservation");
+
+    assert_eq!(lease.commit(5, None).expect("contract result"), None);
+    assert_eq!(owner.wrote_position.load(Ordering::Acquire), 0);
+    assert_eq!(owner.snapshot(), vec![0; 8]);
+}
+
+#[test]
+fn tail_reservation_is_bounded_by_remaining_capacity() {
+    let owner = SafeLeaseOwner::new(8);
+    let mut first = owner
+        .reserve_write(6)
+        .expect("first safe lease reservation")
+        .expect("valid reservation");
+    first.buffer_mut().copy_from_slice(b"first!");
+    assert_eq!(first.commit(6, None).expect("first safe lease commit"), Some(6));
+
+    let tail = owner
+        .reserve_write(8)
+        .expect("tail safe lease reservation")
+        .expect("valid reservation");
+    assert_eq!(tail.start_position(), 6);
+    assert_eq!(tail.capacity(), 2);
+}
+
+#[test]
+fn owning_read_segment_survives_source_owner_drop_and_slices_safely() {
+    let owner: Arc<[u8]> = Arc::from(&b"miri-owned-read"[..]);
+    let bytes = bytes::Bytes::from_owner(Arc::clone(&owner));
+    let lease = SegmentLease::from_bytes(17, 3, bytes, TransferCacheState::Hot);
+    drop(owner);
+
+    let leased = lease.as_bytes().expect("owning bytes");
+    assert_eq!(&leased[..], b"miri-owned-read");
+    assert_eq!(leased.slice(5..10).as_ref(), b"owned");
+    drop(lease);
+    assert_eq!(&leased[..], b"miri-owned-read");
+}

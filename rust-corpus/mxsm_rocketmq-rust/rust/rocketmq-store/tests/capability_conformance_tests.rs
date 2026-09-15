@@ -1,0 +1,404 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+//! Shared capability conformance exercised by Local and RocksDB backends.
+
+use rocketmq_store::get_status_to_api;
+use rocketmq_store::put_status_to_append_status;
+use rocketmq_store::store_append_receipt;
+use rocketmq_store::AppendMessageResult;
+use rocketmq_store::AppendMessageStatus;
+use rocketmq_store::BrokerStorePort;
+use rocketmq_store::MessageReadRequest;
+use rocketmq_store::MessageReadResult;
+use rocketmq_store::MessageStoreHealthCapability;
+use rocketmq_store::MessageStoreReadCapability;
+use rocketmq_store::PutMessageResult;
+use rocketmq_store::PutMessageStatus;
+use rocketmq_store::StoreComponent;
+use rocketmq_store::StoreHealthSnapshot;
+use rocketmq_store::StorePorts;
+use rocketmq_store_api::AppendStatus;
+use rocketmq_store_api::Durability;
+use rocketmq_store_api::GetStatus;
+use rocketmq_store_api::MessageReader;
+use rocketmq_store_api::StoreContractViolation;
+use rocketmq_store_api::StoreHealth;
+use rocketmq_store_api::StoreLifecycle;
+use rocketmq_store_api::TimerStoreMode;
+use rocketmq_store_local::config::backend::LocalBackendConfig;
+use rocketmq_store_local::config::backend::LocalCleanupConfig;
+use rocketmq_store_local::config::backend::LocalQueryConfig;
+use rocketmq_store_local::config::backend::LocalRecoveryConfig;
+use rocketmq_store_local::config::backend::LocalReputConfig;
+use rocketmq_store_local::message_store::lifecycle::LocalStoreState;
+use rocketmq_store_local::message_store::LocalStoreComposition;
+
+fn append_result() -> AppendMessageResult {
+    AppendMessageResult {
+        status: AppendMessageStatus::PutOk,
+        wrote_offset: 40,
+        wrote_bytes: 20,
+        msg_id: Some("message-id".to_string()),
+        msg_id_supplier: None,
+        store_timestamp: 1234,
+        logics_offset: 7,
+        page_cache_rt: 0,
+        msg_num: 2,
+    }
+}
+
+#[test]
+fn timer_extended_capability_configuration_is_explicit_and_bounded() {
+    let config = rocketmq_store::MessageStoreConfig {
+        timer_store_mode: TimerStoreMode::ExtendedTimeline,
+        timer_extended_admission_enable: true,
+        timer_extended_activation_epoch: 3,
+        timer_extended_admission_horizon_days: 366,
+        ..rocketmq_store::MessageStoreConfig::default()
+    };
+
+    assert_eq!(config.timer_store_mode, TimerStoreMode::ExtendedTimeline);
+    assert_eq!(config.timer_extended_admission_horizon_days, 366);
+    assert!(config.timer_extended_admission_enable);
+    assert_ne!(config.timer_extended_activation_epoch, 0);
+    assert!(config.timer_store_config.validate().is_ok());
+}
+
+#[test]
+fn store_receipt_preserves_result_and_separate_watermarks() {
+    let backend = PutMessageResult::new_append_result(PutMessageStatus::FlushDiskTimeout, Some(append_result()));
+
+    let receipt = store_append_receipt(backend, 80, 48);
+
+    assert_eq!(
+        PutMessageStatus::FlushDiskTimeout,
+        receipt.result().put_message_status()
+    );
+    assert_eq!(80, receipt.appended_watermark());
+    assert_eq!(48, receipt.durable_watermark());
+    let canonical = receipt.canonical().expect("valid canonical receipt");
+    assert_eq!(AppendStatus::FlushDiskTimeout, canonical.status());
+    assert_eq!(Some(40..60), canonical.appended_range());
+    assert_eq!(Durability::Memory, canonical.durability());
+    let append = receipt.result().append_message_result().expect("append result");
+    assert_eq!(40, append.wrote_offset);
+    assert_eq!(20, append.wrote_bytes);
+    assert_eq!(Some("message-id"), append.get_message_id().as_deref());
+    assert_eq!(1234, append.store_timestamp);
+    assert_eq!(7, append.logics_offset);
+    assert_eq!(2, append.msg_num);
+}
+
+#[test]
+fn store_receipt_reports_invalid_projection_without_panicking() {
+    let mut empty = append_result();
+    empty.wrote_bytes = 0;
+    let receipt = store_append_receipt(
+        PutMessageResult::new_append_result(PutMessageStatus::PutOk, Some(empty)),
+        80,
+        48,
+    );
+    assert_eq!(
+        Some(&StoreContractViolation::AppendReceiptEmptyRange),
+        receipt.canonical().err()
+    );
+    assert_eq!(PutMessageStatus::PutOk, receipt.result().put_message_status());
+
+    let remote = store_append_receipt(PutMessageResult::new(PutMessageStatus::PutOk, None, true), 80, 48);
+    assert_eq!(
+        Some(&StoreContractViolation::AppendReceiptAcceptedStatusWithoutRange),
+        remote.canonical().err()
+    );
+    assert!(remote.result().remote_put());
+}
+
+#[test]
+fn rejected_outer_status_ignores_inner_append_shape_for_canonical_projection() {
+    let cases = [
+        PutMessageStatus::CreateMappedFileFailed,
+        PutMessageStatus::MessageIllegal,
+        PutMessageStatus::UnknownError,
+    ];
+
+    for status in cases {
+        for wrote_bytes in [20, 0] {
+            let mut diagnostics = append_result();
+            diagnostics.wrote_bytes = wrote_bytes;
+            let receipt = store_append_receipt(PutMessageResult::new_append_result(status, Some(diagnostics)), 80, 48);
+            assert_eq!(
+                receipt.execution_evidence(),
+                &rocketmq_store::AppendExecutionEvidence::Unknown
+            );
+
+            let canonical = receipt.canonical().expect("rejected status projects without a range");
+            assert_eq!(put_status_to_append_status(status), canonical.status());
+            assert_eq!(None, canonical.appended_range());
+            assert!(!canonical.is_accepted());
+            assert_eq!(
+                wrote_bytes,
+                receipt
+                    .result()
+                    .append_message_result()
+                    .expect("backend diagnostics remain available")
+                    .wrote_bytes
+            );
+        }
+    }
+}
+
+#[test]
+fn every_backend_append_status_maps_exhaustively_without_collapsing() {
+    let cases = [
+        (PutMessageStatus::PutOk, AppendStatus::PutOk),
+        (PutMessageStatus::FlushDiskTimeout, AppendStatus::FlushDiskTimeout),
+        (PutMessageStatus::FlushSlaveTimeout, AppendStatus::FlushReplicaTimeout),
+        (PutMessageStatus::SlaveNotAvailable, AppendStatus::ReplicaUnavailable),
+        (PutMessageStatus::ServiceNotAvailable, AppendStatus::ServiceUnavailable),
+        (
+            PutMessageStatus::CreateMappedFileFailed,
+            AppendStatus::StorageUnavailable,
+        ),
+        (PutMessageStatus::MessageIllegal, AppendStatus::InvalidMessage),
+        (
+            PutMessageStatus::PropertiesSizeExceeded,
+            AppendStatus::PropertiesTooLarge,
+        ),
+        (PutMessageStatus::OsPageCacheBusy, AppendStatus::PageCacheBusy),
+        (PutMessageStatus::UnknownError, AppendStatus::Unknown),
+        (
+            PutMessageStatus::InSyncReplicasNotEnough,
+            AppendStatus::InsufficientReplicas,
+        ),
+        (
+            PutMessageStatus::PutToRemoteBrokerFail,
+            AppendStatus::RemoteAppendFailed,
+        ),
+        (
+            PutMessageStatus::LmqConsumeQueueNumExceeded,
+            AppendStatus::QueueLimitExceeded,
+        ),
+        (
+            PutMessageStatus::WheelTimerFlowControl,
+            AppendStatus::ScheduleFlowControl,
+        ),
+        (
+            PutMessageStatus::WheelTimerMsgIllegal,
+            AppendStatus::ScheduleMessageIllegal,
+        ),
+        (PutMessageStatus::WheelTimerNotEnable, AppendStatus::ScheduleDisabled),
+    ];
+
+    for (backend, expected) in cases {
+        assert_eq!(expected, put_status_to_append_status(backend));
+    }
+}
+
+#[test]
+fn canonical_store_descriptors_have_unique_codes() {
+    let descriptors = [
+        &rocketmq_error::STORAGE_LIFECYCLE_NOT_STARTED,
+        &rocketmq_error::STORAGE_BACKEND_UNAVAILABLE,
+        &rocketmq_error::STORAGE_REQUEST_INVALID,
+        &rocketmq_error::STORAGE_MAPPED_FILE_NOT_FOUND,
+        &rocketmq_error::STORAGE_CAPACITY_EXHAUSTED,
+        &rocketmq_error::STORAGE_READ_FAILED,
+        &rocketmq_error::STORAGE_WRITE_FAILED,
+        &rocketmq_error::STORAGE_IO_FAILED,
+        &rocketmq_error::STORAGE_STATE_CORRUPTED,
+        &rocketmq_error::STORAGE_OPERATION_TIMED_OUT,
+        &rocketmq_error::STORAGE_OPERATION_UNSUPPORTED,
+        &rocketmq_error::STORAGE_INTERNAL_FAILURE,
+    ];
+    let codes = descriptors
+        .iter()
+        .map(|descriptor| descriptor.code().as_str())
+        .collect::<std::collections::HashSet<_>>();
+
+    assert_eq!(descriptors.len(), codes.len());
+}
+
+#[test]
+fn every_backend_get_status_maps_exhaustively() {
+    use rocketmq_store::GetMessageStatus;
+
+    let cases = [
+        (GetMessageStatus::Found, GetStatus::Found),
+        (GetMessageStatus::NoMatchedMessage, GetStatus::NoMatchedMessage),
+        (GetMessageStatus::MessageWasRemoving, GetStatus::MessageWasRemoving),
+        (GetMessageStatus::OffsetFoundNull, GetStatus::OffsetFoundNull),
+        (GetMessageStatus::OffsetOverflowBadly, GetStatus::OffsetOverflowBadly),
+        (GetMessageStatus::OffsetOverflowOne, GetStatus::OffsetOverflowOne),
+        (GetMessageStatus::OffsetTooSmall, GetStatus::OffsetTooSmall),
+        (GetMessageStatus::NoMatchedLogicQueue, GetStatus::NoMatchedLogicQueue),
+        (GetMessageStatus::NoMessageInQueue, GetStatus::NoMessageInQueue),
+        (GetMessageStatus::OffsetReset, GetStatus::OffsetReset),
+    ];
+
+    for (backend, expected) in cases {
+        assert_eq!(expected, get_status_to_api(backend));
+    }
+}
+
+#[test]
+fn store_health_error_preserves_canonical_code_and_component() {
+    let cases = [
+        (
+            &rocketmq_error::STORAGE_WRITE_FAILED,
+            StoreComponent::MappedFile,
+            "storage.write.failed",
+        ),
+        (
+            &rocketmq_error::STORAGE_READ_FAILED,
+            StoreComponent::RocksDb,
+            "storage.read.failed",
+        ),
+        (
+            &rocketmq_error::STORAGE_BACKEND_UNAVAILABLE,
+            StoreComponent::TieredStore,
+            "storage.backend.unavailable",
+        ),
+        (
+            &rocketmq_error::STORAGE_BACKEND_UNAVAILABLE,
+            StoreComponent::HighAvailability,
+            "storage.backend.unavailable",
+        ),
+        (
+            &rocketmq_error::STORAGE_BACKEND_UNAVAILABLE,
+            StoreComponent::DLedger,
+            "storage.backend.unavailable",
+        ),
+        (
+            &rocketmq_error::STORAGE_LIFECYCLE_NOT_STARTED,
+            StoreComponent::Store,
+            "storage.lifecycle.not_started",
+        ),
+    ];
+
+    for (descriptor, component, expected_code) in cases {
+        let snapshot = StoreHealthSnapshot {
+            last_error: Some(descriptor),
+            ..StoreHealthSnapshot::default()
+        };
+        assert_eq!(
+            expected_code,
+            snapshot
+                .last_error()
+                .map(|value| value.code().as_str())
+                .unwrap_or_default()
+        );
+        let _ = component;
+    }
+}
+
+#[test]
+fn store_health_exposes_a_backend_neutral_canonical_projection() {
+    let snapshot = StoreHealthSnapshot {
+        writable: false,
+        last_error: Some(&rocketmq_error::STORAGE_BACKEND_UNAVAILABLE),
+        appended_watermark: 80,
+        durable_watermark: 48,
+        ..StoreHealthSnapshot::default()
+    };
+
+    assert!(!snapshot.writable());
+    assert_eq!(
+        Some(&rocketmq_error::STORAGE_BACKEND_UNAVAILABLE),
+        snapshot.last_error()
+    );
+    assert_eq!(80, snapshot.appended_watermark());
+    assert_eq!(48, snapshot.durable_watermark());
+}
+
+fn assert_capability_contract<MS>()
+where
+    MS: BrokerStorePort,
+    for<'a> MessageStoreHealthCapability<'a, MS>: StoreHealth<Snapshot = StoreHealthSnapshot>,
+    for<'a> MessageStoreReadCapability<'a, MS>:
+        MessageReader<Request = MessageReadRequest, Output = Option<MessageReadResult>>,
+{
+    assert!(std::mem::size_of::<MessageStoreReadCapability<'_, MS>>() > 0);
+}
+
+#[test]
+fn canonical_capability_compile_fixture_is_monomorphized() {
+    assert_capability_contract::<StorePorts>();
+}
+
+#[tokio::test]
+async fn local_backend_conforms_to_the_canonical_lifecycle() {
+    let root = tempfile::tempdir().expect("temporary local-store root");
+    let mut store = LocalStoreComposition::new(LocalBackendConfig {
+        store_path_root_dir: root.path().to_path_buf(),
+        commit_log_paths: vec![root.path().join("commitlog")],
+        store_io_hint_enabled: false,
+        recovery: LocalRecoveryConfig {
+            consume_queue_parallelism: 1,
+            background_index_rebuild_enabled: false,
+        },
+        query: LocalQueryConfig {
+            message_index_enabled: true,
+        },
+        reput: LocalReputConfig {
+            read_uncommitted: false,
+        },
+        cleanup: LocalCleanupConfig {
+            disk_warning_ratio: 0.9,
+            disk_clean_forcibly_ratio: 0.85,
+            disk_max_used_ratio: 0.75,
+            clean_file_forcibly_enabled: true,
+        },
+    });
+
+    assert_eq!(LocalStoreState::Created, store.lifecycle().state());
+    assert!(store.load().await.expect("local store load"));
+    assert_eq!(LocalStoreState::Initialized, store.lifecycle().state());
+    store.start().await.expect("local store start");
+    assert_eq!(LocalStoreState::Started, store.lifecycle().state());
+    store.shutdown().await.expect("local store shutdown");
+    assert_eq!(LocalStoreState::Shutdown, store.lifecycle().state());
+}
+
+#[cfg(feature = "rocksdb_store")]
+#[tokio::test]
+async fn rocksdb_backend_conforms_to_the_canonical_lifecycle() {
+    use rocketmq_runtime::RuntimeContext;
+    use rocketmq_store::MessageStoreConfig;
+    use rocketmq_store::StoreType;
+    use rocketmq_store_rocksdb::message_store::RocksDbDerivedStore;
+    use rocketmq_store_rocksdb::message_store::RocksDbMessageStoreOptions;
+
+    let root = tempfile::tempdir().expect("temporary RocksDB-store root");
+    let mut config = MessageStoreConfig {
+        store_path_root_dir: root.path().to_string_lossy().into_owned().into(),
+        store_type: StoreType::RocksDB,
+        ..MessageStoreConfig::default()
+    };
+    config.use_separate_store_path_for_rocksdb_cq = true;
+
+    let runtime = RuntimeContext::from_current("rocksdb-capability-conformance");
+    let context = runtime.service_context("derived-store");
+    let mut store = RocksDbDerivedStore::open(&config, RocksDbMessageStoreOptions::default(), context)
+        .expect("open RocksDB derived store")
+        .expect("valid RocksDB derived-store configuration");
+
+    let consume_queue_budget = store.rocksdb_store().resource_budget();
+    let message_budget = store.message_rocksdb_storage().store_arc().resource_budget();
+    assert!(std::sync::Arc::ptr_eq(&consume_queue_budget, &message_budget));
+
+    assert!(store.load().await.expect("RocksDB store load"));
+    store.start().await.expect("RocksDB store start");
+    store.start().await.expect("idempotent RocksDB store start");
+    store.shutdown().await.expect("RocksDB store shutdown");
+}

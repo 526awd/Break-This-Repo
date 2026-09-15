@@ -1,0 +1,888 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::sync::Arc;
+
+use bytes::Bytes;
+use cheetah_string::CheetahString;
+use futures::future::BoxFuture;
+use futures::FutureExt;
+use rocketmq_model::common::hasher::string_hasher::JavaStringHasher;
+use rocketmq_model::common::message::message_batch::MessageExtBatch;
+use rocketmq_model::common::message::message_ext::MessageExt;
+use rocketmq_model::common::message::message_ext_broker_inner::MessageExtBrokerInner;
+use rocketmq_model::common::message::MessageConst;
+use rocketmq_model::common::message::MessageTrait;
+use rocketmq_model::result::PullStatus;
+use rocketmq_model::result::SendResult;
+use rocketmq_model::result::SendStatus;
+use rocketmq_protocol::common::message::message_decoder as MessageDecoder;
+use rocketmq_store::ArcMessageFilter;
+use rocketmq_store::BrokerMasterAddressStore;
+use rocketmq_store::BrokerReadStore;
+use rocketmq_store::BrokerReplicationStore;
+use rocketmq_store::BrokerWriteStore;
+use rocketmq_store::GetMessageResult;
+use rocketmq_store::GetMessageStatus;
+use rocketmq_store::HAConnectionStateNotificationRequest;
+use rocketmq_store::PutMessageResult;
+use rocketmq_store::PutMessageStatus;
+use rocketmq_store::QueryMessageResult;
+use rocketmq_store::SelectMappedBufferResult;
+use rocketmq_store::StoreAppendReceipt;
+use rocketmq_store::StoreError as BackendStoreError;
+use rocketmq_store::StoreHealthSnapshot;
+use rocketmq_store::StorePorts;
+use rocketmq_store_api::StoreError;
+use rocketmq_store_api::TimerRecallRequest;
+use rocketmq_store_api::TimerRecallStatus;
+use tracing::error;
+use tracing::warn;
+
+use crate::failover::escape_bridge_capability::EscapeBridgePolicyState;
+use crate::failover::escape_bridge_capability::EscapeBridgeStoreCapability;
+use crate::failover::escape_bridge_capability::EscapeRemoteAuthority;
+use crate::failover::escape_bridge_capability::EscapeStoreReadLease;
+use crate::failover::escape_target_resolver::EscapeTargetError;
+use crate::failover::escape_target_resolver::EscapeTargetPreference;
+use crate::failover::escape_target_resolver::EscapeTargetResolver;
+use crate::out_api::broker_outer_api::BrokerOuterAPI;
+use crate::topic::manager::topic_route_info_manager::TopicRouteInfoManager;
+use crate::transaction::queue::transactional_message_util::TransactionalMessageUtil;
+
+const SEND_TIMEOUT: u64 = 3_000;
+const DEFAULT_PULL_TIMEOUT_MILLIS: u64 = 10_000;
+
+#[derive(Debug)]
+pub(crate) struct MessageStoreUnavailable;
+
+#[derive(Debug, thiserror::Error)]
+pub(crate) enum EscapeDispatchError {
+    #[error(transparent)]
+    Target(#[from] EscapeTargetError),
+    #[error("the selected escape broker has no publish address")]
+    BrokerAddressUnavailable,
+    #[error("remote escape is not authorized for the current broker role")]
+    RemoteEscapeUnauthorized,
+    #[error("the controller role epoch changed before remote dispatch")]
+    StaleRoleEpoch,
+    #[error(transparent)]
+    Send(#[from] rocketmq_error::SharedError),
+}
+
+///### RocketMQ's EscapeBridge for Dead Letter Queue (DLQ) Mechanism
+///
+/// In the context of message passing within RocketMQ, the `EscapeBridge` primarily handles the Dead
+/// Letter Queue (DLQ) mechanism. When messages fail to be successfully consumed by a consumer after
+/// multiple attempts, these messages are designated as "dead letters"—messages that cannot be
+/// processed normally. To prevent such messages from indefinitely blocking the consumer's
+/// processing flow, RocketMQ provides functionality to transfer these messages to a special queue
+/// known as the dead letter queue.
+///
+/// The `EscapeBridge` acts as a bridge in this process, responsible for moving messages that have
+/// failed consumption from their original queue into the DLQ. This action helps maintain system
+/// health and prevents the entire consumption process from being obstructed by a few problematic
+/// messages. Additionally, it provides developers with an opportunity to analyze and address these
+/// abnormal messages at a later time.
+///
+/// #### Functions of EscapeBridge
+///
+/// - **Isolation of Problematic Messages:** Moves messages that cannot be consumed into the DLQ to
+///   ensure they do not continue to affect normal consumption processes.
+/// - **Preservation of Message Data:** Even if a message is considered unconsumable, its content is
+///   preserved, allowing for subsequent diagnosis or specialized handling.
+/// - **Support for Retry Logic:** For messages that may have failed due to transient issues, retry
+///   logic can be applied by requeueing or specially processing messages in the DLQ, enabling
+///   another attempt at consumption.
+///
+/// Through this approach, RocketMQ enhances the reliability and stability of the messaging system.
+/// It also equips developers with better tools for managing and troubleshooting issues in message
+/// transmission.
+///
+/// #### Conclusion
+///
+/// RocketMQ's `EscapeBridge` plays a critical role in maintaining the robustness of the messaging
+/// system by effectively handling messages that cannot be processed. By isolating problematic
+/// messages, preserving their data, and supporting retry mechanisms, it ensures that the overall
+/// consumption process remains healthy and unobstructed. Developers gain valuable insights into
+/// message failures, aiding in the diagnosis and resolution of potential issues.
+///
+/// **Note:** The specific configuration and usage methods may vary depending on the version of
+/// RocketMQ. Please refer to the official documentation for the most accurate information.
+pub(crate) struct EscapeBridge<MS> {
+    inner_producer_group_name: CheetahString,
+    inner_consumer_group_name: CheetahString,
+    policy_state: EscapeBridgePolicyState,
+    message_store: EscapeBridgeStoreCapability<MS>,
+    topic_route_info_manager: TopicRouteInfoManager,
+    broker_outer_api: BrokerOuterAPI,
+    target_resolver: EscapeTargetResolver,
+}
+
+impl<MS: BrokerReadStore> EscapeBridge<MS> {
+    pub(crate) fn new(
+        policy_state: EscapeBridgePolicyState,
+        topic_route_info_manager: TopicRouteInfoManager,
+        broker_outer_api: BrokerOuterAPI,
+    ) -> Self {
+        let policy = policy_state.snapshot();
+        let inner_producer_group_name = CheetahString::from_string(format!(
+            "InnerProducerGroup_{}_{}",
+            policy.broker_name, policy.broker_id
+        ));
+        let inner_consumer_group_name = CheetahString::from_string(format!(
+            "InnerConsumerGroup_{}_{}",
+            policy.broker_name, policy.broker_id
+        ));
+
+        Self {
+            inner_producer_group_name,
+            inner_consumer_group_name,
+            policy_state,
+            message_store: EscapeBridgeStoreCapability::default(),
+            topic_route_info_manager,
+            broker_outer_api,
+            target_resolver: EscapeTargetResolver::default(),
+        }
+    }
+
+    pub(crate) fn store_capability(&self) -> EscapeBridgeStoreCapability<MS> {
+        self.message_store.clone()
+    }
+
+    pub(crate) fn detach_message_store(&self) {
+        self.message_store.detach();
+    }
+
+    pub(crate) fn lease_message_store(&self) -> Result<EscapeStoreReadLease<MS>, MessageStoreUnavailable> {
+        self.message_store.read_lease()
+    }
+
+    pub fn shutdown(&self) {
+        self.message_store.detach();
+    }
+
+    pub(crate) fn with_message_store<R>(&self, operation: impl FnOnce(&MS) -> R) -> R {
+        self.message_store
+            .with_store(operation)
+            .expect("message store must be bound before broker services start")
+    }
+
+    pub(crate) fn try_with_message_store<R>(
+        &self,
+        operation: impl FnOnce(&MS) -> R,
+    ) -> Result<R, MessageStoreUnavailable> {
+        self.message_store.with_store(operation)
+    }
+
+    pub(crate) fn send_message_store_health_snapshot(&self) -> Result<StoreHealthSnapshot, MessageStoreUnavailable> {
+        self.message_store.health_snapshot()
+    }
+
+    pub(crate) async fn send_append_message(
+        &self,
+        message: MessageExtBrokerInner,
+    ) -> Result<StoreAppendReceipt, StoreError>
+    where
+        MS: BrokerWriteStore,
+    {
+        self.message_store.append_message(message).await
+    }
+
+    pub(crate) async fn send_append_batch(&self, batch: MessageExtBatch) -> Result<StoreAppendReceipt, StoreError>
+    where
+        MS: BrokerWriteStore,
+    {
+        self.message_store.append_batch(batch).await
+    }
+
+    pub(crate) fn send_append_progress(&self) -> Result<(i64, i64), MessageStoreUnavailable> {
+        self.message_store.append_progress()
+    }
+
+    pub(crate) fn pre_online_broker_init_max_offset(&self) -> Result<i64, MessageStoreUnavailable> {
+        self.try_with_message_store(BrokerReadStore::get_broker_init_max_offset)
+    }
+
+    pub(crate) fn pre_online_master_flushed_offset(&self) -> Result<i64, MessageStoreUnavailable> {
+        self.try_with_message_store(BrokerReadStore::get_master_flushed_offset)
+    }
+
+    pub(crate) fn pre_online_set_master_flushed_offset(&self, offset: i64) -> Result<(), MessageStoreUnavailable>
+    where
+        MS: BrokerReplicationStore,
+    {
+        self.message_store.set_master_flushed_offset(offset)
+    }
+
+    pub(crate) async fn pre_online_submit_ha_transfer(
+        &self,
+        request: HAConnectionStateNotificationRequest,
+    ) -> Result<bool, MessageStoreUnavailable>
+    where
+        MS: BrokerReplicationStore,
+    {
+        self.message_store.submit_ha_transfer(request).await
+    }
+
+    pub(crate) async fn pre_online_update_master_addresses(
+        &self,
+        master_ha_address: &CheetahString,
+        master_address: &CheetahString,
+    ) -> Result<(), MessageStoreUnavailable>
+    where
+        MS: BrokerReplicationStore,
+    {
+        self.message_store
+            .update_master_addresses(master_ha_address, master_address)
+            .await
+    }
+
+    pub(crate) async fn query_message_from_store(
+        &self,
+        request: &rocketmq_store::QueryMessageRequest,
+    ) -> Result<Option<QueryMessageResult>, MessageStoreUnavailable> {
+        self.message_store.query_message(request).await
+    }
+
+    pub(crate) fn select_message_from_store(
+        &self,
+        offset: i64,
+    ) -> Result<Option<SelectMappedBufferResult>, MessageStoreUnavailable> {
+        self.message_store.select_message(offset)
+    }
+
+    pub(crate) async fn put_message_to_local_store(
+        &self,
+        message: MessageExtBrokerInner,
+    ) -> Result<PutMessageResult, MessageStoreUnavailable>
+    where
+        MS: BrokerWriteStore,
+    {
+        self.message_store.put_message(message).await
+    }
+
+    pub(crate) fn recall_extended_timer(
+        &self,
+        request: &TimerRecallRequest,
+    ) -> Result<TimerRecallStatus, MessageStoreUnavailable>
+    where
+        MS: BrokerWriteStore,
+    {
+        self.message_store
+            .with_store(|store| store.recall_extended_timer(request))?
+            .map_err(|_| MessageStoreUnavailable)
+    }
+
+    pub(crate) fn set_commitlog_read_mode(
+        &self,
+        read_ahead_mode: rocketmq_store::CommitLogReadMode,
+    ) -> Result<(), BackendStoreError>
+    where
+        MS: rocketmq_store::BrokerAdminStore,
+    {
+        self.message_store.set_commitlog_read_mode(read_ahead_mode)
+    }
+
+    pub(crate) fn delete_topics(&self, delete_topics: Vec<&CheetahString>) -> Result<i32, MessageStoreUnavailable>
+    where
+        MS: rocketmq_store::BrokerAdminStore,
+    {
+        self.message_store.delete_topics(delete_topics)
+    }
+
+    pub(crate) fn get_min_offset_from_local_store(
+        &self,
+        topic: &CheetahString,
+        queue_id: i32,
+    ) -> Result<i64, MessageStoreUnavailable> {
+        self.message_store.min_offset(topic, queue_id)
+    }
+
+    pub(crate) fn get_max_offset_from_local_store(
+        &self,
+        topic: &CheetahString,
+        queue_id: i32,
+    ) -> Result<i64, MessageStoreUnavailable> {
+        self.message_store.max_offset(topic, queue_id)
+    }
+
+    pub(crate) fn local_store_now(&self) -> Result<u64, MessageStoreUnavailable> {
+        self.message_store.now()
+    }
+
+    pub(crate) async fn get_message_from_local_store(
+        &self,
+        group: &CheetahString,
+        topic: &CheetahString,
+        queue_id: i32,
+        offset: i64,
+        nums: i32,
+    ) -> Result<Option<GetMessageResult>, MessageStoreUnavailable> {
+        self.message_store
+            .get_message(group, topic, queue_id, offset, nums)
+            .await
+    }
+
+    pub(crate) async fn get_message_with_filter_from_local_store(
+        &self,
+        group: &CheetahString,
+        topic: &CheetahString,
+        queue_id: i32,
+        offset: i64,
+        nums: i32,
+        message_filter: Option<ArcMessageFilter>,
+    ) -> Result<Option<GetMessageResult>, MessageStoreUnavailable> {
+        self.message_store
+            .get_message_with_filter(group, topic, queue_id, offset, nums, message_filter)
+            .await
+    }
+
+    #[allow(clippy::too_many_arguments, reason = "preserves the Store pull read contract")]
+    pub(crate) async fn get_message_with_size_limit_from_local_store(
+        &self,
+        group: &CheetahString,
+        topic: &CheetahString,
+        queue_id: i32,
+        offset: i64,
+        max_msg_nums: i32,
+        max_msg_bytes: i32,
+        message_filter: ArcMessageFilter,
+    ) -> Result<Option<GetMessageResult>, MessageStoreUnavailable> {
+        self.message_store
+            .get_message_with_size_limit(
+                group,
+                topic,
+                queue_id,
+                offset,
+                max_msg_nums,
+                max_msg_bytes,
+                message_filter,
+            )
+            .await
+    }
+
+    #[cfg(feature = "local_file_store")]
+    pub(crate) fn is_message_in_cold_area(
+        &self,
+        group: &CheetahString,
+        topic: &CheetahString,
+        queue_id: i32,
+        queue_offset: i64,
+    ) -> Result<bool, MessageStoreUnavailable> {
+        self.try_with_message_store(|store| store.is_message_in_cold_area(group, topic, queue_id, queue_offset))
+    }
+
+    pub(crate) fn look_message_by_offset_from_local_store(
+        &self,
+        offset: i64,
+    ) -> Result<Option<MessageExt>, MessageStoreUnavailable> {
+        self.message_store.look_message_by_offset(offset)
+    }
+
+    pub(crate) fn local_store_state_machine_version(&self) -> Result<i64, MessageStoreUnavailable> {
+        self.message_store.state_machine_version()
+    }
+
+    pub(crate) async fn update_local_store_master_addresses(
+        &self,
+        master_ha_addr: &CheetahString,
+        master_addr: &CheetahString,
+    ) -> Result<(), MessageStoreUnavailable>
+    where
+        MS: BrokerMasterAddressStore,
+    {
+        self.message_store
+            .update_master_addresses(master_ha_addr, master_addr)
+            .await
+    }
+
+    pub(crate) fn is_message_store_slave(&self) -> bool {
+        self.policy_state.snapshot().broker_role == rocketmq_model::common::broker::broker_role::BrokerRole::Slave
+    }
+
+    pub(crate) fn check_in_mem_by_consume_offset(
+        &self,
+        topic: &CheetahString,
+        queue_id: i32,
+    ) -> Result<bool, MessageStoreUnavailable> {
+        self.message_store.check_in_mem_by_consume_offset(topic, queue_id)
+    }
+
+    pub(crate) fn local_timer_lag(&self) -> Result<(i64, i64), MessageStoreUnavailable> {
+        self.message_store.timer_lag()
+    }
+}
+
+impl EscapeBridge<StorePorts> {
+    pub(crate) fn bind_message_store(&self, store: &Arc<StorePorts>) {
+        self.message_store.bind_owned(store);
+    }
+}
+
+impl<MS> EscapeBridge<MS>
+where
+    MS: BrokerWriteStore,
+{
+    pub async fn put_message(&self, mut message_ext: MessageExtBrokerInner) -> PutMessageResult {
+        let policy = self.policy_state.snapshot();
+        if policy.broker_role != rocketmq_model::common::broker::broker_role::BrokerRole::Slave
+            && self.message_store.is_local_writeable()
+        {
+            return self
+                .message_store
+                .put_message(message_ext)
+                .await
+                .unwrap_or_else(|_| PutMessageResult::new_default(PutMessageStatus::ServiceNotAvailable));
+        }
+
+        let Some(authority) = policy.remote_escape_authority() else {
+            warn!("Put message failed closed: local Store is not writable and remote escape is not authorized");
+            return PutMessageResult::new_default(PutMessageStatus::ServiceNotAvailable);
+        };
+        message_ext.set_wait_store_msg_ok(false);
+        match self
+            .dispatch_remote_message(message_ext, EscapeTargetPreference::Any, authority)
+            .await
+        {
+            Ok(send_result) => transform_send_result2put_result(Some(send_result)),
+            Err(error) => {
+                error!(%error, "send message in failover to remote failed");
+                PutMessageResult::new(PutMessageStatus::PutToRemoteBrokerFail, None, true)
+            }
+        }
+    }
+
+    pub(crate) async fn put_message_to_remote_broker(
+        &self,
+        message_ext: MessageExtBrokerInner,
+        broker_name_to_send: Option<CheetahString>,
+    ) -> Result<SendResult, EscapeDispatchError> {
+        let policy = self.policy_state.snapshot();
+        let authority = policy
+            .remote_escape_authority()
+            .ok_or(EscapeDispatchError::RemoteEscapeUnauthorized)?;
+        let preference = broker_name_to_send
+            .as_ref()
+            .map_or(EscapeTargetPreference::Any, EscapeTargetPreference::Broker);
+        self.dispatch_remote_message(message_ext, preference, authority).await
+    }
+
+    fn get_producer_group(&self, message_ext: &MessageExtBrokerInner) -> CheetahString {
+        let producer_group =
+            message_ext.property(&CheetahString::from_static_str(MessageConst::PROPERTY_PRODUCER_GROUP));
+        match producer_group {
+            None => self.inner_producer_group_name.clone(),
+            Some(value) => value,
+        }
+    }
+
+    pub async fn async_put_message(&self, mut message_ext: MessageExtBrokerInner) -> PutMessageResult {
+        let policy = self.policy_state.snapshot();
+        if policy.broker_role != rocketmq_model::common::broker::broker_role::BrokerRole::Slave
+            && self.message_store.is_local_writeable()
+        {
+            return self
+                .message_store
+                .put_message(message_ext)
+                .await
+                .unwrap_or_else(|_| PutMessageResult::new_default(PutMessageStatus::ServiceNotAvailable));
+        }
+        let Some(authority) = policy.remote_escape_authority() else {
+            return PutMessageResult::new_default(PutMessageStatus::ServiceNotAvailable);
+        };
+        message_ext.set_wait_store_msg_ok(false);
+        match self
+            .dispatch_remote_message(message_ext, EscapeTargetPreference::Any, authority)
+            .await
+        {
+            Ok(result) => transform_send_result2put_result(Some(result)),
+            Err(error) => {
+                warn!(%error, "asynchronous remote escape failed closed");
+                PutMessageResult::new(PutMessageStatus::PutToRemoteBrokerFail, None, true)
+            }
+        }
+    }
+
+    pub async fn put_message_to_specific_queue(&self, mut message_ext: MessageExtBrokerInner) -> PutMessageResult {
+        let policy = self.policy_state.snapshot();
+        if policy.broker_role != rocketmq_model::common::broker::broker_role::BrokerRole::Slave
+            && self.message_store.is_local_writeable()
+        {
+            return self
+                .message_store
+                .put_message(message_ext)
+                .await
+                .unwrap_or_else(|_| PutMessageResult::new_default(PutMessageStatus::ServiceNotAvailable));
+        }
+        let Some(authority) = policy.remote_escape_authority() else {
+            return PutMessageResult::new_default(PutMessageStatus::ServiceNotAvailable);
+        };
+        message_ext.set_wait_store_msg_ok(false);
+        let stable_key = JavaStringHasher::hash_str(&format!(
+            "{}{}",
+            message_ext.get_topic(),
+            message_ext.message_ext_inner.store_host
+        ))
+        .unsigned_abs() as u64;
+        match self
+            .dispatch_remote_message(message_ext, EscapeTargetPreference::Stable(stable_key), authority)
+            .await
+        {
+            Ok(result) => transform_send_result2put_result(Some(result)),
+            Err(error) => {
+                error!(%error, "specific-queue remote escape failed closed");
+                PutMessageResult::new(PutMessageStatus::PutToRemoteBrokerFail, None, true)
+            }
+        }
+    }
+
+    pub async fn put_messages(&self, batch: MessageExtBatch) -> PutMessageResult {
+        let policy = self.policy_state.snapshot();
+        if policy.broker_role != rocketmq_model::common::broker::broker_role::BrokerRole::Slave
+            && self.message_store.is_local_writeable()
+        {
+            return self
+                .message_store
+                .put_messages(batch)
+                .await
+                .unwrap_or_else(|_| PutMessageResult::new_default(PutMessageStatus::ServiceNotAvailable));
+        }
+        if policy.remote_escape_authority().is_some() {
+            return PutMessageResult::new(PutMessageStatus::PutToRemoteBrokerFail, None, true);
+        }
+        PutMessageResult::new_default(PutMessageStatus::ServiceNotAvailable)
+    }
+
+    async fn dispatch_remote_message(
+        &self,
+        message_ext: MessageExtBrokerInner,
+        preference: EscapeTargetPreference<'_>,
+        authority: EscapeRemoteAuthority,
+    ) -> Result<SendResult, EscapeDispatchError> {
+        let is_trans_half_message = TransactionalMessageUtil::build_half_topic() == message_ext.get_topic();
+        let mut message_to_put = if is_trans_half_message {
+            TransactionalMessageUtil::build_transactional_message_from_half_message(&message_ext.message_ext_inner)
+        } else {
+            message_ext
+        };
+        let topic_publish_info = self
+            .topic_route_info_manager
+            .try_to_find_topic_publish_info(message_to_put.get_topic())
+            .await
+            .filter(|route| route.is_usable())
+            .ok_or(EscapeTargetError::RouteUnavailable)?;
+        let local_broker = self.policy_state.snapshot().broker_name.clone();
+        let target = self
+            .target_resolver
+            .resolve(topic_publish_info.message_queues(), &local_broker, preference)?;
+        let broker_address = self
+            .topic_route_info_manager
+            .find_broker_address_in_publish(Some(target.broker_name()))
+            .ok_or(EscapeDispatchError::BrokerAddressUnavailable)?;
+        let producer_group = self.get_producer_group(&message_to_put);
+        message_to_put.message_ext_inner.queue_id = target.queue_id();
+
+        if !self.policy_state.is_remote_escape_authority_current(authority) {
+            return Err(EscapeDispatchError::StaleRoleEpoch);
+        }
+        self.broker_outer_api
+            .send_message_to_specific_broker(
+                &broker_address,
+                target.broker_name(),
+                message_to_put.message_ext_inner,
+                producer_group,
+                SEND_TIMEOUT,
+            )
+            .await
+            .map_err(Into::into)
+    }
+
+    pub fn get_message_async(
+        &self,
+        topic: &CheetahString,
+        offset: i64,
+        queue_id: i32,
+        broker_name: &CheetahString,
+        de_compress_body: bool,
+    ) -> BoxFuture<'_, (Option<MessageExt>, String, bool)> {
+        let message_store = self.message_store.clone();
+        if message_store.with_store(|_| ()).is_err() {
+            return async { (None, "message store is unavailable".to_string(), false) }.boxed();
+        }
+        let inner_consumer_group_name = self.inner_consumer_group_name.clone();
+        let topic = topic.clone();
+        let broker_name = broker_name.clone();
+
+        if self.policy_state.snapshot().broker_name == broker_name {
+            async move {
+                let result = message_store
+                    .get_message(&inner_consumer_group_name, &topic, queue_id, offset, 1)
+                    .await
+                    .ok()
+                    .flatten();
+                let Some(result) = result else {
+                    warn!(
+                        "getMessageResult is null, innerConsumerGroupName {}, topic {}, offset {}, queueId {}",
+                        inner_consumer_group_name, topic, offset, queue_id
+                    );
+                    return (None, "getMessageResult is null".to_string(), false);
+                };
+                let status = result.status();
+                let mut list = decode_msg_list(result, de_compress_body);
+                if list.is_empty() {
+                    let need_retry = status == Some(GetMessageStatus::OffsetFoundNull);
+                    warn!(
+                        "Can not get msg, topic {}, offset {}, queueId {}, needRetry {},",
+                        topic, offset, queue_id, need_retry,
+                    );
+                    return (None, "Can not get msg".to_string(), need_retry);
+                }
+                (Some(list.remove(0)), "".to_string(), false)
+            }
+            .boxed()
+        } else {
+            self.get_message_from_remote_async(&topic, offset, queue_id, &broker_name)
+        }
+    }
+
+    fn get_message_from_remote_async(
+        &self,
+        topic: &CheetahString,
+        offset: i64,
+        queue_id: i32,
+        broker_name: &CheetahString,
+    ) -> BoxFuture<'_, (Option<MessageExt>, String, bool)> {
+        let topic_route_info_manager = self.topic_route_info_manager.clone();
+        let broker_outer_api = self.broker_outer_api.clone();
+        let inner_consumer_group_name = self.inner_consumer_group_name.clone();
+        let topic = topic.clone();
+        let broker_name = broker_name.clone();
+
+        async move {
+            let mut broker_addr =
+                topic_route_info_manager.find_broker_address_in_subscribe(Some(&broker_name), 0, false);
+
+            if broker_addr.is_none() {
+                topic_route_info_manager
+                    .update_topic_route_info_from_name_server_ext(&topic, true, false)
+                    .await;
+                broker_addr = topic_route_info_manager.find_broker_address_in_subscribe(Some(&broker_name), 0, false);
+
+                if broker_addr.is_none() {
+                    warn!("can't find broker address for topic {}, {}", topic, broker_name);
+                    return (None, "brokerAddress not found".to_string(), true);
+                }
+            }
+
+            let Some(broker_addr) = broker_addr else {
+                return (None, "brokerAddress not found".to_string(), true);
+            };
+            match broker_outer_api
+                .pull_message_from_specific_broker_async(
+                    &broker_name,
+                    &broker_addr,
+                    &inner_consumer_group_name,
+                    &topic,
+                    queue_id,
+                    offset,
+                    1,
+                    10000,
+                )
+                .await
+            {
+                Ok(pull_result) => {
+                    if let Some(result) = pull_result.0 {
+                        if result.pull_status() == PullStatus::Found {
+                            if let Some(message) = result.messages().and_then(|messages| messages.first()).cloned() {
+                                return (Some(message), "".to_string(), false);
+                            }
+                        }
+                    }
+                }
+                Err(_e) => {}
+            }
+
+            (None, "Get message from remote failed".to_string(), true)
+        }
+        .boxed()
+    }
+}
+
+fn decode_msg_list(get_message_result: GetMessageResult, de_compress_body: bool) -> Vec<MessageExt> {
+    let mut found_list = Vec::new();
+    for bb in get_message_result.message_mapped_list() {
+        let mut bytes = Bytes::copy_from_slice(bb.get_buffer());
+        let msg_ext = MessageDecoder::decode(&mut bytes, true, de_compress_body, false, false, false);
+        if let Some(msg_ext) = msg_ext {
+            found_list.push(msg_ext);
+        }
+    }
+    found_list
+}
+
+#[inline]
+fn transform_send_result2put_result(send_result: Option<SendResult>) -> PutMessageResult {
+    match send_result {
+        None => PutMessageResult::new(PutMessageStatus::PutToRemoteBrokerFail, None, true),
+        Some(result) => match result.send_status {
+            SendStatus::SendOk => PutMessageResult::new(PutMessageStatus::PutOk, None, true),
+            SendStatus::FlushDiskTimeout => PutMessageResult::new(PutMessageStatus::FlushDiskTimeout, None, true),
+            SendStatus::FlushSlaveTimeout => PutMessageResult::new(PutMessageStatus::FlushSlaveTimeout, None, true),
+            SendStatus::SlaveNotAvailable => PutMessageResult::new(PutMessageStatus::SlaveNotAvailable, None, true),
+        },
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use rocketmq_model::result::SendResult;
+    use rocketmq_model::result::SendStatus;
+    use rocketmq_store::PutMessageStatus;
+
+    use super::transform_send_result2put_result;
+
+    #[test]
+    fn offset_and_failover_targets_do_not_retain_the_runtime_pointer() {
+        for source in [
+            include_str!("escape_bridge.rs"),
+            include_str!("../offset/manager/consumer_offset_manager.rs"),
+        ] {
+            let source = source
+                .split("#[cfg(test)]")
+                .next()
+                .expect("production source should precede tests");
+            assert!(!source.contains(concat!("Arc", "Mut")));
+            assert!(!source.contains(concat!("BrokerRuntime", "Inner")));
+            assert!(!source.contains(concat!("mut", "_from_ref")));
+        }
+    }
+
+    #[test]
+    fn admin_store_mutations_use_named_operations_instead_of_complete_write_leases() {
+        let admin_source = include_str!("../broker/broker_admin_runtime.rs");
+        let bridge_source = include_str!("escape_bridge.rs");
+        let capability_source = include_str!("escape_bridge_capability.rs");
+
+        assert!(!admin_source.contains("fn message_store_mut"));
+        assert!(!bridge_source.contains(concat!("fn lease_message_store", "_mut")));
+        assert!(!capability_source.contains(concat!("fn write_lease(&self)", " -> Result")));
+        assert!(
+            !capability_source.contains(".lifecycle_lease()"),
+            "request control paths must not obtain the composition-root lifecycle lease"
+        );
+        for operation in ["put_message", "set_commitlog_read_mode", "delete_topics"] {
+            assert!(
+                admin_source.contains(operation),
+                "Admin Store boundary must expose the named {operation} operation"
+            );
+        }
+    }
+
+    #[test]
+    fn broker_store_lifecycle_requires_exclusive_owner_after_provider_detach() {
+        let composition_source = include_str!("../broker_runtime/composition.rs");
+        let lifecycle_source = include_str!("../broker_runtime/lifecycle.rs");
+        let capability_source = include_str!("escape_bridge_capability.rs");
+
+        assert!(!capability_source.contains("LegacyEscapeStoreLifecycleLease"));
+        assert!(!capability_source.contains("LegacyEscapeStoreOwner"));
+        assert!(!capability_source.contains("rocketmq_rust::ArcMut"));
+        assert!(capability_source.contains("current: Arc<RwLock<Option<Weak<MS>>>>"));
+        assert!(composition_source.contains(".and_then(Arc::get_mut)"));
+        let shutdown_source = lifecycle_source
+            .split_once("// Store durability therefore cannot be starved by a slow background component.")
+            .map(|(_, shutdown_source)| shutdown_source)
+            .expect("Store shutdown phase must remain documented");
+        let detach = shutdown_source
+            .find("self.detach_message_store_provider();")
+            .expect("shutdown must detach the request provider");
+        let shutdown = shutdown_source
+            .find("BrokerStorePort::shutdown_gracefully(message_store)")
+            .expect("shutdown must flush and stop the Store");
+        assert!(detach < shutdown, "request provider detach must precede Store shutdown");
+    }
+
+    #[test]
+    fn controller_transition_does_not_retain_a_complete_store_clone_across_await() {
+        let capability_source = include_str!("escape_bridge_capability.rs");
+
+        assert_eq!(
+            capability_source.matches(concat!("owner.cloned_", "store()")).count(),
+            0,
+            "controller transitions must not retain the complete mutable Store across HA awaits"
+        );
+        assert!(
+            capability_source.contains(".get_ha_service().cloned()"),
+            "controller transitions must snapshot the cloneable HA service boundary"
+        );
+        for operation in [
+            concat!(".put_", "message(message)"),
+            concat!(".put_", "messages(batch)"),
+        ] {
+            assert!(
+                capability_source.contains(operation),
+                "request append boundary must use {operation}"
+            );
+        }
+    }
+
+    #[test]
+    fn transform_send_result2put_result_handles_none() {
+        let result = transform_send_result2put_result(None);
+        assert_eq!(result.put_message_status(), PutMessageStatus::PutToRemoteBrokerFail);
+    }
+
+    #[test]
+    fn transform_send_result2put_result_handles_send_ok() {
+        let send_result = SendResult {
+            send_status: SendStatus::SendOk,
+            ..Default::default()
+        };
+        let result = transform_send_result2put_result(Some(send_result));
+        assert_eq!(result.put_message_status(), PutMessageStatus::PutOk);
+        assert!(result.remote_put());
+        assert!(result.is_ok());
+    }
+
+    #[test]
+    fn transform_send_result2put_result_handles_flush_disk_timeout() {
+        let send_result = SendResult {
+            send_status: SendStatus::FlushDiskTimeout,
+            ..Default::default()
+        };
+        let result = transform_send_result2put_result(Some(send_result));
+        assert_eq!(result.put_message_status(), PutMessageStatus::FlushDiskTimeout);
+    }
+
+    #[test]
+    fn transform_send_result2put_result_handles_flush_slave_timeout() {
+        let send_result = SendResult {
+            send_status: SendStatus::FlushSlaveTimeout,
+            ..Default::default()
+        };
+        let result = transform_send_result2put_result(Some(send_result));
+        assert_eq!(result.put_message_status(), PutMessageStatus::FlushSlaveTimeout);
+    }
+
+    #[test]
+    fn transform_send_result2put_result_handles_slave_not_available() {
+        let send_result = SendResult {
+            send_status: SendStatus::SlaveNotAvailable,
+            ..Default::default()
+        };
+        let result = transform_send_result2put_result(Some(send_result));
+        assert_eq!(result.put_message_status(), PutMessageStatus::SlaveNotAvailable);
+    }
+}

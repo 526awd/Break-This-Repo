@@ -1,0 +1,26 @@
+[workspace]
+members = [
+    "bindings/uniffi",
+    "crates/ast",
+    "crates/graph-algorithms",
+    "crates/planner",
+    "crates/server",
+    "sdks/rust",
+    "crates/cli",
+    "crates/db",
+    "crates/metrics",
+    "crates/db-testkit",
+    "crates/value-semantics",
+]
+exclude = ["bindings/uniffi-bindgen"]
+resolver = "3"
+
+[workspace.dependencies]
+helix-ast = { path = "crates/ast" }
+helix-graph-algorithms = { path = "crates/graph-algorithms" }
+db = { path = "crates/db" }
+
+[workspace.lints.clippy]
+wildcard_enum_match_arm = "deny"
+# optional companion:
+match_wildcard_for_single_variants = "warn"

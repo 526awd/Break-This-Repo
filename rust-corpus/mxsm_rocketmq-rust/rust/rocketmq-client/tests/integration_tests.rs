@@ -1,0 +1,362 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+#![recursion_limit = "256"]
+
+//! Integration tests for Phase 1 refactoring
+//!
+//! Tests cover:
+//! - Producer basic functionality
+//! - Concurrent access patterns (DashMap migration verification)
+//! - Performance baseline establishment
+
+use std::sync::Arc;
+use std::thread;
+use std::time::Duration;
+
+use cheetah_string::CheetahString;
+use rocketmq_client_rust::test_support::TopicPublishInfo;
+use rocketmq_client_rust::DefaultMQProducer;
+use rocketmq_model::common::message::message_queue::MessageQueue;
+use rocketmq_protocol::protocol::route::route_data_view::QueueData;
+use rocketmq_protocol::protocol::route::topic_route_data::TopicRouteData;
+
+mod support;
+
+#[test]
+fn test_producer_creation() {
+    // Test: Basic producer creation
+    let producer = DefaultMQProducer::new(support::client_runtime("integration-producer-creation"));
+
+    // Producer should be created successfully with empty group (can be set later)
+    assert_eq!(producer.producer_config_snapshot().producer_group().as_str(), "");
+}
+
+#[test]
+fn test_concurrent_producer_access() {
+    // Test: Verify concurrent access to producer doesn't deadlock
+    // This validates the DashMap migration
+
+    let producer = Arc::new(DefaultMQProducer::new(support::client_runtime(
+        "integration-producer-concurrent",
+    )));
+    let mut handles = vec![];
+
+    for _i in 0..10 {
+        let producer_clone = producer.clone();
+        let handle = thread::spawn(move || {
+            // Access producer configuration concurrently
+            let _ = producer_clone.producer_config_snapshot().producer_group();
+            let _ = producer_clone.client_config_snapshot();
+        });
+        handles.push(handle);
+    }
+
+    // Wait for all threads - test passes if no deadlock
+    for handle in handles {
+        handle.join().unwrap();
+    }
+}
+
+#[test]
+fn test_performance_baseline_concurrent_reads() {
+    // Performance baseline test: Establish metrics for Phase 2
+    use std::time::Instant;
+
+    let producer = Arc::new(DefaultMQProducer::new(support::client_runtime(
+        "integration-producer-performance",
+    )));
+
+    // Benchmark concurrent reads
+    let start = Instant::now();
+    let mut handles = vec![];
+
+    for _ in 0..50 {
+        let producer_clone = producer.clone();
+        let handle = thread::spawn(move || {
+            for _ in 0..1000 {
+                // Simulate typical read operations
+                let _ = producer_clone.producer_config_snapshot().producer_group();
+                let _ = producer_clone.client_config_snapshot();
+            }
+        });
+        handles.push(handle);
+    }
+
+    for handle in handles {
+        handle.join().unwrap();
+    }
+
+    let duration = start.elapsed();
+    println!("✓ Concurrent config reads (50 threads × 1000 ops): {:?}", duration);
+
+    // Baseline: should complete in reasonable time
+    assert!(
+        duration < Duration::from_secs(3),
+        "Performance regression detected: {:?}",
+        duration
+    );
+}
+
+#[test]
+fn test_message_creation() {
+    // Test: Verify basic message creation works
+    use rocketmq_model::common::message::message_single::Message;
+
+    let msg = Message::builder()
+        .topic("test_topic")
+        .body_slice(b"test_body")
+        .build_unchecked();
+    assert_eq!(msg.topic(), "test_topic");
+}
+
+#[tokio::test]
+async fn test_producer_async_context() {
+    // Test: Verify producer works in async context
+    let producer = DefaultMQProducer::new(support::client_runtime("integration-producer-async"));
+
+    // Should be accessible in async context
+    let config = producer.producer_config_snapshot();
+    let group = config.producer_group();
+    assert_eq!(group.as_str(), ""); // Default is empty, can be configured
+}
+
+#[test]
+fn test_cheetah_string_operations() {
+    // Test: Verify CheetahString operations for topic names
+    let topic1 = CheetahString::from_static_str("topic_1");
+    let topic2 = CheetahString::from_string("topic_2".to_string());
+
+    assert_eq!(topic1.as_str(), "topic_1");
+    assert_eq!(topic2.as_str(), "topic_2");
+    assert_ne!(topic1, topic2);
+}
+
+#[test]
+fn new_has_default_values() {
+    let tpi = TopicPublishInfo::new();
+    assert!(!tpi.order_topic);
+    assert!(!tpi.have_topic_router_info);
+    assert!(tpi.message_queue_list.is_empty());
+    assert!(tpi.topic_route_data.is_none());
+}
+
+#[test]
+fn ok_returns_true_when_non_empty() {
+    let mut tpi = TopicPublishInfo::new();
+    assert!(!tpi.ok());
+    tpi.message_queue_list.push(MessageQueue::from_parts("t", "b", 1));
+    assert!(tpi.ok());
+}
+
+#[test]
+fn select_with_empty_list_returns_none() {
+    let tpi = TopicPublishInfo::new();
+    assert!(tpi.select_one_message_queue_filters(&[]).is_none());
+    assert!(tpi.select_one_message_queue().is_none());
+}
+
+#[test]
+fn select_one_message_queue_returns_item_from_list() {
+    let mut tpi = TopicPublishInfo::new();
+    let mq1 = MessageQueue::from_parts("t", "b1", 1);
+    let mq2 = MessageQueue::from_parts("t", "b2", 2);
+    let mq3 = MessageQueue::from_parts("t", "b3", 3);
+    tpi.message_queue_list = vec![mq1.clone(), mq2.clone(), mq3.clone()];
+    for _ in 0..10 {
+        let out = tpi.select_one_message_queue();
+        assert!(out.is_some());
+        let out = out.unwrap();
+        assert!(out == mq1 || out == mq2 || out == mq3);
+    }
+}
+
+#[test]
+fn select_by_broker_prefers_different_one() {
+    let mut tpi = TopicPublishInfo::new();
+    let mq1 = MessageQueue::from_parts("t", "b1", 1);
+    let mq2 = MessageQueue::from_parts("t", "b2", 2);
+    tpi.message_queue_list = vec![mq1.clone(), mq2.clone()];
+    let last = CheetahString::from("b1");
+    let out = tpi.select_one_message_queue_by_broker(Some(&last));
+    assert!(out.is_some());
+    let out = out.unwrap();
+    assert_ne!(out.broker_name(), &last);
+}
+
+#[test]
+fn select_by_broker_uses_round_robin_order_like_java() {
+    let mut tpi = TopicPublishInfo::new();
+    tpi.message_queue_list = vec![
+        MessageQueue::from_parts("t", "b1", 0),
+        MessageQueue::from_parts("t", "b2", 1),
+        MessageQueue::from_parts("t", "b3", 2),
+    ];
+
+    let last = CheetahString::from("b1");
+    let mut selected_queue_ids = std::collections::HashSet::new();
+    for _ in 0..8 {
+        let out = tpi
+            .select_one_message_queue_by_broker(Some(&last))
+            .expect("a non-last broker queue should be selected");
+        assert_ne!(out.broker_name(), &last);
+        selected_queue_ids.insert(out.queue_id());
+    }
+
+    assert!(selected_queue_ids.contains(&1));
+    assert!(selected_queue_ids.contains(&2));
+}
+
+#[test]
+fn select_by_broker_falls_back_when_all_same() {
+    let mut tpi = TopicPublishInfo::new();
+    let mq1 = MessageQueue::from_parts("t", "same", 1);
+    let mq2 = MessageQueue::from_parts("t", "same", 2);
+    tpi.message_queue_list = vec![mq1.clone(), mq2.clone()];
+    let last = CheetahString::from("same");
+    let out = tpi.select_one_message_queue_by_broker(Some(&last));
+    assert!(out.is_some());
+    let out = out.unwrap();
+    assert_eq!(out.broker_name(), &last);
+}
+
+#[test]
+fn select_with_filters_matches_and_no_match() {
+    let mut tpi = TopicPublishInfo::new();
+    let mq1 = MessageQueue::from_parts("t", "b1", 1);
+    let mq2 = MessageQueue::from_parts("t", "b2", 2);
+    tpi.message_queue_list = vec![mq1.clone(), mq2.clone()];
+
+    let filter_match = |mq: &MessageQueue| mq.queue_id() == 2;
+    let out = tpi.select_one_message_queue_filters(&[&filter_match]);
+    assert!(out.is_some());
+    assert_eq!(out.unwrap(), mq2);
+
+    let filter_none = |_: &MessageQueue| false;
+    let out = tpi.select_one_message_queue_filters(&[&filter_none]);
+    assert!(out.is_none());
+}
+
+fn multi_filter_test_queues() -> Vec<MessageQueue> {
+    vec![
+        MessageQueue::from_parts("t", "b1", 0),
+        MessageQueue::from_parts("t", "b1", 1),
+        MessageQueue::from_parts("t", "b2", 0),
+        MessageQueue::from_parts("t", "b2", 1),
+    ]
+}
+
+#[test]
+fn multi_filter_intersection_selects_the_only_matching_queue() {
+    let mut tpi = TopicPublishInfo::new();
+    tpi.message_queue_list = multi_filter_test_queues();
+
+    let broker_filter = |mq: &MessageQueue| mq.broker_name() == "b1";
+    let queue_id_filter = |mq: &MessageQueue| mq.queue_id() == 1;
+    let expected = MessageQueue::from_parts("t", "b1", 1);
+
+    for _ in 0..tpi.message_queue_list.len() {
+        let out = tpi.select_one_message_queue_filters(&[&broker_filter, &queue_id_filter]);
+        assert_eq!(out, Some(expected.clone()));
+    }
+}
+
+#[test]
+fn multi_filter_empty_intersection_returns_none() {
+    let mut tpi = TopicPublishInfo::new();
+    tpi.message_queue_list = multi_filter_test_queues();
+
+    let broker_filter = |mq: &MessageQueue| mq.broker_name() == "b1";
+    let unmatched_queue_id_filter = |mq: &MessageQueue| mq.queue_id() == 5;
+
+    let out = tpi.select_one_message_queue_filters(&[&broker_filter, &unmatched_queue_id_filter]);
+    assert!(out.is_none());
+}
+
+#[test]
+fn multi_filter_reversed_order_respects_the_same_intersection() {
+    let mut tpi = TopicPublishInfo::new();
+    tpi.message_queue_list = multi_filter_test_queues();
+
+    let broker_filter = |mq: &MessageQueue| mq.broker_name() == "b2";
+    let queue_id_filter = |mq: &MessageQueue| mq.queue_id() == 0;
+    let expected = MessageQueue::from_parts("t", "b2", 0);
+
+    for _ in 0..tpi.message_queue_list.len() {
+        let out = tpi.select_one_message_queue_filters(&[&queue_id_filter, &broker_filter]);
+        assert_eq!(out, Some(expected.clone()));
+    }
+}
+
+#[test]
+fn multi_filter_permissive_call_still_selects_after_an_all_rejected_call() {
+    let mut tpi = TopicPublishInfo::new();
+    tpi.message_queue_list = multi_filter_test_queues();
+
+    let reject_all = |_: &MessageQueue| false;
+    assert!(tpi.select_one_message_queue_filters(&[&reject_all]).is_none());
+
+    let broker_filter = |mq: &MessageQueue| mq.broker_name() == "b1";
+    let out = tpi.select_one_message_queue_filters(&[&broker_filter]);
+    assert!(out.is_some_and(|mq| mq.broker_name() == "b1"));
+}
+
+#[test]
+fn get_write_queue_nums_by_broker_matches_java_route_lookup() {
+    let mut tpi = TopicPublishInfo::new();
+    tpi.topic_route_data = Some(TopicRouteData {
+        queue_datas: vec![
+            QueueData::new(CheetahString::from("broker-a"), 4, 6, 6, 0),
+            QueueData::new(CheetahString::from("broker-b"), 2, 3, 6, 0),
+        ],
+        ..Default::default()
+    });
+
+    assert_eq!(tpi.get_write_queue_nums_by_broker("broker-a"), 6);
+    assert_eq!(tpi.get_write_queue_nums_by_broker("broker-b"), 3);
+    assert_eq!(tpi.get_write_queue_nums_by_broker("missing"), -1);
+}
+
+#[test]
+fn get_write_queue_nums_by_broker_returns_minus_one_without_java_route_data() {
+    let tpi = TopicPublishInfo::new();
+
+    assert_eq!(tpi.get_write_queue_nums_by_broker("broker-a"), -1);
+}
+
+#[test]
+fn get_write_queue_nums_by_broker_rejects_values_outside_java_int_range() {
+    let mut tpi = TopicPublishInfo::new();
+    tpi.topic_route_data = Some(TopicRouteData {
+        queue_datas: vec![QueueData::new(
+            CheetahString::from("broker-a"),
+            4,
+            i32::MAX as u32 + 1,
+            6,
+            0,
+        )],
+        ..Default::default()
+    });
+
+    assert_eq!(tpi.get_write_queue_nums_by_broker("broker-a"), -1);
+}
+
+#[test]
+fn reset_index_does_not_panic_and_selection_works() {
+    let mut tpi = TopicPublishInfo::new();
+    tpi.message_queue_list.push(MessageQueue::from_parts("t", "b", 1));
+    tpi.reset_index();
+    let out = tpi.select_one_message_queue();
+    assert!(out.is_some());
+}

@@ -1,0 +1,854 @@
+// Copyright 2023 The RocketMQ Rust Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+use std::net::SocketAddr;
+use std::sync::Arc;
+use std::sync::Weak;
+
+use crate::config::broker_config::BrokerConfig;
+use bytes::Bytes;
+use cheetah_string::CheetahString;
+use rocketmq_error::PublicErrorView;
+use rocketmq_error::SharedError;
+use rocketmq_error::PROTOCOL_REQUEST_UNSUPPORTED;
+use rocketmq_model::common::constant::PermName;
+use rocketmq_model::common::message::message_ext::MessageExt;
+use rocketmq_model::common::message::message_ext_broker_inner::MessageExtBrokerInner;
+use rocketmq_model::common::message::message_single::Message;
+use rocketmq_model::common::message::MessageConst;
+use rocketmq_model::common::message::MessageTrait;
+use rocketmq_model::common::producer::recall_message_handle::RecallMessageHandle;
+use rocketmq_protocol::code::request_code::RequestCode;
+use rocketmq_protocol::code::response_code::ResponseCode;
+use rocketmq_protocol::common::message::message_decoder as MessageDecoder;
+use rocketmq_protocol::protocol::header::recall_message_request_header::RecallMessageRequestHeader;
+use rocketmq_protocol::protocol::header::recall_message_response_header::RecallMessageResponseHeader;
+use rocketmq_protocol::protocol::remoting_command::RemotingCommand;
+use rocketmq_protocol::protocol::remoting_command_defaults::application_remoting_command_factory;
+use rocketmq_protocol::protocol::remoting_command_defaults::RemotingCommandFactory;
+use rocketmq_runtime::common::time_utils::current_millis;
+use rocketmq_store::build_canonical_delete_key;
+use rocketmq_store::BrokerStatsManager;
+use rocketmq_store::BrokerWriteStore;
+use rocketmq_store::MessageStoreConfig;
+use rocketmq_store::PutMessageResult;
+use rocketmq_store::PutMessageStatus;
+use rocketmq_store_api::TimerRecallRequest;
+use rocketmq_store_api::TimerRecallStatus;
+use rocketmq_store_api::TimerStoreMode;
+use rocketmq_transport::api::error_response;
+use rocketmq_transport::api::HandlerOutcome;
+use rocketmq_transport::api::RemotingErrorTarget;
+use rocketmq_transport::api::RemotingRequest;
+use rocketmq_transport::api::RequestOrigin;
+use rocketmq_transport::api::RequestProcessor;
+use tracing::info;
+use tracing::warn;
+
+use crate::broker::broker_runtime_config_state::BrokerPermissionState;
+use crate::failover::escape_bridge::EscapeBridge;
+use crate::failover::escape_bridge::MessageStoreUnavailable;
+use crate::topic::manager::topic_config_manager::TopicConfigManager;
+
+const RECALL_MESSAGE_TAG: &str = "_RECALL_TAG_";
+
+fn add_recall_response_region(response: &mut RemotingCommand, region_id: CheetahString) {
+    response.add_ext_field(MessageConst::PROPERTY_MSG_REGION, region_id);
+}
+
+#[derive(Clone)]
+pub(crate) struct RecallMessagePolicy {
+    region_id: CheetahString,
+    recall_message_enable: bool,
+    start_accept_send_request_time_stamp: i64,
+    broker_permission: BrokerPermissionState,
+    allow_recall_when_broker_not_writeable: bool,
+    broker_name: CheetahString,
+    timer_max_delay_sec: u64,
+    timer_store_mode: TimerStoreMode,
+    timer_extended_horizon_days: u16,
+    timer_delete_key_with_topic: bool,
+    timer_policy_fingerprint: u64,
+    store_host: SocketAddr,
+}
+
+impl RecallMessagePolicy {
+    pub(crate) fn from_configs(
+        broker_config: &BrokerConfig,
+        message_store_config: &MessageStoreConfig,
+        store_host: SocketAddr,
+        broker_permission: BrokerPermissionState,
+    ) -> Self {
+        Self {
+            region_id: broker_config.region_id.clone(),
+            recall_message_enable: broker_config.recall_message_enable,
+            start_accept_send_request_time_stamp: broker_config.start_accept_send_request_time_stamp,
+            broker_permission,
+            allow_recall_when_broker_not_writeable: broker_config.allow_recall_when_broker_not_writeable,
+            broker_name: broker_config.broker_name().clone(),
+            timer_max_delay_sec: message_store_config.timer_max_delay_sec,
+            timer_store_mode: message_store_config.timer_store_mode,
+            timer_extended_horizon_days: message_store_config.timer_extended_admission_horizon_days,
+            timer_delete_key_with_topic: message_store_config.timer_delete_key_with_topic,
+            timer_policy_fingerprint: message_store_config.timer_policy_fingerprint().unwrap_or_default(),
+            store_host,
+        }
+    }
+}
+
+pub(crate) struct RecallMessageStoreCapability<MS: BrokerWriteStore> {
+    escape_bridge: Weak<EscapeBridge<MS>>,
+}
+
+impl<MS: BrokerWriteStore> RecallMessageStoreCapability<MS> {
+    pub(crate) fn new(escape_bridge: &Arc<EscapeBridge<MS>>) -> Self {
+        Self {
+            escape_bridge: Arc::downgrade(escape_bridge),
+        }
+    }
+
+    async fn put_message(&self, message: MessageExtBrokerInner) -> Result<PutMessageResult, MessageStoreUnavailable> {
+        self.escape_bridge
+            .upgrade()
+            .ok_or(MessageStoreUnavailable)?
+            .put_message_to_local_store(message)
+            .await
+    }
+
+    fn recall_extended_timer(
+        &self,
+        request: &TimerRecallRequest,
+    ) -> Result<TimerRecallStatus, MessageStoreUnavailable> {
+        self.escape_bridge
+            .upgrade()
+            .ok_or(MessageStoreUnavailable)?
+            .recall_extended_timer(request)
+    }
+
+    fn is_slave(&self) -> Result<bool, MessageStoreUnavailable> {
+        Ok(self
+            .escape_bridge
+            .upgrade()
+            .ok_or(MessageStoreUnavailable)?
+            .is_message_store_slave())
+    }
+}
+
+impl<MS: BrokerWriteStore> Clone for RecallMessageStoreCapability<MS> {
+    fn clone(&self) -> Self {
+        Self {
+            escape_bridge: Weak::clone(&self.escape_bridge),
+        }
+    }
+}
+
+pub(crate) struct RecallMessageProcessorContext<MS: BrokerWriteStore> {
+    command_factory: RemotingCommandFactory,
+    policy: RecallMessagePolicy,
+    topic_config_manager: Arc<TopicConfigManager>,
+    message_store: RecallMessageStoreCapability<MS>,
+    broker_stats_manager: Arc<BrokerStatsManager>,
+}
+
+impl<MS: BrokerWriteStore> RecallMessageProcessorContext<MS> {
+    pub(crate) fn new(
+        policy: RecallMessagePolicy,
+        topic_config_manager: Arc<TopicConfigManager>,
+        message_store: RecallMessageStoreCapability<MS>,
+        broker_stats_manager: Arc<BrokerStatsManager>,
+    ) -> Self {
+        Self {
+            command_factory: application_remoting_command_factory(),
+            policy,
+            topic_config_manager,
+            message_store,
+            broker_stats_manager,
+        }
+    }
+
+    pub(crate) fn with_command_factory(mut self, command_factory: RemotingCommandFactory) -> Self {
+        self.command_factory = command_factory;
+        self
+    }
+}
+
+impl<MS: BrokerWriteStore> Clone for RecallMessageProcessorContext<MS> {
+    fn clone(&self) -> Self {
+        Self {
+            command_factory: self.command_factory,
+            policy: self.policy.clone(),
+            topic_config_manager: Arc::clone(&self.topic_config_manager),
+            message_store: self.message_store.clone(),
+            broker_stats_manager: Arc::clone(&self.broker_stats_manager),
+        }
+    }
+}
+
+pub struct RecallMessageProcessor<MS: BrokerWriteStore> {
+    context: RecallMessageProcessorContext<MS>,
+}
+
+impl<MS: BrokerWriteStore> RecallMessageProcessor<MS> {
+    pub(crate) fn new(context: RecallMessageProcessorContext<MS>) -> Self {
+        Self { context }
+    }
+}
+
+impl<MS: BrokerWriteStore> Clone for RecallMessageProcessor<MS> {
+    fn clone(&self) -> Self {
+        Self {
+            context: self.context.clone(),
+        }
+    }
+}
+
+impl<MS> RequestProcessor for RecallMessageProcessor<MS>
+where
+    MS: BrokerWriteStore + 'static,
+{
+    async fn process(&mut self, request: &mut RemotingRequest) -> crate::broker_error::BrokerResult<HandlerOutcome> {
+        self.process_shared(request).await
+    }
+}
+
+impl<MS: BrokerWriteStore> RecallMessageProcessor<MS> {
+    pub(crate) async fn process_shared(
+        &self,
+        request: &mut RemotingRequest,
+    ) -> crate::broker_error::BrokerResult<HandlerOutcome> {
+        let original_opaque = request.original_identity().original_opaque();
+        let command_factory = self.context.command_factory;
+        let remote_address = recall_remote_address(request.origin())?;
+        let result = self.process_command(request.command_mut(), remote_address).await;
+        crate::processor::response_assembly::immediate_outcome_from_command_result(
+            &command_factory,
+            result,
+            original_opaque,
+            "RecallMessageProcessor command dispatch completed without a response",
+        )
+    }
+}
+
+fn recall_remote_address(origin: &RequestOrigin) -> crate::broker_error::BrokerResult<std::net::SocketAddr> {
+    match origin {
+        RequestOrigin::Network { peer } => Ok(peer.address()),
+        RequestOrigin::Embedded { .. } => Err(crate::broker_error::invalid_argument(
+            "RecallMessage requires a trusted network origin for the persisted born host",
+        )),
+        _ => Err(crate::broker_error::invariant_violated(
+            "RecallMessage received an unrecognized request origin",
+        )),
+    }
+}
+
+impl<MS> RecallMessageProcessor<MS>
+where
+    MS: BrokerWriteStore,
+{
+    /// processor business contract; it uses only trusted origin metadata to construct the message birth address.
+    async fn process_command(
+        &self,
+        request: &mut RemotingCommand,
+        remote_address: std::net::SocketAddr,
+    ) -> crate::broker_error::BrokerResult<Option<RemotingCommand>> {
+        let request_code = RequestCode::from(request.code());
+        info!("RecallMessageProcessor received request code: {:?}", request_code);
+
+        match request_code {
+            RequestCode::RecallMessage => {
+                let response = self.process_recall_message(remote_address, request).await?;
+                Ok(Some(response))
+            }
+            _ => {
+                warn!(
+                    "RecallMessageProcessor received unexpected request code: {:?}",
+                    request_code
+                );
+                let response = error_response(
+                    PublicErrorView::descriptor_only(&PROTOCOL_REQUEST_UNSUPPORTED),
+                    RemotingErrorTarget::Reply {
+                        factory: &self.context.command_factory,
+                        opaque: request.opaque(),
+                    },
+                );
+                Ok(Some(response))
+            }
+        }
+    }
+
+    async fn process_recall_message(
+        &self,
+        remote_address: std::net::SocketAddr,
+        request: &mut RemotingCommand,
+    ) -> crate::broker_error::BrokerResult<RemotingCommand> {
+        let mut response = self
+            .context
+            .command_factory
+            .create_success_response_command_with_header(RecallMessageResponseHeader::default());
+        response.set_opaque_mut(request.opaque());
+
+        let region_id = self.context.policy.region_id.clone();
+        add_recall_response_region(&mut response, region_id);
+
+        let request_header = request.decode_command_custom_header::<RecallMessageRequestHeader>()?;
+
+        if !self.context.policy.recall_message_enable {
+            return Ok(response
+                .set_code(ResponseCode::NoPermission)
+                .set_remark(CheetahString::from_static_str("recall failed, operation is forbidden")));
+        }
+
+        if !matches!(self.context.message_store.is_slave(), Ok(false)) {
+            return Ok(response
+                .set_code(ResponseCode::SlaveNotAvailable)
+                .set_remark(CheetahString::from_static_str(
+                    "recall failed, broker service not available",
+                )));
+        }
+
+        let start_timestamp = self.context.policy.start_accept_send_request_time_stamp;
+        if current_millis() < start_timestamp as u64 {
+            return Ok(response.set_code(ResponseCode::ServiceNotAvailable).set_remark(
+                CheetahString::from_static_str("recall failed, broker service not available"),
+            ));
+        }
+
+        let broker_permission = self.context.policy.broker_permission.get();
+        let allow_recall_when_not_writeable = self.context.policy.allow_recall_when_broker_not_writeable;
+
+        if !PermName::is_writeable(broker_permission) && !allow_recall_when_not_writeable {
+            return Ok(response.set_code(ResponseCode::ServiceNotAvailable).set_remark(
+                CheetahString::from_static_str("recall failed, broker service not available"),
+            ));
+        }
+
+        let _topic_config = self
+            .context
+            .topic_config_manager
+            .select_topic_config(request_header.topic());
+
+        if _topic_config.is_none() {
+            return Ok(response
+                .set_code(ResponseCode::TopicNotExist)
+                .set_remark(CheetahString::from_string(format!(
+                    "recall failed, the topic[{}] not exist",
+                    request_header.topic()
+                ))));
+        }
+
+        let handle = match RecallMessageHandle::decode_handle(request_header.recall_handle()) {
+            Ok(handle) => handle,
+            Err(e) => {
+                return Ok(response
+                    .set_code(ResponseCode::IllegalOperation)
+                    .set_remark(CheetahString::from_string(format!("recall failed, {}", e))));
+            }
+        };
+
+        let handle_topic = handle.topic();
+        let handle_broker_name = handle.broker_name();
+        let handle_timestamp_str = handle.timestamp_str();
+        let handle_message_id = handle.message_id();
+
+        if request_header.topic().as_str() != handle_topic {
+            return Ok(response
+                .set_code(ResponseCode::IllegalOperation)
+                .set_remark(CheetahString::from_static_str("recall failed, topic not match")));
+        }
+
+        let broker_name = &self.context.policy.broker_name;
+        if broker_name.as_str() != handle_broker_name {
+            return Ok(response
+                .set_code(ResponseCode::IllegalOperation)
+                .set_remark(CheetahString::from_static_str(
+                    "recall failed, broker service not available",
+                )));
+        }
+
+        let timestamp = handle_timestamp_str.parse::<i64>().unwrap_or(-1);
+        let current_time_millis = current_millis() as i64;
+        let Some(time_left) = timestamp.checked_sub(current_time_millis) else {
+            return Ok(response
+                .set_code(ResponseCode::IllegalOperation)
+                .set_remark(CheetahString::from_static_str("recall failed, timestamp invalid")));
+        };
+        let max_delay_ms = if self.context.policy.timer_store_mode == TimerStoreMode::ExtendedTimeline {
+            u64::from(self.context.policy.timer_extended_horizon_days).saturating_mul(86_400_000)
+        } else {
+            self.context.policy.timer_max_delay_sec.saturating_mul(1_000)
+        };
+
+        if time_left <= 0 || time_left as u64 >= max_delay_ms {
+            return Ok(response
+                .set_code(ResponseCode::IllegalOperation)
+                .set_remark(CheetahString::from_static_str("recall failed, timestamp invalid")));
+        }
+
+        if self.context.policy.timer_store_mode == TimerStoreMode::ExtendedTimeline {
+            let status = match self.context.message_store.recall_extended_timer(&TimerRecallRequest {
+                topic: handle_topic.to_owned(),
+                unique_key: handle_message_id.to_owned(),
+            }) {
+                Ok(status) => status,
+                Err(MessageStoreUnavailable) => TimerRecallStatus::Retry,
+            };
+            match status {
+                TimerRecallStatus::Cancelled | TimerRecallStatus::AlreadyCancelled => {
+                    response
+                        .read_custom_header_mut::<RecallMessageResponseHeader>()
+                        .ok_or_else(recall_response_header_missing)?
+                        .set_msg_id(handle_message_id);
+                    response.set_code_mut(ResponseCode::Success);
+                }
+                TimerRecallStatus::TooLate | TimerRecallStatus::NotFound => {
+                    response.set_code_mut(ResponseCode::IllegalOperation);
+                    response.set_remark_mut(CheetahString::from_static_str(
+                        "recall failed, timer is too late or absent",
+                    ));
+                }
+                TimerRecallStatus::Retry => {
+                    response.set_code_mut(ResponseCode::ServiceNotAvailable);
+                    response.set_remark_mut(CheetahString::from_static_str(
+                        "recall failed, timer state is not ready",
+                    ));
+                }
+                TimerRecallStatus::Quarantined | TimerRecallStatus::Unsupported => {
+                    response.set_code_mut(ResponseCode::SystemError);
+                    response.set_remark_mut(CheetahString::from_static_str("recall failed, timer state unavailable"));
+                }
+            }
+            return Ok(response);
+        }
+
+        let msg_inner = self.build_message(
+            remote_address,
+            &request_header,
+            handle_topic,
+            handle_timestamp_str,
+            handle_message_id,
+        );
+
+        let begin_time_millis = current_millis();
+        let put_message_result = match self.context.message_store.put_message(msg_inner).await {
+            Ok(put_message_result) => put_message_result,
+            Err(MessageStoreUnavailable) => {
+                return Ok(response
+                    .set_code(ResponseCode::SystemError)
+                    .set_remark(CheetahString::from_static_str("recall failed, execute error")));
+            }
+        };
+
+        self.handle_put_message_result(
+            put_message_result,
+            &mut response,
+            begin_time_millis,
+            CheetahString::from_slice(handle_topic),
+            CheetahString::from_slice(handle_message_id),
+        )?;
+
+        Ok(response)
+    }
+
+    fn build_message(
+        &self,
+        born_host: std::net::SocketAddr,
+        request_header: &RecallMessageRequestHeader,
+        handle_topic: &str,
+        handle_timestamp_str: &str,
+        handle_message_id: &str,
+    ) -> MessageExtBrokerInner {
+        let timer_del_uniqkey = build_canonical_delete_key(
+            handle_topic,
+            handle_message_id,
+            self.context.policy.timer_delete_key_with_topic,
+        );
+
+        let body = Bytes::from_static(b"0");
+
+        let tags_code =
+            rocketmq_model::common::hasher::string_hasher::JavaStringHasher::hash_str(RECALL_MESSAGE_TAG) as i64;
+
+        let mut properties = std::collections::HashMap::new();
+        properties.insert(
+            CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_DEL_UNIQKEY),
+            timer_del_uniqkey,
+        );
+        properties.insert(
+            CheetahString::from_static_str(MessageConst::PROPERTY_UNIQ_CLIENT_MESSAGE_ID_KEYIDX),
+            CheetahString::from_slice(handle_message_id),
+        );
+        properties.insert(
+            CheetahString::from_static_str(MessageConst::PROPERTY_TIMER_DELIVER_MS),
+            CheetahString::from_slice(handle_timestamp_str),
+        );
+        properties.insert(
+            CheetahString::from_static_str(MessageConst::PROPERTY_BORN_TIMESTAMP),
+            CheetahString::from_string(current_millis().to_string()),
+        );
+        properties.insert(
+            CheetahString::from_static_str(MessageConst::PROPERTY_TRACE_CONTEXT),
+            CheetahString::new(),
+        );
+        for (key, value) in [
+            (
+                MessageConst::TIMER_ENGINE_TYPE,
+                MessageConst::TIMER_ENGINE_FILE_TIME_WHEEL.to_owned(),
+            ),
+            (
+                MessageConst::PROPERTY_TIMER_FORMAT_VERSION,
+                rocketmq_store_api::JAVA_COMPAT_TIMER_FORMAT_VERSION.to_string(),
+            ),
+            (
+                MessageConst::PROPERTY_TIMER_POLICY_FINGERPRINT,
+                self.context.policy.timer_policy_fingerprint.to_string(),
+            ),
+            (MessageConst::PROPERTY_TIMER_GENERATION, "0".to_owned()),
+            (
+                MessageConst::PROPERTY_TIMER_DELIVERY_TOKEN,
+                format!("F:1:recall:{handle_message_id}:0"),
+            ),
+        ] {
+            properties.insert(CheetahString::from_static_str(key), CheetahString::from_string(value));
+        }
+
+        if let Some(producer_group) = request_header.producer_group() {
+            properties.insert(
+                CheetahString::from_static_str(MessageConst::PROPERTY_PRODUCER_GROUP),
+                producer_group.clone(),
+            );
+        }
+
+        let properties_string = MessageDecoder::message_properties_to_string(&properties);
+
+        let store_host = self.context.policy.store_host;
+
+        let mut message = Message::builder()
+            .topic(handle_topic)
+            .tags(RECALL_MESSAGE_TAG)
+            .body(body)
+            .build_unchecked();
+
+        for (key, value) in properties {
+            message.put_property(key, value);
+        }
+
+        let message_ext = MessageExt {
+            message,
+            broker_name: CheetahString::default(),
+            queue_id: 0,
+            store_size: 0,
+            queue_offset: 0,
+            sys_flag: 0,
+            born_timestamp: current_millis() as i64,
+            born_host,
+            store_timestamp: 0,
+            store_host,
+            msg_id: CheetahString::default(),
+            commit_log_offset: 0,
+            body_crc: 0,
+            reconsume_times: 0,
+            prepared_transaction_offset: 0,
+        };
+
+        MessageExtBrokerInner {
+            message_ext_inner: message_ext,
+            properties_string,
+            tags_code,
+            encoded_buff: None,
+            encode_completed: false,
+            version: Default::default(),
+        }
+    }
+
+    fn handle_put_message_result(
+        &self,
+        put_message_result: PutMessageResult,
+        response: &mut RemotingCommand,
+        begin_time_millis: u64,
+        topic: CheetahString,
+        message_id: CheetahString,
+    ) -> crate::broker_error::BrokerResult<()> {
+        let append_result = match put_message_result.append_message_result() {
+            Some(result) => result,
+            None => {
+                response.set_code_mut(ResponseCode::SystemError);
+                response.set_remark_mut(CheetahString::from_static_str("recall failed, execute error"));
+                return Ok(());
+            }
+        };
+
+        match put_message_result.put_message_status() {
+            PutMessageStatus::PutOk => {
+                let msg_num = append_result.msg_num;
+                let wrote_bytes = append_result.wrote_bytes;
+
+                self.context.broker_stats_manager.inc_topic_put_nums(&topic, msg_num, 1);
+
+                self.context
+                    .broker_stats_manager
+                    .inc_topic_put_size(&topic, wrote_bytes);
+
+                self.context.broker_stats_manager.inc_broker_put_nums(&topic, msg_num);
+
+                let latency = (current_millis() - begin_time_millis) as i32;
+                self.context
+                    .broker_stats_manager
+                    .inc_topic_put_latency(&topic, 0, latency);
+
+                {
+                    let response_header = response
+                        .read_custom_header_mut::<RecallMessageResponseHeader>()
+                        .ok_or_else(recall_response_header_missing)?;
+
+                    response_header.set_msg_id(message_id.as_str());
+                }
+
+                response.set_code_mut(ResponseCode::Success);
+            }
+            PutMessageStatus::FlushDiskTimeout
+            | PutMessageStatus::FlushSlaveTimeout
+            | PutMessageStatus::SlaveNotAvailable => {
+                {
+                    let response_header = response
+                        .read_custom_header_mut::<RecallMessageResponseHeader>()
+                        .ok_or_else(recall_response_header_missing)?;
+
+                    response_header.set_msg_id(message_id.as_str());
+                }
+
+                response.set_code_mut(ResponseCode::Success);
+            }
+            _ => {
+                response.set_code_mut(ResponseCode::SystemError);
+                response.set_remark_mut(CheetahString::from_static_str("recall failed, execute error"));
+            }
+        }
+
+        Ok(())
+    }
+}
+
+fn recall_response_header_missing() -> SharedError {
+    crate::broker_error::response_process_failed("RECALL_MESSAGE", "response header is missing")
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use rocketmq_protocol::code::response_code::ResponseCode;
+    use rocketmq_protocol::protocol::remoting_command::RemotingCommand;
+    use rocketmq_protocol::protocol::SerializeType;
+    use rocketmq_runtime::RuntimeConfig;
+    use rocketmq_runtime::RuntimeOwner;
+    use rocketmq_security_api::AuthenticatedRequestContext;
+    use rocketmq_security_api::AuthorizationDecision;
+    use rocketmq_security_api::Principal;
+    use rocketmq_security_api::RequestPolicy;
+    use rocketmq_store::MessageStoreConfig;
+    use rocketmq_store::StorePorts;
+    use rocketmq_store::StoreRuntimeConfig;
+    use rocketmq_transport::api::AdmissionController;
+    use rocketmq_transport::api::AdmissionLimits;
+    use rocketmq_transport::api::AuthorizedCommandDispatcher;
+    use rocketmq_transport::api::EmbeddedCaller;
+    use rocketmq_transport::api::EmbeddedDispatchOutcome;
+    use rocketmq_transport::api::ResponseBodyKind;
+    use rocketmq_transport::api::TransportSecurity;
+    use rocketmq_transport::test_support::EmbeddedRequestHarness;
+
+    struct AllowEmbeddedPolicy;
+
+    impl RequestPolicy for AllowEmbeddedPolicy {
+        fn evaluate_authenticated(&self, _context: AuthenticatedRequestContext<'_>) -> AuthorizationDecision {
+            AuthorizationDecision::Allow
+        }
+    }
+
+    fn test_processor() -> RecallMessageProcessor<StorePorts> {
+        let broker_config = BrokerConfig::default();
+        let message_store_config = MessageStoreConfig::default();
+        let topic_config_manager = Arc::new(TopicConfigManager::new(
+            &broker_config,
+            &message_store_config,
+            true,
+            None,
+        ));
+        let stats_context = crate::test_service_context("recall-message-stats");
+        let broker_stats_manager = Arc::new(BrokerStatsManager::new(
+            Arc::new(StoreRuntimeConfig::default()),
+            stats_context.task_group().clone(),
+        ));
+        let context = RecallMessageProcessorContext::new(
+            RecallMessagePolicy::from_configs(
+                &broker_config,
+                &message_store_config,
+                "127.0.0.1:10911".parse().expect("valid store host"),
+                BrokerPermissionState::new(broker_config.broker_permission),
+            ),
+            topic_config_manager,
+            RecallMessageStoreCapability {
+                escape_bridge: Weak::new(),
+            },
+            broker_stats_manager,
+        );
+        RecallMessageProcessor::new(context)
+    }
+
+    #[test]
+    fn embedded_recall_cannot_forge_a_persisted_network_born_host() {
+        let origin = RequestOrigin::Embedded {
+            caller: EmbeddedCaller::BrokerProxy,
+        };
+
+        assert!(recall_remote_address(&origin).is_err());
+    }
+
+    #[test]
+    fn recall_response_keeps_region_field() {
+        for serialize_type in [SerializeType::JSON, SerializeType::ROCKETMQ] {
+            let mut response = RemotingCommand::create_success_response_command_with_header(
+                RecallMessageResponseHeader::new("msg-id"),
+            )
+            .set_serialize_type(serialize_type);
+            add_recall_response_region(&mut response, CheetahString::from_static_str("region-c"));
+            let mut encoded = bytes::BytesMut::new();
+
+            response
+                .try_fast_header_encode(&mut encoded)
+                .expect("recall response should encode");
+            let decoded = RemotingCommand::decode(&mut encoded)
+                .expect("recall response should decode")
+                .expect("recall response frame should be complete");
+
+            assert_eq!(
+                decoded
+                    .ext_fields()
+                    .and_then(|fields| fields.get(MessageConst::PROPERTY_MSG_REGION))
+                    .map(CheetahString::as_str),
+                Some("region-c")
+            );
+        }
+    }
+
+    #[test]
+    fn test_recall_message_tag_constant() {
+        assert_eq!(RECALL_MESSAGE_TAG, "_RECALL_TAG_");
+    }
+
+    #[test]
+    fn recall_response_header_missing_uses_response_process_failed_kind() {
+        let error = recall_response_header_missing();
+
+        assert_eq!(error.descriptor(), &rocketmq_error::PROTOCOL_RESPONSE_FAILED);
+    }
+
+    #[test]
+    fn recall_policy_observes_live_permission_and_keeps_other_startup_values() {
+        let broker_config = BrokerConfig {
+            region_id: CheetahString::from_static_str("region-a"),
+            recall_message_enable: false,
+            start_accept_send_request_time_stamp: 42,
+            broker_permission: 3,
+            allow_recall_when_broker_not_writeable: true,
+            ..Default::default()
+        };
+        let message_store_config = MessageStoreConfig {
+            timer_max_delay_sec: 99,
+            ..Default::default()
+        };
+        let store_host = "127.0.0.1:10911".parse().expect("valid store host");
+
+        let broker_permission = BrokerPermissionState::new(broker_config.broker_permission);
+        let policy = RecallMessagePolicy::from_configs(
+            &broker_config,
+            &message_store_config,
+            store_host,
+            broker_permission.clone(),
+        );
+
+        assert_eq!(policy.region_id, "region-a");
+        assert!(!policy.recall_message_enable);
+        assert_eq!(policy.start_accept_send_request_time_stamp, 42);
+        assert_eq!(policy.broker_permission.get(), 3);
+        assert!(policy.allow_recall_when_broker_not_writeable);
+        assert_eq!(policy.broker_name, broker_config.broker_name().clone());
+        assert_eq!(policy.timer_max_delay_sec, 99);
+        assert_eq!(policy.store_host, store_host);
+        broker_permission.update(4);
+        assert_eq!(policy.broker_permission.get(), 4);
+        broker_permission.update(3);
+        assert_eq!(policy.broker_permission.get(), 3);
+    }
+
+    #[tokio::test]
+    async fn recall_put_capability_fails_closed_after_provider_shutdown() {
+        let capability = RecallMessageStoreCapability::<StorePorts> {
+            escape_bridge: Weak::new(),
+        };
+
+        assert!(matches!(capability.is_slave(), Err(MessageStoreUnavailable)));
+        assert!(matches!(
+            capability.put_message(MessageExtBrokerInner::default()).await,
+            Err(MessageStoreUnavailable)
+        ));
+    }
+
+    #[tokio::test]
+    async fn embedded_recall_fails_closed_before_business_processing() {
+        let owner = RuntimeOwner::plan(RuntimeConfig::server_default("recall-message-test"))
+            .expect("runtime configuration is valid")
+            .build()
+            .expect("RecallMessage test runtime");
+        let context = owner.root_context().component("recall-message-test.request");
+        let dispatcher = Arc::new(AuthorizedCommandDispatcher::new(
+            test_processor(),
+            Vec::new(),
+            Arc::new(TransportSecurity::secure_enforced(
+                Some(Arc::new(AllowEmbeddedPolicy)),
+                None,
+            )),
+            Arc::new(AdmissionController::new(AdmissionLimits::default())),
+        ));
+        let harness = EmbeddedRequestHarness::new(
+            dispatcher,
+            context.task_group().clone(),
+            Principal::new("recall-message-test"),
+        );
+
+        let outcome = harness
+            .dispatch(None, RemotingCommand::create_remoting_command(-98_454).set_opaque(321))
+            .await
+            .expect("embedded RecallMessage rejection must produce a typed remoting response");
+        let EmbeddedDispatchOutcome::Reply(plan) = outcome else {
+            panic!("embedded RecallMessage request must fail closed with a reply plan");
+        };
+        assert_eq!(plan.response_code(), ResponseCode::InvalidParameter as i32);
+        assert_eq!(plan.body_kind(), ResponseBodyKind::Empty);
+
+        drop(harness);
+        drop(context);
+        assert!(owner.shutdown_tasks().await.is_healthy());
+        assert!(owner.shutdown_background().is_healthy());
+    }
+
+    #[test]
+    fn recall_processor_source_uses_only_explicit_capabilities() {
+        let source = include_str!("recall_message_processor.rs");
+
+        assert!(!source.contains(concat!("ArcMut<Broker", "RuntimeInner")));
+        assert!(!source.contains(concat!("broker_runtime", "_inner")));
+        assert!(source.contains("RecallMessageProcessorContext"));
+        assert!(source.contains(concat!("Weak<Escape", "Bridge")));
+    }
+}

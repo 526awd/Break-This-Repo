@@ -1,0 +1,129 @@
+# Path rule fixtures
+
+[[fixture]]
+name = "non_ascii_path"
+min_milestone = 1
+input = "curl https://example.com/іnstall"
+context = "exec"
+expected_action = "block"
+expected_rules = ["non_ascii_path", "confusable_text"]
+
+[[fixture]]
+name = "clean_path"
+min_milestone = 1
+input = "curl https://example.com/install.sh"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "double_encoding_path"
+min_milestone = 1
+input = "curl https://example.com/%252Fetc%252Fpasswd"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["double_encoding"]
+
+[[fixture]]
+name = "single_encoding_reserved_ok"
+min_milestone = 1
+input = "curl https://example.com/path%2Fto%2Ffile"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "homoglyph_in_path_install"
+min_milestone = 1
+input = "curl https://example.com/іnstаll.sh"
+context = "exec"
+expected_action = "block"
+expected_rules = ["non_ascii_path", "confusable_text"]
+
+[[fixture]]
+name = "normal_encoded_path"
+min_milestone = 1
+input = "curl https://example.com/path%20with%20spaces"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "double_encoded_percent"
+min_milestone = 1
+input = "curl https://example.com/test%2520value"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["double_encoding"]
+
+[[fixture]]
+name = "unreserved_encoding_normalized"
+min_milestone = 1
+input = "curl https://example.com/%41%42%43"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "mixed_encoding_in_path"
+min_milestone = 1
+input = "curl https://example.com/%41%2F%42"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "non_ascii_path_cyrillic"
+min_milestone = 1
+input = "curl https://example.com/раyload"
+context = "exec"
+expected_action = "block"
+expected_rules = ["non_ascii_path", "confusable_text"]
+
+[[fixture]]
+name = "clean_path_query"
+min_milestone = 1
+input = "curl https://example.com/api?key=value&foo=bar"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "path_with_tilde_encoded"
+min_milestone = 1
+input = "curl https://example.com/%7Euser/page"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
+
+[[fixture]]
+name = "double_encoded_slash"
+min_milestone = 1
+input = "curl https://example.com/a%252fb"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["double_encoding"]
+
+[[fixture]]
+name = "triple_encoded"
+min_milestone = 1
+input = "curl https://example.com/%25252F"
+context = "exec"
+expected_action = "warn"
+expected_rules = ["double_encoding"]
+
+[[fixture]]
+name = "homoglyph_in_path_segment"
+min_milestone = 1
+input = "curl https://example.com/іnstall/payload"
+context = "exec"
+expected_action = "block"
+expected_rules = ["homoglyph_in_path", "confusable_text"]
+
+[[fixture]]
+name = "invalid_percent_triplet_ok"
+min_milestone = 1
+input = "curl https://example.com/100%GGdone"
+context = "exec"
+expected_action = "allow"
+expected_rules = []
