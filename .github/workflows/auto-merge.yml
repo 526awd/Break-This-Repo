@@ -115,8 +115,18 @@ jobs:
             # head a grafted root, so `git merge-base` finds nothing and changed_paths() would
             # have to treat every PR as unverifiable. blob:none still keeps this cheap - it
             # transfers the branch's trees, never its file contents.
-            if ! git fetch -q --filter=blob:none origin "pull/$1/head" 2>/dev/null; then
-              REASON="head could not be fetched (conservative skip)"
+            # --no-recurse-submodules is load-bearing as well. This repo declares ~87
+            # submodules in .gitmodules, but the checkout above leaves them uninitialized, so
+            # the default `fetch.recurseSubmodules=on-demand` walks into them, reports
+            # "Could not access submodule '<path>'", and makes `git fetch` exit 1 *after* it
+            # has already written the correct FETCH_HEAD. That read as an unverifiable head
+            # and parked PRs #567/#587/#590 on `check-failed` indefinitely. Verified on a
+            # runner: 6 of 7 pull refs exit 1 without this flag, 0 of 7 with it.
+            #
+            # stderr is captured rather than discarded. `2>/dev/null` is what hid the
+            # submodule line for hours and left this function's own wording as the only clue.
+            if ! FETCH_ERR=$(git fetch -q --no-recurse-submodules --filter=blob:none origin "pull/$1/head" 2>&1); then
+              REASON="head could not be fetched (conservative skip): $(printf '%s' "$FETCH_ERR" | tr '\n' ' ' | cut -c1-300)"
               GUARD="indeterminate"
               return 0
             fi
