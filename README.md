@@ -1,3 +1,10 @@
+> [!WARNING]
+> It is not recommended to add any Rust files or code to this repository
+>
+> 不建议在此仓库中添加任何 Rust 文件或代码
+
+---
+
 > [!CAUTION]
 > H
 
