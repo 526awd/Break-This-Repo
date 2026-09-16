@@ -74,6 +74,10 @@ packaging/archlinux/*.tar.gz
 .agent-browser/
 .agents/*
 !.agents/skills/
+!.agents/flavor/
+!.agents/permissions.json
+!.agents/preflight.sh
+!.agents/AGENT.md
 .aider*
 .amazonq/
 .cherrystudio/
