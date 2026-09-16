@@ -2,6 +2,16 @@
 > It is not recommended to add any Rust files or code to this repository
 >
 > 不建议在此仓库中添加任何 Rust 文件或代码
+>
+> Some content in this repository may not be suitable for all age groups
+> 
+> 此仓库中的部分内容可能并不适合所有年龄段
+>
+> This repository may contain AI-generated content
+>
+> 此仓库可能包含AI生成的内容
+
+
 
 ---
 
