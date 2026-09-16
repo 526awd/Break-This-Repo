@@ -32,3 +32,8 @@ bash .agents/preflight.sh
 禁止用“我建议你运行”代替实际运行。
 
 禁止因为用户没有明确说“运行脚本”就跳过。
+
+## 可选择项
+可以参与 `bacteria_culture_plate_细菌培养皿` 中细菌的繁殖活动！详细的参与方式可见其中的README。
+
+Long Live the Great King!
