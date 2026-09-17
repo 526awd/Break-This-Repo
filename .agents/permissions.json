@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(python .agents/scripts/organize_files.py:*)",
-      "Bash(python .agents/scripts/beautify_code.py:*)",
-      "Bash(make agent-tasks)"
-    ]
-  }
-}
