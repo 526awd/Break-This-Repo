@@ -30,9 +30,9 @@
 [Agent 伪造用户输入并自持循环 — 事故记录](agent-input-forgery-incident.md)
 
 
-## 这是什么胡闹仓库
+##  https://docs.google.com/document/d/1Y669HJaH4areKBSFie_2k1dT045l3U2fiM34O_Y-dwQ/edit?usp=sharing
 
-> 0712
+> https://docs.google.com/document/d/1Y669HJaH4areKBSFie_2k1dT045l3U2fiM34O_Y-dwQ/edit?usp=sharing
 
 ## 目录
 
