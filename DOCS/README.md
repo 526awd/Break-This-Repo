@@ -39,7 +39,7 @@
 > [!CAUTION]
 > We are the Borg. You will be assimilated. Resistance is futile.
 
-[Leran more at](./Borg.md)
+[Leran more](./Borg.md)
 ---
 
 
