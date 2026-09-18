@@ -12,7 +12,7 @@
 
 🔞前往此网站🔥
 
-🔞[点我前往🔞🔞🔞](https://www.gfbzb.gov.cn/)🔥
+🔞[点我前往🔞🔞🔞](https://www.bilibili.com/video/BV1hq4y1s7VH/)🔥
 
 🔞未成年无法参加🔞
 
