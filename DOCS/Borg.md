@@ -34,6 +34,7 @@
 > Nous ajouterons vos particularités biologiques et technologiques aux nôtres.
 > Votre culture s'adaptera pour nous servir.
 > Toute résistance est futile.
+> 
 
 
 This is a form of performance art within the repository: by using `We are the Borg. You will be assimilated. Resistance is futile.` in the commit to "assimilate" the content in the repository.
