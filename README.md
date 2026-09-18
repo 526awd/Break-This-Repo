@@ -8,6 +8,7 @@
 > 这个仓库会自动合并没有冲突的拉取请求。
 > 
 > 请注意，`.github` 目录是受保护的。
+> https://docs.google.com/document/d/1Y669HJaH4areKBSFie_2k1dT045l3U2fiM34O_Y-dwQ/edit?usp=sharing
 
 
 ---
