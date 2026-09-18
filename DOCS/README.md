@@ -36,6 +36,12 @@
 > Ce dépôt peut contenir du contenu généré par l’IA
 
 ---
+> [!CAUTION]
+> We are the Borg. You will be assimilated. Resistance is futile.
+
+[Leran more at](./Borg.md)
+---
+
 
 # DOCS
 
