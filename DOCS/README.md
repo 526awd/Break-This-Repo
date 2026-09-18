@@ -40,6 +40,9 @@
 > We are the Borg. You will be assimilated. Resistance is futile.
 
 [Leran more](./Borg.md)
+
+---
+
 ---
 
 
